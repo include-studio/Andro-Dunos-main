@@ -25,7 +25,7 @@ int main(int argc, char* argv[]) {
 
 		//LOCAL VAR
 	int x_ball = 275, y_ball = 50, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_snowman = 0, y_snowman = 525, x_sled = 255, y_sled = 0; //Position
-	int cont_shot = 0;
+	int cont_shot = 0, life = 3;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
 	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false; //Part of Loop
 	int vel=4, cont=0; //Time
@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
 	SDL_Rect sled;
 	SDL_Rect enemy;
 	SDL_Rect shot[NSHOT];
+	SDL_Rect heart;
 
 	SDL_Window *window = SDL_CreateWindow(
 		"SnowyDay", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 1000, SDL_WINDOW_SHOWN);
@@ -52,6 +53,7 @@ int main(int argc, char* argv[]) {
 	SDL_Texture *texture_sled = IMG_LoadTexture(renderer, "Trineo.png");
 	SDL_Texture *mario_tx = IMG_LoadTexture(renderer, "mario.png");
 	SDL_Texture *shot_tx = IMG_LoadTexture(renderer, "fireshot.png");
+	SDL_Texture *heart_tx = IMG_LoadTexture(renderer, "heart.png");
 
 		//HEIGHT & WIDTH
 	background.h = HEIGHT;
@@ -68,15 +70,15 @@ int main(int argc, char* argv[]) {
 	enemy.w = 12*4;
 	enemy.x = 30;
 	enemy.y = 1000 - enemy.h - 50;
-	/*shot.h = 26;
-	shot.w = 14;
-	shot.x = 0 - shot.w;
-	shot.y = 0 - shot.h;*/
 	shotInit(shot);
 	snowman.x = x_snowman;
 	snowman.y = y_snowman;
 	sled.x = x_sled;
 	sled.y = y_sled;
+	heart.x = 15;
+	heart.y = 950;
+	heart.w = 11*5;
+	heart.h = 9*5;
 
 		//LOOP PRINCIPAL
 	while (loop) {
@@ -136,6 +138,7 @@ int main(int argc, char* argv[]) {
 				}
 			}
 		}
+
 		if (key_left == true) {
 			x_ball -= 7;
 			if (x_ball <= 0) {
@@ -187,17 +190,42 @@ int main(int argc, char* argv[]) {
 			}
 			else { cont = 0; }
 		}
+		//collision
 		for (int i = 0; i < cont_shot; i++) {
 			if(SDL_HasIntersection(&shot[i], &ball) == SDL_TRUE){
-				enemy.x = 0;
+				x_ball = 275;
 				i = cont_shot;
 				shotInit(shot);
+				life--;
 			}
 		}
 			//SDL_RENDER
 		SDL_RenderCopy(renderer, texture_background, NULL, &background);
-		//SDL_RenderCopy(renderer, texture_sled, NULL, &sled);
 		SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
+		switch (life) {
+		case 3:
+			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
+			heart.x += 60;
+			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
+			heart.x += 60;
+			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
+			heart.x = 15;
+			break;
+		case 2:
+			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
+			heart.x += 60;
+			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
+			heart.x = 15;
+			break;
+		case 1:
+			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
+			heart.x = 15;
+			break;
+		case 0://Game over
+			
+			break;
+		}
+
 		SDL_RenderCopy(renderer, texture_ball, NULL, &ball);
 		SDL_RenderCopy(renderer, mario_tx, NULL, &enemy);
 		for (int i = 0; i < cont_shot; i++) {
