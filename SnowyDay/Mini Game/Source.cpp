@@ -8,32 +8,13 @@
 #define WEIGHT 600
 #define NSHOT 100
 
-bool collision(SDL_Rect a, int x, int y, int w, int h) {
-	//sides of rect
-	int left_a, left_b;
-	int right_a, right_b;
-	int top_a, top_b;
-	int bot_a, bot_b;
-	//a
-	left_a = a.x;
-	right_a = a.x + a.w;
-	top_a = a.y;
-	bot_a = a.y + a.h;
-	//b
-		left_b = x;
-		right_b = x + w;
-		top_b = y;
-		bot_b = y + h;
-
-		if (bot_a >= top_b)
-			return false;
-		if (top_a <= bot_b)
-			return false;
-		if (left_a >= right_b)
-			return false;
-		if (right_a <= left_b)
-			return false;
-		return true;
+void shotInit(SDL_Rect a[]) {
+	for (int i = 0; i < NSHOT; i++) {
+		a[i].h = 26;
+		a[i].w = 14;
+		a[i].x = 0 - a[0].w;
+		a[i].y = 0 - a[0].h;
+	}
 }
 	
 int main(int argc, char* argv[]) {
@@ -91,12 +72,7 @@ int main(int argc, char* argv[]) {
 	shot.w = 14;
 	shot.x = 0 - shot.w;
 	shot.y = 0 - shot.h;*/
-	for (int i = 0; i < NSHOT; i++) {
-		shot[i].h = 26;
-		shot[i].w = 14;
-		shot[i].x = 0 - shot[0].w;
-		shot[i].y = 0 - shot[0].h;
-	}
+	shotInit(shot);
 	snowman.x = x_snowman;
 	snowman.y = y_snowman;
 	sled.x = x_sled;
@@ -172,6 +148,8 @@ int main(int argc, char* argv[]) {
 				x_ball -= 7;
 			}
 		}
+	
+		//mov mario
 		if (enemy.x >= WEIGHT - enemy.w)
 			mov_e = false;
 		if (enemy.x == 0)
@@ -180,21 +158,10 @@ int main(int argc, char* argv[]) {
 			enemy.x += 5;
 		if (!mov_e)
 			enemy.x -= 5;
-		
-		
-		//mov mario
-		
 
 		//shot
-		
-		/*if (shoot) {
-			shot.x = enemie.x;
-			shot.y = enemie.y;
-			//cont_shot++;
-		}*/
-		//if (shot.y >= 0 - shot.y) {
 		for (int i = 0; i <= cont_shot; i++) {
-			shot[i].y -= 10;
+			shot[i].y -= 20;
 		}
 		
 		//}
@@ -221,9 +188,11 @@ int main(int argc, char* argv[]) {
 			else { cont = 0; }
 		}
 		for (int i = 0; i < cont_shot; i++) {
-			int x = shot[i].x, y = shot[i].y, h = shot[i].h, w = shot[i].w;
-		if (collision(ball, x,y,w,h))
-			enemy.x = 0;
+			if(SDL_HasIntersection(&shot[i], &ball) == SDL_TRUE){
+				enemy.x = 0;
+				i = cont_shot;
+				shotInit(shot);
+			}
 		}
 			//SDL_RENDER
 		SDL_RenderCopy(renderer, texture_background, NULL, &background);
