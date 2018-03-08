@@ -198,32 +198,27 @@ int main(int argc, char* argv[]) {
 
 		//shot
 		for (int i = 0; i <= cont_shot; i++) {
-			int display_r = 1; //To proced to random r
-			int r = 1;
-
-			shot[i].y -= 8;
+			int down;
+			shot[i].y -= 15;
+			shot[i].y += 8;
 
 			//Hard_shot m0th3rFuk3Rs
-			switch (r)
-			{
-			case 1:
-				shot[i].x -= 8;
-				break;
-			case 0:
-				shot[i].x += 8;
-				break;
-
-			default:
-				break;
+			if (shot[i].x >= 600) {
+				down = 0;
 			}
+
+			if (down == 1) {
+				shot[i].x+=8;
+			}
+			if (shot[i].x <= 0) {
+				down = 1;
+			}
+
+			if (down == 0) {
+				shot[i].x-=8;
+			}
+
 			
-
-			if (shot[i].x >= 14) {
-				r = 0;
-			}
-			else if (shot[i].x <= 586) {
-				r = 1;
-			}
 
 			
 			
