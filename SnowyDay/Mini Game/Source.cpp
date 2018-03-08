@@ -141,7 +141,7 @@ int main(int argc, char* argv[]) {
 					key_right = true;
 					break;
 				case SDLK_SPACE:
-					Mix_PlayChannel(-1, fire_ball, 1);
+					Mix_PlayChannel(-1, fire_ball, 0);
 					
 					//Mix_PlayChannel(-1, mario_cry, 0);
 					shot[cont_shot].x = enemy.x;
