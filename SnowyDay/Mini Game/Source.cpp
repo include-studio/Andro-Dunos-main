@@ -8,7 +8,33 @@
 #define WEIGHT 600
 #define NSHOT 100
 
+bool collision(SDL_Rect a, int x, int y, int w, int h) {
+	//sides of rect
+	int left_a, left_b;
+	int right_a, right_b;
+	int top_a, top_b;
+	int bot_a, bot_b;
+	//a
+	left_a = a.x;
+	right_a = a.x + a.w;
+	top_a = a.y;
+	bot_a = a.y + a.h;
+	//b
+		left_b = x;
+		right_b = x + w;
+		top_b = y;
+		bot_b = y + h;
 
+		if (bot_a >= top_b)
+			return false;
+		if (top_a <= bot_b)
+			return false;
+		if (left_a >= right_b)
+			return false;
+		if (right_a <= left_b)
+			return false;
+		return true;
+}
 	
 int main(int argc, char* argv[]) {
 		//INICIALIZAR
@@ -146,7 +172,6 @@ int main(int argc, char* argv[]) {
 				x_ball -= 7;
 			}
 		}
-		//mov mario
 		if (enemy.x >= WEIGHT - enemy.w)
 			mov_e = false;
 		if (enemy.x == 0)
@@ -155,6 +180,10 @@ int main(int argc, char* argv[]) {
 			enemy.x += 5;
 		if (!mov_e)
 			enemy.x -= 5;
+		
+		
+		//mov mario
+		
 
 		//shot
 		
@@ -190,6 +219,11 @@ int main(int argc, char* argv[]) {
 				cont++;
 			}
 			else { cont = 0; }
+		}
+		for (int i = 0; i < cont_shot; i++) {
+			int x = shot[i].x, y = shot[i].y, h = shot[i].h, w = shot[i].w;
+		if (collision(ball, x,y,w,h))
+			enemy.x = 0;
 		}
 			//SDL_RENDER
 		SDL_RenderCopy(renderer, texture_background, NULL, &background);
