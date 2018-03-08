@@ -2,6 +2,8 @@
 #include "SDL/include/SDL_image.h"
 #include "SDL/include/SDL_mixer.h"
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
 
 #pragma comment(lib, "SDL/libx86/SDL2.lib")
 #pragma comment(lib, "SDL/libx86/SDL2main.lib")
@@ -23,6 +25,7 @@ void shotInit(SDL_Rect a[]) {
 }
 	
 int main(int argc, char* argv[]) {
+	srand(time(NULL));
 		//INICIALIZAR
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
@@ -195,7 +198,37 @@ int main(int argc, char* argv[]) {
 
 		//shot
 		for (int i = 0; i <= cont_shot; i++) {
-			shot[i].y -= 20;
+			int display_r = 1; //To proced to random r
+			int r = 1;
+			
+			
+			shot[i].y -= 8;
+			//Hard_shot m0th3rFuk3Rs
+
+			if (display_r == 1) {
+				r = rand() % 1;
+				display_r = 0;
+			}
+			switch (r)
+			{
+			case (0):
+				shot[i].x -= 8;
+				break;
+			case(1):
+				shot[i].x += 8;
+				break;
+			default:
+				break;
+			}
+			shot[i].x -= 8;
+			
+			if (shot[i].x == 14 || shot[i].x == 586) {
+				display_r = 0;
+			}
+			
+			
+
+			
 		}
 		
 		//}
