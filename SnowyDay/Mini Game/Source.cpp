@@ -1,13 +1,18 @@
 #include "SDL/include/SDL.h"
 #include "SDL/include/SDL_image.h"
+#include "SDL/include/SDL_mixer.h"
+#include <iostream>
 
 #pragma comment(lib, "SDL/libx86/SDL2.lib")
-#pragma comment(lib, "SDL/libx86/SDL2_image.lib")
 #pragma comment(lib, "SDL/libx86/SDL2main.lib")
+#pragma comment(lib, "SDL/libx86/SDL2_image.lib")
+#pragma comment(lib, "SDL/libx86/SDL2_mixer.lib")
+
 #define HEIGHT 4320
 #define WEIGHT 600
 #define NSHOT 100
 
+	//ARRAY SHOT
 void shotInit(SDL_Rect a[]) {
 	for (int i = 0; i < NSHOT; i++) {
 		a[i].h = 26;
@@ -21,7 +26,16 @@ int main(int argc, char* argv[]) {
 		//INICIALIZAR
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
-	//Audio
+
+		//AUDIO
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+		std::cout << "Error: " << Mix_GetError() << std::endl;
+	Mix_Music *bgm = Mix_LoadMUS("bgm.wav"); //bgm longer than 10 sec
+	Mix_Music *bgm_Wind = Mix_LoadMUS("bgm_Wind.wav");
+	Mix_Chunk *death = Mix_LoadWAV("death.wav");//sound effect 
+	Mix_Chunk *fire_Ball = Mix_LoadWAV("fire_Ball.wav");
+	Mix_Chunk *snow = Mix_LoadWAV("snow.wav");
+	Mix_Chunk *mario_cry = Mix_LoadWAV("mario_cry.wav");
 
 		//LOCAL VAR
 	int x_ball = 275, y_ball = 50, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_snowman = 0, y_snowman = 525, x_sled = 255, y_sled = 0; //Position
@@ -80,6 +94,19 @@ int main(int argc, char* argv[]) {
 	heart.w = 11*5;
 	heart.h = 9*5;
 
+
+	if (loop == true) {
+		if (!Mix_PlayingMusic()) {
+			Mix_PlayMusic(bgm, 0);
+		}
+		else if (Mix_PausedMusic()) {
+			Mix_ResumeMusic();
+		}
+		else {
+			Mix_PauseMusic();
+		}
+	}
+
 		//LOOP PRINCIPAL
 	while (loop) {
 
@@ -91,7 +118,6 @@ int main(int argc, char* argv[]) {
 		background.y = y_background;
 		pickup.x = x_pickup;
 		pickup.y = y_pickup;
-		
 
 		//LOOP K_EVENT
 
@@ -101,6 +127,7 @@ int main(int argc, char* argv[]) {
 			if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
 				loop = 0;
 			}
+			
 
 			if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 			{
@@ -231,15 +258,24 @@ int main(int argc, char* argv[]) {
 		for (int i = 0; i < cont_shot; i++) {
 			SDL_RenderCopy(renderer, shot_tx, NULL, &shot[i]);
 		}
-		//SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
+		SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
 		
 		SDL_RenderPresent(renderer);
 
 	}
-
+	Mix_FreeMusic(bgm);
+	Mix_FreeMusic(bgm_Wind);
+	Mix_FreeChunk(death);
+	Mix_FreeChunk(fire_Ball);
+	Mix_FreeChunk(snow);
+	Mix_FreeChunk(mario_cry);
+	
+	
 
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 	IMG_Quit();
+	Mix_Quit();
+	SDL_CloseAudio();
 	return 0;
 }
