@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
 	Mix_Music *bgm = Mix_LoadMUS("bgm.wav"); //bgm longer than 10 sec
 	Mix_Music *bgm_Wind = Mix_LoadMUS("bgm_Wind.wav");
 	Mix_Chunk *death = Mix_LoadWAV("death.wav");//sound effect 
-	Mix_Chunk *fire_Ball = Mix_LoadWAV("fire_Ball.wav");
+	Mix_Chunk *fire_ball = Mix_LoadWAV("fire_ball.wav");
 	Mix_Chunk *snow = Mix_LoadWAV("snow.wav");
 	Mix_Chunk *mario_cry = Mix_LoadWAV("mario_cry.wav");
 
@@ -99,6 +99,7 @@ int main(int argc, char* argv[]) {
 		if (!Mix_PlayingMusic()) {
 			Mix_PlayMusic(bgm, 0);
 		}
+
 		else if (Mix_PausedMusic()) {
 			Mix_ResumeMusic();
 		}
@@ -140,6 +141,9 @@ int main(int argc, char* argv[]) {
 					key_right = true;
 					break;
 				case SDLK_SPACE:
+					Mix_PlayChannel(-1, fire_ball, 1);
+					
+					//Mix_PlayChannel(-1, mario_cry, 0);
 					shot[cont_shot].x = enemy.x;
 					shot[cont_shot].y = enemy.y;
 					cont_shot++;
@@ -220,6 +224,7 @@ int main(int argc, char* argv[]) {
 		//collision
 		for (int i = 0; i < cont_shot; i++) {
 			if(SDL_HasIntersection(&shot[i], &ball) == SDL_TRUE){
+				Mix_PlayChannel(-1,death, 0);//Mix_PlayChannel(Channel, track, loop_times)
 				x_ball = 275;
 				i = cont_shot;
 				shotInit(shot);
@@ -248,7 +253,7 @@ int main(int argc, char* argv[]) {
 			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
 			heart.x = 15;
 			break;
-		case 0://Game over
+		case 0://Game over - bgm_Wind Audio
 			
 			break;
 		}
@@ -258,7 +263,7 @@ int main(int argc, char* argv[]) {
 		for (int i = 0; i < cont_shot; i++) {
 			SDL_RenderCopy(renderer, shot_tx, NULL, &shot[i]);
 		}
-		SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
+		//SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
 		
 		SDL_RenderPresent(renderer);
 
@@ -266,7 +271,7 @@ int main(int argc, char* argv[]) {
 	Mix_FreeMusic(bgm);
 	Mix_FreeMusic(bgm_Wind);
 	Mix_FreeChunk(death);
-	Mix_FreeChunk(fire_Ball);
+	Mix_FreeChunk(fire_ball);
 	Mix_FreeChunk(snow);
 	Mix_FreeChunk(mario_cry);
 	
