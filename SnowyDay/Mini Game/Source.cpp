@@ -6,6 +6,7 @@
 #pragma comment(lib, "SDL/libx86/SDL2main.lib")
 #define HEIGHT 4320
 #define WEIGHT 600
+#define NSHOT 100
 
 
 	
@@ -30,7 +31,7 @@ int main(int argc, char* argv[]) {
 	SDL_Rect snowman;
 	SDL_Rect sled;
 	SDL_Rect enemy;
-	SDL_Rect shot;
+	SDL_Rect shot[NSHOT];
 
 	SDL_Window *window = SDL_CreateWindow(
 		"SnowyDay", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 1000, SDL_WINDOW_SHOWN);
@@ -60,16 +61,16 @@ int main(int argc, char* argv[]) {
 	enemy.w = 12*4;
 	enemy.x = 30;
 	enemy.y = 1000 - enemy.h - 50;
-	shot.h = 26;
+	/*shot.h = 26;
 	shot.w = 14;
 	shot.x = 0 - shot.w;
-	shot.y = 0 - shot.h;
-	/*for (int i = 0; i < 50; i++) {
-		shot[i].h = 14;
-		shot[i].w = 26;
+	shot.y = 0 - shot.h;*/
+	for (int i = 0; i < NSHOT; i++) {
+		shot[i].h = 26;
+		shot[i].w = 14;
 		shot[i].x = 0 - shot[0].w;
 		shot[i].y = 0 - shot[0].h;
-	}*/
+	}
 	snowman.x = x_snowman;
 	snowman.y = y_snowman;
 	sled.x = x_sled;
@@ -97,7 +98,7 @@ int main(int argc, char* argv[]) {
 				loop = 0;
 			}
 
-			if (event.type == SDL_KEYDOWN)
+			if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
 			{
 				switch (event.key.keysym.sym)
 				{
@@ -108,8 +109,11 @@ int main(int argc, char* argv[]) {
 					key_right = true;
 					break;
 				case SDLK_SPACE:
-					shot.x = enemy.x;
-					shot.y = enemy.y;
+					shot[cont_shot].x = enemy.x;
+					shot[cont_shot].y = enemy.y;
+					cont_shot++;
+					if (cont_shot == NSHOT)
+						cont_shot = 0;
 					break;
 				default:
 					break;
@@ -125,9 +129,6 @@ int main(int argc, char* argv[]) {
 				case SDLK_RIGHT:
 					key_right = false;
 					break;
-				//case SDLK_SPACE:
-					//shoot = false;
-					//break;
 				default:
 					break;
 				}
@@ -163,7 +164,10 @@ int main(int argc, char* argv[]) {
 			//cont_shot++;
 		}*/
 		//if (shot.y >= 0 - shot.y) {
-		shot.y -= 10;
+		for (int i = 0; i <= cont_shot; i++) {
+			shot[i].y -= 10;
+		}
+		
 		//}
 			//CONDITIONS BACKGROUND
 		
@@ -193,9 +197,9 @@ int main(int argc, char* argv[]) {
 		SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
 		SDL_RenderCopy(renderer, texture_ball, NULL, &ball);
 		SDL_RenderCopy(renderer, mario_tx, NULL, &enemy);
-		//for (int i = 0; i <= cont_shot; i++) {
-		SDL_RenderCopy(renderer, shot_tx, NULL, &shot);
-		//}
+		for (int i = 0; i < cont_shot; i++) {
+			SDL_RenderCopy(renderer, shot_tx, NULL, &shot[i]);
+		}
 		//SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
 		
 		SDL_RenderPresent(renderer);
