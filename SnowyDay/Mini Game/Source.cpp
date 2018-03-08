@@ -4,8 +4,6 @@
 #pragma comment(lib, "SDL/libx86/SDL2.lib")
 #pragma comment(lib, "SDL/libx86/SDL2_image.lib")
 #pragma comment(lib, "SDL/libx86/SDL2main.lib")
-#define TRUE 1
-#define FALSE 0
 #define HEIGHT 4320
 #define WEIGHT 600
 
@@ -20,9 +18,8 @@ int main(int argc, char* argv[]) {
 		//LOCAL VAR
 	int x_ball = 275, y_ball = 50, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_snowman = 0, y_snowman = 525, x_sled = 255, y_sled = 0; //Position
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
-	int loop=1, key_left, key_right; //Part of Loop
+	bool loop=true, key_left=false, key_right=false; //Part of Loop
 	int vel=4, cont=0; //Time
-
 
 		//SDL
 	SDL_Event event;
@@ -85,7 +82,7 @@ int main(int argc, char* argv[]) {
 		while (SDL_PollEvent(&event) ){
 			
 
-			if (event.type == SDL_QUIT) {
+			if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
 				loop = 0;
 			}
 
@@ -94,10 +91,10 @@ int main(int argc, char* argv[]) {
 				switch (event.key.keysym.sym)
 				{
 				case SDLK_LEFT:
-					key_left = TRUE;
+					key_left = true;
 						break;
 				case SDLK_RIGHT:
-					key_right = TRUE;
+					key_right = true;
 					break;
 				default:
 					break;
@@ -108,23 +105,23 @@ int main(int argc, char* argv[]) {
 				switch (event.key.keysym.sym)
 				{
 				case SDLK_LEFT:
-					key_left = FALSE;
+					key_left = false;
 					break;
 				case SDLK_RIGHT:
-					key_right = FALSE;
+					key_right = false;
 					break;
 				default:
 					break;
 				}
 			}
 		}
-		if (key_left == TRUE) {
+		if (key_left == true) {
 			x_ball-= 7;
 			if (x_ball <= 0) {
 				x_ball += 7;
 			}
 		}
-		if (key_right == TRUE) {
+		if (key_right == true) {
 			x_ball+= 7;
 			if (x_ball >= 550) {
 				x_ball -= 7;
