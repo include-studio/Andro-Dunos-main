@@ -41,14 +41,7 @@ int main(int argc, char* argv[]) {
 	SDL_Texture *texture_pickup = IMG_LoadTexture(renderer, "Snow_Pick_Up.png");
 	SDL_Texture *texture_snowman = IMG_LoadTexture(renderer, "Snowman.png");
 	SDL_Texture *texture_sled = IMG_LoadTexture(renderer, "Trineo.png");
-	
-	/*SDL_Surface* surface_background = IMG_Load("Backgorund_Skystar.png");
-	SDL_Surface* surface_ball = IMG_Load("Snowball.png");
-	SDL_Surface* surface_barrier = IMG_Load("Barrier.png");
 
-	texture_background = SDL_CreateTextureFromSurface(renderer, surface_background);
-	texture_ball = SDL_CreateTextureFromSurface(renderer, surface_ball);
-	texture_barrier = SDL_CreateTextureFromSurface(renderer, surface_barrier);*/
 		//HEIGHT & WIDTH
 	background.h = HEIGHT;
 	background.w = WEIGHT;
@@ -134,8 +127,8 @@ int main(int argc, char* argv[]) {
 			y_pickup -= vel;
 			y_sled -= vel;
 			if (y_background <= -1400) { //Mov sled <--
-				x_sled-=7;
-				y_sled --;
+				x_sled -= 7;
+				y_sled--;
 			}
 
 			if (cont <= 90) { //Mov cops <- ->
@@ -147,25 +140,15 @@ int main(int argc, char* argv[]) {
 				}
 				cont++;
 			}
-			else{ cont = 0; }
+			else { cont = 0; }
 		}
-
-		
-		
-		
-		
-
 			//SDL_RENDER
-
 		SDL_RenderCopy(renderer, texture_background, NULL, &background);
 		SDL_RenderCopy(renderer, texture_sled, NULL, &sled);
 		SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
 		SDL_RenderCopy(renderer, texture_ball, NULL, &ball);
 		SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
 		
-
-		
-
 		SDL_RenderPresent(renderer);
 
 	}
