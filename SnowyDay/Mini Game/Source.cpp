@@ -176,7 +176,7 @@ int main(int argc, char* argv[]) {
 				y_sled--;
 			}
 
-			if (cont <= 90) { //Mov cops <- ->
+			if (cont <= 90) { //Mov snowflakes <- ->
 				if (cont <= 45) {
 					x_pickup -= 1;
 				}
