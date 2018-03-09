@@ -1,14 +1,17 @@
-Apuntes:
+A Mini Game named SnowyDays that it's based on the Mlg art and as a lot of references to Mario 64 and Mario Galaxy, two big games!
+
+Manager: Lluis Moreu
+Art: Marc Navas
+Q&A: Christian Martinez
+Programer: Marc Galvez
+
+Controls:
+
+	-Key_Left
+	-Key_Right 
+	-ENTER (to restart)
 
 
-Objetos iran subiendo barreras encima de la bola (simulando que la bola baja)
-Cada x tiempo la bola aumentara de tamaño, esto hara que su vel disminuya
-Cuando aumente de tamaño las barreras subiran mas rapido
+Could you finish the game?
 
-Al colisionar con las barreras la bola se detiene y las barreras suben con la vel principal (lenta) ya que la bola vuelve a su estado original
-
-Copos se mueven hacia los lados lijeramente
-
-Cretidos en la parte final.
-
-Animaciones Trineo.
+We hope you Enjoy! Thanks for playing.
