@@ -2,6 +2,8 @@
 #include "SDL/include/SDL_image.h"
 #include "SDL/include/SDL_mixer.h"
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
 
 #pragma comment(lib, "SDL/libx86/SDL2.lib")
 #pragma comment(lib, "SDL/libx86/SDL2main.lib")
@@ -31,6 +33,7 @@ void snowflakeInit(SDL_Rect a[]) {
 	}
 }
 int main(int argc, char* argv[]) {
+	srand(time(NULL));
 		//INICIALIZAR
 	SDL_Init(SDL_INIT_EVERYTHING);
 	IMG_Init(IMG_INIT_PNG);
@@ -226,7 +229,32 @@ int main(int argc, char* argv[]) {
 
 		//shot
 		for (int i = 0; i <= cont_shot; i++) {
-			shot[i].y -= 20;
+			int down;
+			shot[i].y -= 15;
+			shot[i].y += 8;
+
+			//Hard_shot m0th3rFuk3Rs
+			if (shot[i].x >= 600) {
+				down = 0;
+			}
+
+			if (down == 1) {
+				shot[i].x+=8;
+			}
+			if (shot[i].x <= 0) {
+				down = 1;
+			}
+
+			if (down == 0) {
+				shot[i].x-=8;
+			}
+
+			
+
+			
+			
+
+			
 		}
 		
 			//CONDITIONS BACKGROUND
