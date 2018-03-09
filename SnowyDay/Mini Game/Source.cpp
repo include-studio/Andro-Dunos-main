@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
 
 		//LOCAL VAR
 	int x_ball = 275, y_ball = 50, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_snowman = 0, y_snowman = 525, x_sled = 255, y_sled = 0; //Position
-	int cont_shot = 0, life = 3, contflake = 0, contN=0;
+	int cont_shot = 0, life = 3, contflake = 0, contN=0, cont_cry = 0;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
 	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false, gameover = false; //Part of Loop
 	int vel=4, cont=0; //Time
@@ -131,6 +131,11 @@ int main(int argc, char* argv[]) {
 
 		//LOOP PRINCIPAL
 	while (loop) {
+		
+		if (cont_cry == 0){
+			Mix_PlayChannel(-1, mario_cry, 0);
+			cont_cry++;
+		}
 
 		SDL_RenderClear(renderer);
 		/*if (!gameover) {*/
@@ -163,16 +168,7 @@ int main(int argc, char* argv[]) {
 					case SDLK_RIGHT:
 						key_right = true;
 						break;
-					//case SDLK_SPACE:
-					//	Mix_PlayChannel(-1, fire_ball, 0);
-
-					//	//Mix_PlayChannel(-1, mario_cry, 0);
-					//	shot[cont_shot].x = enemy.x;
-					//	shot[cont_shot].y = enemy.y;
-					//	cont_shot++;
-					//	if (cont_shot == NSHOT)
-					//		cont_shot = 0;
-					//	break;
+					
 					default:
 						break;
 					}
@@ -206,20 +202,20 @@ int main(int argc, char* argv[]) {
 				}
 			}
 
-			//shot prop
-			int cont_autoshot=0;
 			
-				Mix_PlayChannel(-1, fire_ball, 0);
+			
+			
+			Mix_PlayChannel(-1, fire_ball, 0);
 
-				//Mix_PlayChannel(-1, mario_cry, 0);
-				shot[cont_shot].x = enemy.x;
-				shot[cont_shot].y = enemy.y;
-				cont_shot++;
-				if (cont_shot == NSHOT)
+			//Mix_PlayChannel(-1, mario_cry, 0);
+			shot[cont_shot].x = enemy.x;
+			shot[cont_shot].y = enemy.y;
+			cont_shot++;
+			if (cont_shot == NSHOT)
 					cont_shot = 0;
-				cont_autoshot = 0;
+				
 			
-			cont_autoshot++;
+			
 			
 			//snowflakes
 			//for (int i = 0; i < contflake; i++) {
@@ -272,12 +268,12 @@ int main(int argc, char* argv[]) {
 
 			if (background.y >= -4015) {
 				
-				if (ball.h >= 110) {
+				if (ball.h >= 115) {
 					y_background -= vel * 2;
 					y_pickup -= vel * 2;
 					y_sled -= vel * 2;
 				}
-				if (ball.h >= 120) {
+				if (ball.h >= 130) {
 					y_background -= vel * 3;
 					y_pickup -= vel * 3;
 					y_sled -= vel * 3;
@@ -287,7 +283,11 @@ int main(int argc, char* argv[]) {
 					y_pickup -= vel;
 					y_sled -= vel;
 				}
-				if (background.y <= -1500) {
+
+
+
+				//Animations
+				if (background.y <= -1050) {
 					x_sled -= vel;
 				}
 			}
@@ -342,18 +342,24 @@ int main(int argc, char* argv[]) {
 			snowsprite.x += snowsprite.w;
 			if (snowsprite.x = snowsprite.w * 4)
 				snowsprite.x = 0;
+			SDL_RenderCopy(renderer, texture_sled, NULL, &sled);
 			SDL_RenderCopy(renderer, texture_ball, NULL, &ball);
 			SDL_RenderCopy(renderer, mario_tx, NULL, &enemy);
 			for (int i = 0; i < cont_shot; i++) {
 				SDL_RenderCopy(renderer, shot_tx, NULL, &shot[i]);
 			}
 			SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
-			SDL_RenderCopy(renderer, texture_sled, NULL, &sled);
+			
 
 			SDL_RenderPresent(renderer);
 		
 		if (gameover == true) {
-			y_background = 4000;
+			
+			if (background.y <= 10000) {
+				y_background -= vel * 10;
+			}
+			
+			
 		}
 		else {
 			
