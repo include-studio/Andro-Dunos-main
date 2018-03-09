@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
 	Mix_Chunk *mario_cry = Mix_LoadWAV("mario_cry.wav");
 
 		//LOCAL VAR
-	int x_ball = 275, y_ball = 0, x_background = 0, y_background = 0, x_pickup = 600, y_pickup = 0, x_sled = 255, y_sled = 0; //Position
+	int x_ball = 275, y_ball = 30, x_background = 0, y_background = 0, x_pickup = 600, y_pickup = 0, x_sled = 255, y_sled = 0; //Position
 	int cont_shot = 0, life = 3, contflake = 0, contN=0, cont_cry = 0, over=1;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
 	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false, gameover = false, key_enter; //Part of Loop
@@ -207,11 +207,12 @@ int main(int argc, char* argv[]) {
 				}
 			}
 			if (key_enter == true) {
-				Mix_PlayChannel(-1, mario_cry, 2);
+				Mix_PlayChannel(-1, mario_cry, 0);
 				over = 1;
 				gameover = false;
+				life = 3;
 				while (x_pickup <= 1200) {
-					x_pickup -= 5;
+					x_pickup -= vel*2;
 				}
 			}
 
