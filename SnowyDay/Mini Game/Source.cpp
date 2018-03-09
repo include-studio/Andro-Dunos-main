@@ -271,10 +271,23 @@ int main(int argc, char* argv[]) {
 			//CONDITIONS BACKGROUND
 
 			if (background.y >= -4015) {
-				y_background -= vel;
-				y_pickup -= vel;
-				y_sled -= vel;
-				if (y_background == -2000) {
+				
+				if (ball.h >= 110) {
+					y_background -= vel * 2;
+					y_pickup -= vel * 2;
+					y_sled -= vel * 2;
+				}
+				if (ball.h >= 120) {
+					y_background -= vel * 3;
+					y_pickup -= vel * 3;
+					y_sled -= vel * 3;
+				}
+				else {
+					y_background -= vel;
+					y_pickup -= vel;
+					y_sled -= vel;
+				}
+				if (background.y <= -1500) {
 					x_sled -= vel;
 				}
 			}
