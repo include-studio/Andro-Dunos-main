@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 	SDL_Rect heart;
 	SDL_Rect snowflake[NFLAKE];
 	SDL_Rect snowsprite;
-	SDL_Rect gameover;
+	
 
 	SDL_Window *window = SDL_CreateWindow(
 		"SnowyDay", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 1000, SDL_WINDOW_SHOWN);
@@ -83,7 +83,7 @@ int main(int argc, char* argv[]) {
 	SDL_Texture *shot_tx = IMG_LoadTexture(renderer, "fireshot.png");
 	SDL_Texture *heart_tx = IMG_LoadTexture(renderer, "heart.png");
 	SDL_Texture *snowflake_tx = IMG_LoadTexture(renderer, "snowflake.png");
-	SDL_Texture *gameover_tx = IMG_LoadTexture(renderer, ".png");
+	
 
 		//HEIGHT & WIDTH
 	background.h = HEIGHT;
@@ -96,10 +96,10 @@ int main(int argc, char* argv[]) {
 	sled.w = WEIGHT;
 	ball.h = ball_h;
 	ball.w = ball_w;
-	enemy.h = 16*4;
-	enemy.w = 12*4;
-	enemy.x = 30;
-	enemy.y = 1000 - enemy.h - 50;
+	enemy.h = 170;
+	enemy.w = 150;
+	enemy.x = 60;
+	enemy.y = 980 - enemy.h - 50;
 	shotInit(shot);
 	snowman.x = x_snowman;
 	snowman.y = y_snowman;
@@ -114,10 +114,7 @@ int main(int argc, char* argv[]) {
 	snowsprite.y = 0;
 	snowsprite.w = 64;
 	snowsprite.h = 73;
-	gameover.w = ;
-	gameover.h = ;
-	gameover.x = ;
-	gameover.y = ;
+	
 
 	if (loop == true) {
 		if (!Mix_PlayingMusic()) {
@@ -136,13 +133,15 @@ int main(int argc, char* argv[]) {
 	while (loop) {
 
 		SDL_RenderClear(renderer);
-		if (!gameover) {
+		/*if (!gameover) {*/
 			ball.x = x_ball;
 			ball.y = y_ball;
 			background.x = x_background;
 			background.y = y_background;
 			pickup.x = x_pickup;
 			pickup.y = y_pickup;
+			sled.x = x_sled;
+			sled.y = y_sled;
 
 			//LOOP K_EVENT
 
@@ -164,16 +163,16 @@ int main(int argc, char* argv[]) {
 					case SDLK_RIGHT:
 						key_right = true;
 						break;
-					case SDLK_SPACE:
-						Mix_PlayChannel(-1, fire_ball, 0);
+					//case SDLK_SPACE:
+					//	Mix_PlayChannel(-1, fire_ball, 0);
 
-						//Mix_PlayChannel(-1, mario_cry, 0);
-						shot[cont_shot].x = enemy.x;
-						shot[cont_shot].y = enemy.y;
-						cont_shot++;
-						if (cont_shot == NSHOT)
-							cont_shot = 0;
-						break;
+					//	//Mix_PlayChannel(-1, mario_cry, 0);
+					//	shot[cont_shot].x = enemy.x;
+					//	shot[cont_shot].y = enemy.y;
+					//	cont_shot++;
+					//	if (cont_shot == NSHOT)
+					//		cont_shot = 0;
+					//	break;
 					default:
 						break;
 					}
@@ -206,6 +205,22 @@ int main(int argc, char* argv[]) {
 					x_ball -= 7;
 				}
 			}
+
+			//shot prop
+			int cont_autoshot=0;
+			
+				Mix_PlayChannel(-1, fire_ball, 0);
+
+				//Mix_PlayChannel(-1, mario_cry, 0);
+				shot[cont_shot].x = enemy.x;
+				shot[cont_shot].y = enemy.y;
+				cont_shot++;
+				if (cont_shot == NSHOT)
+					cont_shot = 0;
+				cont_autoshot = 0;
+			
+			cont_autoshot++;
+			
 			//snowflakes
 			//for (int i = 0; i < contflake; i++) {
 			if (contN % 50 == 0 || contN == 0) {
@@ -259,6 +274,9 @@ int main(int argc, char* argv[]) {
 				y_background -= vel;
 				y_pickup -= vel;
 				y_sled -= vel;
+				if (y_background == -2000) {
+					x_sled -= vel;
+				}
 			}
 			//collision
 			for (int i = 0; i < cont_shot; i++) {
@@ -316,16 +334,20 @@ int main(int argc, char* argv[]) {
 			for (int i = 0; i < cont_shot; i++) {
 				SDL_RenderCopy(renderer, shot_tx, NULL, &shot[i]);
 			}
-			//SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
+			SDL_RenderCopy(renderer, texture_snowman, NULL,  &snowman);
+			SDL_RenderCopy(renderer, texture_sled, NULL, &sled);
 
 			SDL_RenderPresent(renderer);
+		
+		if (gameover == true) {
+			y_background = 4000;
 		}
 		else {
 			
 			if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
 				loop = 0;
 			}
-			SDL_RenderCopy(renderer, , NULL, &);
+			
 		}
 	}
 	Mix_FreeMusic(bgm);
