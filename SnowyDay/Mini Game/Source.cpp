@@ -49,10 +49,10 @@ int main(int argc, char* argv[]) {
 	Mix_Chunk *mario_cry = Mix_LoadWAV("mario_cry.wav");
 
 		//LOCAL VAR
-	int x_ball = 275, y_ball = 0, x_background = 0, y_background = 0, x_pickup = 600, y_pickup = 100, x_sled = 255, y_sled = 0; //Position
+	int x_ball = 275, y_ball = 0, x_background = 0, y_background = 0, x_pickup = 600, y_pickup = 0, x_sled = 255, y_sled = 0; //Position
 	int cont_shot = 0, life = 3, contflake = 0, contN=0, cont_cry = 0, over=1;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
-	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false, gameover = false; //Part of Loop
+	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false, gameover = false, key_enter; //Part of Loop
 	int vel=1, cont=0; //Time
 
 		//SDL
@@ -168,7 +168,9 @@ int main(int argc, char* argv[]) {
 					case SDLK_RIGHT:
 						key_right = true;
 						break;
-					
+					case SDLK_KP_ENTER:
+						key_enter = true;
+						break;
 					default:
 						break;
 					}
@@ -182,6 +184,9 @@ int main(int argc, char* argv[]) {
 						break;
 					case SDLK_RIGHT:
 						key_right = false;
+						break;
+					case SDLK_KP_ENTER:
+						key_enter = false;
 						break;
 					default:
 						break;
@@ -199,6 +204,14 @@ int main(int argc, char* argv[]) {
 				x_ball += 7;
 				if (x_ball >= 550) {
 					x_ball -= 7;
+				}
+			}
+			if (key_enter == true) {
+				Mix_PlayChannel(-1, mario_cry, 2);
+				over = 1;
+				gameover = false;
+				while (x_pickup <= 1200) {
+					x_pickup -= 5;
 				}
 			}
 
@@ -274,12 +287,12 @@ int main(int argc, char* argv[]) {
 
 					if (ball.h >= 130) {
 						y_background -= vel * 3;
-						y_pickup -= vel * 3;
+						
 						y_sled -= vel * 3;
 					}
 					else {
 						y_background -= vel;
-						y_pickup -= vel;
+						
 						y_sled -= vel;
 					}
 
@@ -359,7 +372,7 @@ int main(int argc, char* argv[]) {
 		
 		if (gameover == true) {
 			
-			if (background.y <= -300) {
+			if (background.y <= -400) {
 				y_background += vel * 10;
 			}
 			else {
