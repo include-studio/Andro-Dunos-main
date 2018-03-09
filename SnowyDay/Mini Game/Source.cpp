@@ -11,6 +11,7 @@
 #define HEIGHT 4320
 #define WEIGHT 600
 #define NSHOT 100
+#define NFLAKE 500
 
 	//ARRAY SHOT
 void shotInit(SDL_Rect a[]) {
@@ -21,7 +22,14 @@ void shotInit(SDL_Rect a[]) {
 		a[i].y = 0 - a[0].h;
 	}
 }
-	
+void snowflakeInit(SDL_Rect a[]) {
+	for (int i = 0; i < NFLAKE; i++) {
+		a[i].h = 73;
+		a[i].w = 64;
+		a[i].x = 300;
+		a[i].y = 1001;
+	}
+}
 int main(int argc, char* argv[]) {
 		//INICIALIZAR
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -39,7 +47,7 @@ int main(int argc, char* argv[]) {
 
 		//LOCAL VAR
 	int x_ball = 275, y_ball = 50, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_snowman = 0, y_snowman = 525, x_sled = 255, y_sled = 0; //Position
-	int cont_shot = 0, life = 3;
+	int cont_shot = 0, life = 3, contflake = 0, contN=0;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
 	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false; //Part of Loop
 	int vel=4, cont=0; //Time
@@ -54,6 +62,8 @@ int main(int argc, char* argv[]) {
 	SDL_Rect enemy;
 	SDL_Rect shot[NSHOT];
 	SDL_Rect heart;
+	SDL_Rect snowflake[NFLAKE];
+	SDL_Rect snowsprite;
 
 	SDL_Window *window = SDL_CreateWindow(
 		"SnowyDay", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 1000, SDL_WINDOW_SHOWN);
@@ -68,6 +78,7 @@ int main(int argc, char* argv[]) {
 	SDL_Texture *mario_tx = IMG_LoadTexture(renderer, "mario.png");
 	SDL_Texture *shot_tx = IMG_LoadTexture(renderer, "fireshot.png");
 	SDL_Texture *heart_tx = IMG_LoadTexture(renderer, "heart.png");
+	SDL_Texture *snowflake_tx = IMG_LoadTexture(renderer, "snowflake.png");
 
 		//HEIGHT & WIDTH
 	background.h = HEIGHT;
@@ -93,6 +104,11 @@ int main(int argc, char* argv[]) {
 	heart.y = 950;
 	heart.w = 11*5;
 	heart.h = 9*5;
+	snowflakeInit(snowflake);
+	snowsprite.x = 0;
+	snowsprite.y = 0;
+	snowsprite.w = 64;
+	snowsprite.h = 73;
 
 
 	if (loop == true) {
@@ -182,7 +198,22 @@ int main(int argc, char* argv[]) {
 				x_ball -= 7;
 			}
 		}
-	
+		//snowflakes
+		//for (int i = 0; i < contflake; i++) {
+			if (contN % 50 == 0 || contN == 0) {
+				snowflake[contflake].x = rand() % 600;
+				snowflake[contflake].y = 990;
+				contflake++;
+			}
+		//}
+		for (int i = 0; i < contflake; i++) {
+			snowflake[i].y -= 10;
+			snowflake[i].x++;
+		}
+		
+		if (contflake == NFLAKE)
+			contflake = 0;
+		contN++;
 		//mov mario
 		if (enemy.x >= WEIGHT - enemy.w)
 			mov_e = false;
@@ -198,42 +229,35 @@ int main(int argc, char* argv[]) {
 			shot[i].y -= 20;
 		}
 		
-		//}
 			//CONDITIONS BACKGROUND
 		
 		if (background.y >= -4015) {
 			y_background -= vel;
 			y_pickup -= vel;
 			y_sled -= vel;
-			if (y_background <= -1400) { //Mov sled <--
-				x_sled -= 7;
-				y_sled--;
-			}
-
-			if (cont <= 90) { //Mov snowflakes <- ->
-				if (cont <= 45) {
-					x_pickup -= 1;
-				}
-				else {
-					x_pickup += 1;
-				}
-				cont++;
-			}
-			else { cont = 0; }
 		}
 		//collision
 		for (int i = 0; i < cont_shot; i++) {
 			if(SDL_HasIntersection(&shot[i], &ball) == SDL_TRUE){
 				Mix_PlayChannel(-1,death, 0);//Mix_PlayChannel(Channel, track, loop_times)
-				x_ball = 275;
+				ball.h -= 20;
+				ball.w -= 20;
 				i = cont_shot;
 				shotInit(shot);
 				life--;
 			}
 		}
+		for (int i = 0; i < contflake; i++) {
+			if (SDL_HasIntersection(&snowflake[i], &ball) == SDL_TRUE) {
+				ball.h+=5;
+				ball.w+=5;
+				snowflake[i].x = 0 - snowflake->w;
+				snowflake[i].y = 0 - snowflake->h;
+			}
+		}
 			//SDL_RENDER
 		SDL_RenderCopy(renderer, texture_background, NULL, &background);
-		SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
+		//SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
 		switch (life) {
 		case 3:
 			SDL_RenderCopy(renderer, heart_tx, NULL, &heart);
@@ -257,7 +281,12 @@ int main(int argc, char* argv[]) {
 			
 			break;
 		}
-
+		for (int i = 0; i < contflake; i++) {
+			SDL_RenderCopy(renderer, snowflake_tx, &snowsprite, &snowflake[i]);
+		}
+		snowsprite.x += snowsprite.w;
+		if (snowsprite.x = snowsprite.w * 4)
+			snowsprite.x = 0;
 		SDL_RenderCopy(renderer, texture_ball, NULL, &ball);
 		SDL_RenderCopy(renderer, mario_tx, NULL, &enemy);
 		for (int i = 0; i < cont_shot; i++) {
