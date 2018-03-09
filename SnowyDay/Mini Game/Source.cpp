@@ -10,7 +10,7 @@
 #pragma comment(lib, "SDL/libx86/SDL2_image.lib")
 #pragma comment(lib, "SDL/libx86/SDL2_mixer.lib")
 
-#define HEIGHT 4320
+#define HEIGHT 15000
 #define WEIGHT 600
 #define NSHOT 100
 #define NFLAKE 500
@@ -49,11 +49,11 @@ int main(int argc, char* argv[]) {
 	Mix_Chunk *mario_cry = Mix_LoadWAV("mario_cry.wav");
 
 		//LOCAL VAR
-	int x_ball = 275, y_ball = 50, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_snowman = 0, y_snowman = 525, x_sled = 255, y_sled = 0; //Position
+	int x_ball = 275, y_ball = 0, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_sled = 255, y_sled = 0; //Position
 	int cont_shot = 0, life = 3, contflake = 0, contN=0, cont_cry = 0;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
 	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false, gameover = false; //Part of Loop
-	int vel=4, cont=0; //Time
+	int vel=1, cont=0; //Time
 
 		//SDL
 	SDL_Event event;
@@ -101,8 +101,8 @@ int main(int argc, char* argv[]) {
 	enemy.x = 60;
 	enemy.y = 980 - enemy.h - 50;
 	shotInit(shot);
-	snowman.x = x_snowman;
-	snowman.y = y_snowman;
+	snowman.x = 0;
+	snowman.y = 525;
 	sled.x = x_sled;
 	sled.y = y_sled;
 	heart.x = 15;
@@ -266,13 +266,13 @@ int main(int argc, char* argv[]) {
 
 			//CONDITIONS BACKGROUND
 
-			if (background.y >= -4015) {
+			if (background.y >= -10000) {
 				
-				if (ball.h >= 115) {
+				
 					y_background -= vel * 2;
 					y_pickup -= vel * 2;
 					y_sled -= vel * 2;
-				}
+				
 				if (ball.h >= 130) {
 					y_background -= vel * 3;
 					y_pickup -= vel * 3;
