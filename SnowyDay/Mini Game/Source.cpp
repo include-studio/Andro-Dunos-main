@@ -49,8 +49,8 @@ int main(int argc, char* argv[]) {
 	Mix_Chunk *mario_cry = Mix_LoadWAV("mario_cry.wav");
 
 		//LOCAL VAR
-	int x_ball = 275, y_ball = 0, x_background = 0, y_background = 0, x_pickup = 0, y_pickup = 0, x_sled = 255, y_sled = 0; //Position
-	int cont_shot = 0, life = 3, contflake = 0, contN=0, cont_cry = 0;
+	int x_ball = 275, y_ball = 0, x_background = 0, y_background = 0, x_pickup = 600, y_pickup = 100, x_sled = 255, y_sled = 0; //Position
+	int cont_shot = 0, life = 3, contflake = 0, contN=0, cont_cry = 0, over=1;
 	int ball_h = 50, ball_w = 50, cont_background = 0; //Part of h&w
 	bool loop=true, key_left=false, key_right=false, key_a = false, key_d = false, mov_e = true, shoot = false, gameover = false; //Part of Loop
 	int vel=1, cont=0; //Time
@@ -266,31 +266,34 @@ int main(int argc, char* argv[]) {
 
 			//CONDITIONS BACKGROUND
 
-			if (background.y >= -10000) {
-				
-				
+			if (over == 1) {
+				if (background.y >= -14000) {
 					y_background -= vel * 2;
-					y_pickup -= vel * 2;
+					/*y_pickup -= vel * 2;*/
 					y_sled -= vel * 2;
-				
-				if (ball.h >= 130) {
-					y_background -= vel * 3;
-					y_pickup -= vel * 3;
-					y_sled -= vel * 3;
-				}
-				else {
-					y_background -= vel;
-					y_pickup -= vel;
-					y_sled -= vel;
-				}
+
+					if (ball.h >= 130) {
+						y_background -= vel * 3;
+						y_pickup -= vel * 3;
+						y_sled -= vel * 3;
+					}
+					else {
+						y_background -= vel;
+						y_pickup -= vel;
+						y_sled -= vel;
+					}
 
 
 
-				//Animations
-				if (background.y <= -1050) {
-					x_sled -= vel;
+					//Animations
+					if (background.y <= -1050) {
+						x_sled -= vel;
+					}
 				}
+			
 			}
+				
+			
 			//collision
 			for (int i = 0; i < cont_shot; i++) {
 				if (SDL_HasIntersection(&shot[i], &ball) == SDL_TRUE) {
@@ -312,6 +315,7 @@ int main(int argc, char* argv[]) {
 			}
 			//SDL_RENDER
 			SDL_RenderCopy(renderer, texture_background, NULL, &background);
+			SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
 			//SDL_RenderCopy(renderer, texture_pickup, NULL, &pickup);
 			switch (life) {
 			case 3:
@@ -355,9 +359,16 @@ int main(int argc, char* argv[]) {
 		
 		if (gameover == true) {
 			
-			if (background.y <= 10000) {
-				y_background -= vel * 10;
+			if (background.y <= -300) {
+				y_background += vel * 10;
 			}
+			else {
+				
+				if (x_pickup >= 0) {
+					x_pickup -= 2;
+				}
+			}
+			over = 0;
 			
 			
 		}
@@ -384,4 +395,5 @@ int main(int argc, char* argv[]) {
 	Mix_Quit();
 	SDL_CloseAudio();
 	return 0;
+	
 }
