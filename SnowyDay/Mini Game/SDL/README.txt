@@ -5,6 +5,18 @@
 
                                 Version 2.0
 
+
+
+
+Added: SDL, SDL_image, SDL_mixer
+
+
+
+
+
+
+
+
 ---
 https://www.libsdl.org/
 
@@ -19,3 +31,4 @@ with README.md
 
 Enjoy!
 	Sam Lantinga				(slouken@libsdl.org)
+
