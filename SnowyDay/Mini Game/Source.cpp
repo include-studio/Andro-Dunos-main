@@ -94,8 +94,8 @@ int main(int argc, char* argv[]) {
 	snowman.w = WEIGHT;
 	sled.h = HEIGHT;
 	sled.w = WEIGHT;
-	ball.h = ball_h;
-	ball.w = ball_w;
+	ball.h = ball_h + 50;
+	ball.w = ball_w + 50;
 	enemy.h = 170;
 	enemy.w = 150;
 	enemy.x = 60;
