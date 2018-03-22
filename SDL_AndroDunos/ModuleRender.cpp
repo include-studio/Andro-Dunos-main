@@ -32,27 +32,23 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
-	// TODO 9: load a texture "test.png" to test is everything works well
-	App->textures->Load("test.png");
+	App->textures->Load("Background.png");
 	return ret;
 }
 
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	// TODO 7: Clear the screen to black before starting every frame
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	if (SDL_RenderClear(renderer) < 0)
 		LOG("Error in RenderClear", SDL_GetError());
 
-	// TODO 10: Blit our test texture to check functionality
-	Blit(App->textures->textures[0], 20, 20);
+	Blit(App->textures->textures[0], 0, 0);
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
-	// TODO 8: Switch buffers so we actually render
 	SDL_RenderPresent(renderer);
 	return update_status::UPDATE_CONTINUE;
 }
