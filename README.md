@@ -24,10 +24,13 @@ feature'`
 Wiki: https://github.com/include-studio/Andro-Dunos-main/wiki/General-Analysis
 
 ## Credits
-Lluís Moreu (youis11) : Management
-Marc Gálvez (optus23) : Code
-Marc Navas (Shocrates) : Art
-Christian Martínez (christt105) : QA
+Lluís Moreu (youis11: https://github.com/youis11) : Management
+
+Marc Gálvez (optus23: https://github.com/optus23) : Code
+
+Marc Navas (Shocrates: https://github.com/Shocrates) : Art
+
+Christian Martínez (christt105: https://github.com/christt105) : QA
 
 "For the art, we ripped off the sprites from an emulator, so the art was made by the original Andro Dunos' creators. For more information check out our wiki: https://github.com/include-studio/Andro-Dunos-main/wiki"
 
