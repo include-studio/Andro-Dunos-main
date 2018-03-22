@@ -10,6 +10,7 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
+	//modules[4] = audio = new ModuleAudio();  Remember to change NUM_MODULES
 }	
 
 Application::~Application()

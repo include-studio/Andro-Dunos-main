@@ -31,7 +31,7 @@ bool ModuleRender::Init()
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
-
+	
 	App->textures->Load("Background.png");
 	return ret;
 }
@@ -43,7 +43,7 @@ update_status ModuleRender::PreUpdate()
 	if (SDL_RenderClear(renderer) < 0)
 		LOG("Error in RenderClear", SDL_GetError());
 
-	Blit(App->textures->textures[0], 0, 0);
+	Blit(App->textures->textures[0], 0, -95); //texture of background
 	return update_status::UPDATE_CONTINUE;
 }
 
