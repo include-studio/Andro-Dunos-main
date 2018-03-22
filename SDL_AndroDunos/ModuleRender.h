@@ -23,6 +23,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* tex;
+	int backgroundCont = 0;
 };
 
 #endif //__ModuleRenderer_H__

@@ -43,7 +43,8 @@ update_status ModuleRender::PreUpdate()
 	if (SDL_RenderClear(renderer) < 0)
 		LOG("Error in RenderClear", SDL_GetError());
 
-	Blit(App->textures->textures[0], 0, -95); //texture of background
+	Blit(App->textures->textures[0], backgroundCont, -95); //texture of background
+	backgroundCont--;
 	return update_status::UPDATE_CONTINUE;
 }
 
