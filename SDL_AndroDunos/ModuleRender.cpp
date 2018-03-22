@@ -81,7 +81,8 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 	}
 	else
 	{
-		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
+		if (SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h) < 0)
+			LOG("Error Querying texture", SDL_GetError());
 	}
 
 	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
