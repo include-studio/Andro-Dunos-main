@@ -4,8 +4,6 @@
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
-
 ModuleBackground::ModuleBackground()
 {
 	// ground
@@ -40,8 +38,7 @@ bool ModuleBackground::Start()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	// Draw everything --------------------------------------
-	App->render->Blit(graphics, 0, 0, &background, 0.75f); // sea and sky
+	App->render->Blit(graphics, 0, 0, &background, 0.75f);
 
 	return UPDATE_CONTINUE;
 }
