@@ -8,8 +8,10 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 0;
-	position.y = 0;
+	position.x = SCREEN_WIDTH/2;
+	position.y = SCREEN_HEIGHT/2;
+
+	idle.PushBack({ 94,108,27,17 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -20,7 +22,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load(".png");
+	graphics = App->textures->Load("ships.png");
 	return ret;
 }
 
@@ -33,11 +35,9 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == 1)
 	{
-		current_animation = &forward;
 		position.x += speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == 1) {
-		current_animation = &backward;
 		position.x -= speed;
 	}
 
