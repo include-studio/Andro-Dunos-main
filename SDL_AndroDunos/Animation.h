@@ -31,7 +31,7 @@ public:
 	}
 	SDL_Rect& end_animation() {
 		if (current_frame + speed >= last_frame)
-			return frames[1];
+			return frames[(int)current_frame];
 
 		else return GetCurrentFrame();
 	}

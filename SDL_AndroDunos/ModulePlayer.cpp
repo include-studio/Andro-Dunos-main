@@ -50,15 +50,16 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == 1) {
 		current_animation = &up;
-		//current_animation->reset();
 		position.y -= speed;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_W] == 0)
+		up.reset();
 	if (App->input->keyboard[SDL_SCANCODE_S] == 1) {
 		current_animation = &down;
 		position.y += speed;
 	}
 
-
+	
 	// Draw everything --------------------------------------
 	SDL_Rect r;
 	if (current_animation == &up) {
