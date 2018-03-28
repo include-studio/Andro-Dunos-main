@@ -11,9 +11,11 @@ ModulePlayer::ModulePlayer()
 	position.x = SCREEN_WIDTH/2;
 	position.y = SCREEN_HEIGHT/2;
 
-	idle.PushBack({ 94,108,27,17 });
+	idle.PushBack({ 0,48,39,17 });
+	idle.PushBack({ 42,48,39,17 });
+	idle.PushBack({ 85,48,39,17 });
 
-	up.PushBack({ 94,87,27,15 });
+	up.PushBack({ 3,87,27,15 });
 	up.PushBack({ 94,66,27,15 });
 	up.speed = 0.02f;
 
@@ -52,24 +54,27 @@ update_status ModulePlayer::Update()
 		current_animation = &up;
 		position.y -= speed;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_W] == 0)
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == 0) //if up is 0, that animation resets to 0
 		up.reset();
+
 	if (App->input->keyboard[SDL_SCANCODE_S] == 1) {
 		current_animation = &down;
 		position.y += speed;
 	}
+
 	if (App->input->keyboard[SDL_SCANCODE_S] == 0)
 		down.reset();
 
 	
 	// Draw everything --------------------------------------
-	SDL_Rect r;
-	if (current_animation == &up || current_animation == &down) {
-		r = current_animation->end_animation();
+	SDL_Rect ship;
+	if (current_animation == &up || current_animation == &down) {	//only animation up and down have end animation
+		ship = current_animation->end_animation();						//this check if the the animation is at its last frame, then return the rect of last frame or use GetCurrentFrame() (see it in Animation.h)
 	}
-	else r = current_animation->GetCurrentFrame();
+	else ship = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(graphics, position.x, position.y - ship.h, &ship);
 	
 	return UPDATE_CONTINUE;
 }
