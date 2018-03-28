@@ -15,7 +15,7 @@ ModulePlayer::ModulePlayer()
 
 	up.PushBack({ 94,87,27,15 });
 	up.PushBack({ 94,66,27,15 });
-	up.speed = 0.05f;
+	up.speed = 0.02f;
 
 	down.PushBack({ 94,131,27,16 });
 	down.PushBack({ 94,153,27,17 });
@@ -58,11 +58,13 @@ update_status ModulePlayer::Update()
 		current_animation = &down;
 		position.y += speed;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_S] == 0)
+		down.reset();
 
 	
 	// Draw everything --------------------------------------
 	SDL_Rect r;
-	if (current_animation == &up) {
+	if (current_animation == &up || current_animation == &down) {
 		r = current_animation->end_animation();
 	}
 	else r = current_animation->GetCurrentFrame();
