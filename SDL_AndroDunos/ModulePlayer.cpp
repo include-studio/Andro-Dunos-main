@@ -15,9 +15,13 @@ ModulePlayer::ModulePlayer()
 	idle.PushBack({ 42,48,39,17 });
 	idle.PushBack({ 85,48,39,17 });
 
-	up.PushBack({ 3,87,27,15 });
-	up.PushBack({ 94,66,27,15 });
-	up.speed = 0.02f;
+	up.PushBack({ 85,24,39,15 });
+	up.PushBack({ 43,66,39,15 });
+	up.PushBack({ 2,24,39,15 });
+	up.PushBack({ 2,4,39,15 });
+	up.PushBack({ 41,4,39,15 });
+	up.PushBack({ 85,4,39,15 });
+	up.speed = 0.7f;
 
 	down.PushBack({ 94,131,27,16 });
 	down.PushBack({ 94,153,27,17 });
