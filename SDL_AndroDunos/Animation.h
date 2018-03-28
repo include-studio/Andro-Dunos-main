@@ -29,6 +29,15 @@ public:
 
 		return frames[(int)current_frame];
 	}
+	SDL_Rect& end_animation() {
+		if (current_frame + speed >= last_frame)
+			return frames[1];
+
+		else return GetCurrentFrame();
+	}
+	void reset() {
+		current_frame = 0;
+	}
 };
 
 #endif
