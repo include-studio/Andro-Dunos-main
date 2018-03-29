@@ -39,13 +39,18 @@ bool ModuleBackground::Start()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	App->render->Blit(graphics, 0, 112, &background);
-	App->render->Blit(graphics, background.w, 112, &background);
+	App->render->Blit(graphics, speed, 118, &background);
+	App->render->Blit(graphics, background.w+speed, 118, &background);
+	App->render->Blit(graphics, background.w*2 + speed, 118, &background);
 	App->render->Blit(graphics, 0, 0, &ground);
 
 	//mov
 	ground.x++;
-	//background.x++;
+	speed -= 0.5f;
+	if (speed <= -background.w) {
+		speed = 0;
+	}
+	
 
 	return UPDATE_CONTINUE;
 }
