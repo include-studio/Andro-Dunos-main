@@ -1,32 +1,40 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleAudio.h"
+
 #include "SDL/include/SDL.h"
-
 #include "SDL_mixer/include/SDL_mixer.h"
-#pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
+#pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-ModuleAudio::ModuleAudio() {
-
+ModuleAudio::ModuleAudio() : Module(){
 }
 
-//Destructor
-ModuleAudio::~ModuleAudio() {}
+ModuleAudio::~ModuleAudio() {
 
-//Initialization
+}
+//Init Audio
 bool ModuleAudio::Init() {
+	LOG("Init Audio library");
 	bool ret = true;
-	int init;
-	init = Mix_Init(MIX_INIT_OGG);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		LOG("Error: %s", Mix_GetError());
+		ret = false;
+	}
 	return ret;
 }
-
-update_status ModuleAudio::Update() {
-	return update_status::UPDATE_CONTINUE;
-}
-
+//CleanUp Audio
 bool ModuleAudio::CleanUp() {
-	bool ret = true;
-	SDL_Quit();
-	return ret;
+
+	LOG("Freeing Audio library");
+
+	if (bgm != nullptr) {
+		Mix_FreeMusic(bgm);
+	}
+
+	Mix_Quit();
+	SDL_CloseAudio();
+	return true;
 }
+
+//Load new audio
+//Mix_Music
