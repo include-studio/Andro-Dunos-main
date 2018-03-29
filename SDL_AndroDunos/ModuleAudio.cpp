@@ -23,7 +23,7 @@ ModuleAudio::ModuleAudio() : Module(){
 ModuleAudio::~ModuleAudio() {
 
 }
-//Init Audio
+// Called before audio is available
 bool ModuleAudio::Init() {
 
 	LOG("Init Audio library");
@@ -46,7 +46,23 @@ bool ModuleAudio::Init() {
 	}
 	return ret;
 }
-//CleanUp Audio
+
+update_status ModuleAudio::PreUpdate()
+{
+	return update_status::UPDATE_CONTINUE;
+}
+
+update_status ModuleAudio::Update()
+{
+	return update_status::UPDATE_CONTINUE;
+}
+
+update_status ModuleAudio::PostUpdate()
+{
+	return update_status::UPDATE_CONTINUE;
+}
+
+// Called before quitting
 bool ModuleAudio::CleanUp() {
 
 	LOG("Freeing Audio library");
@@ -54,6 +70,14 @@ bool ModuleAudio::CleanUp() {
 	if (bgm != nullptr) {
 		Mix_FreeMusic(bgm);
 	}
+
+	for (int i = 0; i < MAX_BGMS; ++i) {
+		Mix_FreeMusic(bgms[i]);
+	}
+	for (int i = 0; i < MAX_FXS; ++i) {
+		Mix_FreeChunk(fxs[i]);
+	}
+
 
 	Mix_Quit();
 	SDL_CloseAudio();
