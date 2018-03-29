@@ -11,6 +11,7 @@ ModuleBackground::ModuleBackground()
 	ground.y = 95;
 	ground.w = SCREEN_WIDTH;
 	ground.h = SCREEN_HEIGHT ;
+	
 
 	// Background / sky
 	background.x = 0;
@@ -38,8 +39,8 @@ bool ModuleBackground::Start()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	//App->render->Blit(graphics, 0, 112, &background);
-	//App->render->Blit(graphics, background.w, 112, &background, 0.75f);
+	App->render->Blit(graphics, 0, 112, &background);
+	App->render->Blit(graphics, background.w, 112, &background);
 	App->render->Blit(graphics, 0, 0, &ground);
 
 	//mov
