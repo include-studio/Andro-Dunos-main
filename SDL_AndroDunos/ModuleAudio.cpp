@@ -84,5 +84,43 @@ bool ModuleAudio::CleanUp() {
 	return true;
 }
 
-//Load new audio
-Mix_Music
+
+
+Mix_Music *const ModuleAudio::LoadBgm(const char* path) {
+	bgm = Mix_LoadMUS(path);
+	if (!bgm) {
+		LOG("Mix_LoadMUS: %s", Mix_GetError());
+	}
+	else {
+		if (bgms[MAX_BGMS - 1] != nullptr) {
+			LOG("BGMS aren't empty");
+		}
+		else {
+			for (int i = 0; i < MAX_BGMS; ++i) {
+				if (bgms[i] == nullptr)
+					bgms[i] = bgm;
+			}
+		}
+	}
+	return bgm;
+}
+
+//Load new fx from file path
+Mix_Chunk *const ModuleAudio::LoadFx(const char* path) {
+	fx = Mix_LoadWAV(path);
+	if (!fx) {
+		LOG("Mix_LoadWAV: %s", Mix_GetError());
+	}
+	else {
+		if (fxs[MAX_FXS - 1] != nullptr) {
+			LOG("FXS aren't empty");
+		}
+		else {
+			for (int i = 0; i < MAX_FXS; ++i) {
+				if (fxs[i] == nullptr)
+					fxs[i] = fx;
+			}
+		}
+	}
+	return fx;
+}
