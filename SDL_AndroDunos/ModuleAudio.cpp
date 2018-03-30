@@ -30,9 +30,8 @@ bool ModuleAudio::Init() {
 	bool ret = true;
 	Mix_Init(MIX_INIT_OGG);
 	
-
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-		LOG("Error: %s", Mix_GetError());
+		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
 	}
 
@@ -44,6 +43,11 @@ bool ModuleAudio::Init() {
 		LOG("Could not initialize mixer lib. Mix_Init: %s", Mix_GetError());
 		ret = false;
 	}
+
+	bgm = LoadBgm("bgm.wav");
+	fx = LoadFx("mario_cry.wav");
+	Mix_PlayMusic(bgm, -1);
+	Mix_PlayChannel(-1, fx, 0);
 	return ret;
 }
 
@@ -66,10 +70,6 @@ update_status ModuleAudio::PostUpdate()
 bool ModuleAudio::CleanUp() {
 
 	LOG("Freeing Audio library");
-
-	if (bgm != nullptr) {
-		Mix_FreeMusic(bgm);
-	}
 
 	for (int i = 0; i < MAX_BGMS; ++i) {
 		Mix_FreeMusic(bgms[i]);

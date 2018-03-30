@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "SDL/include/SDL_audio.h"
 
 #define MAX_BGMS 50
 #define MAX_FXS 50
@@ -22,7 +23,7 @@ public:
 	update_status PreUpdate();
 	bool CleanUp();
 
-	_Mix_Music* const LoadMusic(const char* path);
+	_Mix_Music* const LoadBgm(const char* path);
 	Mix_Chunk* const LoadFx(const char* path);
 
 public:
