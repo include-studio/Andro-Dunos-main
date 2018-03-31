@@ -22,6 +22,7 @@ public:
 	SDL_Rect ground;
 	SDL_Rect background;
 	float speed;
+	float mov =118;
 };
 
 #endif

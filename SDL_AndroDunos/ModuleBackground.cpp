@@ -39,14 +39,28 @@ bool ModuleBackground::Start()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	App->render->Blit(graphics, speed, 118, &background);
-	App->render->Blit(graphics, background.w+speed, 118, &background);
-	App->render->Blit(graphics, background.w*2 + speed, 118, &background);
-	App->render->Blit(graphics, 0, 0, &ground);
-
+	
+	if(ground.x == 3248-ground.w) {
+		App->render->Blit(graphics, speed, mov, &background);
+		App->render->Blit(graphics, background.w + speed, mov, &background);
+		App->render->Blit(graphics, background.w * 2 + speed, mov, &background);
+		App->render->Blit(graphics, 0, 0, &ground);
+		ground.y++;
+		mov--;
+		if (ground.y == 542 - SCREEN_HEIGHT)
+			ground.x++;
+	}
+	else{
+		App->render->Blit(graphics, speed, 118, &background);
+		App->render->Blit(graphics, background.w + speed, 118, &background);
+		App->render->Blit(graphics, background.w * 2 + speed, 118, &background);
+		App->render->Blit(graphics, 0, 0, &ground);
+		ground.x++;
+		speed -= 0.5f;
+	}
 	//mov
-	ground.x++;
-	speed -= 0.5f;
+	
+	
 	if (speed <= -background.w) {
 		speed = 0;
 	}

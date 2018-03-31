@@ -6,7 +6,7 @@
 #include "SDL_mixer/include/SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-ModuleAudio::ModuleAudio() : Module() {
+ModuleAudio::ModuleAudio() : Module(){
 	//Initialize all ModuleAudio pointers to nullptr
 	for (int i = 0; i < MAX_BGMS; ++i) {
 		bgms[i] = nullptr;
@@ -29,7 +29,7 @@ bool ModuleAudio::Init() {
 	LOG("Init Audio library");
 	bool ret = true;
 	Mix_Init(MIX_INIT_OGG);
-
+	
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
