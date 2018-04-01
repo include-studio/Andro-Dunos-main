@@ -19,6 +19,12 @@ ModuleBackground::ModuleBackground()
 	background.w = 251;
 	background.h = 85;
 
+	//rocks
+	rocks.x = 252;
+	rocks.y = 319;
+	rocks.w = 64;
+	rocks.h = 224;
+
 	//stars
 
 	//planets
@@ -39,32 +45,43 @@ bool ModuleBackground::Start()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	
-	if(ground.x == 3248-ground.w) {
-		App->render->Blit(graphics, speed, mov, &background);
-		App->render->Blit(graphics, background.w + speed, mov, &background);
-		App->render->Blit(graphics, background.w * 2 + speed, mov, &background);
-		App->render->Blit(graphics, 0, 0, &ground);
-		ground.y++;
-		mov--;
-		if (ground.y == 542 - SCREEN_HEIGHT)
+	switch (part_stage) {
+		case 0: {
+			for (int i = 0; i < 20; i++) {
+				App->render->Blit(graphics, background.w*i + speed, mov_planet, &background);
+			}
+			App->render->Blit(graphics, 0, 0, &ground);
 			ground.x++;
+			speed -= 0.5f;
+			if (ground.x == 3248 - ground.w)
+				part_stage++;
+			break;
+		}
+		case 1: {
+			for (int i = 0; i < 20; i++) {
+				App->render->Blit(graphics, background.w*i + speed, mov_planet, &background);
+			}
+			App->render->Blit(graphics, 0, 0, &ground);
+			ground.y++;
+			mov_planet--;
+			if (ground.y == 542 - SCREEN_HEIGHT) {
+				part_stage++;
+				speed = 0;
+			}
+			break;
+		}
+		case 2: {
+			for (int i = SCREEN_WIDTH/rocks.w; i < 20; i++) {
+				App->render->Blit(graphics, rocks.w*i + speed, mov_rocks, &rocks);
+			}
+			App->render->Blit(graphics, 0, 0, &ground);
+			ground.x++;
+			speed -= 0.5f;
+			if (ground.x == 3248 - ground.w)
+				
+			break;
+		}
 	}
-	else{
-		App->render->Blit(graphics, speed, 118, &background);
-		App->render->Blit(graphics, background.w + speed, 118, &background);
-		App->render->Blit(graphics, background.w * 2 + speed, 118, &background);
-		App->render->Blit(graphics, 0, 0, &ground);
-		ground.x++;
-		speed -= 0.5f;
-	}
-	//mov
-	
-	
-	if (speed <= -background.w) {
-		speed = 0;
-	}
-	
 
 	return UPDATE_CONTINUE;
 }

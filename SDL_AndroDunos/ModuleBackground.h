@@ -21,8 +21,11 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
+	SDL_Rect rocks;
+	int part_stage = 0;
 	float speed;
-	float mov =118;
+	float mov_planet = 118;
+	float mov_rocks = 0;
 };
 
 #endif
