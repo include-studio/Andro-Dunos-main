@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
-#include "SDL/include/SDL_audio.h"
+#include "SDL_mixer/include/SDL_mixer.h"
 
 #define MAX_BGMS 50
 #define MAX_FXS 50

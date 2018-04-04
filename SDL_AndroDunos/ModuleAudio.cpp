@@ -28,15 +28,17 @@ bool ModuleAudio::Init() {
 
 	LOG("Init Audio library");
 	bool ret = true;
+
 	Mix_Init(MIX_INIT_OGG);
+	int flags = MIX_INIT_OGG;
+	int init = Mix_Init(flags);
+
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
 	}
-
-	int flags = MIX_INIT_OGG;
-	int init = Mix_Init(flags);
 
 	if ((init & flags) != flags) {
 
@@ -79,8 +81,9 @@ bool ModuleAudio::CleanUp() {
 	}
 
 
-	Mix_Quit();
+	
 	SDL_CloseAudio();
+	Mix_Quit();
 	return true;
 }
 
