@@ -7,7 +7,7 @@
 
 class ModuleWindow;
 class ModuleInput;
-class ModuleAudio;
+//class ModuleAudio;
 class ModuleTextures;
 class ModuleRender;
 class ModuleBackground;
@@ -25,7 +25,7 @@ public:
 	ModuleTextures* textures = nullptr;
 	ModuleBackground* background = nullptr;
 	ModulePlayer* player = nullptr;
-	ModuleAudio* audio = nullptr;
+	//ModuleAudio* audio = nullptr;
 
 public:
 
