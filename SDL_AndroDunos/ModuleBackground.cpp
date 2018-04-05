@@ -28,6 +28,7 @@ ModuleBackground::ModuleBackground()
 	//stars
 
 	//planets
+	
 }
 
 ModuleBackground::~ModuleBackground()
@@ -48,22 +49,23 @@ update_status ModuleBackground::Update()
 {
 	switch (part_stage) {
 		case 0: {
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 25; i++) {
 				App->render->Blit(back_tx, background.w*i, 118, &background,0.8f);
 			}
 			App->render->Blit(ground_tx, 0, -94, &ground);
 			App->render->camera.x-=3;
+			if (App->render->camera.x <= -2929*SCREEN_SIZE)
+				part_stage++;
 			break;
 		}
 		case 1: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(back_tx, background.w*i, 0, &background);
+				App->render->Blit(back_tx, background.w*i, 118, &background);
 			}
-			App->render->Blit(ground_tx, 0, 0, &ground);
-			ground.y++;
-			if (ground.y == 542 - SCREEN_HEIGHT) {
+			App->render->Blit(ground_tx, 0, -94, &ground);
+			App->render->camera.y -= 3;
+			if (App->render->camera.y <= -542*SCREEN_SIZE)
 				part_stage++;
-			}
 			break;
 		}
 		case 2: {

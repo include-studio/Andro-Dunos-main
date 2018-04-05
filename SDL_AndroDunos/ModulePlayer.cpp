@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
+#include "ModuleBackground.h"
 
 
 ModulePlayer::ModulePlayer()
@@ -49,7 +50,7 @@ update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &idle;
 
-	int speed = 3;
+	int speed = 2;
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == 1)
 	{
@@ -71,7 +72,12 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == 0)
 		down.reset();
-	position.x++;
+	switch (App->background->part_stage) {
+	case 0:
+		position.x++;
+		break;
+
+	}
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 	if (current_animation == &up || current_animation == &down) {	//only animation up and down have end animation
