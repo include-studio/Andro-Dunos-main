@@ -26,7 +26,30 @@ ModuleBackground::ModuleBackground()
 	//rocks.h = 224;
 
 	//stars
-
+	star1.x = 5;
+	star1.y = 3;
+	star1.w = 3;
+	star1.h = 3;
+	star2.x = 5;
+	star2.y = 8;
+	star2.w = 3;
+	star2.h = 3;
+	star3.x = 5;
+	star3.y = 13;
+	star3.w = 3;
+	star3.h = 3;
+	star4.x = 5;
+	star4.y = 18;
+	star4.w = 3;
+	star4.h = 3;
+	star5.x = 5;
+	star5.y = 23;
+	star5.w = 1;
+	star5.h = 1;
+	star6.x = 5;
+	star6.y = 29;
+	star6.w = 17;
+	star6.h = 6;
 	//planets
 	
 }
@@ -39,6 +62,7 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	stars_tx = App->textures->Load("assets/Stars.png");
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
 	return ret;
@@ -48,11 +72,20 @@ bool ModuleBackground::Start()
 update_status ModuleBackground::Update()
 {
 	switch (part_stage) {
-		case 0: {
-			for (int i = 0; i < 25; i++) {
-				App->render->Blit(back_tx, background.w*i, 118, &background,0.8f);
+		case 0: { 
+			for (int i = 0; i < 20; i++) {
+				App->render->Blit(back_tx, background.w*i, 123, &background,0.42f);
+				App->render->Blit(stars_tx, SCREEN_WIDTH*i, 31, &star1, 2.0f);
+				App->render->Blit(stars_tx, SCREEN_WIDTH*i, 46, &star2, 1.01f);
+				App->render->Blit(stars_tx, SCREEN_WIDTH*i, 97, &star3, 0.5f);
+				App->render->Blit(stars_tx, SCREEN_WIDTH*i, 97, &star4, 1.8f);
+				/*App->render->Blit(stars_tx, SCREEN_WIDTH*i, 71, &star5, 2.0f);
+				App->render->Blit(stars_tx, SCREEN_WIDTH*i, 81, &star6, 2.0f);
+				App->render->Blit(stars_tx, SCREEN_WIDTH*i, 91, &star7, 2.0f);*/
+
 			}
 			App->render->Blit(ground_tx, 0, -94, &ground);
+			
 			App->render->camera.x-=3;
 			if (App->render->camera.x <= -2929*SCREEN_SIZE)
 				part_stage++;
@@ -63,6 +96,7 @@ update_status ModuleBackground::Update()
 				App->render->Blit(back_tx, background.w*i, 118, &background);
 			}
 			App->render->Blit(ground_tx, 0, -94, &ground);
+			
 			App->render->camera.y -= 3;
 			if (App->render->camera.y <= -542*SCREEN_SIZE)
 				part_stage++;
