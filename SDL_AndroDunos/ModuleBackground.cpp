@@ -49,10 +49,10 @@ update_status ModuleBackground::Update()
 	switch (part_stage) {
 		case 0: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(back_tx, background.w*i, 118, &background, 0.8f);
+				App->render->Blit(back_tx, background.w*i, 118, &background,0.8f);
 			}
-			App->render->Blit(ground_tx, 0, -94, &ground,2);
-			App->render->camera.x--;
+			App->render->Blit(ground_tx, 0, -94, &ground);
+			App->render->camera.x-=3;
 			break;
 		}
 		case 1: {
