@@ -107,8 +107,21 @@ update_status ModuleBackground::Update()
 		}
 	case 1: {
 		for (int i = 0; i < 20; i++) {
-			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+			if (App->render->camera.y >= -130 * SCREEN_SIZE) {
+				App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+			}
+			
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.5f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 60, 97, &star4, 2.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 63, &star5, 1.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 13, 63, &star6, 0.5f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 		}
+
+		App->render->Blit(back_tx, 650, 17, &planet1, 0.2f);
 		App->render->camera.y -= 3;
 		if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
 			part_stage++;
