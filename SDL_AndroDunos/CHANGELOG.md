@@ -57,3 +57,28 @@ All notable changes to this project will be documented in this file.
 - Created MemLeaks.cpp .
 
 - Created Module.h .
+
+
+## [0.2.0] - 2018-04-05
+
+
+### Summarized
+
+- Created the player ship and its movements with inputs.
+
+- Added all background (stars, planets, ground, ...) with different scrolls .
+
+### Extended
+
+
+#### Added
+
+
+
+- Created Animation.h .
+
+- Created p2Point.h .
+
+- Created ModuleBackground .cpp and .h .
+
+- Created ModulePlayer. cpp and .h .
