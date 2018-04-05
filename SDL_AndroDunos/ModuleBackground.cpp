@@ -55,7 +55,10 @@ ModuleBackground::ModuleBackground()
 	star7.w = 17;
 	star7.h = 6;
 	//planets
-	
+	planet.x = 0;
+	planet.y = 0;
+	planet.w = 106;
+	planet.h = 106;
 }
 
 ModuleBackground::~ModuleBackground()
@@ -81,6 +84,7 @@ update_status ModuleBackground::Update()
 				
 
 				App->render->Blit(back_tx, background.w*i, 123, &background,0.42f);
+				
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.5f);
@@ -91,7 +95,7 @@ update_status ModuleBackground::Update()
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 			}
 			App->render->Blit(ground_tx, 0, -94, &ground);
-			
+			App->render->Blit(back_tx, 650, 20, &planet, 0.2f);
 			App->render->camera.x-=3;
 			if (App->render->camera.x <= -2929*SCREEN_SIZE)
 				part_stage++;
