@@ -8,22 +8,22 @@ ModuleBackground::ModuleBackground()
 {
 	// ground
 	ground.x = 0;
-	ground.y = 95;
-	ground.w = SCREEN_WIDTH;
-	ground.h = SCREEN_HEIGHT ;
+	ground.y = 0;
+	ground.w = 9305;
+	ground.h = 543;
 	
 
 	// Background / sky
 	background.x = 0;
 	background.y = 459;
-	background.w = 251;
-	background.h = 85;
+	//background.w = 251;
+	//background.h = 85;
 
 	//rocks
-	rocks.x = 252;
-	rocks.y = 319;
-	rocks.w = 64;
-	rocks.h = 224;
+	//rocks.x = 252;
+	//rocks.y = 319;
+	//rocks.w = 64;
+	//rocks.h = 224;
 
 	//stars
 
@@ -38,7 +38,8 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("Background1.png");
+	back_tx = App->textures->Load("assets/Background.png");
+	ground_tx = App->textures->Load("assets/Ground.png");
 	return ret;
 }
 
@@ -48,35 +49,29 @@ update_status ModuleBackground::Update()
 	switch (part_stage) {
 		case 0: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(graphics, background.w*i + speed, mov_planet, &background);
+				App->render->Blit(back_tx, background.w*i, 118, &background, 0.8f);
 			}
-			App->render->Blit(graphics, 0, 0, &ground);
-			ground.x++;
-			speed -= 0.5f;
-			if (ground.x == 3248 - ground.w)
-				part_stage++;
+			App->render->Blit(ground_tx, 0, 0, &ground);
+			App->render->camera.x--;
 			break;
 		}
 		case 1: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(graphics, background.w*i + speed, mov_planet, &background);
+				App->render->Blit(back_tx, background.w*i, 0, &background);
 			}
-			App->render->Blit(graphics, 0, 0, &ground);
+			App->render->Blit(ground_tx, 0, 0, &ground);
 			ground.y++;
-			mov_planet--;
 			if (ground.y == 542 - SCREEN_HEIGHT) {
 				part_stage++;
-				speed = 0;
 			}
 			break;
 		}
 		case 2: {
 			for (int i = SCREEN_WIDTH/rocks.w; i < 20; i++) {
-				App->render->Blit(graphics, rocks.w*i + speed, mov_rocks, &rocks);
+				App->render->Blit(back_tx, rocks.w*i, 0, &rocks);
 			}
-			App->render->Blit(graphics, 0, 0, &ground);
+			App->render->Blit(ground_tx, 0, 0, &ground);
 			ground.x++;
-			speed -= 0.5f;
 			if (ground.x == 3248 - ground.w)
 				
 			break;

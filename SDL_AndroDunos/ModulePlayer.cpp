@@ -40,7 +40,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("ships.png");
+	graphics = App->textures->Load("assets/ships.png");
 	return ret;
 }
 
