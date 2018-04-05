@@ -31,7 +31,9 @@ public:
 	SDL_Rect star5;
 	SDL_Rect star6;
 	SDL_Rect star7;
-	SDL_Rect planet;
+	SDL_Rect planet1;
+	SDL_Rect planet2;
+
 	int part_stage = 0;
 };
 
