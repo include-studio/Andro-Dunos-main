@@ -78,8 +78,6 @@ update_status ModuleBackground::Update()
 	switch (part_stage) {
 		case 0: { 
 			for (int i = 0; i < 20; i++) {
-				
-
 				App->render->Blit(back_tx, background.w*i, 123, &background,0.42f);
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
@@ -89,9 +87,7 @@ update_status ModuleBackground::Update()
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 13, 63, &star6, 0.5f);
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) +50, 41, &star7, 0.5f);
 				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
-			}
-			App->render->Blit(ground_tx, 0, -94, &ground);
-			
+			}	
 			App->render->camera.x-=3;
 			if (App->render->camera.x <= -2929*SCREEN_SIZE)
 				part_stage++;
@@ -99,10 +95,8 @@ update_status ModuleBackground::Update()
 		}
 		case 1: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(back_tx, background.w*i, 118, &background, 0.8f);
-			}
-			App->render->Blit(ground_tx, 0, -94, &ground);
-			
+				App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+			}			
 			App->render->camera.y -= 3;
 			if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
 				part_stage++;
@@ -110,15 +104,86 @@ update_status ModuleBackground::Update()
 		}
 		case 2: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(back_tx, 3000 + SCREEN_WIDTH + rocks.w*i, 220, &rocks);
+				App->render->Blit(back_tx, 3250*SCREEN_SIZE + rocks.w*i, 220, &rocks,0.42f);
 			}
-			App->render->Blit(ground_tx, 0, -94, &ground);
 			App->render->camera.x -= 3;
-			if (ground.x == 3248 - ground.w)
-				
+
+			if (App->render->camera.x <= -3910 * SCREEN_SIZE)
+				part_stage++;
 			break;
 		}
+		case 3: {
+			for (int i = 0; i < 50 ; i++) {
+				App->render->Blit(back_tx, 3000 + SCREEN_WIDTH + rocks.w*i, 220, &rocks,0.42f);
+			}
+			App->render->camera.x -= 3;
+			App->render->camera.y += 3;
+			if (App->render->camera.y >= -294)
+				part_stage++;
+			break;
+		}
+		case 4: {
+			for (int i = 0; i < 70; i++) {
+				App->render->Blit(back_tx, 3000 + SCREEN_WIDTH + rocks.w*i, 220, &rocks, 0.42f);
+			}
+			App->render->camera.x -= 3;
+			if (App->render->camera.x <= -4538*SCREEN_SIZE)
+				part_stage++;
+			break;
+		}
+		case 5:
+			App->render->camera.x -= 3;
+			App->render->camera.y -= 3;
+			if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
+				part_stage++;
+			break;
+		case 6:
+			App->render->camera.x -= 3;
+			if (App->render->camera.x <= -5040*SCREEN_SIZE)
+				part_stage++;
+			break;
+		case 7:
+			App->render->camera.x -= 3;
+			App->render->camera.y += 3;
+			if (App->render->camera.y >= 0)
+				part_stage++;
+			break;
+		case 8:
+			App->render->camera.x -= 3;
+			if (App->render->camera.x <= -6020*SCREEN_SIZE)
+				part_stage++;
+			break;
+		case 9:
+			App->render->camera.x -= 3;
+			App->render->camera.y -= 3;
+			if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
+				part_stage++;
+			break;
+		case 10:
+			App->render->camera.x -= 3;
+			if (App->render->camera.x <= -7136 * SCREEN_SIZE)
+				part_stage++;
+			break;
+		case 11:
+			App->render->camera.y += 3;
+			if (App->render->camera.y >= 0)
+				part_stage++;
+			break;
+		case 12:
+			for (int i = 0; i < 20; i++) {
+				App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.5f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 60, 97, &star4, 2.0f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 63, &star5, 1.0f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 13, 63, &star6, 0.5f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
+				App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
+			}
+			App->render->camera.x -= 3;
+			break;
 	}
-
+	App->render->Blit(ground_tx, 0, -94, &ground);
 	return UPDATE_CONTINUE;
 }
