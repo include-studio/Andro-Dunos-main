@@ -22,8 +22,18 @@ ModulePlayer::ModulePlayer()
 	up.PushBack({ 2,4,39,15 });
 	up.PushBack({ 41,4,39,15 });
 	up.PushBack({ 85,4,39,15 });
+
 	up.speed = 0.5f;
 
+	upidle.PushBack({ 85,24,39,15 });
+	upidle.PushBack({ 43,24,39,15 });
+	upidle.PushBack({ 2,24,39,15 });
+	upidle.PushBack({ 0,48,39,17 });
+	upidle.PushBack({ 42,48,39,17 });
+	upidle.PushBack({ 85,48,39,17 });
+
+	upidle.speed = 0.1f;
+	
 	down.PushBack({ 0,76,39,16 });
 	down.PushBack({ 43,76,39,16 });
 	down.PushBack({ 85,76,39,16 });
@@ -64,7 +74,7 @@ update_status ModulePlayer::Update()
 		position.y -= speed;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == 0) //if up is 0, that animation resets to 0
-		up.reset();
+		upidle.reset();
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == 1) {
 		current_animation = &down;
