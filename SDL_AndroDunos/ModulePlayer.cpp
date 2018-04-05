@@ -76,12 +76,18 @@ update_status ModulePlayer::Update()
 	case 0:
 		position.x++;
 		break;
+	case 1:
+		position.y++;
+		break;
+	case 2:
+		position.x++;
+		break;
 
 	}
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 	if (current_animation == &up || current_animation == &down) {	//only animation up and down have end animation
-		ship = current_animation->end_animation();						//this check if the the animation is at its last frame, then return the rect of last frame or use GetCurrentFrame() (see it in Animation.h)
+		ship = current_animation->final_sprite();						//this check if the the animation is at its last frame, then return the rect of last frame or use GetCurrentFrame() (see it in Animation.h)
 	}
 	else ship = current_animation->GetCurrentFrame();
 

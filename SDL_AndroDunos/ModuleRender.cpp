@@ -49,6 +49,18 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
+	int speed = 3;
+
+	if (App->input->keyboard[SDL_SCANCODE_UP] == 1)
+		camera.y += speed*4;
+
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
+		camera.y -= speed*4;
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1)
+		camera.x -= speed*4;
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
+		camera.x += speed*4;
 	return update_status::UPDATE_CONTINUE;
 }
 

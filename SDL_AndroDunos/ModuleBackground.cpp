@@ -20,10 +20,10 @@ ModuleBackground::ModuleBackground()
 	background.h = 85;
 
 	//rocks
-	//rocks.x = 252;
-	//rocks.y = 319;
-	//rocks.w = 64;
-	//rocks.h = 224;
+	rocks.x = 252;
+	rocks.y = 0;
+	rocks.w = 64;
+	rocks.h = 224;
 
 	//stars
 
@@ -60,20 +60,20 @@ update_status ModuleBackground::Update()
 		}
 		case 1: {
 			for (int i = 0; i < 20; i++) {
-				App->render->Blit(back_tx, background.w*i, 118, &background);
+				App->render->Blit(back_tx, background.w*i, 118, &background, 0.8f);
 			}
 			App->render->Blit(ground_tx, 0, -94, &ground);
 			App->render->camera.y -= 3;
-			if (App->render->camera.y <= -542*SCREEN_SIZE)
+			if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
 				part_stage++;
 			break;
 		}
 		case 2: {
-			for (int i = SCREEN_WIDTH/rocks.w; i < 20; i++) {
-				App->render->Blit(back_tx, rocks.w*i, 0, &rocks);
+			for (int i = 0; i < 20; i++) {
+				App->render->Blit(back_tx, 3000 + SCREEN_WIDTH + rocks.w*i, 220, &rocks);
 			}
-			App->render->Blit(ground_tx, 0, 0, &ground);
-			ground.x++;
+			App->render->Blit(ground_tx, 0, -94, &ground);
+			App->render->camera.x -= 3;
 			if (ground.x == 3248 - ground.w)
 				
 			break;
