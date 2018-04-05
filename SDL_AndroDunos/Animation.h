@@ -30,6 +30,7 @@ public:
 		return frames[(int)current_frame];
 	}
 	SDL_Rect& final_sprite() {
+
 		if (current_frame + speed >= last_frame)
 			return frames[(int)current_frame];
 
