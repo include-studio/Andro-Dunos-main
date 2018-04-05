@@ -18,11 +18,19 @@ public:
 
 public:
 	
+	SDL_Texture * stars_tx =nullptr;
 	SDL_Texture* back_tx = nullptr;
 	SDL_Texture* ground_tx = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
 	SDL_Rect rocks;
+	SDL_Rect star1;
+	SDL_Rect star2;
+	SDL_Rect star3;
+	SDL_Rect star4;
+	SDL_Rect star5;
+	SDL_Rect star6;
+	SDL_Rect star7;
 	int part_stage = 0;
 };
 
