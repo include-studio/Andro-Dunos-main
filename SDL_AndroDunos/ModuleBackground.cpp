@@ -15,9 +15,9 @@ ModuleBackground::ModuleBackground()
 
 	// Background / sky
 	background.x = 0;
-	background.y = 459;
-	//background.w = 251;
-	//background.h = 85;
+	background.y = 139;
+	background.w = 251;
+	background.h = 85;
 
 	//rocks
 	//rocks.x = 252;
@@ -51,7 +51,7 @@ update_status ModuleBackground::Update()
 			for (int i = 0; i < 20; i++) {
 				App->render->Blit(back_tx, background.w*i, 118, &background, 0.8f);
 			}
-			App->render->Blit(ground_tx, 0, 0, &ground);
+			App->render->Blit(ground_tx, 0, -94, &ground,2);
 			App->render->camera.x--;
 			break;
 		}

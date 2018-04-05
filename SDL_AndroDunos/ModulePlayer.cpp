@@ -49,7 +49,7 @@ update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &idle;
 
-	int speed = 2;
+	int speed = 1;
 
 	if(App->input->keyboard[SDL_SCANCODE_D] == 1)
 	{
@@ -70,11 +70,9 @@ update_status ModulePlayer::Update()
 		current_animation = &down;
 		position.y += speed;
 	}
-
+	position.x++;
 	if (App->input->keyboard[SDL_SCANCODE_S] == 0)
 		down.reset();
-
-	
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 	if (current_animation == &up || current_animation == &down) {	//only animation up and down have end animation
