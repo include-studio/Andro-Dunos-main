@@ -20,10 +20,19 @@ ModuleBackground::ModuleBackground()
 	background.h = 85;
 
 	//rocks
+	rocks_entry.x = 317;
+	rocks_entry.y = 0;
+	rocks_entry.w = 64;
+	rocks_entry.h = 384;
 	rocks.x = 252;
 	rocks.y = 0;
 	rocks.w = 64;
-	rocks.h = 224;
+	rocks.h = 384;
+	rocks_escape.x = 382;
+	rocks_escape.y = 0;
+	rocks_escape.w = 64;
+	rocks_escape.h = 384;
+	
 
 	//stars
 	star1.x = 5;
@@ -83,9 +92,9 @@ bool ModuleBackground::Start()
 update_status ModuleBackground::Update()
 {
 	switch (part_stage) {
-	case 0: {
+	case 0: { //case 0: Start & PreDownfall
 		for (int i = 0; i < 20; i++) {
-			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+			App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
 
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
@@ -97,20 +106,134 @@ update_status ModuleBackground::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 
 			App->render->Blit(ground_tx, 0, -94, &ground);
-			App->render->Blit(back_tx, 650, 17, &planet1, 0.2f);
-			
+			App->render->Blit(back_tx, 800, 17, &planet1, 0.32f);
+
 		}
-			App->render->camera.x -= 3;
-			if (App->render->camera.x <= -2929 * SCREEN_SIZE)
-				part_stage++;
-			break;
-		}
+		App->render->camera.x -= 3;
+		if (App->render->camera.x <= -2929 * SCREEN_SIZE)
+			part_stage++;
+		break;
+	}
 	case 1: {
 		for (int i = 0; i < 20; i++) {
 			if (App->render->camera.y >= -130 * SCREEN_SIZE) {
-				App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+				App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
 			}
+			//Blit Stars, "(SCREEN_WIDTH*i) + 15" Means position.x, "15" is the initial star position.
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.5f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 60, 97, &star4, 2.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 63, &star5, 1.0f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 13, 63, &star6, 0.5f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
+		}
+		App->render->camera.y -= 3;
+		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
+			part_stage++;
+		break;
+	}
+	case 2: { //Post Downfall & Pre Diagonal rise  
+		for (int i = 0; i < 20; i++) {
+
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500, 61, &rocks_entry, 0.40f);
+
+		}
+		App->render->camera.x -= 3;
+
+		if (App->render->camera.x <= -4000 * SCREEN_SIZE)
+			part_stage++;
+		break;
+	}
+	case 3: {//Diagonal rise Up
+		for (int i = 0; i < 50; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		App->render->camera.x -= 3;
+		App->render->camera.y += 3;
+		if (App->render->camera.y >= -294)
+			part_stage++;
+		break;
+	}
+	case 4: {//Post Diagonal rise Up & Diagonal rise Down  
+		for (int i = 0; i < 70; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		App->render->camera.x -= 3;
+		if (App->render->camera.x <= -4538 * SCREEN_SIZE)
+			part_stage++;
+		break;
+	}
+	case 5: { //Diagonal rise Down
+		for (int i = 0; i < 70; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		App->render->camera.x -= 3;
+		App->render->camera.y -= 3;
+		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
+			part_stage++;
+		break;
+	}
+	case 6://Post Diagonal rise Down & Pre Diagonal rise Up
+		for (int i = 0; i < 70; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		App->render->camera.x -= 3;
+		if (App->render->camera.x <= -5040 * SCREEN_SIZE)
+			part_stage++;
+		break;
+	case 7://Diagonal rise Up
+		for (int i = 0; i < 70; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		App->render->camera.x -= 3;
+		App->render->camera.y += 3;
+		if (App->render->camera.y >= 0)
+			part_stage++;
+		break;
+	case 8://Post Diagonal rise Up & Pre Diagonal rise Down
+		App->render->camera.x -= 3;
+		for (int i = 0; i < 70; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		if (App->render->camera.x <= -6020 * SCREEN_SIZE)
+			part_stage++;
+		break;
+	case 9://Diagonal rise Down
+		for (int i = 0; i < 70; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		App->render->camera.x -= 3;
+		App->render->camera.y -= 3;
+		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
+			part_stage++;
+		break;
+	case 10://Post Diagonal Down & Pre Rise Up
+		for (int i = 0; i < 20; i++) {
+			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			
+			
+		}
+		App->render->Blit(back_tx, 2700 + rocks.w, 61, &rocks_escape, 0.40f);
+		App->render->camera.x -= 3;
+	
+	
+		if (App->render->camera.x <= -7136 * SCREEN_SIZE)
+			part_stage++;
+		break;
+	case 11:
+		for (int i = 0; i < 20; i++) {
+			
+			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.5f);
@@ -121,75 +244,7 @@ update_status ModuleBackground::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 		}
 
-		App->render->Blit(back_tx, 650, 17, &planet1, 0.2f);
-		App->render->camera.y -= 3;
-		if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
-			part_stage++;
-		break;
-	}
-	case 2: {
-		for (int i = 0; i < 20; i++) {
-			App->render->Blit(back_tx, 3250 * SCREEN_SIZE + rocks.w*i, 220, &rocks, 0.42f);
-		}
-		App->render->camera.x -= 3;
-
-		if (App->render->camera.x <= -3910 * SCREEN_SIZE)
-			part_stage++;
-		break;
-	}
-	case 3: {
-		for (int i = 0; i < 50; i++) {
-			App->render->Blit(back_tx, 3000 + SCREEN_WIDTH + rocks.w*i, 220, &rocks, 0.42f);
-		}
-		App->render->camera.x -= 3;
-		App->render->camera.y += 3;
-		if (App->render->camera.y >= -294)
-			part_stage++;
-		break;
-	}
-	case 4: {
-		for (int i = 0; i < 70; i++) {
-			App->render->Blit(back_tx, 3000 + SCREEN_WIDTH + rocks.w*i, 220, &rocks, 0.42f);
-		}
-		App->render->camera.x -= 3;
-		if (App->render->camera.x <= -4538 * SCREEN_SIZE)
-			part_stage++;
-		break;
-	}
-	case 5:
-		App->render->camera.x -= 3;
-		App->render->camera.y -= 3;
-		if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
-			part_stage++;
-		break;
-	case 6:
-		App->render->camera.x -= 3;
-		if (App->render->camera.x <= -5040 * SCREEN_SIZE)
-			part_stage++;
-		break;
-	case 7:
-		App->render->camera.x -= 3;
-		App->render->camera.y += 3;
-		if (App->render->camera.y >= 0)
-			part_stage++;
-		break;
-	case 8:
-		App->render->camera.x -= 3;
-		if (App->render->camera.x <= -6020 * SCREEN_SIZE)
-			part_stage++;
-		break;
-	case 9:
-		App->render->camera.x -= 3;
-		App->render->camera.y -= 3;
-		if (App->render->camera.y <= -SCREEN_HEIGHT*SCREEN_SIZE)
-			part_stage++;
-		break;
-	case 10:
-		App->render->camera.x -= 3;
-		if (App->render->camera.x <= -7136 * SCREEN_SIZE)
-			part_stage++;
-		break;
-	case 11:
+		App->render->Blit(ground_tx, 0, -94, &ground);
 		App->render->camera.y += 3;
 		if (App->render->camera.y >= 0)
 			part_stage++;
@@ -206,7 +261,7 @@ update_status ModuleBackground::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 		}
-		App->render->Blit(back_tx, 1790, 17, &planet2, 0.2f);
+		App->render->Blit(back_tx, 2670, 17, &planet2, 0.32f);
 		App->render->camera.x -= 3;
 		break;
 	}

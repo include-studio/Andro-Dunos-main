@@ -24,6 +24,8 @@ public:
 	SDL_Rect ground;
 	SDL_Rect background;
 	SDL_Rect rocks;
+	SDL_Rect rocks_entry;
+	SDL_Rect rocks_escape;
 	SDL_Rect star1;
 	SDL_Rect star2;
 	SDL_Rect star3;
