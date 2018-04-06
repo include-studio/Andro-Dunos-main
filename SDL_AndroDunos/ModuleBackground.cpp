@@ -223,14 +223,14 @@ update_status ModuleBackground::Update()
 			
 			
 		}
-		App->render->Blit(back_tx, 2700 + rocks.w, 61, &rocks_escape, 0.40f);
+		App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		App->render->camera.x -= 3;
 	
 	
-		if (App->render->camera.x <= -7136 * SCREEN_SIZE)
+		if (App->render->camera.x <= -7156 * SCREEN_SIZE)
 			part_stage++;
 		break;
-	case 11:
+	case 11: //Rise Up
 		for (int i = 0; i < 20; i++) {
 			
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
