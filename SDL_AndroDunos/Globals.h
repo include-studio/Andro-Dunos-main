@@ -13,6 +13,14 @@ enum update_status
 	UPDATE_STOP,
 	UPDATE_ERROR
 };
+enum PLAYER_STATE_MOVE
+{
+	DOWN,
+	IDLE_DOWN,
+	IDLE,
+	IDLE_UP,
+	UP
+};
 
 // Useful typedefs ---------
 typedef unsigned int uint;
