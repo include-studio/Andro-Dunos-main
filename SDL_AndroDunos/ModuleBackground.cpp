@@ -208,10 +208,11 @@ update_status ModuleBackground::Update()
 			part_stage++;
 		break;
 	case 9://Diagonal rise Down
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
+		App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		App->render->camera.x -= 3;
 		App->render->camera.y -= 3;
 		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
