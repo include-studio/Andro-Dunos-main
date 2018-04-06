@@ -9,6 +9,11 @@
 
 ModulePlayer::ModulePlayer()
 {
+	flames_animation = nullptr;
+
+	movVertical = 0;
+	maxVertical = 14;
+
 	position.x = SCREEN_WIDTH/2;
 	position.y = SCREEN_HEIGHT/2;
 
@@ -25,22 +30,32 @@ ModulePlayer::ModulePlayer()
 	
 	up.speed = 0.5f;
 
-	/*upidle.PushBack({ 85,24,39,15 });
+	upidle.PushBack({ 85,24,39,15 });
 	upidle.PushBack({ 43,24,39,15 });
 	upidle.PushBack({ 2,24,39,15 });
 	upidle.PushBack({ 0,48,39,17 });
 	upidle.PushBack({ 42,48,39,17 });
 	upidle.PushBack({ 85,48,39,17 });
 
-	upidle.speed = 0.1f;*/
+	upidle.speed = 0.1f;
 	
 	down.PushBack({ 0,76,39,16 });
 	down.PushBack({ 43,76,39,16 });
 	down.PushBack({ 85,76,39,16 });
-	down.PushBack({ 85,104,39,17 });
-	down.PushBack({ 43,104,39,17 });
 	down.PushBack({ 2,104,39,17 });
+	down.PushBack({ 43,104,39,17 });
+	down.PushBack({ 85,104,39,17 });
+
 	down.speed = 0.5f;
+
+	downidle.PushBack({ 0,76,39,16 });
+	downidle.PushBack({ 43,76,39,16 });
+	downidle.PushBack({ 85,76,39,16 });
+	downidle.PushBack({ 0,48,39,17 });
+	downidle.PushBack({ 42,48,39,17 });
+	downidle.PushBack({ 85,48,39,17 });
+
+	downidle.speed = 0.5f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -58,30 +73,72 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	Animation* current_animation = &idle;
+	//Animation* current_animation = &idle;
+
+	flames_animation = &idle;
+	
 
 	int speed = 2;
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == 1)
 	{
 		position.x += speed;
+		
 	}
 	if (App->input->keyboard[SDL_SCANCODE_A] == 1) {
 		position.x -= speed;
+
 	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == 1) {
-		current_animation = &up;
+		flames_animation = &up;
 		position.y -= speed;
+
+		if (movVertical < maxVertical)
+		{
+			++movVertical;		// Increase vertical counter.
+		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_W] == 0) {//if up is 0, that animation resets to 0
+	/*if (App->input->keyboard[SDL_SCANCODE_W] == 0) {//if up is 0, that animation resets to 0
 		up.reset();
-	}
+	}*/
 	if (App->input->keyboard[SDL_SCANCODE_S] == 1) {
-		current_animation = &down;
+		flames_animation = &down;
 		position.y += speed;
+
+		if (movVertical > -maxVertical)
+		{
+			--movVertical;		// Decrease vertical counter.
+		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_S] == 0)
-		down.reset();
+	/*if (App->input->keyboard[SDL_SCANCODE_S] == 0)
+		down.reset();*/
+
+	if (movVertical >= maxVertical)
+	{
+		flames_animation = &up;
+		
+	}
+
+	else if (movVertical > (maxVertical / 2) && movVertical < maxVertical)
+	{
+		flames_animation = &upidle;
+	}
+
+	else if (movVertical <= (maxVertical / 2) && movVertical >= -(maxVertical / 2))
+	{
+		flames_animation = &idle;
+	}
+
+	else if (movVertical < -(maxVertical / 2) && movVertical > -maxVertical)
+	{
+		flames_animation = &downidle;
+	}
+
+	else if (movVertical <= -maxVertical)
+	{
+		flames_animation = &down;
+	}
+
 
 	switch (App->background->part_stage) {
 	case 0:
@@ -97,15 +154,13 @@ update_status ModulePlayer::Update()
 	}
 
 	// Draw everything --------------------------------------
-	SDL_Rect ship;
+	SDL_Rect flames;
 
-	if (current_animation == &up || current_animation == &down) {	//only animation up and down have end animation
-		ship = current_animation->final_sprite();						//this check if the the animation is at its last frame, then return the rect of last frame or use GetCurrentFrame() (see it in Animation.h)
-	}
+	flames = flames_animation->GetCurrentFrame();
 
-	else ship = current_animation->GetCurrentFrame();
-
-	App->render->Blit(graphics, position.x, position.y - ship.h, &ship);
+	App->render->Blit(graphics, position.x, position.y - flames.h, &flames);
 	
 	return UPDATE_CONTINUE;
 }
+
+//cleanup?
