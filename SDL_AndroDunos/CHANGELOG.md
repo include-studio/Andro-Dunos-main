@@ -82,3 +82,24 @@ All notable changes to this project will be documented in this file.
 - Created ModuleBackground .cpp and .h .
 
 - Created ModulePlayer. cpp and .h .
+
+
+## [0.2.1] - 2018-04-06
+
+
+### Summarized
+
+- Added sound 
+
+- Animations' bug fixed
+
+### Extended
+
+
+#### Fixed
+
+
+
+- Animation of the ship
+
+- ModuleAudio

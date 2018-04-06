@@ -1,6 +1,6 @@
-Andro Dunos v.0.2.0
+Andro Dunos v.0.2.1
 
-This is the first release for the project of the arcade game named Andro Dunos. In these release you only will be able to move the ship watching all the background of the entire level 1.
+This is the second big release for the project of the arcade game named Andro Dunos. In these release you only will be able to move the ship watching all the background of the entire level 1.
 
 Manager: Lluis Moreu https://github.com/youis11
 Art: Marc Navas https://github.com/Shocrates
