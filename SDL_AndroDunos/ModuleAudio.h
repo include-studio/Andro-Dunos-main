@@ -5,8 +5,8 @@
 #include "Globals.h"
 #include "SDL_mixer/include/SDL_mixer.h"
 
-#define MAX_BGMS 50
-#define MAX_FXS 50
+#define MAX_BGMS 5
+#define MAX_FXS 30
 
 struct _Mix_Music;
 struct Mix_Chunk;
@@ -28,9 +28,9 @@ public:
 
 public:
 	_Mix_Music *bgms[MAX_BGMS];
-	_Mix_Music *bgm;
+	Mix_Music *bgm = nullptr;
 	Mix_Chunk *fxs[MAX_FXS];
-	Mix_Chunk *fx;
+	Mix_Chunk *fx = nullptr;
 };
 
 #endif //__ModuleRenderer_H__

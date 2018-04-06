@@ -2,49 +2,39 @@
 #include "Application.h"
 #include "ModuleAudio.h"
 
-#include "SDL/include/SDL.h"
 #include "SDL_mixer/include/SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-ModuleAudio::ModuleAudio() : Module() {
-	//Initialize all ModuleAudio pointers to nullptr
-	for (int i = 0; i < MAX_BGMS; ++i) {
-		bgms[i] = nullptr;
-	}
-	bgm = nullptr;
-
-	for (int i = 0; i < MAX_FXS; ++i) {
-		fxs[i] = nullptr;
-	}
-	fx = nullptr;
-
+ModuleAudio::ModuleAudio() : Module() 
+{
 }
 
 ModuleAudio::~ModuleAudio() {
 
 }
 // Called before audio is available
-bool ModuleAudio::Init() {
+bool ModuleAudio::Init()
+{
 
 	LOG("Init Audio library");
 	bool ret = true;
-
 	
 	int flags = MIX_INIT_OGG;
 	int init = Mix_Init(flags);
 
-	if ((init && flags) != flags) {
+	if (init != flags)
+	{
 
 		LOG("Could not initialize mixer lib. Mix_Init: %s", Mix_GetError());
-		ret = false;
+		ret = true;
 	}
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
 	}
 
-	bgm = LoadBgm("04_Stage_1 -The Moon-Loop.ogg");
-	fx = LoadFx("mario_cry.wav");
+	bgm = LoadBgm("Stage_1__The_Moon_Loop.ogg");
+	//fx = LoadFx("mario_cry.wav");
 	Mix_PlayMusic(bgm, -1);
 	Mix_PlayChannel(-1, fx, 0);
 	return ret;
@@ -85,7 +75,7 @@ bool ModuleAudio::CleanUp() {
 
 
 
-Mix_Music *const ModuleAudio::LoadBgm(const char* path) {
+_Mix_Music *const ModuleAudio::LoadBgm(const char* path) {
 	bgm = Mix_LoadMUS(path);
 	if (!bgm) {
 		LOG("Mix_LoadMUS: %s", Mix_GetError());
