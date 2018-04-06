@@ -150,6 +150,40 @@ update_status ModulePlayer::Update()
 	case 2:
 		position.x++;
 		break;
+	case 3:
+		position.x ++;
+		position.y --;
+		break;
+	case 4: 
+		position.x ++;
+		break;
+	case 5:
+		position.x++;
+		position.y++;
+		break;
+	case 6:
+		position.x++;
+		break;
+	case 7:
+		position.x++;
+		position.y--;
+		break;
+	case 8:
+		position.x++;
+		break;
+	case 9:
+		position.x++;
+		position.y++;
+		break;
+	case 10:
+		position.x++;
+		break;
+	case 11:
+		position.x--;
+		break;
+	case 12:
+		position.x++;
+		break;
 
 	}
 
