@@ -7,6 +7,10 @@
 
 ModuleAudio::ModuleAudio() : Module() 
 {
+	for (int i = 0; i < MAX_BGMS; ++i)
+		bgms[i] = nullptr;
+	for (int i = 0; i < MAX_FXS; ++i)
+		fxs[i] = nullptr;
 }
 
 ModuleAudio::~ModuleAudio() {
@@ -24,7 +28,6 @@ bool ModuleAudio::Init()
 
 	if (init != flags)
 	{
-
 		LOG("Could not initialize mixer lib. Mix_Init: %s", Mix_GetError());
 		ret = true;
 	}
@@ -62,13 +65,17 @@ bool ModuleAudio::CleanUp() {
 	LOG("Freeing Audio library");
 
 	for (int i = 0; i < MAX_BGMS; ++i) {
-		Mix_FreeMusic(bgms[i]);
+		if (bgms[i] != nullptr)
+			Mix_FreeMusic(bgms[i]);
 	}
+	LOG("BGMS Cleaned");
 	for (int i = 0; i < MAX_FXS; ++i) {
-		Mix_FreeChunk(fxs[i]);
+		if (fxs[i] != nullptr)
+			Mix_FreeChunk(fxs[i]);
 	}
-
+	LOG("FXS Cleaned");
 	SDL_CloseAudio();
+	LOG("SDL_Audio closed");
 	Mix_Quit();
 	return true;
 }
@@ -86,8 +93,10 @@ _Mix_Music *const ModuleAudio::LoadBgm(const char* path) {
 		}
 		else {
 			for (int i = 0; i < MAX_BGMS; ++i) {
-				if (bgms[i] == nullptr)
+				if (bgms[i] == nullptr) {
 					bgms[i] = bgm;
+					i = MAX_BGMS;
+				}
 			}
 		}
 	}
@@ -106,8 +115,10 @@ Mix_Chunk *const ModuleAudio::LoadFx(const char* path) {
 		}
 		else {
 			for (int i = 0; i < MAX_FXS; ++i) {
-				if (fxs[i] == nullptr)
+				if (fxs[i] == nullptr) {
 					fxs[i] = fx;
+					i = MAX_FXS;
+				}
 			}
 		}
 	}
