@@ -94,7 +94,6 @@ update_status ModulePlayer1::Update()
 			state = IDLE_DOWN;
 	}
 
-
 	if (!App->input->keyboard[SDL_SCANCODE_S] && !App->input->keyboard[SDL_SCANCODE_W])
 	{
 		if (state == DOWN)
@@ -117,7 +116,6 @@ update_status ModulePlayer1::Update()
 		}
 
 	}
-		
 
 	switch (state)
 	{
@@ -144,8 +142,6 @@ update_status ModulePlayer1::Update()
 		animationShip = &up;
 		break;
 	}
-
-
 
 	switch (App->background->part_stage) 
 	{

@@ -49,15 +49,13 @@ bool ModuleMainMenu::Start()
 	logo_andro_tx = App->textures->Load("assets/logo.png");
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
 
-	//Enable (and properly disable) the player module
-
 	return ret;
 }
 
 // Load assets
 bool ModuleMainMenu::CleanUp()
 {
-	LOG("Unloading honda stage");
+	LOG("Unloading MainMenu stage");
 	App->textures->Unload(logo_andro_tx);
 	App->textures->Unload(logo_background_tx);
 	App->textures->Unload(visco_games_tx);

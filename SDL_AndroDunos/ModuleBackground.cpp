@@ -38,7 +38,6 @@ ModuleBackground::ModuleBackground()
 	rocks_escape.w = 64;
 	rocks_escape.h = 384;
 	
-
 	//stars
 	star1.x = 5;
 	star1.y = 3;
@@ -311,6 +310,7 @@ bool ModuleBackground::CleanUp()
 {
 	LOG("Unloading players");
 	App->player1->Disable();
+	App->player2->Disable();
 
 	LOG("Unloading stage1");
 	App->textures->Unload(stars_tx);

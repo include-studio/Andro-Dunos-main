@@ -22,7 +22,8 @@ Application::Application()
 	modules[5] = player1 = new ModulePlayer1();
 	modules[6] = player2 = new ModulePlayer2();
 	modules[7] = audio = new ModuleAudio();
-	modules[8] = FadeToBlack = new ModuleFadeToBlack();
+	modules[8] = mainmenu = new ModuleMainMenu();
+	modules[9] = FadeToBlack = new ModuleFadeToBlack();
 }	
 
 Application::~Application()
