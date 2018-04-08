@@ -31,8 +31,6 @@ public:
 
 	void Disable()
 	{
-		//Call CleanUp() for disabling a module
-
 		if (enabled == true) {
 			enabled = false;
 			CleanUp();

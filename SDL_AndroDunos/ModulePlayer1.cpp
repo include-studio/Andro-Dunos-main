@@ -16,9 +16,6 @@ ModulePlayer1::ModulePlayer1()
 	movVertical = 0;
 	maxVertical = 14;
 
-	position.x = SCREEN_WIDTH/3;
-	position.y = SCREEN_HEIGHT/3;
-
 	idle.PushBack({ 0,48,39,17 });
 	idle.PushBack({ 42,48,39,17 });
 	idle.PushBack({ 85,48,39,17 });
@@ -60,6 +57,8 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("assets/ships.png");
+	position.x = SCREEN_WIDTH / 3;
+	position.y = SCREEN_HEIGHT / 3;
 	return ret;
 }
 
@@ -143,56 +142,7 @@ update_status ModulePlayer1::Update()
 		break;
 	}
 
-	switch (App->background->part_stage) 
-	{
-	case 0:
-		position.x++;
-		break;
-	case 1:
-		position.y++;
-		break;
-	case 2:
-		position.x++;
-		break;
-	case 3:
-		position.x ++;
-		position.y --;
-		break;
-	case 4: 
-		position.x ++;
-		break;
-	case 5:
-		position.x++;
-		position.y++;
-		break;
-	case 6:
-		position.x++;
-		break;
-	case 7:
-		position.x++;
-		position.y--;
-		break;
-	case 8:
-		position.x++;
-		break;
-	case 9:
-		position.x++;
-		position.y++;
-		break;
-	case 10:
-		position.x++;
-		break;
-	case 11:
-		position.y--;
-		break;
-	case 12:
-		position.x++;
-		break;
-	case 13:
-		position.x++;
-		position.y--;
-		break;
-	}
+	
 
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
@@ -206,5 +156,6 @@ update_status ModulePlayer1::Update()
 
 bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
+
 	return true;
 }

@@ -88,6 +88,8 @@ bool ModuleBackground::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
+	part_stage = 0;
+
 	stars_tx = App->textures->Load("assets/Stars.png");
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
@@ -297,6 +299,108 @@ update_status ModuleBackground::Update()
 	case 14:
 		//only stars and boss, no mov of camera
 		break;
+	}
+	switch (App->background->part_stage)
+	{
+	case 0:
+		App->player1->position.x++;
+		break;
+	case 1:
+		App->player1->position.y++;
+		break;
+	case 2:
+		App->player1->position.x++;
+		break;
+	case 3:
+		App->player1->position.x++;
+		App->player1->position.y--;
+		break;
+	case 4:
+		App->player1->position.x++;
+		break;
+	case 5:
+		App->player1->position.x++;
+		App->player1->position.y++;
+		break;
+	case 6:
+		App->player1->position.x++;
+		break;
+	case 7:
+		App->player1->position.x++;
+		App->player1->position.y--;
+		break;
+	case 8:
+		App->player1->position.x++;
+		break;
+	case 9:
+		App->player1->position.x++;
+		App->player1->position.y++;
+		break;
+	case 10:
+		App->player1->position.x++;
+		break;
+	case 11:
+		App->player1->position.y--;
+		break;
+	case 12:
+		App->player1->position.x++;
+		break;
+	case 13:
+		App->player1->position.x++;
+		App->player1->position.y--;
+		break;
+	}
+	if (App->player2->IsEnabled()) {
+		switch (App->background->part_stage)
+		{
+		case 0:
+			App->player2->position.x++;
+			break;
+		case 1:
+			App->player2->position.y++;
+			break;
+		case 2:
+			App->player2->position.x++;
+			break;
+		case 3:
+			App->player2->position.x++;
+			App->player2->position.y--;
+			break;
+		case 4:
+			App->player2->position.x++;
+			break;
+		case 5:
+			App->player2->position.x++;
+			App->player2->position.y++;
+			break;
+		case 6:
+			App->player2->position.x++;
+			break;
+		case 7:
+			App->player2->position.x++;
+			App->player2->position.y--;
+			break;
+		case 8:
+			App->player2->position.x++;
+			break;
+		case 9:
+			App->player2->position.x++;
+			App->player2->position.y++;
+			break;
+		case 10:
+			App->player2->position.x++;
+			break;
+		case 11:
+			App->player2->position.y--;
+			break;
+		case 12:
+			App->player2->position.x++;
+			break;
+		case 13:
+			App->player2->position.x++;
+			App->player2->position.y--;
+			break;
+		}
 	}
 	App->render->Blit(ground_tx, 0, -94, &ground);
 
