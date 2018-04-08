@@ -187,7 +187,7 @@ update_status ModulePlayer2::Update()
 		position.x++;
 		break;
 	case 11:
-		position.x--;
+		position.y--;
 		break;
 	case 12:
 		position.x++;
