@@ -4,7 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
-#include "ModuleBackground.h"
+#include "ModuleStage1.h"
 
 
 ModulePlayer1::ModulePlayer1()

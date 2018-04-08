@@ -74,6 +74,9 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 		SDL_FreeSurface(surface);
 	}
+	if (last_texture == 50) {
+		last_texture = 0;
+	}
 
 	return texture;
 }

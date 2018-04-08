@@ -1,8 +1,8 @@
 #include "Globals.h"
 #include "Application.h"
+#include "ModuleStage1.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleBackground.h"
 #include "ModuleMainMenu.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -11,7 +11,7 @@
 #include "ModuleStageClear.h"
 #include "ModuleAudio.h"
 
-ModuleBackground::ModuleBackground()
+ModuleStage1::ModuleStage1()
 {
 	// ground
 	ground.x = 0;
@@ -80,14 +80,14 @@ ModuleBackground::ModuleBackground()
 	planet2.h = 62;
 }
 
-ModuleBackground::~ModuleBackground()
+ModuleStage1::~ModuleStage1()
 {}
 
 // Load assets
-bool ModuleBackground::Start()
+bool ModuleStage1::Start()
 {
 	
-	LOG("Loading background assets");
+	LOG("Loading stage1 assets");
 	bool ret = true;
 
 	part_stage = 0;
@@ -109,7 +109,7 @@ bool ModuleBackground::Start()
 }
 
 // Update: draw background
-update_status ModuleBackground::Update()
+update_status ModuleStage1::Update()
 {
 	switch (part_stage) {
 	case 0: { //case 0: Start & PreDownfall
@@ -307,7 +307,7 @@ update_status ModuleBackground::Update()
 		//only stars and boss, no mov of camera
 		break;
 	}
-	switch (App->background->part_stage)
+	switch (App->stage1->part_stage)
 	{
 	case 0:
 		App->player1->position.x++;
@@ -358,7 +358,7 @@ update_status ModuleBackground::Update()
 		break;
 	}
 	if (App->player2->IsEnabled()) {
-		switch (App->background->part_stage)
+		switch (App->stage1->part_stage)
 		{
 		case 0:
 			App->player2->position.x++;
@@ -419,7 +419,7 @@ update_status ModuleBackground::Update()
 	return UPDATE_CONTINUE;
 }
 
-bool ModuleBackground::CleanUp()
+bool ModuleStage1::CleanUp()
 {
 	LOG("Unloading players");
 	App->player1->Disable();

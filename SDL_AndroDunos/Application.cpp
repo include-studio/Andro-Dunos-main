@@ -3,7 +3,7 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleBackground.h"
+#include "ModuleStage1.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleAudio.h"
@@ -19,7 +19,7 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
-	modules[4] = background = new ModuleBackground();
+	modules[4] = stage1 = new ModuleStage1();
 	modules[5] = player1 = new ModulePlayer1();
 	modules[6] = player2 = new ModulePlayer2();
 	modules[7] = audio = new ModuleAudio();
@@ -42,7 +42,7 @@ bool Application::Init()
 	player1->Disable();
 	player2->Disable();
 	// Disable the map that you do not start with
-	background->Disable();
+	stage1->Disable();
 	stageclear->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

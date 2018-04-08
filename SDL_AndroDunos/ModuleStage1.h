@@ -1,5 +1,5 @@
-#ifndef __ModuleBackground_H__
-#define __ModuleBackground_H__
+#ifndef __ModuleStage1_H__
+#define __ModuleStage1_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class ModuleBackground : public Module
+class ModuleStage1 : public Module
 {
 public:
-	ModuleBackground();
-	~ModuleBackground();
+	ModuleStage1();
+	~ModuleStage1();
 
 	bool Start();
 	update_status Update();

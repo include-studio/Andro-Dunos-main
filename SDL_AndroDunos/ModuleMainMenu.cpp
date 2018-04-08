@@ -4,7 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
-#include "ModuleBackground.h"
+#include "ModuleStage1.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
@@ -76,7 +76,7 @@ update_status ModuleMainMenu::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(this, App->background, 0.5);
+		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
 	return UPDATE_CONTINUE;
