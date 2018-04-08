@@ -81,8 +81,13 @@
     <ClInclude Include="ModuleBackground.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleInput.h" />
+<<<<<<< HEAD
     <ClInclude Include="ModuleMainMenu.h" />
     <ClInclude Include="ModulePlayer.h" />
+=======
+    <ClInclude Include="ModulePlayer1.h" />
+    <ClInclude Include="ModulePlayer2.h" />
+>>>>>>> 223a58840be0f03dcff016ab936bf9d3df73c203
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
@@ -96,8 +101,13 @@
     <ClCompile Include="ModuleBackground.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="ModuleMainMenu.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
+=======
+    <ClCompile Include="ModulePlayer1.cpp" />
+    <ClCompile Include="ModulePlayer2.cpp" />
+>>>>>>> 223a58840be0f03dcff016ab936bf9d3df73c203
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />

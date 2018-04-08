@@ -1,5 +1,5 @@
-#ifndef __ModulePlayer_H__
-#define __ModulePlayer_H__
+#ifndef __ModulePlayer1_H__
+#define __ModulePlayer1_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -11,11 +11,11 @@
 
 struct SDL_Texture;
 
-class ModulePlayer : public Module
+class ModulePlayer1 : public Module
 {
 public:
-	ModulePlayer();
-	~ModulePlayer();
+	ModulePlayer1();
+	~ModulePlayer1();
 
 	bool Start();
 	update_status Update();
@@ -42,5 +42,4 @@ public:
 	float movVertical;	// Counter for the vertical movement of the ship
 	int maxVertical;	// Limit of the counter
 };
-
 #endif

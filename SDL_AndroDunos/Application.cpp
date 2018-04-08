@@ -4,7 +4,8 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleBackground.h"
-#include "ModulePlayer.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
@@ -18,11 +19,17 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = background = new ModuleBackground();
+<<<<<<< HEAD
 	modules[5] = mainmenu = new ModuleMainMenu();
 	modules[6] = player = new ModulePlayer();
 	modules[7] = audio = new ModuleAudio();
 	modules[8] = FadeToBlack = new ModuleFadeToBlack();
 
+=======
+	modules[5] = player1 = new ModulePlayer1();
+	modules[6] = player2 = new ModulePlayer2();
+	modules[7] = audio = new ModuleAudio();
+>>>>>>> 223a58840be0f03dcff016ab936bf9d3df73c203
 }	
 
 Application::~Application()

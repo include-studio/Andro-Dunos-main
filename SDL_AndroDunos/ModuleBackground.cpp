@@ -145,12 +145,9 @@ update_status ModuleBackground::Update()
 		break;
 	}
 	case 2: { //Post Downfall & Pre Diagonal rise  
-		for (int i = 0; i < 20; i++) {
-
+		for (int i = 0; i < 20; i++)
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
-			App->render->Blit(back_tx, 1500, 61, &rocks_entry, 0.40f);
-
-		}
+		App->render->Blit(back_tx, 1500, 61, &rocks_entry, 0.40f);
 		App->render->camera.x -= 3;
 
 		if (App->render->camera.x <= -4000 * SCREEN_SIZE)

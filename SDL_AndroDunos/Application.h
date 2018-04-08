@@ -3,14 +3,15 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 7
+#define NUM_MODULES 8
 
 class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
 class ModuleBackground;
-class ModulePlayer;
+class ModulePlayer1;
+class ModulePlayer2;
 class ModuleAudio;
 class Module;
 class ModuleFadeToBlack;
@@ -27,7 +28,8 @@ public:
 	ModuleTextures* textures = nullptr;
 	ModuleMainMenu* mainmenu = nullptr;
 	ModuleBackground* background = nullptr;
-	ModulePlayer* player = nullptr;
+	ModulePlayer1* player1 = nullptr;
+	ModulePlayer2* player2 = nullptr;
 	ModuleAudio* audio = nullptr;
 	ModuleFadeToBlack* FadeToBlack = nullptr;
 
