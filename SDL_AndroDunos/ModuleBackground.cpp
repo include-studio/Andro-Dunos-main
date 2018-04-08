@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
+#include "ModuleStageClear.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -89,6 +90,9 @@ bool ModuleBackground::Start()
 	bool ret = true;
 
 	part_stage = 0;
+
+	App->render->camera.x = 0;
+	App->render->camera.x = 0;
 
 	stars_tx = App->textures->Load("assets/Stars.png");
 	back_tx = App->textures->Load("assets/Background.png");
@@ -406,7 +410,7 @@ update_status ModuleBackground::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->FadeToBlack->FadeToBlack(App->background, App->mainmenu, 1);
+		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}
 
 	return UPDATE_CONTINUE;

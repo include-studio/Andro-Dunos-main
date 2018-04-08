@@ -63,6 +63,9 @@
     <ClInclude Include="p2Point.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleStageClear.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -102,6 +105,9 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleTextures.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleStageClear.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

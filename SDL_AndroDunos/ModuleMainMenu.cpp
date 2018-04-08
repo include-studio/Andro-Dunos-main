@@ -76,7 +76,7 @@ update_status ModuleMainMenu::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->FadeToBlack->FadeToBlack(this, App->background, 0.5);
+		App->fade->FadeToBlack(this, App->background, 0.5);
 	}
 
 	return UPDATE_CONTINUE;

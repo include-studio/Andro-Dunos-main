@@ -9,6 +9,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
+#include "ModuleStageClear.h"
 
 
 
@@ -23,7 +24,8 @@ Application::Application()
 	modules[6] = player2 = new ModulePlayer2();
 	modules[7] = audio = new ModuleAudio();
 	modules[8] = mainmenu = new ModuleMainMenu();
-	modules[9] = FadeToBlack = new ModuleFadeToBlack();
+	modules[9] = fade = new ModuleFadeToBlack();
+	modules[10] = stageclear = new ModuleStageClear();
 }	
 
 Application::~Application()
@@ -41,6 +43,7 @@ bool Application::Init()
 	player2->Disable();
 	// Disable the map that you do not start with
 	background->Disable();
+	stageclear->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

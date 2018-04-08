@@ -142,8 +142,6 @@ update_status ModulePlayer1::Update()
 		break;
 	}
 
-	
-
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
