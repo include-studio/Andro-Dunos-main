@@ -316,5 +316,8 @@ bool ModuleBackground::CleanUp()
 	App->textures->Unload(stars_tx);
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);
+
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 	return true;
 }
