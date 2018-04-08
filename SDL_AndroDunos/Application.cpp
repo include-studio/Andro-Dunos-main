@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleStage1.h"
+#include "ModuleStage2.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleAudio.h"
@@ -20,12 +21,14 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = stage1 = new ModuleStage1();
-	modules[5] = player1 = new ModulePlayer1();
-	modules[6] = player2 = new ModulePlayer2();
-	modules[7] = audio = new ModuleAudio();
-	modules[8] = mainmenu = new ModuleMainMenu();
-	modules[9] = fade = new ModuleFadeToBlack();
-	modules[10] = stageclear = new ModuleStageClear();
+	modules[5] = stage2 = new ModuleStage2();
+	modules[6] = player1 = new ModulePlayer1();
+	modules[7] = player2 = new ModulePlayer2();
+	modules[8] = audio = new ModuleAudio();
+	modules[9] = mainmenu = new ModuleMainMenu();
+	modules[10] = fade = new ModuleFadeToBlack();
+	modules[11] = stageclear = new ModuleStageClear();
+
 }	
 
 Application::~Application()
@@ -44,6 +47,7 @@ bool Application::Init()
 	// Disable the map that you do not start with
 	stage1->Disable();
 	stageclear->Disable();
+	stage2->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

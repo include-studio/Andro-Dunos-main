@@ -38,6 +38,7 @@ bool ModuleAudio::Init()
 
 	LoadBgm("assets/Stage_1__The_Moon_Loop.ogg");
 	LoadBgm("assets/06_Stage_Clear.ogg");
+	LoadBgm("assets/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 	Mix_PlayChannel(-1, fx, 0);
 	return ret;
 }

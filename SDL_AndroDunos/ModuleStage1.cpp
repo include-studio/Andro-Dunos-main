@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleStage1.h"
+#include "ModuleStage2.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleMainMenu.h"
@@ -413,7 +414,7 @@ update_status ModuleStage1::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(this, App->stageclear, 1);
+		App->fade->FadeToBlack(this, App->stage2, 1);
 	}
 
 	return UPDATE_CONTINUE;
