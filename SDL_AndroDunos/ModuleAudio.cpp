@@ -36,21 +36,20 @@ bool ModuleAudio::Init()
 		ret = false;
 	}
 
-	bgm = LoadBgm("Stage_1__The_Moon_Loop.ogg");
-	//fx = LoadFx("mario_cry.wav");
-	Mix_PlayMusic(bgm, -1);
+	LoadBgm("assets/Stage_1__The_Moon_Loop.ogg");
+	LoadBgm("assets/06_Stage_Clear.ogg");
 	Mix_PlayChannel(-1, fx, 0);
 	return ret;
 }
 
 update_status ModuleAudio::PreUpdate()
 {
+
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleAudio::Update()
 {
-
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -59,6 +58,10 @@ update_status ModuleAudio::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
+bool ModuleAudio::PlayMusic(int i) {
+	Mix_PlayMusic(bgms[i], -1);
+	return true;
+}
 // Called before quitting
 bool ModuleAudio::CleanUp() {
 
@@ -79,8 +82,6 @@ bool ModuleAudio::CleanUp() {
 	Mix_Quit();
 	return true;
 }
-
-
 
 _Mix_Music *const ModuleAudio::LoadBgm(const char* path) {
 	bgm = Mix_LoadMUS(path);

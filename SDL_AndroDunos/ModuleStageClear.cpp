@@ -5,6 +5,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
+#include "ModuleAudio.h"
 
 ModuleStageClear::ModuleStageClear() {
 	stage_clear.x = 108;
@@ -19,6 +20,7 @@ bool ModuleStageClear::Start() {
 	LOG("Loading StageClear textures");
 	stage_clear_tx = App->textures->Load("assets/StageClear.png");
 	//audio
+	App->audio->PlayMusic(1);
 	return true;
 }
 

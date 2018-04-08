@@ -9,6 +9,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleStageClear.h"
+#include "ModuleAudio.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -97,6 +98,8 @@ bool ModuleBackground::Start()
 	stars_tx = App->textures->Load("assets/Stars.png");
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
+
+	App->audio->PlayMusic(0);
 	
 	App->player1->Enable();
 	App->player2->Enable();

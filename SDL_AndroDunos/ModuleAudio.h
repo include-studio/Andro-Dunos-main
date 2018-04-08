@@ -22,6 +22,7 @@ public:
 	update_status Update();
 	update_status PreUpdate();
 	bool CleanUp();
+	bool PlayMusic(int);
 
 	_Mix_Music* const LoadBgm(const char* path);
 	Mix_Chunk* const LoadFx(const char* path);
