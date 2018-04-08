@@ -41,9 +41,6 @@
     <ClInclude Include="ModuleBackground.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModulePlayer.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="p2Point.h">
       <Filter>Containers</Filter>
     </ClInclude>
@@ -51,6 +48,12 @@
       <Filter>Containers</Filter>
     </ClInclude>
     <ClInclude Include="ModuleAudio.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer2.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer1.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -79,10 +82,13 @@
     <ClCompile Include="ModuleBackground.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModulePlayer.cpp">
+    <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
+    <ClCompile Include="ModulePlayer2.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer1.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
