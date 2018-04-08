@@ -192,7 +192,10 @@ update_status ModulePlayer2::Update()
 	case 12:
 		position.x++;
 		break;
-
+	case 13:
+		position.x++;
+		position.y--;
+		break;
 	}
 
 	// Draw everything --------------------------------------
