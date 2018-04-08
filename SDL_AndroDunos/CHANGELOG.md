@@ -1,16 +1,10 @@
 # Changelog
 
 
-
 All notable changes to this project will be documented in this file.
 
 
-
-
-
-
 ## [Unreleased]
-
 
 
 
@@ -84,22 +78,46 @@ All notable changes to this project will be documented in this file.
 - Created ModulePlayer. cpp and .h .
 
 
-## [0.2.1] - 2018-04-06
+## [0.2.1] - 2018-04-08
 
 
 ### Summarized
 
-- Added sound 
+- Added sound.
 
-- Animations' bug fixed
+- Animations' bug fixed.
+
+- Second player is able.
+
+- Added Main Menu, Stage 2 and Stage clear scenes.
+
+- Fades between the stages.
 
 ### Extended
+
+
+#### Added
+
+
+- Created ModuleFadeToBlack .cpp and .h .
+
+- Created ModuleMainMenu .cpp and .h .
+
+- Created ModulePlayer2 .cpp and .h .
+
+- Created ModuleStageClear. cpp and .h .
 
 
 #### Fixed
 
 
-
 - Animation of the ship
 
 - ModuleAudio
+
+
+#### Changed
+
+- Changed ModulePlayer to ModulePlayer1.
+
+- Changed ModuleBackground to ModuleStage1.
