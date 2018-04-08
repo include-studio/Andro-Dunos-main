@@ -3,7 +3,7 @@
 #include "ModuleMainMenu.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModulePlayer.h"
+#include "ModulePlayer1.h"
 #include "ModuleBackground.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -51,17 +51,12 @@ bool ModuleMainMenu::Start()
 
 	//Enable (and properly disable) the player module
 
-	App->player->Disable();
-
 	return ret;
 }
 
 // Load assets
 bool ModuleMainMenu::CleanUp()
 {
-	App->player->Disable();
-
-	// TODO 5: Remove all memory leaks
 	LOG("Unloading honda stage");
 	App->textures->Unload(logo_andro_tx);
 	App->textures->Unload(logo_background_tx);

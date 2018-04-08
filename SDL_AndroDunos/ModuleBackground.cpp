@@ -6,7 +6,8 @@
 #include "ModuleMainMenu.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModulePlayer.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -92,7 +93,8 @@ bool ModuleBackground::Start()
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
 	
-	App->player->Enable();
+	App->player1->Enable();
+	App->player2->Enable();
 	//if (current_step == fade_step) App->player->CleanUp();
 
 	return ret;
@@ -308,9 +310,9 @@ update_status ModuleBackground::Update()
 bool ModuleBackground::CleanUp()
 {
 	LOG("Unloading players");
-	App->player->Disable();
+	App->player1->Disable();
 
-	LOG("Unloading ken scene");
+	LOG("Unloading stage1");
 	App->textures->Unload(stars_tx);
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);

@@ -207,5 +207,8 @@ update_status ModulePlayer2::Update()
 
 	return UPDATE_CONTINUE;
 }
+bool ModulePlayer2::CleanUp() {
+	App->textures->Unload(graphics);
 
-//cleanup?
+	return true;
+}
