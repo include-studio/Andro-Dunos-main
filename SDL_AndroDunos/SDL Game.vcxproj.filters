@@ -50,10 +50,17 @@
     <ClInclude Include="ModuleAudio.h">
       <Filter>Modules</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="ModuleFadeToBlack.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleMainMenu.h">
+=======
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModulePlayer1.h">
+>>>>>>> 223a58840be0f03dcff016ab936bf9d3df73c203
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,6 +96,12 @@
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="ModulePlayer1.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadeToBlack.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleMainMenu.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

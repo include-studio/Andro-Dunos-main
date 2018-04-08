@@ -3,6 +3,10 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
+#include "ModuleMainMenu.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
 
 ModuleBackground::ModuleBackground()
 {
@@ -80,11 +84,17 @@ ModuleBackground::~ModuleBackground()
 // Load assets
 bool ModuleBackground::Start()
 {
+	
 	LOG("Loading background assets");
 	bool ret = true;
+
 	stars_tx = App->textures->Load("assets/Stars.png");
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
+	
+	App->player->Enable();
+	//if (current_step == fade_step) App->player->CleanUp();
+
 	return ret;
 }
 
@@ -286,5 +296,23 @@ update_status ModuleBackground::Update()
 		break;
 	}
 	App->render->Blit(ground_tx, 0, -94, &ground);
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	{
+		App->FadeToBlack->FadeToBlack(App->background, App->mainmenu, 1);
+	}
+
 	return UPDATE_CONTINUE;
+}
+
+bool ModuleBackground::CleanUp()
+{
+	LOG("Unloading players");
+	App->player->Disable();
+
+	LOG("Unloading ken scene");
+	App->textures->Unload(stars_tx);
+	App->textures->Unload(back_tx);
+	App->textures->Unload(ground_tx);
+	return true;
 }

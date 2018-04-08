@@ -14,6 +14,8 @@ class ModulePlayer1;
 class ModulePlayer2;
 class ModuleAudio;
 class Module;
+class ModuleFadeToBlack;
+class ModuleMainMenu;
 
 class Application
 {
@@ -24,10 +26,12 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
+	ModuleMainMenu* mainmenu = nullptr;
 	ModuleBackground* background = nullptr;
 	ModulePlayer1* player1 = nullptr;
 	ModulePlayer2* player2 = nullptr;
 	ModuleAudio* audio = nullptr;
+	ModuleFadeToBlack* FadeToBlack = nullptr;
 
 public:
 

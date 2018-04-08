@@ -7,7 +7,8 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleAudio.h"
-
+#include "ModuleFadeToBlack.h"
+#include "ModuleMainMenu.h"
 
 
 
@@ -18,9 +19,17 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = background = new ModuleBackground();
+<<<<<<< HEAD
+	modules[5] = mainmenu = new ModuleMainMenu();
+	modules[6] = player = new ModulePlayer();
+	modules[7] = audio = new ModuleAudio();
+	modules[8] = FadeToBlack = new ModuleFadeToBlack();
+
+=======
 	modules[5] = player1 = new ModulePlayer1();
 	modules[6] = player2 = new ModulePlayer2();
 	modules[7] = audio = new ModuleAudio();
+>>>>>>> 223a58840be0f03dcff016ab936bf9d3df73c203
 }	
 
 Application::~Application()
@@ -32,6 +41,11 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
+
+	// Player will be enabled on the first update of a new scene
+	player->Disable();
+	// Disable the map that you do not start with
+	background->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
@@ -47,13 +61,13 @@ update_status Application::Update()
 	update_status ret = UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PreUpdate();
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->Update();
+		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PostUpdate();
+		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
 	return ret;
 }
