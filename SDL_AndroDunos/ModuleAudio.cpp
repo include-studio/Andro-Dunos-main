@@ -59,8 +59,8 @@ update_status ModuleAudio::PostUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-bool ModuleAudio::PlayMusic(int i) {
-	Mix_PlayMusic(bgms[i], 1);
+bool ModuleAudio::PlayMusic(int i, int j) {
+	Mix_PlayMusic(bgms[i], j);
 	return true;
 }
 // Called before quitting

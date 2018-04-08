@@ -20,7 +20,7 @@ bool ModuleStageClear::Start() {
 	LOG("Loading StageClear textures");
 	stage_clear_tx = App->textures->Load("assets/StageClear.png");
 	//audio
-	App->audio->PlayMusic(1);
+	App->audio->PlayMusic(1, 1);
 	return true;
 }
 
