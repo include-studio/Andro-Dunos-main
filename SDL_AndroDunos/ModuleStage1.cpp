@@ -162,7 +162,7 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 800, 17, &planet1, 0.32f);
 
 		}
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 2; i++) {
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		
@@ -171,7 +171,7 @@ update_status ModuleStage1::Update()
 			part_stage++;
 		break;
 	}
-	case 1: { //Start 
+	case 1: { //Downfall 
 		for (int i = 0; i < 12; i++) {
 			if (App->render->camera.y >= -130 * SCREEN_SIZE) {
 				App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
@@ -187,6 +187,11 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 0.4f);
 			
 		}
+
+		for (int i = 1; i < 2; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
+
 		App->render->camera.y -= 3;
 		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
 			part_stage++;
@@ -198,6 +203,10 @@ update_status ModuleStage1::Update()
 		App->render->Blit(back_tx, 1500, 61, &rocks_entry, 0.40f);
 		App->render->camera.x -= 3;
 
+		for (int i = 1; i < 3; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
+
 		if (App->render->camera.x <= -4000 * SCREEN_SIZE)
 			part_stage++;
 		break;
@@ -207,6 +216,11 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
+
+		for (int i = 1; i < 3; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
+
 		App->render->camera.x -= 3;
 		App->render->camera.y += 3;
 		if (App->render->camera.y >= -294)
@@ -218,6 +232,10 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
+		for (int i = 2; i < 3; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
+
 		App->render->camera.x -= 3;
 		if (App->render->camera.x <= -4538 * SCREEN_SIZE)
 			part_stage++;
@@ -227,6 +245,9 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 12; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		for (int i = 2; i < 3; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		App->render->camera.x -= 3;
 		App->render->camera.y -= 3;
@@ -239,6 +260,9 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
+		for (int i = 2; i < 3; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
 		App->render->camera.x -= 3;
 		if (App->render->camera.x <= -5040 * SCREEN_SIZE)
 			part_stage++;
@@ -247,6 +271,9 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 30; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		for (int i = 2; i < 3; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		App->render->camera.x -= 3;
 		App->render->camera.y += 3;
@@ -259,6 +286,9 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
+		for (int i = 2; i < 4; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
 		if (App->render->camera.x <= -6020 * SCREEN_SIZE)
 			part_stage++;
 		break;
@@ -266,6 +296,9 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+		}
+		for (int i = 2; i < 4; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		App->render->camera.x -= 3;
@@ -278,6 +311,9 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			
 			
+		}
+		for (int i = 3; i < 4; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		App->render->camera.x -= 3;
@@ -301,7 +337,7 @@ update_status ModuleStage1::Update()
 		}
 
 		//App->render->Blit(ground_tx, 0, -94, &ground);
-		for (int i = 0; i < 5; i++) {
+		for (int i = 3; i < 4; i++) {
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 
@@ -322,6 +358,9 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 		}
+		for (int i = 3; i < 4; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
 		App->render->Blit(back_tx, 2670, 17, &planet2, 0.32f);
 		App->render->camera.x -= 3;
 		if (App->render->camera.x <= -26241)
@@ -338,6 +377,9 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 13, 63, &star6, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
+		}
+		for (int i = 4; i < 5; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		App->render->camera.x -= 3;
 		App->render->camera.y += 3;
