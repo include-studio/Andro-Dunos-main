@@ -12,6 +12,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
 #include "ModuleStageClear.h"
+#include "ModuleGameOver.h"
 
 
 
@@ -30,6 +31,7 @@ Application::Application()
 	modules[10] = mainmenu = new ModuleMainMenu();
 	modules[11] = fade = new ModuleFadeToBlack();
 	modules[12] = stageclear = new ModuleStageClear();
+	modules[13] = gameover = new ModuleGameOver();
 
 }	
 

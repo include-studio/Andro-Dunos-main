@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 13
+#define NUM_MODULES 14
 
 class ModuleWindow;
 class ModuleInput;
@@ -19,6 +19,7 @@ class ModuleNeoGeo;
 class ModuleMainMenu;
 class ModuleStageClear;
 class ModuleStage2;
+class ModuleGameOver;
 
 class Application
 {
@@ -38,6 +39,7 @@ public:
 	ModuleNeoGeo* neogeo = nullptr;
 	ModuleStageClear* stageclear = nullptr;
 	ModuleStage2* stage2 = nullptr;
+	ModuleGameOver* gameover = nullptr;
 
 public:
 
