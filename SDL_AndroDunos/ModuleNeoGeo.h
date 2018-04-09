@@ -20,6 +20,8 @@ public:
 public:
 
 	SDL_Texture * neogeo;
+	SDL_Rect neoDrake; //Trash
+
 	
 	Animation NeoGeo;
 	Animation* animationNeoGeo = nullptr;

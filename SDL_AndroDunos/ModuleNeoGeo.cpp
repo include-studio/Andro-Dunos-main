@@ -14,7 +14,10 @@ ModuleNeoGeo::ModuleNeoGeo()
 	animationNeoGeo = nullptr;
 	
 	//NeoGeo.PushBack({ 0,?,227,40 });
-	
+	neoDrake.x = 0;
+	neoDrake.y = 0;
+	neoDrake.h = 92;
+	neoDrake.w = 92;
 
 
 	NeoGeo.speed = 0.5f;
@@ -56,7 +59,7 @@ update_status ModuleNeoGeo::Update()
 
 	animation = animationNeoGeo->GetCurrentFrame();
 
-	App->render->Blit(neogeo, 0, 0, &animation);
+	App->render->Blit(neogeo, 110, 70, &neoDrake); //Trash
 
 	// make so pressing SPACE the background is loaded
 
