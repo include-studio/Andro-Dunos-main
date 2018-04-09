@@ -12,10 +12,10 @@
 ModuleGameOver::ModuleGameOver()
 {
 	//Game Over
-	gameover.x = 0;
-	gameover.y = 0;
-	gameover.h = 48;
-	gameover.w = 256;
+	game_over.x = 0;
+	game_over.y = 0;
+	game_over.h = 48;
+	game_over.w = 256;
 
 }
 
@@ -48,7 +48,7 @@ bool ModuleGameOver::CleanUp()
 update_status ModuleGameOver::Update()
 {
 	// Draw everything --------------------------------------	
-	App->render->Blit(gameover_tx, 0, 0, &gameover); //Trash
+	App->render->Blit(gameover_tx, 40, 70, &game_over); 
 
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
