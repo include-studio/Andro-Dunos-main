@@ -8,6 +8,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleAudio.h"
+#include "ModuleNeoGeo.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
 #include "ModuleStageClear.h"
@@ -25,9 +26,10 @@ Application::Application()
 	modules[6] = player1 = new ModulePlayer1();
 	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = audio = new ModuleAudio();
-	modules[9] = mainmenu = new ModuleMainMenu();
-	modules[10] = fade = new ModuleFadeToBlack();
-	modules[11] = stageclear = new ModuleStageClear();
+	modules[9] = neogeo = new ModuleNeoGeo();
+	modules[10] = mainmenu = new ModuleMainMenu();
+	modules[11] = fade = new ModuleFadeToBlack();
+	modules[12] = stageclear = new ModuleStageClear();
 
 }	
 
@@ -45,6 +47,7 @@ bool Application::Init()
 	player1->Disable();
 	player2->Disable();
 	// Disable the map that you do not start with
+	mainmenu->Disable();
 	stage1->Disable();
 	stageclear->Disable();
 	stage2->Disable();
