@@ -17,9 +17,9 @@ ModuleStage2::ModuleStage2() {
 	ground.w = 2000;
 	ground.h = 230;
 	
-	background.x = 92;
-	background.y = 271;
-	background.w = 302;
+	background.x = 47;
+	background.y = 27;
+	background.w = 410;
 	background.h = 224;
 }
 
