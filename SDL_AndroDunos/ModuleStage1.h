@@ -22,11 +22,21 @@ public:
 	SDL_Texture * stars_tx =nullptr;
 	SDL_Texture* back_tx = nullptr;
 	SDL_Texture* ground_tx = nullptr;
-	SDL_Rect ground;
+
+	//SDL_Rect ground;
+
+	SDL_Rect ground1;
+	SDL_Rect ground2;
+	SDL_Rect ground3;
+	SDL_Rect ground4;
+	SDL_Rect ground5;
+
 	SDL_Rect background;
+
 	SDL_Rect rocks;
 	SDL_Rect rocks_entry;
 	SDL_Rect rocks_escape;
+
 	SDL_Rect star1;
 	SDL_Rect star2;
 	SDL_Rect star3;
@@ -34,6 +44,7 @@ public:
 	SDL_Rect star5;
 	SDL_Rect star6;
 	SDL_Rect star7;
+
 	SDL_Rect planet1;
 	SDL_Rect planet2;
 

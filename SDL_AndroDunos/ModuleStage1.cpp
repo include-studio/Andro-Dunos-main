@@ -14,12 +14,41 @@
 
 ModuleStage1::ModuleStage1()
 {
-	// ground
-	ground.x = 0;
-	ground.y = 0;
-	ground.w = 9305;
-	ground.h = 543;
+	/*// ground
+	ground1.x = 0;
+	ground1.y = 0;
+	ground1.w = 9305;
+	ground1.h = 543;*/
 	
+	// ground1
+	ground1.x = 0;
+	ground1.y = 0;
+	ground1.w = 2048;
+	ground1.h = 543;
+
+	//ground2
+	ground2.x = 2048;
+	ground2.y = 0;
+	ground2.w = 2048;
+	ground2.h = 543;
+
+	//ground3
+	ground3.x = 4096;
+	ground3.y = 0;
+	ground3.w = 2048;
+	ground3.h = 543;
+
+	//ground 4
+	ground4.x = 6144;
+	ground4.y = 0;
+	ground4.w = 2048;
+	ground4.h = 543;
+
+	//ground 5
+	ground5.x = 8192;
+	ground5.y = 0;
+	ground5.w = 1113;
+	ground5.h = 543;
 
 	// Background / sky
 	background.x = 0;
@@ -70,6 +99,7 @@ ModuleStage1::ModuleStage1()
 	star7.y = 29;
 	star7.w = 17;
 	star7.h = 6;
+
 	//planets
 	planet1.x = 0;
 	planet1.y = 0;
@@ -126,7 +156,13 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 
-			App->render->Blit(ground_tx, 0, -94, &ground);
+			//App->render->Blit(ground_tx, 0, -94, &ground);
+			App->render->Blit(ground_tx, 0, -94, &ground1);
+			App->render->Blit(ground_tx, 2048, -94, &ground2);
+			App->render->Blit(ground_tx, 4096, -94, &ground3);
+			App->render->Blit(ground_tx, 6144, -94, &ground4);
+			App->render->Blit(ground_tx, 8192, -94, &ground5);
+
 			App->render->Blit(back_tx, 800, 17, &planet1, 0.32f);
 
 		}
@@ -264,7 +300,13 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 0.42f);
 		}
 
-		App->render->Blit(ground_tx, 0, -94, &ground);
+		//App->render->Blit(ground_tx, 0, -94, &ground);
+		App->render->Blit(ground_tx, 0, -94, &ground1);
+		App->render->Blit(ground_tx, 2048, -94, &ground2);
+		App->render->Blit(ground_tx, 4096, -94, &ground3);
+		App->render->Blit(ground_tx, 6144, -94, &ground4);
+		App->render->Blit(ground_tx, 8192, -94, &ground5);
+
 		App->render->camera.y += 3;
 		if (App->render->camera.y >= 0)
 			part_stage++;
@@ -410,7 +452,12 @@ update_status ModuleStage1::Update()
 			break;
 		}
 	}
-	App->render->Blit(ground_tx, 0, -94, &ground);
+	//App->render->Blit(ground_tx, 0, -94, &ground);
+	App->render->Blit(ground_tx, 0, -94, &ground1);
+	App->render->Blit(ground_tx, 2048, -94, &ground2);
+	App->render->Blit(ground_tx, 4096, -94, &ground3);
+	App->render->Blit(ground_tx, 6144, -94, &ground4);
+	App->render->Blit(ground_tx, 8192, -94, &ground5);
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
