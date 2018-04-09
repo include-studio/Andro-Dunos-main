@@ -495,9 +495,9 @@ update_status ModuleStage1::Update()
 	//App->render->Blit(ground_tx, 0, -94, &ground);
 
 
-	for (int i = 0; i < 5; i++) {
+	/*for (int i = 0; i < 5; i++) {
 		App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
-	}
+	}*/
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
