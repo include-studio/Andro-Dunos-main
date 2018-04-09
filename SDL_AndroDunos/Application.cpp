@@ -13,6 +13,7 @@
 #include "ModuleMainMenu.h"
 #include "ModuleStageClear.h"
 #include "ModuleViscoGames.h"
+#include "ModuleGameOver.h"
 
 
 
@@ -32,6 +33,7 @@ Application::Application()
 	modules[11] = mainmenu = new ModuleMainMenu();
 	modules[12] = fade = new ModuleFadeToBlack();
 	modules[13] = stageclear = new ModuleStageClear();
+	modules[14] = gameover = new ModuleGameOver();
 
 }	
 
@@ -54,6 +56,7 @@ bool Application::Init()
 	stage1->Disable();
 	stageclear->Disable();
 	stage2->Disable();
+	gameover->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

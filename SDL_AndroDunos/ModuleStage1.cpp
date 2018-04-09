@@ -11,6 +11,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleStageClear.h"
 #include "ModuleAudio.h"
+#include "ModuleGameOver.h"
 
 ModuleStage1::ModuleStage1()
 {
@@ -516,7 +517,11 @@ update_status ModuleStage1::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(this, App->stage2, 1);
+		App->fade->FadeToBlack(this, App->stageclear, 1);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_X] == 1)
+	{
+		App->fade->FadeToBlack(this, App->gameover, 1);
 	}
 
 	return UPDATE_CONTINUE;

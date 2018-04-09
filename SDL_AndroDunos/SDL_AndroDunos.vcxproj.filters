@@ -72,7 +72,11 @@
     <ClInclude Include="ModuleNeoGeo.h">
       <Filter>Modules</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ModuleViscoGames.h">
+=======
+    <ClInclude Include="ModuleGameOver.h">
+>>>>>>> 2e302f542bda91f46741564546d847aba7a46d76
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -125,7 +129,11 @@
     <ClCompile Include="ModuleNeoGeo.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ModuleViscoGames.cpp">
+=======
+    <ClCompile Include="ModuleGameOver.cpp">
+>>>>>>> 2e302f542bda91f46741564546d847aba7a46d76
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>

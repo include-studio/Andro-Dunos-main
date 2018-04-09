@@ -37,7 +37,6 @@ ModuleNeoGeo::ModuleNeoGeo()
 	SNK.PushBack({ 94,114,72,19 });
 	SNK.PushBack({ 169,114,72,19 });
 
-
 	SNK.PushBack({ 17,140,72,19 });
 	SNK.PushBack({ 94,140,72,19 });
 	SNK.PushBack({ 170,140,72,19 });
@@ -49,7 +48,6 @@ ModuleNeoGeo::ModuleNeoGeo()
 	SNK.loop = false;
 
 	SNK.speed = 0.2f;
-
 }
 
 ModuleNeoGeo::~ModuleNeoGeo()

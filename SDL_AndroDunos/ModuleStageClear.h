@@ -19,7 +19,7 @@ public:
 public:
 
 	SDL_Texture * stage_clear_tx = nullptr;
-
+	int part_stageClear = 0;
 	SDL_Rect stage_clear;
 };
 #endif // !__MODULESTAGECLEAR__H__
