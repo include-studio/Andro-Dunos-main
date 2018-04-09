@@ -72,6 +72,9 @@
     <ClInclude Include="ModuleNeoGeo.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleViscoGames.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -120,6 +123,9 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleNeoGeo.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleViscoGames.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
