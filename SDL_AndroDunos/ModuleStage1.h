@@ -25,11 +25,7 @@ public:
 
 	//SDL_Rect ground;
 
-	SDL_Rect ground1;
-	SDL_Rect ground2;
-	SDL_Rect ground3;
-	SDL_Rect ground4;
-	SDL_Rect ground5;
+	SDL_Rect ground[5];
 
 	SDL_Rect background;
 

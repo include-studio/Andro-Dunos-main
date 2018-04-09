@@ -21,34 +21,34 @@ ModuleStage1::ModuleStage1()
 	ground1.h = 543;*/
 	
 	// ground1
-	ground1.x = 0;
-	ground1.y = 0;
-	ground1.w = 2048;
-	ground1.h = 543;
+	ground[0].x = 0;
+	ground[0].y = 0;
+	ground[0].w = 2048;
+	ground[0].h = 543;
 
 	//ground2
-	ground2.x = 2048;
-	ground2.y = 0;
-	ground2.w = 2048;
-	ground2.h = 543;
+	ground[1].x = 2048;
+	ground[1].y = 0;
+	ground[1].w = 2048;
+	ground[1].h = 543;
 
 	//ground3
-	ground3.x = 4096;
-	ground3.y = 0;
-	ground3.w = 2048;
-	ground3.h = 543;
+	ground[2].x = 4096;
+	ground[2].y = 0;
+	ground[2].w = 2048;
+	ground[2].h = 543;
 
 	//ground 4
-	ground4.x = 6144;
-	ground4.y = 0;
-	ground4.w = 2048;
-	ground4.h = 543;
+	ground[3].x = 6144;
+	ground[3].y = 0;
+	ground[3].w = 2048;
+	ground[3].h = 543;
 
 	//ground 5
-	ground5.x = 8192;
-	ground5.y = 0;
-	ground5.w = 1113;
-	ground5.h = 543;
+	ground[4].x = 8192;
+	ground[4].y = 0;
+	ground[4].w = 1113;
+	ground[4].h = 543;
 
 	// Background / sky
 	background.x = 0;
@@ -144,7 +144,7 @@ update_status ModuleStage1::Update()
 {
 	switch (part_stage) {
 	case 0: { //case 0: Start & PreDownfall
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 12; i++) {
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
 
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
@@ -157,22 +157,22 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 
 			//App->render->Blit(ground_tx, 0, -94, &ground);
-			App->render->Blit(ground_tx, 0, -94, &ground1);
-			App->render->Blit(ground_tx, 2048, -94, &ground2);
-			App->render->Blit(ground_tx, 4096, -94, &ground3);
-			App->render->Blit(ground_tx, 6144, -94, &ground4);
-			App->render->Blit(ground_tx, 8192, -94, &ground5);
+			
 
 			App->render->Blit(back_tx, 800, 17, &planet1, 0.32f);
 
 		}
+		for (int i = 0; i < 5; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
+		
 		App->render->camera.x -= 3;
 		if (App->render->camera.x <= -2929 * SCREEN_SIZE)
 			part_stage++;
 		break;
 	}
 	case 1: { //Start 
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 12; i++) {
 			if (App->render->camera.y >= -130 * SCREEN_SIZE) {
 				App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
 			}
@@ -214,7 +214,7 @@ update_status ModuleStage1::Update()
 		break;
 	}
 	case 4: {//Post Diagonal rise Up & Diagonal rise Down  
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 12; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
@@ -224,7 +224,7 @@ update_status ModuleStage1::Update()
 		break;
 	}
 	case 5: { //Diagonal rise Down
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 12; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
@@ -235,7 +235,7 @@ update_status ModuleStage1::Update()
 		break;
 	}
 	case 6://Post Diagonal rise Down & Pre Diagonal rise Up
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
@@ -244,7 +244,7 @@ update_status ModuleStage1::Update()
 			part_stage++;
 		break;
 	case 7://Diagonal rise Up
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 30; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
@@ -255,7 +255,7 @@ update_status ModuleStage1::Update()
 		break;
 	case 8://Post Diagonal rise Up & Pre Diagonal rise Down
 		App->render->camera.x -= 3;
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
@@ -287,7 +287,7 @@ update_status ModuleStage1::Update()
 			part_stage++;
 		break;
 	case 11: //Rise Up
-		for (int i = 0; i < 200; i++) {
+		for (int i = 0; i < 20; i++) {
 			
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 0.42f);
@@ -301,11 +301,9 @@ update_status ModuleStage1::Update()
 		}
 
 		//App->render->Blit(ground_tx, 0, -94, &ground);
-		App->render->Blit(ground_tx, 0, -94, &ground1);
-		App->render->Blit(ground_tx, 2048, -94, &ground2);
-		App->render->Blit(ground_tx, 4096, -94, &ground3);
-		App->render->Blit(ground_tx, 6144, -94, &ground4);
-		App->render->Blit(ground_tx, 8192, -94, &ground5);
+		for (int i = 0; i < 5; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
 
 		App->render->camera.y += 3;
 		if (App->render->camera.y >= 0)
@@ -330,7 +328,7 @@ update_status ModuleStage1::Update()
 			part_stage++;
 		break;
 	case 13:
-		for (int i = 0; i < 70; i++) {
+		for (int i = 0; i < 200; i++) {
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
@@ -453,11 +451,11 @@ update_status ModuleStage1::Update()
 		}
 	}
 	//App->render->Blit(ground_tx, 0, -94, &ground);
-	App->render->Blit(ground_tx, 0, -94, &ground1);
-	App->render->Blit(ground_tx, 2048, -94, &ground2);
-	App->render->Blit(ground_tx, 4096, -94, &ground3);
-	App->render->Blit(ground_tx, 6144, -94, &ground4);
-	App->render->Blit(ground_tx, 8192, -94, &ground5);
+
+
+	for (int i = 0; i < 5; i++) {
+		App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
