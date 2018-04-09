@@ -145,7 +145,7 @@ update_status ModuleStage1::Update()
 	switch (part_stage) {
 	case 0: { //case 0: Start & PreDownfall
 		for (int i = 0; i < 12; i++) {
-			App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
+			App->render->Blit(back_tx, background.w*i, 123, &background, 0.382f);
 
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
@@ -296,11 +296,13 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
+			App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		}
 		for (int i = 2; i < 4; i++) {
+			
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
-		App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
+		
 		App->render->camera.x -= 3;
 		App->render->camera.y -= 3;
 		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
@@ -309,13 +311,14 @@ update_status ModuleStage1::Update()
 	case 10://Post Diagonal Down & Pre Rise Up
 		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
-			
+			App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 			
 		}
 		for (int i = 3; i < 4; i++) {
+			
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
-		App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
+		
 		App->render->camera.x -= 3;
 	
 	
@@ -345,7 +348,7 @@ update_status ModuleStage1::Update()
 		if (App->render->camera.y >= 0)
 			part_stage++;
 		break;
-	case 12:
+	case 12:// Post Rise Up & Pre Diagonal to Boss 
 		for (int i = 0; i < 200; i++) {
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
 
@@ -358,7 +361,7 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 		}
-		for (int i = 3; i < 4; i++) {
+		for (int i = 3; i < 5; i++) {
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		}
 		App->render->Blit(back_tx, 2670, 17, &planet2, 0.32f);
@@ -366,9 +369,30 @@ update_status ModuleStage1::Update()
 		if (App->render->camera.x <= -26241)
 			part_stage++;
 		break;
-	case 13:
+	case 13://Diagonal to Boss
 		for (int i = 0; i < 200; i++) {
-			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
+			App->render->Blit(back_tx, background.w*i, 123, &background);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 60, 97, &star4, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 63, &star5, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 13, 63, &star6, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.42f);
+			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 0.42f);
+		}
+		for (int i = 4; i < 5; i++) {
+			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+		}
+		App->render->camera.x -= 3;
+		App->render->camera.y += 3;
+		if (App->render->camera.y >= 228)
+			part_stage++;
+		break;
+	case 14: // Boss
+		
+		for (int i = 0; i < 200; i++) {
+			App->render->Blit(back_tx, background.w*i, 123, &background);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 15, 31, &star1, 2.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) - 15, 46, &star2, 1.0f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 100, 97, &star3, 0.5f);
@@ -378,19 +402,10 @@ update_status ModuleStage1::Update()
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 41, &star7, 0.5f);
 			App->render->Blit(stars_tx, (SCREEN_WIDTH*i) + 50, 87, &star6, 1.0f);
 		}
-		for (int i = 4; i < 5; i++) {
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
-		}
 		App->render->camera.x -= 3;
-		App->render->camera.y += 3;
-		if (App->render->camera.y >= 828)
-			part_stage++;
-		break;
-	case 14:
-		//only stars and boss, no mov of camera
 		break;
 	}
-	switch (App->stage1->part_stage)
+	switch (part_stage)
 	{
 	case 0:
 		App->player1->position.x++;
