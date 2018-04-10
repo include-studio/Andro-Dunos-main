@@ -1,6 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
-#include "ModuleMainMenu.h"
+#include "ModuleViscoGames.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
@@ -53,7 +53,7 @@ update_status ModuleGameOver::Update()
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+		App->fade->FadeToBlack(this, App->visco, 0.5);
 	}
 
 	return UPDATE_CONTINUE;

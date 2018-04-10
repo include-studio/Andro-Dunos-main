@@ -12,6 +12,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
 #include "ModuleStageClear.h"
+#include "ModuleViscoGames.h"
 #include "ModuleGameOver.h"
 
 
@@ -28,10 +29,11 @@ Application::Application()
 	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = audio = new ModuleAudio();
 	modules[9] = neogeo = new ModuleNeoGeo();
-	modules[10] = mainmenu = new ModuleMainMenu();
-	modules[11] = fade = new ModuleFadeToBlack();
-	modules[12] = stageclear = new ModuleStageClear();
-	modules[13] = gameover = new ModuleGameOver();
+	modules[10] = visco = new ModuleViscoGames();
+	modules[11] = mainmenu = new ModuleMainMenu();
+	modules[12] = fade = new ModuleFadeToBlack();
+	modules[13] = stageclear = new ModuleStageClear();
+	modules[14] = gameover = new ModuleGameOver();
 
 }	
 
@@ -49,6 +51,7 @@ bool Application::Init()
 	player1->Disable();
 	player2->Disable();
 	// Disable the map that you do not start with
+	visco->Disable();
 	mainmenu->Disable();
 	stage1->Disable();
 	stageclear->Disable();
@@ -56,7 +59,11 @@ bool Application::Init()
 	gameover->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+	{
+		
 		ret = modules[i]->Init();
+	}
+
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;

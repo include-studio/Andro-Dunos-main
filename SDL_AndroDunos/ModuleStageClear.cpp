@@ -4,7 +4,7 @@
 #include "ModuleStageClear.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleMainMenu.h"
+#include "ModuleViscoGames.h"
 #include "ModuleAudio.h"
 #include "ModuleStage2.h"
 
@@ -36,7 +36,7 @@ update_status ModuleStageClear::Update() {
 				part_stageClear++;
 			break;
 		case 1:
-			if (App->fade->FadeToBlack(this, App->mainmenu, 1))
+			if (App->fade->FadeToBlack(this, App->visco, 1))
 				part_stageClear = 0;
 			break;
 		}
