@@ -2,15 +2,15 @@
 #include "Application.h"
 #include "ModuleAudio.h"
 
-#include "SDL_mixer/include/SDL_mixer.h"
+#include "SDL_mixer\include\SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
 ModuleAudio::ModuleAudio() : Module() 
 {
 	for (int i = 0; i < MAX_BGMS; ++i)
-		bgms[i] = nullptr;
+		bgms[i] = {nullptr};
 	for (int i = 0; i < MAX_FXS; ++i)
-		fxs[i] = nullptr;
+		fxs[i] = { nullptr};
 }
 
 ModuleAudio::~ModuleAudio() {
@@ -29,7 +29,7 @@ bool ModuleAudio::Init()
 	if (init != flags)
 	{
 		LOG("Could not initialize mixer lib. Mix_Init: %s", Mix_GetError());
-		ret = true;
+		ret = false;
 	}
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
@@ -39,7 +39,7 @@ bool ModuleAudio::Init()
 	LoadBgm("assets/Stage_1__The_Moon_Loop.ogg");
 	LoadBgm("assets/06_Stage_Clear.ogg");
 	LoadBgm("assets/07_Stage_2 -Mechanized-Unit-Loop.ogg");
-	LoadFx("assets/01_Neo_Geo_Logo.ogg");
+	//LoadFx("assets/01_Neo_Geo_Logo.ogg");
 	Mix_PlayChannel(-1, fx, 0);
 	return ret;
 }

@@ -59,7 +59,11 @@ bool Application::Init()
 	gameover->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+	{
+		
 		ret = modules[i]->Init();
+	}
+
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
