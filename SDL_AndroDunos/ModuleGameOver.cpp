@@ -9,6 +9,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleAudio.h"
 #include "Animation.h"
+#define GMSIZE 256
 
 
 
@@ -18,15 +19,133 @@ ModuleGameOver::ModuleGameOver()
 	Animation_game_over = nullptr;
 
 
+	game_over.PushBack({ 0,GMSIZE * 0,GMSIZE,GMSIZE }); //x * NUM ROW , y * NUM COLUMN, w, h
+	game_over.PushBack({ 0,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ 0,GMSIZE * 10,GMSIZE,GMSIZE }); //11
 
+	game_over.PushBack({ GMSIZE,GMSIZE * 0,GMSIZE,GMSIZE }); 
+	game_over.PushBack({ GMSIZE,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE,GMSIZE * 10,GMSIZE,GMSIZE }); //22
 
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 2,GMSIZE * 10,GMSIZE,GMSIZE }); //33
 
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 3,GMSIZE * 10,GMSIZE,GMSIZE }); //44
 
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 4,GMSIZE * 10,GMSIZE,GMSIZE }); //55
 
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 5,GMSIZE * 10,GMSIZE,GMSIZE }); //66
 
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 6,GMSIZE * 10,GMSIZE,GMSIZE }); //77
 
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 7,GMSIZE * 10,GMSIZE,GMSIZE }); //88
 
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 8,GMSIZE * 10,GMSIZE,GMSIZE }); //99
 
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 4,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 5,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 6,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 7,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 8,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 9,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 9,GMSIZE * 10,GMSIZE,GMSIZE }); //110
+
+	game_over.PushBack({ GMSIZE * 10,GMSIZE * 0,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 10,GMSIZE * 1,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 10,GMSIZE * 2,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 10,GMSIZE * 3,GMSIZE,GMSIZE });
+	game_over.PushBack({ GMSIZE * 10,GMSIZE * 4,GMSIZE,GMSIZE }); //115
+	
+	
 	//TRY 1
 	//game_over.PushBack({ 0,0,256,7 }); //x, y, w, h
 	//game_over.PushBack({ 0,9,256,11 });
@@ -111,7 +230,7 @@ update_status ModuleGameOver::Update()
 
 	Animation_Rect_game_over = Animation_game_over->GetCurrentFrame();
 
-	App->render->Blit(gameover_tx, 24, 76, &Animation_Rect_game_over); 
+	App->render->Blit(gameover_tx, 24, -16, &Animation_Rect_game_over); 
 
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
