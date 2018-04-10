@@ -22,26 +22,26 @@ ModuleStage1::ModuleStage1()
 	ground[0].h = 543;
 
 	//ground2
-	ground[1].x = 2048;
-	ground[1].y = 0;
+	ground[1].x = 0;
+	ground[1].y = 543;
 	ground[1].w = 2048;
 	ground[1].h = 543;
 
 	//ground3
-	ground[2].x = 4096;
-	ground[2].y = 0;
+	ground[2].x = 0;
+	ground[2].y = 1086;
 	ground[2].w = 2048;
 	ground[2].h = 543;
 
 	//ground 4
-	ground[3].x = 6144;
-	ground[3].y = 0;
+	ground[3].x = 0;
+	ground[3].y = 1629;
 	ground[3].w = 2048;
 	ground[3].h = 543;
 
 	//ground 5
-	ground[4].x = 8192;
-	ground[4].y = 0;
+	ground[4].x = 0;
+	ground[4].y = 2172;
 	ground[4].w = 1113;
 	ground[4].h = 543;
 

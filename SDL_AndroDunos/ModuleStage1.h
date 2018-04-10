@@ -23,8 +23,6 @@ public:
 	SDL_Texture* back_tx = nullptr;
 	SDL_Texture* ground_tx = nullptr;
 
-	//SDL_Rect ground;
-
 	SDL_Rect ground[5];
 
 	SDL_Rect background;

@@ -40,28 +40,6 @@ public:
 		return loops > 0;
 	}
 
-
-
-	/*SDL_Rect& GetCurrentFrame()
-	{
-		current_frame += speed;
-		if(current_frame >= last_frame)
-			current_frame = 0;
-
-		return frames[(int)current_frame];
-	}
-	SDL_Rect& final_sprite() {
-
-		if (current_frame + speed >= last_frame){
-			++last_frame;
-				
-			return frames[(int)current_frame];
-		}
-
-		else return GetCurrentFrame();
-	}*/
-
-
 	void reset() {
 		current_frame = 0;
 	}
