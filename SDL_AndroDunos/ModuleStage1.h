@@ -33,13 +33,12 @@ public:
 	SDL_Rect rocks_entry;
 	SDL_Rect rocks_escape;
 
-	SDL_Rect star1;
-	SDL_Rect star2;
-	SDL_Rect star3;
-	SDL_Rect star4;
-	SDL_Rect star5;
-	SDL_Rect star6;
-	SDL_Rect star7;
+	SDL_Rect star[7];
+	struct starposition {
+		int starposy[6]{ SCREEN_HEIGHT * 14 / 100 ,SCREEN_HEIGHT * 18 / 100,SCREEN_HEIGHT * 20 / 100 ,SCREEN_HEIGHT * 21 / 100 ,SCREEN_HEIGHT * 28 / 100,SCREEN_HEIGHT * 42 / 100 };
+		int starposx[9]{ 269,261,81,45,54,274,43,SCREEN_WIDTH,58 };
+	};
+	starposition starpos;
 
 	SDL_Rect planet1;
 	SDL_Rect planet2;

@@ -50,9 +50,10 @@ bool Application::Init()
 	player2->Disable();
 	// Disable the map that you do not start with
 	mainmenu->Disable();
-	stage1->Disable();
+	gameover->Disable();
 	stageclear->Disable();
 	stage2->Disable();
+	neogeo->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
