@@ -52,12 +52,12 @@ update_status ModuleStageClear::Update() {
 	//positionstage.x = positionstage.x - 4;
 
 	//middle state
-	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH + 8, positionstage.y + 100, &stage_clear); //
+	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 100, &stage_clear); //
 
 	//positionstage.y = positionstage.y - 4;
 
 	//final state
-	App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH + 8, positionstage.y + 36, &stage_clear); //100 comes from a cross multiplication between emulator
+	App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 36, &stage_clear); //100 comes from a cross multiplication between emulator
 	
 	//animation after final state
 	/*animationStageClear = &StageClear;
@@ -90,8 +90,6 @@ bool ModuleStageClear::CleanUp() {
 	LOG("Unloading MainMenu stage");
 
 	App->textures->Unload(stage_clear_tx);
-
-	part_stageClear = 0;
 
 	return true;
 }
