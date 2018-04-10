@@ -10,6 +10,8 @@
 #include "Animation.h"
 
 #define SNKWIDTH 72
+//#define NeoGeoWIDTH ?
+
 
 
 ModuleNeoGeo::ModuleNeoGeo()
@@ -18,7 +20,55 @@ ModuleNeoGeo::ModuleNeoGeo()
 	animationSNK = nullptr;
 
 	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
+	//NeoGeo.PushBack({ 0,?,227,40 });
 	
+	//NeoGeo.loop = false;
+
 	//NeoGeo.speed = 0.5f;
 
 	SNK.PushBack({ 17,35,72,19 });
@@ -94,7 +144,7 @@ update_status ModuleNeoGeo::Update()
 
 	animation_SNK = animationSNK->GetCurrentFrame();
 
-	//App->render->Blit(neogeo, 0, 0, &animationNeo);
+	//App->render->Blit(neogeo, SCREEN_WIDTH/2 - NeoGeo.frames[0].w /2, 52, &animationNeo); //52 comes from a Cross-multiplication between the emulator and the resolution
 	App->render->Blit(snk, SCREEN_WIDTH/2 - SNK.frames[0].w /2, 161, &animation_SNK); //161 comes from a Cross-multiplication between the emulator and the resolution
 
 	// make so pressing SPACE the background is loaded

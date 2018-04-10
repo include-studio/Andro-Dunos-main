@@ -8,25 +8,65 @@
 #include "ModuleAudio.h"
 #include "ModuleStage2.h"
 
+//#define StageClearWIDTH 304
+
 ModuleStageClear::ModuleStageClear() {
+	
+	//rect new coord in new texture
+
 	stage_clear.x = 108;
 	stage_clear.y = 232;
 	stage_clear.w = 304;
 	stage_clear.h = 48;
+
+	/*animationStageClear = nullptr;
+
+	StageClear.PushBack({ 108, 232 ,304,48 });
+
+	StageClear.loop = false;
+
+	StageClear.speed = 0.5f;*/
 }
 
 ModuleStageClear::~ModuleStageClear(){}
 
 bool ModuleStageClear::Start() {
 	LOG("Loading StageClear textures");
+	bool ret = true;
+
 	stage_clear_tx = App->textures->Load("assets/StageClear.png");
-	//audio
+	
+	positionstage.x = SCREEN_WIDTH;
+	positionstage.y = 0;
+
 	App->audio->PlayMusic(1, 1);
-	return true;
+
+	return ret;
 }
 
 update_status ModuleStageClear::Update() {
-	App->render->Blit(stage_clear_tx, 10, 50, &stage_clear);
+	
+	//initial state
+	//App->render->Blit(stage_clear_tx, positionstage.x , positionstage.y + 100, &stage_clear); // 100 comes from a cross multiplication between emulator
+
+	//positionstage.x = positionstage.x - 4;
+
+	//middle state
+	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH + 8, positionstage.y + 100, &stage_clear); //
+
+	//positionstage.y = positionstage.y - 4;
+
+	//final state
+	App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH + 8, positionstage.y + 36, &stage_clear); //100 comes from a cross multiplication between emulator
+	
+	//animation after final state
+	/*animationStageClear = &StageClear;
+
+	SDL_Rect animationStageClear;
+
+	animationStageClear = animationStageClear->GetCurrentFrame();
+
+	App->render->Blit(stage_clear_tx, 8, 36, &animationStageClear);*/
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 		switch (part_stageClear)
@@ -46,6 +86,12 @@ update_status ModuleStageClear::Update() {
 }
 
 bool ModuleStageClear::CleanUp() {
+
+	LOG("Unloading MainMenu stage");
+
 	App->textures->Unload(stage_clear_tx);
+
+	part_stageClear = 0;
+
 	return true;
 }
