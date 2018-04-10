@@ -20,15 +20,15 @@ public:
 
 public:
 
-	//SDL_Texture * neogeo;
+	SDL_Texture * neogeo;
 	SDL_Texture * snk;
 
 	Animation SNK;
 
-	//Animation NeoGeo;
+	Animation NeoGeo;
 
 	Animation* animationSNK = nullptr;
-	//Animation* animationNeoGeo = nullptr;
+	Animation* animationNeoGeo = nullptr;
 
 };
 
