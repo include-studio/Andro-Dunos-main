@@ -146,14 +146,15 @@ update_status ModuleStage1::Update()
 
 	case 1: //Downfall 
 		App->render->camera.y -= 3;
-		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
+		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE) {
 			part_stage++;
+			for (int i = 0; i < 9; i++)
+				starpos[i] = star[i].starposx;//resets auxiliar variable star position
+		}
 		App->player1->position.y++;
 
-		for (int i = 0; i < 9; i++)
-			starpos[i] -= star[i].speed/2;
-
 		for (int i = 0; i < 9; i++) {
+			starpos[i] -= star[i].speed/4;
 			for (int j = 0; j < 20; j++)
 				App->render->Blit(stars_tx, starpos[i] + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		}
@@ -313,8 +314,12 @@ update_status ModuleStage1::Update()
 
 		for (int i = 0; i < 20; i++)
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
-		for (int i = 0; i < 20; i++)
-			App->render->Blit(stars_tx, star[i].starposx, star[i].starposy, &star[i].star, star[i].speed);
+
+		for (int i = 0; i < 9; i++) {
+			starpos[i] -= star[i].speed / 2;
+			for (int j = 20; j < 100; j++)
+				App->render->Blit(stars_tx, starpos[i] + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
+		}
 		for (int i = 3; i < 4; i++) 
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
@@ -327,8 +332,9 @@ update_status ModuleStage1::Update()
 
 		for (int i = 0; i < 200; i++)
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.42f);
-		for (int i = 0; i < 20; i++)
-			App->render->Blit(stars_tx, star[i].starposx, star[i].starposy, &star[i].star, star[i].speed);
+		for (int i = 0; i < 9; i++)
+			for (int j = 20; j < 100; j++)
+				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		for (int i = 3; i < 5; i++)
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		App->render->Blit(back_tx, 2670, 17, &planet2, 0.32f);
@@ -344,8 +350,9 @@ update_status ModuleStage1::Update()
 
 		for (int i = 0; i < 200; i++) 
 			App->render->Blit(back_tx, background.w*i, 123, &background);
-		for (int i = 0; i < 20; i++)
-			App->render->Blit(stars_tx, star[i].starposx, star[i].starposy, &star[i].star, star[i].speed);
+		for (int i = 0; i < 9; i++)
+			for (int j = 20; j < 100; j++)
+				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		for (int i = 4; i < 5; i++)
 			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
@@ -355,8 +362,9 @@ update_status ModuleStage1::Update()
 
 		for (int i = 0; i < 200; i++) 
 			App->render->Blit(back_tx, background.w*i, 123, &background);
-		for (int i = 0; i < 20; i++)
-			App->render->Blit(stars_tx, star[i].starposx, star[i].starposy, &star[i].star, star[i].speed);
+		for (int i = 0; i < 9; i++)
+			for (int j = 20; j < 100; j++)
+				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		break;
 	}
 	if (App->player2->IsEnabled()) {
