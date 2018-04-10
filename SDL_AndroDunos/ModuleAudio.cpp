@@ -29,11 +29,11 @@ bool ModuleAudio::Init()
 	if (init != flags)
 	{
 		LOG("Could not initialize mixer lib. Mix_Init: %s", Mix_GetError());
-		ret = false;
+		ret = true;
 	}
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
-		ret = false;
+		ret = true;
 	}
 
 	LoadBgm("assets/Stage_1__The_Moon_Loop.ogg");
