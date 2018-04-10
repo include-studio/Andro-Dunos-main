@@ -20,7 +20,10 @@ public:
 public:
 
 	SDL_Texture * gameover_tx;
-	SDL_Rect game_over;
+	Animation game_over;
+
+	Animation* Animation_game_over = nullptr;
+
 };
 
 #endif // __MODULEGAMEOVER_H__
