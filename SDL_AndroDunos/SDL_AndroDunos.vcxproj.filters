@@ -1,140 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Modules">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ModuleAudio.cpp" />
+    <ClCompile Include="ModuleGameOver.cpp" />
+    <ClCompile Include="ModuleNeoGeo.cpp" />
+    <ClCompile Include="ModuleStage1.cpp" />
+    <ClCompile Include="ModuleFadeToBlack.cpp" />
+    <ClCompile Include="ModuleInput.cpp" />
+    <ClCompile Include="ModuleMainMenu.cpp" />
+    <ClCompile Include="ModulePlayer1.cpp" />
+    <ClCompile Include="ModulePlayer2.cpp" />
+    <ClCompile Include="ModuleRender.cpp" />
+    <ClCompile Include="ModuleStage2.cpp" />
+    <ClCompile Include="ModuleStageClear.cpp" />
+    <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleViscoGames.cpp" />
+    <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MemLeaks.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleTextures.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleWindow.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleFadeToBlack.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInput.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleMainMenu.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer1.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModulePlayer2.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleRender.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="p2Point.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleStageClear.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleStage1.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleStage2.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleNeoGeo.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="ModuleViscoGames.h">
-=======
-    <ClInclude Include="ModuleGameOver.h">
->>>>>>> 2e302f542bda91f46741564546d847aba7a46d76
-      <Filter>Modules</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Application.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Globals.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleFadeToBlack.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleMainMenu.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer1.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModulePlayer2.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleTextures.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleStageClear.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleStage1.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleStage2.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleNeoGeo.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="ModuleViscoGames.cpp">
-=======
-    <ClCompile Include="ModuleGameOver.cpp">
->>>>>>> 2e302f542bda91f46741564546d847aba7a46d76
-      <Filter>Modules</Filter>
-    </ClCompile>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="Globals.h" />
+    <ClInclude Include="MemLeaks.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="ModuleAudio.h" />
+    <ClInclude Include="ModuleGameOver.h" />
+    <ClInclude Include="ModuleNeoGeo.h" />
+    <ClInclude Include="ModuleStage1.h" />
+    <ClInclude Include="ModuleFadeToBlack.h" />
+    <ClInclude Include="ModuleInput.h" />
+    <ClInclude Include="ModuleMainMenu.h" />
+    <ClInclude Include="ModulePlayer1.h" />
+    <ClInclude Include="ModulePlayer2.h" />
+    <ClInclude Include="ModuleRender.h" />
+    <ClInclude Include="ModuleStage2.h" />
+    <ClInclude Include="ModuleStageClear.h" />
+    <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleViscoGames.h" />
+    <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="p2Point.h" />
   </ItemGroup>
 </Project>

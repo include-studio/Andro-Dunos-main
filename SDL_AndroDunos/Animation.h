@@ -10,10 +10,10 @@ public:
 	bool loop = true;
 	float speed = 1.0f;
 	SDL_Rect frames[MAX_FRAMES];
+	int last_frame = 0;
+	float current_frame = 0;
 
 private:
-	float current_frame= 0;
-	int last_frame = 0;
 	int loops = 0;
 
 public:

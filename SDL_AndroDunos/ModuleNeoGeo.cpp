@@ -135,24 +135,24 @@ update_status ModuleNeoGeo::Update()
 {
 	// Draw everything --------------------------------------	
 	animationNeoGeo = &NeoGeo;
-	animationSNK = &SNK;
-
+	
 	SDL_Rect animationNeo;
 
 	animationNeo = animationNeoGeo->GetCurrentFrame();
 
-	SDL_Rect animation_SNK;
-
-	animation_SNK = animationSNK->GetCurrentFrame();
-
 	App->render->Blit(neogeo, SCREEN_WIDTH / 2 - NeoGeoWIDTH/2, 52, &animationNeo); //52 comes from a Cross-multiplication between the emulator and the resolution
-	App->render->Blit(snk, SCREEN_WIDTH / 2 - SNK.frames[0].w / 2, 161, &animation_SNK); //161 comes from a Cross-multiplication between the emulator and the resolution
 
-	//need to start snk when animation neogeo finishes
+	//start snk when animation neogeo finishes
 
-	/*if (animationNeo == NeoGeo.frames[47]) {
-		App->render->Blit(snk, SCREEN_WIDTH / 2 - SNK.frames[0].w / 2, 161, &animation_SNK);
-	}*/
+	if (NeoGeo.current_frame >= NeoGeo.last_frame - 1) {
+
+		animationSNK = &SNK;
+		SDL_Rect animation_SNK;
+		animation_SNK = animationSNK->GetCurrentFrame();
+		App->render->Blit(snk, SCREEN_WIDTH / 2 - SNK.frames[0].w / 2, 161, &animation_SNK); //161 comes from a Cross-multiplication between the emulator and the resolution
+
+	}
+
 	// make so pressing SPACE the background is loaded
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
