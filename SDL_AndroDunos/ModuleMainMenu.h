@@ -44,7 +44,9 @@ public:
 	Animation* animationPress2P = nullptr;
 	Animation* animationNum_Count = nullptr;
 
-	int cont = 1;
+	//Credit
+	int credit = 0;
+	
 };
 
 #endif // __MODULESMAINMENU_H__

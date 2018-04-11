@@ -145,15 +145,15 @@ update_status ModuleMainMenu::Update()
 {
 	// Draw everything --------------------------------------	
 	animationPress1P = &Press1P;
-	animationPress2P = &Press2P;
+	
 	animationNum_Count = &Num_Count;
 
 	SDL_Rect animation_Rect_Press1P;
-	SDL_Rect animation_Rect_Press2P;
+	
 	SDL_Rect animation_Rect_Num_Count;
 
 	animation_Rect_Press1P = animationPress1P->GetCurrentFrame();
-	animation_Rect_Press2P = animationPress2P->GetCurrentFrame();
+	
 	animation_Rect_Num_Count = animationNum_Count->GetCurrentFrame();
 
 	App->render->Blit(logo_background_tx, 0, 0, &logo_background); 
@@ -161,9 +161,27 @@ update_status ModuleMainMenu::Update()
 	App->render->Blit(logo_andro_tx, 27, 38, &logo_andro); 
 	App->render->Blit(visco_games_tx, 64, 168, &visco_games); 
 	App->render->Blit(press1P_tx, 88, 152, &animation_Rect_Press1P); 
-	App->render->Blit(press2P_tx, 68, 152, &animation_Rect_Press2P);
 	App->render->Blit(c1992_tx, 48, 192, &c1992);
 	App->render->Blit(num_count_tx, 160, 208, &animation_Rect_Num_Count);
+
+	//Credit to P2
+
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == 1)
+		credit++;
+
+	if (credit >= 8) {
+		if(Press1P.current_frame >= Press1P.last_frame - 1) {
+
+			animationPress2P = &Press2P;
+			SDL_Rect animation_Rect_Press2P;
+			animation_Rect_Press2P = animationPress2P->GetCurrentFrame();
+			App->render->Blit(press2P_tx, 68, 152, &animation_Rect_Press2P);
+			Press1P.loop = false;
+
+		}
+	}
+	
+
 
 
 	// make so pressing SPACE the background is loaded
@@ -178,11 +196,13 @@ update_status ModuleMainMenu::Update()
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_2] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_2] == 1 && credit >= 2)
 	{
 		App->player2->insert2 = true;
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
+	
+	
 
 	return UPDATE_CONTINUE;
 }

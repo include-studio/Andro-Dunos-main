@@ -1,24 +1,8 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleViscoGames.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-//#include "ModulePlayer1.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleGameOver.h"
@@ -33,19 +17,19 @@ ModuleGameOver::ModuleGameOver()
 	//Animation Game Over
 	Animation_game_over = nullptr;
 
-	int x;
-	int y;
-	bool stopPushing = false;
+	
 
-	for(x = 0; x <= 10 || stopPushing == true; x++)
+	for(x = 0; x <= 10 && loop == true; x++)
 	{
-		for(y = 0; y <= 10 || stopPushing == true; y++)
+		for(y = 0; y <= 10 && loop == true; y++)
 		{
 			game_over.PushBack({ GMSIZE * x,GMSIZE * y,GMSIZE,GMSIZE });
-			//if(x == 10 && y == 4)
-			//{
-			//	stopPushing = true;
-			//}
+
+			if(x == 10 && y == 4)
+				loop = false;
+			
+				
+			
 		}
 	}
 
