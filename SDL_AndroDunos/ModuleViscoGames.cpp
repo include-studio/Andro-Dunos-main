@@ -39,6 +39,8 @@ bool ModuleViscoGames::Start()
 	positiongames.x = SCREEN_WIDTH / 2;
 	positiongames.y = SCREEN_HEIGHT / 2;
 
+	// play music null
+	//App->audio->PlayMusic(6);
 
 	return ret;
 }
