@@ -10,6 +10,8 @@
 #include "ModulePlayer2.h"
 #include "ModuleStageClear.h"
 #include "ModuleAudio.h"
+#include "ModuleGameOver.h"
+
 
 ModuleStage2::ModuleStage2() {
 	ground.x = 0;
@@ -56,7 +58,10 @@ update_status ModuleStage2::Update() {
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_X] == 1)
+	{
+		App->fade->FadeToBlack(this, App->gameover, 1);
+	}
 	return UPDATE_CONTINUE;
 }
 
