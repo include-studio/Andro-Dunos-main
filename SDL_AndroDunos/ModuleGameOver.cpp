@@ -162,7 +162,7 @@ bool ModuleGameOver::Start()
 
 	gameover_tx = App->textures->Load("Assets/gameover.png");
 
-	//App->audio->PlayMusic(0);
+	App->audio->PlayMusic(4, 1);
 
 	return ret;
 }

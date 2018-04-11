@@ -40,6 +40,7 @@ bool ModuleAudio::Init()
 	LoadBgm("assets/06_Stage_Clear.ogg");
 	LoadBgm("assets/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 	LoadBgm("assets/01_Neo_Geo_Logo.ogg");
+	LoadBgm("assets/18_Game_Over.ogg");
 	Mix_PlayChannel(-1, fx, 0);
 	return ret;
 }
