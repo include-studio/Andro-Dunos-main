@@ -25,6 +25,7 @@ public:
 	SDL_Texture * logo_andro_tx = nullptr; 
 	SDL_Texture * visco_games_tx = nullptr;
 	SDL_Texture * press1P_tx = nullptr;
+	SDL_Texture * press2P_tx = nullptr;
 	SDL_Texture * c1992_tx = nullptr;
 	SDL_Texture * num_count_tx = nullptr;
 
@@ -36,9 +37,11 @@ public:
 	SDL_Rect c1992;
 
 	Animation Press1P;
+	Animation Press2P;
 	Animation Num_Count;
 
 	Animation* animationPress1P = nullptr;
+	Animation* animationPress2P = nullptr;
 	Animation* animationNum_Count = nullptr;
 
 	int cont = 1;

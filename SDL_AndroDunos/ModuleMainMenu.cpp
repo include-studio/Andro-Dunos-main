@@ -35,6 +35,7 @@ ModuleMainMenu::ModuleMainMenu()
 	visco_games.w = 167;
 	visco_games.h = 15;
 
+	
 	//Press1P
 
 	animationPress1P = nullptr;
@@ -44,6 +45,16 @@ ModuleMainMenu::ModuleMainMenu()
 
 	Press1P.loop = true;
 	Press1P.speed = 0.0225f;
+
+	//Press2P
+
+	animationPress2P = nullptr;
+
+	Press2P.PushBack({ 0,0,160,8 }); // x, y, w, h
+	Press2P.PushBack({ 0,8,160,8 });
+
+	Press2P.loop = true;
+	Press2P.speed = 0.0225f;
 
 	//c1992
 	c1992.x = 0;
@@ -88,13 +99,9 @@ ModuleMainMenu::ModuleMainMenu()
 	Num_Count.PushBack({ 40,72,17,8 });
 	Num_Count.PushBack({ 40,81,17,8 }); //30
 
-
 	Num_Count.loop = false;
 	
-	
 	Num_Count.speed = 0.016f;
-	
-
 }
 
 ModuleMainMenu::~ModuleMainMenu()
@@ -110,6 +117,7 @@ bool ModuleMainMenu::Start()
 	logo_andro_tx = App->textures->Load("assets/logo.png");
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
 	press1P_tx = App->textures->Load("assets/press_1p.png");
+	press2P_tx = App->textures->Load("assets/press_2p.png");
 	c1992_tx = App->textures->Load("assets/1992.png");
 	num_count_tx = App->textures->Load("assets/num_counter.png");
 
@@ -124,6 +132,7 @@ bool ModuleMainMenu::CleanUp()
 	App->textures->Unload(logo_background_tx);
 	App->textures->Unload(visco_games_tx);
 	App->textures->Unload(press1P_tx);
+	App->textures->Unload(press2P_tx);
 	App->textures->Unload(c1992_tx);
 	App->textures->Unload(num_count_tx);
 
@@ -135,12 +144,15 @@ update_status ModuleMainMenu::Update()
 {
 	// Draw everything --------------------------------------	
 	animationPress1P = &Press1P;
+	animationPress2P = &Press2P;
 	animationNum_Count = &Num_Count;
 
 	SDL_Rect animation_Rect_Press1P;
+	SDL_Rect animation_Rect_Press2P;
 	SDL_Rect animation_Rect_Num_Count;
 
 	animation_Rect_Press1P = animationPress1P->GetCurrentFrame();
+	animation_Rect_Press2P = animationPress2P->GetCurrentFrame();
 	animation_Rect_Num_Count = animationNum_Count->GetCurrentFrame();
 
 	App->render->Blit(logo_background_tx, 0, 0, &logo_background); 
@@ -148,6 +160,7 @@ update_status ModuleMainMenu::Update()
 	App->render->Blit(logo_andro_tx, 27, 38, &logo_andro); 
 	App->render->Blit(visco_games_tx, 64, 168, &visco_games); 
 	App->render->Blit(press1P_tx, 88, 152, &animation_Rect_Press1P); 
+	App->render->Blit(press2P_tx, 68, 152, &animation_Rect_Press2P);
 	App->render->Blit(c1992_tx, 48, 192, &c1992);
 	App->render->Blit(num_count_tx, 160, 208, &animation_Rect_Num_Count);
 
