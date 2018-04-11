@@ -97,6 +97,7 @@ ModuleNeoGeo::ModuleNeoGeo()
 
 	SNK.loop = false;
 
+
 	SNK.speed = 0.2f;
 }
 

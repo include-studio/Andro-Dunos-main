@@ -7,6 +7,7 @@
 #include "ModuleStage1.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
+#include "Animation.h"
 
 ModuleMainMenu::ModuleMainMenu()
 {
@@ -34,6 +35,16 @@ ModuleMainMenu::ModuleMainMenu()
 	visco_games.w = 167;
 	visco_games.h = 15;
 
+	//Press1P
+
+	animationPress1P = nullptr;
+
+	Press1P.PushBack({ 0,0,112,8 }); // x, y, w, h
+	Press1P.PushBack({ 0,8,112,8 });
+
+	Press1P.loop = true;
+	Press1P.speed = 0.0225f;
+
 }
 
 ModuleMainMenu::~ModuleMainMenu()
@@ -48,6 +59,7 @@ bool ModuleMainMenu::Start()
 	logo_background_tx = App->textures->Load("assets/logo_background.png");
 	logo_andro_tx = App->textures->Load("assets/logo.png");
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
+	press1P_tx = App->textures->Load("assets/press_1p.png");
 
 	return ret;
 }
@@ -59,6 +71,7 @@ bool ModuleMainMenu::CleanUp()
 	App->textures->Unload(logo_andro_tx);
 	App->textures->Unload(logo_background_tx);
 	App->textures->Unload(visco_games_tx);
+	App->textures->Unload(press1P_tx);
 
 	return true;
 }
@@ -67,10 +80,18 @@ bool ModuleMainMenu::CleanUp()
 update_status ModuleMainMenu::Update()
 {
 	// Draw everything --------------------------------------	
+	animationPress1P = &Press1P;
+
+	SDL_Rect animation_Rect_Press1P;
+
+	animation_Rect_Press1P = animationPress1P->GetCurrentFrame();
+
 	App->render->Blit(logo_background_tx, 0, 0, &logo_background); 
 	App->render->Blit(logo_andro_tx, 52, 60, &title_rect); 
 	App->render->Blit(logo_andro_tx, 36, 27, &logo_andro); 
 	App->render->Blit(visco_games_tx, 75, 160, &visco_games); 
+	App->render->Blit(press1P_tx, 88, 152, &animation_Rect_Press1P); 
+
 
 	// make so pressing SPACE the background is loaded
 
