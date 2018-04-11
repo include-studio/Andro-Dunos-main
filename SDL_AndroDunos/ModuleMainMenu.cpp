@@ -45,6 +45,13 @@ ModuleMainMenu::ModuleMainMenu()
 	Press1P.loop = true;
 	Press1P.speed = 0.0225f;
 
+	//c1992
+	c1992.x = 0;
+	c1992.y = 0;
+	c1992.w = 192;
+	c1992.h = 24;
+
+
 }
 
 ModuleMainMenu::~ModuleMainMenu()
@@ -60,6 +67,7 @@ bool ModuleMainMenu::Start()
 	logo_andro_tx = App->textures->Load("assets/logo.png");
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
 	press1P_tx = App->textures->Load("assets/press_1p.png");
+	c1992_tx = App->textures->Load("assets/1992.png");
 
 	return ret;
 }
@@ -72,6 +80,7 @@ bool ModuleMainMenu::CleanUp()
 	App->textures->Unload(logo_background_tx);
 	App->textures->Unload(visco_games_tx);
 	App->textures->Unload(press1P_tx);
+	App->textures->Unload(c1992_tx);
 
 	return true;
 }
@@ -87,10 +96,11 @@ update_status ModuleMainMenu::Update()
 	animation_Rect_Press1P = animationPress1P->GetCurrentFrame();
 
 	App->render->Blit(logo_background_tx, 0, 0, &logo_background); 
-	App->render->Blit(logo_andro_tx, 52, 60, &title_rect); 
-	App->render->Blit(logo_andro_tx, 36, 27, &logo_andro); 
-	App->render->Blit(visco_games_tx, 75, 160, &visco_games); 
+	App->render->Blit(logo_andro_tx, 42, 70, &title_rect); 
+	App->render->Blit(logo_andro_tx, 27, 38, &logo_andro); 
+	App->render->Blit(visco_games_tx, 64, 168, &visco_games); 
 	App->render->Blit(press1P_tx, 88, 152, &animation_Rect_Press1P); 
+	App->render->Blit(c1992_tx, 47, 190, &c1992);
 
 
 	// make so pressing SPACE the background is loaded

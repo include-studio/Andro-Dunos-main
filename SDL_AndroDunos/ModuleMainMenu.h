@@ -23,11 +23,14 @@ public:
 	SDL_Texture * logo_andro_tx = nullptr; 
 	SDL_Texture * visco_games_tx = nullptr;
 	SDL_Texture * press1P_tx = nullptr;
+	SDL_Texture * c1992_tx = nullptr;
+
 
 	SDL_Rect logo_background;
 	SDL_Rect logo_andro;
 	SDL_Rect title_rect;
 	SDL_Rect visco_games;
+	SDL_Rect c1992;
 
 	Animation Press1P;
 	Animation* animationPress1P = nullptr;
