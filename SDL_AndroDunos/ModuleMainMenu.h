@@ -24,6 +24,7 @@ public:
 	SDL_Texture * visco_games_tx = nullptr;
 	SDL_Texture * press1P_tx = nullptr;
 	SDL_Texture * c1992_tx = nullptr;
+	SDL_Texture * num_count_tx = nullptr;
 
 
 	SDL_Rect logo_background;
@@ -33,7 +34,10 @@ public:
 	SDL_Rect c1992;
 
 	Animation Press1P;
+	Animation Num_Count;
+
 	Animation* animationPress1P = nullptr;
+	Animation* animationNum_Count = nullptr;
 };
 
 #endif // __MODULESMAINMENU_H__

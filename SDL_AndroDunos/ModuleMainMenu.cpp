@@ -51,6 +51,48 @@ ModuleMainMenu::ModuleMainMenu()
 	c1992.w = 192;
 	c1992.h = 24;
 
+	//Num Counter
+
+	animationNum_Count = nullptr;
+
+	Num_Count.PushBack({ 0,0,17,8 }); // x, y, w, h
+	Num_Count.PushBack({ 0,9,17,8 });
+	Num_Count.PushBack({ 0,18,17,8 });
+	Num_Count.PushBack({ 0,27,17,8 });
+	Num_Count.PushBack({ 0,36,17,8 });
+	Num_Count.PushBack({ 0,45,17,8 });
+	Num_Count.PushBack({ 0,54,17,8 });
+	Num_Count.PushBack({ 0,63,17,8 });
+	Num_Count.PushBack({ 0,72,17,8 });
+	Num_Count.PushBack({ 0,81,17,8 }); //10
+
+	Num_Count.PushBack({ 20,0,17,8 }); // x, y, w, h
+	Num_Count.PushBack({ 20,9,17,8 });
+	Num_Count.PushBack({ 20,18,17,8 });
+	Num_Count.PushBack({ 20,27,17,8 });
+	Num_Count.PushBack({ 20,36,17,8 });
+	Num_Count.PushBack({ 20,45,17,8 });
+	Num_Count.PushBack({ 20,54,17,8 });
+	Num_Count.PushBack({ 20,63,17,8 });
+	Num_Count.PushBack({ 20,72,17,8 });
+	Num_Count.PushBack({ 20,81,17,8 }); //20
+
+	Num_Count.PushBack({ 40,0,17,8 }); // x, y, w, h
+	Num_Count.PushBack({ 40,9,17,8 });
+	Num_Count.PushBack({ 40,18,17,8 });
+	Num_Count.PushBack({ 40,27,17,8 });
+	Num_Count.PushBack({ 40,36,17,8 });
+	Num_Count.PushBack({ 40,45,17,8 });
+	Num_Count.PushBack({ 40,54,17,8 });
+	Num_Count.PushBack({ 40,63,17,8 });
+	Num_Count.PushBack({ 40,72,17,8 });
+	Num_Count.PushBack({ 40,81,17,8 }); //30
+
+
+	Num_Count.loop = true;
+	Num_Count.speed = 0.0225f;
+
+
 
 }
 
@@ -68,6 +110,7 @@ bool ModuleMainMenu::Start()
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
 	press1P_tx = App->textures->Load("assets/press_1p.png");
 	c1992_tx = App->textures->Load("assets/1992.png");
+	num_count_tx = App->textures->Load("assets/num_counter.png");
 
 	return ret;
 }
@@ -81,6 +124,7 @@ bool ModuleMainMenu::CleanUp()
 	App->textures->Unload(visco_games_tx);
 	App->textures->Unload(press1P_tx);
 	App->textures->Unload(c1992_tx);
+	App->textures->Unload(num_count_tx);
 
 	return true;
 }
@@ -90,17 +134,21 @@ update_status ModuleMainMenu::Update()
 {
 	// Draw everything --------------------------------------	
 	animationPress1P = &Press1P;
+	animationNum_Count = &Num_Count;
 
 	SDL_Rect animation_Rect_Press1P;
+	SDL_Rect animation_Rect_Num_Count;
 
 	animation_Rect_Press1P = animationPress1P->GetCurrentFrame();
+	animation_Rect_Num_Count = animationNum_Count->GetCurrentFrame();
 
 	App->render->Blit(logo_background_tx, 0, 0, &logo_background); 
 	App->render->Blit(logo_andro_tx, 42, 70, &title_rect); 
 	App->render->Blit(logo_andro_tx, 27, 38, &logo_andro); 
 	App->render->Blit(visco_games_tx, 64, 168, &visco_games); 
 	App->render->Blit(press1P_tx, 88, 152, &animation_Rect_Press1P); 
-	App->render->Blit(c1992_tx, 47, 190, &c1992);
+	App->render->Blit(c1992_tx, 48, 192, &c1992);
+	App->render->Blit(num_count_tx, 160, 208, &animation_Rect_Num_Count);
 
 
 	// make so pressing SPACE the background is loaded
