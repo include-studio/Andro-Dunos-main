@@ -153,11 +153,22 @@ update_status ModuleMainMenu::Update()
 
 
 	// make so pressing SPACE the background is loaded
+	if (Num_Count.current_frame >= Num_Count.last_frame - 1) 
+	{
+			App->fade->FadeToBlack(this, App->stage1, 0.5);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
+
+	/*if (App->input->keyboard[SDL_SCANCODE_1] == 1)
+	{
+		App->fade->FadeToBlack(this, App->stage1, 0.5);
+		App->player1-> Enable;
+		App->player2->Disable;
+	}*/
 
 	return UPDATE_CONTINUE;
 }

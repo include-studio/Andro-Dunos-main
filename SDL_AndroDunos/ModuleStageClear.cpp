@@ -39,8 +39,6 @@ bool ModuleStageClear::Start() {
 	positionstage.x = SCREEN_WIDTH;
 	positionstage.y = SCREEN_HEIGHT - SCREEN_HEIGHT;
 
-	part_stageClear = 0;
-
 	App->audio->PlayMusic(1, 1);
 
 	return ret;
@@ -48,8 +46,6 @@ bool ModuleStageClear::Start() {
 
 update_status ModuleStageClear::Update() {
 	
-	part_stageClear = 0;
-
 	//initial state
 	App->render->Blit(stage_clear_tx, positionstage.x , positionstage.y + 100, &stage_clear); // 100 comes from a cross multiplication between emulator
 
@@ -68,7 +64,7 @@ update_status ModuleStageClear::Update() {
 	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 100, &stage_clear); //
 
 	//final state
-	App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 36, &stage_clear); //100 comes from a cross multiplication between emulator
+	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 36, &stage_clear); //100 comes from a cross multiplication between emulator
 	
 	//animation after final state
 	/*animationStageClear = &StageClear;

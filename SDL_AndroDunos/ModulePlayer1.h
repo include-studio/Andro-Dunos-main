@@ -40,7 +40,5 @@ public:
 	Animation down;
 	iPoint position;
 
-	float movVertical;	// Counter for the vertical movement of the ship
-	int maxVertical;	// Limit of the counter
 };
 #endif

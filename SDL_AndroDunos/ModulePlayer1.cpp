@@ -13,9 +13,6 @@ ModulePlayer1::ModulePlayer1()
 
 	animationShip = nullptr;
 
-	movVertical = 0;
-	maxVertical = 14;
-
 	idle.PushBack({ 0,48,39,17 });
 	idle.PushBack({ 42,48,39,17 });
 	idle.PushBack({ 85,48,39,17 });
