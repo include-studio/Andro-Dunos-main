@@ -116,7 +116,11 @@ bool ModuleStage1::Start()
 	App->audio->PlayMusic(0);
 	
 	App->player1->Enable();
-	App->player2->Enable();
+
+	if (App->player2->insert2 == true) 
+	{
+		App->player2->Enable();
+	}
 
 	return ret;
 }

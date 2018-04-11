@@ -13,9 +13,6 @@ ModulePlayer2::ModulePlayer2()
 
 	animationShip = nullptr;
 
-	movVertical = 0;
-	maxVertical = 14;
-
 	idle.PushBack({ 126,48,39,17 });
 	idle.PushBack({ 169,48,39,17 });
 	idle.PushBack({ 215,48,39,17 });
@@ -56,6 +53,9 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
+
+	bool insert2 = false;
+
 	graphics = App->textures->Load("assets/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT * 2 / 3;
