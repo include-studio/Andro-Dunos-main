@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 #include "ModuleStage1.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -171,17 +172,17 @@ update_status ModuleMainMenu::Update()
 			App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_1] == 1)
 	{
+		App->player2->insert2 = false;
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	/*if (App->input->keyboard[SDL_SCANCODE_1] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_2] == 1)
 	{
+		App->player2->insert2 = true;
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
-		App->player1-> Enable;
-		App->player2->Disable;
-	}*/
+	}
 
 	return UPDATE_CONTINUE;
 }

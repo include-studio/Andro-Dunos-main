@@ -38,4 +38,5 @@ typedef unsigned int uint;
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
 
+
 #endif // __GLOBALS_H__
