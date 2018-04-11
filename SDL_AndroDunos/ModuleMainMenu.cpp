@@ -89,10 +89,11 @@ ModuleMainMenu::ModuleMainMenu()
 	Num_Count.PushBack({ 40,81,17,8 }); //30
 
 
-	Num_Count.loop = true;
-	Num_Count.speed = 0.0225f;
-
-
+	Num_Count.loop = false;
+	
+	
+	Num_Count.speed = 0.016f;
+	
 
 }
 

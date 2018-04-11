@@ -187,7 +187,7 @@ update_status ModuleGameOver::Update()
 
 	Animation_Rect_game_over = Animation_game_over->GetCurrentFrame();
 
-	App->render->Blit(gameover_tx, 24, -16, &Animation_Rect_game_over); 
+	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over); 
 
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)

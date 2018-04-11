@@ -9,6 +9,8 @@ struct SDL_Texture;
 
 class ModuleMainMenu : public Module
 {
+	
+
 public:
 	ModuleMainMenu();
 	~ModuleMainMenu();
@@ -38,6 +40,8 @@ public:
 
 	Animation* animationPress1P = nullptr;
 	Animation* animationNum_Count = nullptr;
+
+	int cont = 1;
 };
 
 #endif // __MODULESMAINMENU_H__
