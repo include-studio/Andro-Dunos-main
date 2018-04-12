@@ -58,8 +58,8 @@ bool Application::Init()
 	gameover->Disable();
 	stageclear->Disable();
 	stage2->Disable();
-	stage1->Disable();
-	neogeo->Enable();
+	stage1->Enable();
+	neogeo->Disable();
 	gameover->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

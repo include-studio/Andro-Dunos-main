@@ -3,8 +3,8 @@
 
 #include "Module.h"
 #include "Globals.h"
-#include "SDL\include\SDL_scancode.h"
-#include "SDL\include\SDL.h"
+#include "SDL/include/SDL_scancode.h"
+#include "SDL/include/SDL_events.h"
 
 #define MAX_KEYS 300
 
@@ -31,6 +31,7 @@ public:
 
 public:
 	SDL_Event e;
+	//const Uint8 *keys = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
 };
 
