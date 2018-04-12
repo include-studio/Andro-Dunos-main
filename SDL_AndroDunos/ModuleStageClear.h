@@ -23,9 +23,9 @@ public:
 
 	SDL_Texture * stage_clear_tx = nullptr;
 
-	/*Animation StageClear;
+	Animation StageClear;
 
-	Animation* animationStageClear = nullptr;*/
+	Animation* animationStageClear = nullptr;
 
 	int part_stageClear = 0;
 	
