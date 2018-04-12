@@ -24,6 +24,8 @@ public:
 	SDL_Texture * snk;
 	SDL_Texture * machine;
 
+	SDL_Rect copyright;
+
 	Animation SNK;
 	Animation NeoGeo;
 	Animation Machine1;

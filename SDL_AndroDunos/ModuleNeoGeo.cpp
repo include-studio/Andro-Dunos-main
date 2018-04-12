@@ -175,6 +175,11 @@ ModuleNeoGeo::ModuleNeoGeo()
 	Machine2.loop = false;
 
 	Machine2.speed = 0.2f;
+
+	copyright.x = 126;
+	copyright.y = 0;
+	copyright.w = 8;
+	copyright.h = 8;
 }
 
 ModuleNeoGeo::~ModuleNeoGeo()
@@ -229,7 +234,7 @@ update_status ModuleNeoGeo::Update()
 		animationMachine1 = &Machine1;
 		SDL_Rect animation_Machine1;
 		animation_Machine1 = animationMachine1->GetCurrentFrame();
-		App->render->Blit(machine, SCREEN_WIDTH / 2 - MachineWIDTH / 2 , 113, &animation_Machine1); //161 comes from a Cross-multiplication between the emulator and the resolution
+		App->render->Blit(machine, SCREEN_WIDTH / 2 - MachineWIDTH / 2 , 113, &animation_Machine1); //113 comes from a Cross-multiplication between the emulator and the resolution
 
 	}
 
@@ -239,7 +244,7 @@ update_status ModuleNeoGeo::Update()
 		animationMachine2 = &Machine2;
 		SDL_Rect animation_Machine2;
 		animation_Machine2 = animationMachine2->GetCurrentFrame();
-		App->render->Blit(machine, SCREEN_WIDTH / 2 - MachineWIDTH / 2 , 130, &animation_Machine2); //161 comes from a Cross-multiplication between the emulator and the resolution
+		App->render->Blit(machine, SCREEN_WIDTH / 2 - MachineWIDTH / 2 , 130, &animation_Machine2); //130 comes from a Cross-multiplication between the emulator and the resolution
 
 	}
 
@@ -250,6 +255,12 @@ update_status ModuleNeoGeo::Update()
 		animation_SNK = animationSNK->GetCurrentFrame();
 		App->render->Blit(snk, SCREEN_WIDTH / 2 - SNKWIDTH / 2, 161, &animation_SNK); //161 comes from a Cross-multiplication between the emulator and the resolution
 	}
+
+	if (SNK.current_frame >= SNK.last_frame - 1) {
+
+		App->render->Blit(machine, 272, 57, &copyright); //272 and 57 comes from a Cross-multiplication between the emulator and the resolution
+	}
+
 	// make so pressing SPACE the background is loaded
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
