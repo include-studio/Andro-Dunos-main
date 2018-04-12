@@ -20,12 +20,18 @@ public:
 public:
 
 	SDL_Texture * gameover_tx;
+	
+	SDL_Rect Grey_Square;
+	SDL_Rect Animation_Rect_game_over;
+	
 	Animation game_over;
-
 	Animation* Animation_game_over = nullptr;
+
 	int xGM;
 	int yGM;
 	bool loopGM = true;
+	int current_time = 0;
+	int init_time = 0;
 };
 
 #endif // __MODULEGAMEOVER_H__

@@ -29,6 +29,12 @@ ModuleGameOver::ModuleGameOver()
 	}
 	game_over.loop = false;
 	game_over.speed = 0.9f;
+
+	//Grey_Square_GM
+	Grey_Square.x = 2512;
+	Grey_Square.y = 2768;
+	Grey_Square.w = SCREEN_WIDTH;
+	Grey_Square.h = 48;
 }
 
 ModuleGameOver::~ModuleGameOver()
@@ -39,6 +45,7 @@ bool ModuleGameOver::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	init_time = SDL_GetTicks(); //Timer
 
 	gameover_tx = App->textures->Load("Assets/gameover.png");
 
@@ -59,15 +66,17 @@ bool ModuleGameOver::CleanUp()
 // Update: draw background
 update_status ModuleGameOver::Update()
 {
+	//Time
+	current_time = SDL_GetTicks() - init_time;
 	// Draw everything --------------------------------------	
 
 	Animation_game_over = &game_over;
 
-	SDL_Rect Animation_Rect_game_over;
-
 	Animation_Rect_game_over = Animation_game_over->GetCurrentFrame();
-
-	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over); 
+	if(current_time>=1550) //ms when Game Over grey bckgnd appears
+		App->render->Blit(gameover_tx, 0, 74, &Grey_Square);
+	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over);
+	
 
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)

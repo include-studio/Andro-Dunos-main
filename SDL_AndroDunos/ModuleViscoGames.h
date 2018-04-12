@@ -28,7 +28,8 @@ public:
 	iPoint positionvisco;
 	iPoint positiongames;
 
-	//int animation_transition = 0;
+	int current_time = 0;
+	int init_time = 0;
 
 };
 
