@@ -27,9 +27,9 @@ bool ModuleParticles::Start()
 	laser.anim.PushBack({ 21,36,16,10 });
 	laser.anim.PushBack({ 21,49,16,10 });
 	laser.anim.loop = false;
-	laser.anim.speed = 0.5f;
-	laser.life = 3000;
-	laser.speed.x = 3;
+	laser.anim.speed = 0.8f;
+	laser.life = 1500;
+	laser.speed.x = 7;
 
 	return true;
 }
@@ -89,6 +89,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32
 	p->position.y = y;
 
 	active[last_particle++] = p;
+	if (last_particle == MAX_ACTIVE_PARTICLES)
+		last_particle = 0;
 }
 
 // -------------------------------------------------------------

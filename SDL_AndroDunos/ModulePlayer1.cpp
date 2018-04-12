@@ -63,7 +63,7 @@ bool ModulePlayer1::Start()
 // Update: draw background
 update_status ModulePlayer1::Update()
 {
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
 		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-14);
 		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-6 );
 	}
