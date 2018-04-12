@@ -73,7 +73,7 @@ update_status ModuleGameOver::Update()
 	Animation_game_over = &game_over;
 
 	Animation_Rect_game_over = Animation_game_over->GetCurrentFrame();
-	if(current_time>=1400)
+	if(current_time>=1550) //ms when Game Over grey bckgnd appears
 		App->render->Blit(gameover_tx, 0, 74, &Grey_Square);
 	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over);
 	
