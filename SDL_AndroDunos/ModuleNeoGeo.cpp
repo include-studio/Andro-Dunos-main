@@ -12,9 +12,11 @@
 #define SNKWIDTH 72
 #define NeoGeoWIDTH 227
 #define MachineWIDTH 133
+#define MAX_W_ALPH 255 
 
 ModuleNeoGeo::ModuleNeoGeo()
 {
+	
 	animationNeoGeo = nullptr;
 	animationSNK = nullptr;
 	animationMachine1 = nullptr;
@@ -180,6 +182,20 @@ ModuleNeoGeo::ModuleNeoGeo()
 	copyright.y = 0;
 	copyright.w = 8;
 	copyright.h = 8;
+
+	//White fade - Flash position
+	white.x = 0;
+	white.y = 0;
+	white.w = SCREEN_WIDTH * SCREEN_SIZE;
+	white.h = SCREEN_HEIGHT * SCREEN_SIZE;
+
+	W_alph = MAX_W_ALPH;
+
+	//White fade - Flash position
+	black.x = 0;
+	black.y = 0;
+	black.w = SCREEN_WIDTH * SCREEN_SIZE;
+	black.h = SCREEN_HEIGHT * SCREEN_SIZE;
 }
 
 ModuleNeoGeo::~ModuleNeoGeo()
@@ -190,15 +206,13 @@ bool ModuleNeoGeo::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	init_time = SDL_GetTicks(); //Timer
 
 	neogeo = App->textures->Load("Assets/neogeo.png");
-
 	snk = App->textures->Load("Assets/snk_animation.png");
-
 	machine = App->textures->Load("Assets/snk_intro_font.png");
 
-	
-	App->audio->PlayMusic(3,1);
+	App->audio->PlayMusic(3,1); //Music
 
 	return ret;
 }
@@ -218,6 +232,9 @@ bool ModuleNeoGeo::CleanUp()
 // Update: draw background
 update_status ModuleNeoGeo::Update()
 {
+	//Time
+	current_time = SDL_GetTicks() - init_time;
+
 	// Draw everything --------------------------------------	
 	animationNeoGeo = &NeoGeo;
 	
@@ -225,10 +242,13 @@ update_status ModuleNeoGeo::Update()
 
 	animation_Neo = animationNeoGeo->GetCurrentFrame();
 
-	App->render->Blit(neogeo, SCREEN_WIDTH / 2 - NeoGeoWIDTH/2, 52, &animation_Neo); //52 comes from a Cross-multiplication between the emulator and the resolution
+	SDL_SetRenderDrawColor(App->render->renderer, 255, 255, 255, W_alph); //Flash White
+	SDL_RenderFillRect(App->render->renderer, &black);
+	SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, NULL);//Flash Black
+	App->render->Blit(neogeo, SCREEN_WIDTH / 2 - NeoGeoWIDTH / 2, 52, &animation_Neo); //52 comes from a Cross-multiplication between the emulator and the resolution
 
-	//start snk when animation neogeo finishes
 
+	//Start snk when animation neogeo finishes
 	if (NeoGeo.current_frame >= NeoGeo.last_frame - 1) {
 
 		animationMachine1 = &Machine1;
@@ -261,13 +281,20 @@ update_status ModuleNeoGeo::Update()
 		App->render->Blit(machine, 272, 57, &copyright); //272 and 57 comes from a Cross-multiplication between the emulator and the resolution
 	}
 
-	// make so pressing SPACE the background is loaded
-
+	// Make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 	}
 
+	//White fade - Flash 
+	if(current_time >= 200){
+		if (W_alph > 0) {
+			SDL_RenderFillRect(App->render->renderer, &white);
+			W_alph -= 3;
+		}
+	}
+	
 	return UPDATE_CONTINUE;
 }
 

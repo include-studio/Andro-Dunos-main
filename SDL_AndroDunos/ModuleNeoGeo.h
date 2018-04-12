@@ -25,6 +25,8 @@ public:
 	SDL_Texture * machine;
 
 	SDL_Rect copyright;
+	SDL_Rect white;
+	SDL_Rect black;
 
 	Animation SNK;
 	Animation NeoGeo;
@@ -36,6 +38,9 @@ public:
 	Animation* animationMachine1 = nullptr;
 	Animation* animationMachine2 = nullptr;
 
+	int W_alph;
+	int current_time = 0;
+	int init_time = 0;
 };
 
 #endif // __MODULESMAINMENU_H__
