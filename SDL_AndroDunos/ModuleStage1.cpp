@@ -128,6 +128,12 @@ bool ModuleStage1::Start()
 // Update: draw background
 update_status ModuleStage1::Update()
 {
+	if (App->input->keyboard[SDL_SCANCODE_2]) {
+		App->player2->Enable();
+		App->player2->position.x = App->player1->position.x;
+		App->player2->position.y = 2 * SCREEN_HEIGHT / 3;
+	}
+
 	switch (part_stage) {
 	case 0: //case 0: Start & PreDownfall
 		//logic
