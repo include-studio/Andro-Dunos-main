@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
 #include "ModuleStage1.h"
+#include "ModuleParticles.h"
 
 
 ModulePlayer1::ModulePlayer1()
@@ -110,6 +111,14 @@ update_status ModulePlayer1::Update()
 			counterReturn2 = 0;
 			state = IDLE;
 		}
+
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN )
+	{
+		App->particles->AddParticle(App->particles->laser, position.x + 39, position.y  -17);
+		App->particles->AddParticle(App->particles->laser, position.x + 39, position.y  -12);
+		App->particles->AddParticle(App->particles->laser, position.x + 39, position.y  - 7);
 
 	}
 
