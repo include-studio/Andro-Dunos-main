@@ -8,6 +8,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleAudio.h"
 #include "Animation.h"
+#include "SDL/include/SDL.h"
 #define GMSIZE 256
 
 

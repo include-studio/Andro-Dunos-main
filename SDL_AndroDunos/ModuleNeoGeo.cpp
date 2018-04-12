@@ -8,6 +8,7 @@
 #include "ModuleNeoGeo.h"
 #include "ModuleAudio.h"
 #include "Animation.h"
+#include "SDL/include/SDL.h"
 
 #define SNKWIDTH 72
 #define NeoGeoWIDTH 227
@@ -282,7 +283,7 @@ update_status ModuleNeoGeo::Update()
 	}
 
 	// Make so pressing SPACE the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 	}

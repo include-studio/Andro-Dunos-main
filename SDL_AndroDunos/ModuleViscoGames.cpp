@@ -7,6 +7,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleViscoGames.h"
 #include "ModuleAudio.h"
+#include "SDL/include/SDL.h"
 
 ModuleViscoGames::ModuleViscoGames()
 {
@@ -82,7 +83,7 @@ update_status ModuleViscoGames::Update()
 
 	// make so pressing SPACE the background is loaded
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 	}

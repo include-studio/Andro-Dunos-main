@@ -166,7 +166,7 @@ update_status ModuleMainMenu::Update()
 
 	//Credit to P2
 
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
 		credit++;
 
 	if (credit >= 8) {
@@ -190,13 +190,13 @@ update_status ModuleMainMenu::Update()
 			App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_1] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_1])
 	{
 		App->player2->insert2 = false;
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_2] == 1 && credit >= 2)
+	if (App->input->keyboard[SDL_SCANCODE_2] && credit >= 2)
 	{
 		App->player2->insert2 = true;
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
