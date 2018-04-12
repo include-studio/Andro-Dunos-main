@@ -30,6 +30,7 @@ bool ModuleViscoGames::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
+	init_time = SDL_GetTicks(); //Timer
 
 	visco = App->textures->Load("Assets/visco_games_intro.png");
 
@@ -59,6 +60,8 @@ bool ModuleViscoGames::CleanUp()
 // Update: draw background
 update_status ModuleViscoGames::Update()
 {
+	//Time
+	current_time = SDL_GetTicks() - init_time;
 	// Draw everything --------------------------------------	
 	
 	App->render->Blit(visco, positionvisco.x - Visco.w / 2, positionvisco.y * 2, &Visco);
@@ -69,10 +72,13 @@ update_status ModuleViscoGames::Update()
 		positionvisco.y -= 2;
 	}
 
-	if (positiongames.y >= SCREEN_HEIGHT) {
-		positiongames.x += 4;
-		positionvisco.x -= 4;
+	if (current_time >= 2800) {
+		if (positiongames.y >= SCREEN_HEIGHT) {
+			positiongames.x += 4;
+			positionvisco.x -= 4;
+		}
 	}
+	
 
 	// make so pressing SPACE the background is loaded
 
