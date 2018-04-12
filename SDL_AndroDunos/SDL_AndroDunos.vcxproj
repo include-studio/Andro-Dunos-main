@@ -124,11 +124,11 @@
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
     <ClInclude Include="ModuleGameOver.h" />
+    <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleNeoGeo.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleStage1.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
-    <ClInclude Include="ModuleInput.h" />
     <ClInclude Include="ModuleMainMenu.h" />
     <ClInclude Include="ModulePlayer1.h" />
     <ClInclude Include="ModulePlayer2.h" />
@@ -146,11 +146,11 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleGameOver.cpp" />
+    <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleNeoGeo.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleStage1.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
-    <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleMainMenu.cpp" />
     <ClCompile Include="ModulePlayer1.cpp" />
     <ClCompile Include="ModulePlayer2.cpp" />

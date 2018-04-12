@@ -19,9 +19,6 @@
     <ClCompile Include="ModuleGameOver.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleMainMenu.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -58,6 +55,9 @@
     <ClCompile Include="ModuleWindow.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -85,9 +85,6 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleGameOver.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInput.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleMainMenu.h">
@@ -124,6 +121,9 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
       <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
