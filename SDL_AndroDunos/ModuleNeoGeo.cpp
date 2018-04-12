@@ -11,13 +11,14 @@
 
 #define SNKWIDTH 72
 #define NeoGeoWIDTH 227
-
-
+#define MachineWIDTH 133
 
 ModuleNeoGeo::ModuleNeoGeo()
 {
 	animationNeoGeo = nullptr;
 	animationSNK = nullptr;
+	animationMachine1 = nullptr;
+	animationMachine2 = nullptr;
 
 	NeoGeo.PushBack({ 0,1415,14,40 });
 	NeoGeo.PushBack({ 0,1371,28,40 });
@@ -97,8 +98,83 @@ ModuleNeoGeo::ModuleNeoGeo()
 
 	SNK.loop = false;
 
-
 	SNK.speed = 0.2f;
+
+	Machine1.PushBack({ 0,0,7,14 });//MAX
+	Machine1.PushBack({ 0,0,14,14 });
+
+	Machine1.PushBack({ 0,0,19,14 });
+	Machine1.PushBack({ 0,0,25,14 });
+
+	Machine1.PushBack({ 0,0,30,14 });
+	Machine1.PushBack({ 0,0,35,14 });
+
+	Machine1.PushBack({ 0,0,49,14 });//330
+	Machine1.PushBack({ 0,0,53,14 });
+
+	Machine1.PushBack({ 0,0,58,14 });
+	Machine1.PushBack({ 0,0,62,14 });
+
+	Machine1.PushBack({ 0,0,68,14 });
+	Machine1.PushBack({ 0,0,72,14 });
+
+	Machine1.PushBack({ 0,0,83,14 });//MEGA
+	Machine1.PushBack({ 0,0,90,14 });
+
+	Machine1.PushBack({ 0,0,98,14 });
+	Machine1.PushBack({ 0,0,101,14 });
+
+	Machine1.PushBack({ 0,0,105,14 });
+	Machine1.PushBack({ 0,0,110,14 });
+
+	Machine1.PushBack({ 0,0,115,14 });
+	Machine1.PushBack({ 0,0,121,14 });
+	Machine1.PushBack({ 0,0,126,14 });
+
+	Machine1.loop = false;
+
+	Machine1.speed = 0.2f;
+
+	Machine2.PushBack({ 0,17,0,13 });//PRO-
+	Machine2.PushBack({ 0,17,4,13 });
+
+	Machine2.PushBack({ 0,17,10,13 });
+	Machine2.PushBack({ 0,17,14,13 });
+
+	Machine2.PushBack({ 0,17,21,13 });
+	Machine2.PushBack({ 0,17,26,13 });
+
+	Machine2.PushBack({ 0,17,34,13 });
+	Machine2.PushBack({ 0,17,39,13 });
+
+	Machine2.PushBack({ 0,17,46,13 });//GEAR
+	Machine2.PushBack({ 0,17,51,13 });
+
+	Machine2.PushBack({ 0,17,58,13 });
+	Machine2.PushBack({ 0,17,62,13 });
+
+	Machine2.PushBack({ 0,17,67,13 });
+	Machine2.PushBack({ 0,17,72,13 });
+
+	Machine2.PushBack({ 0,17,79,13 });
+	Machine2.PushBack({ 0,17,83,13 });
+
+	Machine2.PushBack({ 0,17,93,13 });//SPEC
+	Machine2.PushBack({ 0,17,98,13 });
+
+	Machine2.PushBack({ 0,17,104,13 });
+	Machine2.PushBack({ 0,17,108,13 });
+
+	Machine2.PushBack({ 0,17,114,13 });
+	Machine2.PushBack({ 0,17,118,13 });
+
+	Machine2.PushBack({ 0,17,124,13 });
+	Machine2.PushBack({ 0,17,129,13 });
+	Machine2.PushBack({ 0,17,133,13 });
+
+	Machine2.loop = false;
+
+	Machine2.speed = 0.2f;
 }
 
 ModuleNeoGeo::~ModuleNeoGeo()
@@ -113,6 +189,9 @@ bool ModuleNeoGeo::Start()
 	neogeo = App->textures->Load("Assets/neogeo.png");
 
 	snk = App->textures->Load("Assets/snk_animation.png");
+
+	machine = App->textures->Load("Assets/snk_intro_font.png");
+
 	
 	App->audio->PlayMusic(3,1);
 
@@ -126,6 +205,7 @@ bool ModuleNeoGeo::CleanUp()
 
 	App->textures->Unload(neogeo);
 	App->textures->Unload(snk);
+	App->textures->Unload(machine);
 
 	return true;
 }
@@ -136,23 +216,40 @@ update_status ModuleNeoGeo::Update()
 	// Draw everything --------------------------------------	
 	animationNeoGeo = &NeoGeo;
 	
-	SDL_Rect animationNeo;
+	SDL_Rect animation_Neo;
 
-	animationNeo = animationNeoGeo->GetCurrentFrame();
+	animation_Neo = animationNeoGeo->GetCurrentFrame();
 
-	App->render->Blit(neogeo, SCREEN_WIDTH / 2 - NeoGeoWIDTH/2, 52, &animationNeo); //52 comes from a Cross-multiplication between the emulator and the resolution
+	App->render->Blit(neogeo, SCREEN_WIDTH / 2 - NeoGeoWIDTH/2, 52, &animation_Neo); //52 comes from a Cross-multiplication between the emulator and the resolution
 
 	//start snk when animation neogeo finishes
 
 	if (NeoGeo.current_frame >= NeoGeo.last_frame - 1) {
 
-		animationSNK = &SNK;
-		SDL_Rect animation_SNK;
-		animation_SNK = animationSNK->GetCurrentFrame();
-		App->render->Blit(snk, SCREEN_WIDTH / 2 - SNK.frames[0].w / 2, 161, &animation_SNK); //161 comes from a Cross-multiplication between the emulator and the resolution
+		animationMachine1 = &Machine1;
+		SDL_Rect animation_Machine1;
+		animation_Machine1 = animationMachine1->GetCurrentFrame();
+		App->render->Blit(machine, SCREEN_WIDTH / 2 - MachineWIDTH / 2 , 113, &animation_Machine1); //161 comes from a Cross-multiplication between the emulator and the resolution
 
 	}
 
+
+	if (Machine1.current_frame >= Machine1.last_frame - 1) {
+
+		animationMachine2 = &Machine2;
+		SDL_Rect animation_Machine2;
+		animation_Machine2 = animationMachine2->GetCurrentFrame();
+		App->render->Blit(machine, SCREEN_WIDTH / 2 - MachineWIDTH / 2 , 130, &animation_Machine2); //161 comes from a Cross-multiplication between the emulator and the resolution
+
+	}
+
+	if (Machine2.current_frame >= Machine2.last_frame - 1) {
+
+		animationSNK = &SNK;
+		SDL_Rect animation_SNK;
+		animation_SNK = animationSNK->GetCurrentFrame();
+		App->render->Blit(snk, SCREEN_WIDTH / 2 - SNKWIDTH / 2, 161, &animation_SNK); //161 comes from a Cross-multiplication between the emulator and the resolution
+	}
 	// make so pressing SPACE the background is loaded
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)

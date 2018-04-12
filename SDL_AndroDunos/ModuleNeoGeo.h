@@ -22,13 +22,17 @@ public:
 
 	SDL_Texture * neogeo;
 	SDL_Texture * snk;
+	SDL_Texture * machine;
 
 	Animation SNK;
-
 	Animation NeoGeo;
+	Animation Machine1;
+	Animation Machine2;
 
 	Animation* animationSNK = nullptr;
 	Animation* animationNeoGeo = nullptr;
+	Animation* animationMachine1 = nullptr;
+	Animation* animationMachine2 = nullptr;
 
 };
 
