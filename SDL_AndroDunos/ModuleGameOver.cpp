@@ -29,6 +29,12 @@ ModuleGameOver::ModuleGameOver()
 	}
 	game_over.loop = false;
 	game_over.speed = 0.9f;
+
+	//Grey_Square_GM
+	Grey_Square.x = 0;
+	Grey_Square.y = 76;
+	Grey_Square.w = SCREEN_WIDTH;
+	Grey_Square.h = 48;
 }
 
 ModuleGameOver::~ModuleGameOver()
@@ -39,8 +45,10 @@ bool ModuleGameOver::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-
+	
+	grey_tx = App->textures->Load("Assets/GreyGM_Square.png"); //Grey
 	gameover_tx = App->textures->Load("Assets/gameover.png");
+	
 
 	App->audio->PlayMusic(4, 1);
 
@@ -52,6 +60,7 @@ bool ModuleGameOver::CleanUp()
 {
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(gameover_tx);
+	App->textures->Unload(grey_tx);
 
 	return true;
 }
@@ -61,13 +70,13 @@ update_status ModuleGameOver::Update()
 {
 	// Draw everything --------------------------------------	
 
+	//SDL_SetRenderDrawColor(App->render->renderer, 0, 255, 255, NULL); //Color Grey_Square
+	//SDL_RenderFillRect(App->render->renderer, &Grey_Square);//Fill Grey_Square
 	Animation_game_over = &game_over;
 
-	SDL_Rect Animation_Rect_game_over;
-
 	Animation_Rect_game_over = Animation_game_over->GetCurrentFrame();
-
-	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over); 
+	App->render->Blit(grey_tx, 0, 74, &Grey_Square);
+	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over);
 
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
