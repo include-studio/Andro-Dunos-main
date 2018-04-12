@@ -14,6 +14,7 @@
 #include "ModuleStageClear.h"
 #include "ModuleViscoGames.h"
 #include "ModuleGameOver.h"
+#include "ModuleParticles.h"
 
 
 
@@ -34,6 +35,7 @@ Application::Application()
 	modules[12] = fade = new ModuleFadeToBlack();
 	modules[13] = stageclear = new ModuleStageClear();
 	modules[14] = gameover = new ModuleGameOver();
+	modules[15] = particles = new ModuleParticles();
 
 }	
 
