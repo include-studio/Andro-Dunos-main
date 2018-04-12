@@ -19,7 +19,6 @@ public:
 
 public:
 
-	SDL_Texture * grey_tx;
 	SDL_Texture * gameover_tx;
 	
 	SDL_Rect Grey_Square;
@@ -31,6 +30,8 @@ public:
 	int xGM;
 	int yGM;
 	bool loopGM = true;
+	int current_time = 0;
+	int init_time = 0;
 };
 
 #endif // __MODULEGAMEOVER_H__
