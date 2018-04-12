@@ -20,11 +20,14 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("rtype/particles.png");
+	graphics = App->textures->Load("assets/laser_types.png");
 
 	// laser particle
-	
-
+	laser.anim.PushBack({ 21,6,16,10 });
+	laser.anim.PushBack({ 21,36,16,10 });
+	laser.anim.PushBack({ 21,49,16,10 });
+	laser.anim.loop = false;
+	laser.anim.speed = 0.8f;
 
 	return true;
 }
