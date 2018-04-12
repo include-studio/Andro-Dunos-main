@@ -113,7 +113,7 @@ bool ModuleStage1::Start()
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
 
-	App->audio->PlayMusic(0);
+	App->audio->PlayMusic("assets/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
 

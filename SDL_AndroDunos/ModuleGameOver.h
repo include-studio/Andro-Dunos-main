@@ -17,6 +17,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+
 public:
 
 	SDL_Texture * gameover_tx;

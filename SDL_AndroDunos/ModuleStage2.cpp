@@ -37,7 +37,7 @@ bool ModuleStage2::Start() {
 	ground_tx = App->textures->Load("assets/Ground2.png");
 	back_tx = App->textures->Load("assets/Background2.png");
 
-	App->audio->PlayMusic(2);
+	App->audio->PlayMusic("assets/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 
 	App->player1->Enable();
 	

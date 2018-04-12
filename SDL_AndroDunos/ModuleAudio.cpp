@@ -37,12 +37,7 @@ bool ModuleAudio::Init()
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
 		ret = false;
 	}
-
-	LoadBgm("assets/Stage_1__The_Moon_Loop.ogg");
-	LoadBgm("assets/06_Stage_Clear.ogg");
-	LoadBgm("assets/07_Stage_2 -Mechanized-Unit-Loop.ogg");
-	LoadBgm("assets/01_Neo_Geo_Logo.ogg");
-	LoadBgm("assets/18_Game_Over.ogg");
+	
 	Mix_PlayChannel(-1, fx, 0);
 	return ret;
 }
@@ -63,10 +58,18 @@ bool ModuleAudio::Init()
 //	return update_status::UPDATE_CONTINUE;
 //}
 
-bool ModuleAudio::PlayMusic(int i, int j) {
-	Mix_PlayMusic(bgms[i], j);
-	return true;
+void ModuleAudio::PlayMusic(const char* path, int j) {
+	bgm = Mix_LoadMUS(path);
+	for (int i = 0; i < MAX_BGMS; i++) {
+		if (bgms[i] == bgm) {
+			Mix_PlayMusic(bgms[i], j);
+			bgm = nullptr;
+		}
+	}
+	if(bgm!=nullptr)
+	Mix_PlayMusic(LoadBgm(path), j);
 }
+
 // Called before quitting
 bool ModuleAudio::CleanUp() {
 
