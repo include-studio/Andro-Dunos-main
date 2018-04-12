@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleParticles.h"
 
 
 ModulePlayer2::ModulePlayer2()
@@ -65,6 +66,10 @@ bool ModulePlayer2::Start()
 // Update: draw background
 update_status ModulePlayer2::Update()
 {
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN) {
+		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y - 14);
+		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y - 6);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_L])
 		position.x += speedMoveShip;
