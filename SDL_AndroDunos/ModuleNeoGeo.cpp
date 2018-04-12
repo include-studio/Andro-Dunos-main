@@ -283,7 +283,7 @@ update_status ModuleNeoGeo::Update()
 	}
 
 	// Make so pressing SPACE the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 	}

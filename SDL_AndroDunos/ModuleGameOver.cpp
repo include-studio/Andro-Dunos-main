@@ -80,7 +80,7 @@ update_status ModuleGameOver::Update()
 	
 
 	// make so pressing SPACE the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 	}

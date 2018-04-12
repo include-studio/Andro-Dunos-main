@@ -83,7 +83,7 @@ update_status ModuleViscoGames::Update()
 
 	// make so pressing SPACE the background is loaded
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 	}

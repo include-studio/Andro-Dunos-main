@@ -109,7 +109,7 @@ update_status ModuleStageClear::Update() {
 		App->render->Blit(stage_clear_tx, 0, 36, &animation_StageClear);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_C])
 		switch (part_stageClear)
 		{
 		case 0:

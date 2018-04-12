@@ -58,7 +58,7 @@ update_status ModuleStage2::Update() {
 		App->render->Blit(back_tx, background.w*i, 0, &background, 0.4f);
 	App->render->Blit(ground_tx, 0, 0, &ground);
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}

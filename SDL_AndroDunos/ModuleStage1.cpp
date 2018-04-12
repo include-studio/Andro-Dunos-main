@@ -409,7 +409,7 @@ update_status ModuleStage1::Update()
 		break;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}
