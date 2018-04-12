@@ -37,7 +37,7 @@ bool ModuleStageClear::Start() {
 	stage_clear_tx = App->textures->Load("assets/StageClear.png");
 	
 	positionstage.x = SCREEN_WIDTH;
-	positionstage.y = SCREEN_HEIGHT - SCREEN_HEIGHT;
+	positionstage.y = 100; //Position Y
 
 	App->audio->PlayMusic(1, 1);
 
@@ -47,21 +47,17 @@ bool ModuleStageClear::Start() {
 update_status ModuleStageClear::Update() {
 	
 	//initial state
-	App->render->Blit(stage_clear_tx, positionstage.x , positionstage.y + 100, &stage_clear); // 100 comes from a cross multiplication between emulator
+	App->render->Blit(stage_clear_tx, positionstage.x , positionstage.y, &stage_clear); 
 
-	if (positionstage.x <= SCREEN_WIDTH && positionstage.x) {
-		positionstage.x = positionstage.x - 4;
+	if (positionstage.x) {
+		positionstage.x -= 4;
 	}
 
-	if (positionstage.x == SCREEN_WIDTH - SCREEN_WIDTH) {
-		positionstage.y = positionstage.y - 4;
-		//if (positionstage.y == SCREEN_HEIGHT - SCREEN_HEIGHT + 36) {
-		//	App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, SCREEN_HEIGHT - SCREEN_HEIGHT + 36, &stage_clear); //100 comes from a cross multiplication between emulator
-		//}
+	if (positionstage.x == NULL && positionstage.y >= 36) {
+		positionstage.y -= 4;
 	}
 
-	//middle state
-	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 100, &stage_clear); //
+	
 
 	//final state
 	//App->render->Blit(stage_clear_tx, positionstage.x - SCREEN_WIDTH, positionstage.y + 36, &stage_clear); //100 comes from a cross multiplication between emulator

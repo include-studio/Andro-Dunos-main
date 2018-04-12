@@ -23,9 +23,9 @@ public:
 	Animation game_over;
 
 	Animation* Animation_game_over = nullptr;
-	int x;
-	int y;
-	bool loop = true;
+	int xGM;
+	int yGM;
+	bool loopGM = true;
 };
 
 #endif // __MODULEGAMEOVER_H__
