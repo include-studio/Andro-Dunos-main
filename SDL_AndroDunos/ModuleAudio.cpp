@@ -1,16 +1,18 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleAudio.h"
+#include "Module.h"
 
+#include "SDL/include/SDL.h"
 #include "SDL_mixer\include\SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-ModuleAudio::ModuleAudio() : Module() 
+ModuleAudio::ModuleAudio() : Module()
 {
 	for (int i = 0; i < MAX_BGMS; ++i)
-		bgms[i] = {nullptr};
+		bgms[i] = { nullptr };
 	for (int i = 0; i < MAX_FXS; ++i)
-		fxs[i] = { nullptr};
+		fxs[i] = { nullptr };
 }
 
 ModuleAudio::~ModuleAudio() {
@@ -22,18 +24,18 @@ bool ModuleAudio::Init()
 
 	LOG("Init Audio library");
 	bool ret = true;
-	
+
 	int flags = MIX_INIT_OGG;
 	int init = Mix_Init(flags);
 
 	if (init != flags)
 	{
 		LOG("Could not initialize mixer lib. Mix_Init: %s", Mix_GetError());
-		ret = true;
+		ret = false;
 	}
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		LOG("Error Mix_OpenAudio: %s", Mix_GetError());
-		ret = true;
+		ret = false;
 	}
 
 	LoadBgm("assets/Stage_1__The_Moon_Loop.ogg");
@@ -45,21 +47,21 @@ bool ModuleAudio::Init()
 	return ret;
 }
 
-update_status ModuleAudio::PreUpdate()
-{
-
-	return update_status::UPDATE_CONTINUE;
-}
-
-update_status ModuleAudio::Update()
-{
-	return update_status::UPDATE_CONTINUE;
-}
-
-update_status ModuleAudio::PostUpdate()
-{
-	return update_status::UPDATE_CONTINUE;
-}
+//update_status ModuleAudio::PreUpdate()
+//{
+//
+//	return update_status::UPDATE_CONTINUE;
+//}
+//
+//update_status ModuleAudio::Update()
+//{
+//	return update_status::UPDATE_CONTINUE;
+//}
+//
+//update_status ModuleAudio::PostUpdate()
+//{
+//	return update_status::UPDATE_CONTINUE;
+//}
 
 bool ModuleAudio::PlayMusic(int i, int j) {
 	Mix_PlayMusic(bgms[i], j);
@@ -105,6 +107,7 @@ _Mix_Music *const ModuleAudio::LoadBgm(const char* path) {
 		}
 	}
 	return bgm;
+
 }
 
 //Load new fx from file path
