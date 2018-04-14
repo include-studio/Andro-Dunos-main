@@ -164,5 +164,5 @@ bool ModulePlayer1::CleanUp() {
 	return true;
 }
 void ModulePlayer1::OnCollision(Collider* col1, Collider* col2) {
-	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover,0.5f);
 }
