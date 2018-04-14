@@ -6,6 +6,8 @@
 #include "ModulePlayer1.h"
 #include "ModuleStage1.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
+#include "ModuleFadeToBlack.h"
 
 
 ModulePlayer1::ModulePlayer1()
@@ -57,6 +59,8 @@ bool ModulePlayer1::Start()
 	graphics = App->textures->Load("assets/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT / 3;
+
+	player_col = App->collision->AddCollider({ position.x,position.y-17,39,17 }, COLLIDER_PLAYER, this);
 	return ret;
 }
 
@@ -64,8 +68,8 @@ bool ModulePlayer1::Start()
 update_status ModulePlayer1::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
-		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-14);
-		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-6 );
+		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-14, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-6, COLLIDER_PLAYER_SHOT);
 	}
 	if (App->input->keyboard[SDL_SCANCODE_D])
 		position.x += speedMoveShip;
@@ -143,6 +147,7 @@ update_status ModulePlayer1::Update()
 		break;
 	}
 
+	player_col->SetPos(position.x, position.y-17);
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
@@ -157,4 +162,7 @@ bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
 
 	return true;
+}
+void ModulePlayer1::OnCollision(Collider* col1, Collider* col2) {
+	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 }

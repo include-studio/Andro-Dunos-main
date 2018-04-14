@@ -15,6 +15,7 @@
 #include "ModuleViscoGames.h"
 #include "ModuleGameOver.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 
 
@@ -36,6 +37,7 @@ Application::Application()
 	modules[13] = stageclear = new ModuleStageClear();
 	modules[14] = gameover = new ModuleGameOver();
 	modules[15] = particles = new ModuleParticles();
+	modules[16] = collision = new ModuleCollision();
 
 }	
 
