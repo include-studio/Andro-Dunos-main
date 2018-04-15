@@ -50,7 +50,7 @@ bool ModuleGameOver::Start()
 
 	gameover_tx = App->textures->Load("Assets/gameover.png");
 
-	App->audio->PlayMusic("assets/18_Game_Over.ogg", 1);
+	App->audio->Load("assets/18_Game_Over.ogg");
 
 	return ret;
 }
@@ -79,7 +79,7 @@ update_status ModuleGameOver::Update()
 	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over);
 	
 
-	// make so pressing SPACE the background is loaded
+	// make so pressing C the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5f);

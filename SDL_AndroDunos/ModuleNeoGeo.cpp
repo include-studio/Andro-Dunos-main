@@ -209,11 +209,13 @@ bool ModuleNeoGeo::Start()
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
 
+
 	neogeo = App->textures->Load("Assets/neogeo.png");
 	snk = App->textures->Load("Assets/snk_animation.png");
 	machine = App->textures->Load("Assets/snk_intro_font.png");
 	
-	App->audio->PlayMusic("assets/01_Neo_Geo_Logo.ogg",1);
+	
+	App->audio->Load("assets/01_Neo_Geo_Logo.ogg");
 
 	return ret;
 }
@@ -233,6 +235,19 @@ bool ModuleNeoGeo::CleanUp()
 // Update: draw background
 update_status ModuleNeoGeo::Update()
 {
+	//Pause Music
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN) {
+		if (music_pasued == false) {
+
+			Mix_PauseMusic();
+			music_pasued = true;
+		}
+		else if (music_pasued == true) {
+			Mix_ResumeMusic();
+			music_pasued = false;
+
+		}
+	}
 	//Time
 	current_time = SDL_GetTicks() - init_time;
 
@@ -282,7 +297,7 @@ update_status ModuleNeoGeo::Update()
 		App->render->Blit(machine, 272, 57, &copyright); //272 and 57 comes from a Cross-multiplication between the emulator and the resolution
 	}
 
-	// Make so pressing SPACE the background is loaded
+	// Make so pressing C the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);

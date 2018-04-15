@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModuleAudio.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -22,6 +23,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("assets/laser_types.png");
+	
 
 	// laser particle
 	laser.anim.PushBack({ 21,6,16,10 });
@@ -75,7 +77,8 @@ update_status ModuleParticles::Update()
 			if(p->fx_played == false)
 			{
 				p->fx_played = true;
-				// Play particle fx here
+				// Play particle fx here!
+				App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
 			}
 		}
 	}
@@ -111,6 +114,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			active[i] = nullptr;
 			break;
 		}
+		
 	}
 }
 

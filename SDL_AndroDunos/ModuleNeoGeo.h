@@ -41,6 +41,8 @@ public:
 	int W_alph;
 	int current_time = 0;
 	int init_time = 0;
+	bool music_pasued = false;
+	
 };
 
 #endif // __MODULESMAINMENU_H__

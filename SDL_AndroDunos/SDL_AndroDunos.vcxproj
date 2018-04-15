@@ -139,6 +139,7 @@
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleViscoGames.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="p2List.h" />
     <ClInclude Include="p2Point.h" />
   </ItemGroup>
   <ItemGroup>
