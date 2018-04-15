@@ -117,7 +117,7 @@ bool ModuleStage1::Start()
 
 	App->collision->AddCollider({ 0,195,3001,253 }, COLLIDER_WALL);
 
-	App->audio->PlayMusic("assets/Stage_1__The_Moon_Loop.ogg");
+	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
 	App->particles->Enable();

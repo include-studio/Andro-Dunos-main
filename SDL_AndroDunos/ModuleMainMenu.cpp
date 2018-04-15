@@ -184,7 +184,7 @@ update_status ModuleMainMenu::Update()
 
 
 
-	// make so pressing SPACE the background is loaded
+	
 	if (Num_Count.current_frame >= Num_Count.last_frame - 1) 
 	{
 			App->fade->FadeToBlack(this, App->stage1, 0.5);
