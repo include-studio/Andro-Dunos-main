@@ -21,7 +21,7 @@ public:
 	bool Init();
 	bool CleanUp();
 
-	bool PlayMusic(int, int = -1);
+	void PlayMusic(const char*, int = -1);
 
 	Mix_Music* const LoadBgm(const char* path);
 	Mix_Chunk* const LoadFx(const char* path);

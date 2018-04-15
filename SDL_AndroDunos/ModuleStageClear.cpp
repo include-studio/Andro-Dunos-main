@@ -74,7 +74,7 @@ bool ModuleStageClear::Start() {
 	positionstage.x = SCREEN_WIDTH;
 	positionstage.y = 100; //Position Y
 
-	App->audio->PlayMusic(1, 1);
+	App->audio->PlayMusic("assets/06_Stage_Clear.ogg", 1);
 
 	return ret;
 }

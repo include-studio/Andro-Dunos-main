@@ -212,8 +212,8 @@ bool ModuleNeoGeo::Start()
 	neogeo = App->textures->Load("Assets/neogeo.png");
 	snk = App->textures->Load("Assets/snk_animation.png");
 	machine = App->textures->Load("Assets/snk_intro_font.png");
-
-	App->audio->PlayMusic(3,1); //Music
+	
+	App->audio->PlayMusic("assets/01_Neo_Geo_Logo.ogg",1);
 
 	return ret;
 }

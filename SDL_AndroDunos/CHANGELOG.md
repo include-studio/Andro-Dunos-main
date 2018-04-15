@@ -8,14 +8,14 @@ All notable changes to this project will be documented in this file.
 
 
 
-## [0.1.0] - 2018-03-22
+## [0.3.0] - 2018-04-13
 
 
 ### Summarized
 
-- Created the base of the code.
+- NeoGeo, ViscoGame and MainMenu scenes are done. StageClear and GameOver too.
 
-- Added background and scroll.
+- Players can shoot.
 
 ### Extended
 
@@ -23,59 +23,28 @@ All notable changes to this project will be documented in this file.
 #### Added
 
 
+- Created ModuleNeoGeo .cpp and .h .
 
-- Uploaded SDL_AndroDunos in Github.
+- Created ModuleViscoGames.cpp and .h .
 
-- Added SDL libraries (main, audio, mixer).
+- Created ModuleGameOver.cpp and .h .
 
-- Added background.
+- Created ModuleStageClear. cpp and .h .
 
-- Created Application .cpp and .h .
+- Created ModuleParticles. cpp and .h .
 
-- Created Globals .cpp and .h .
-
-- Created ModuleAudio.cpp and .h .
-
-- Created ModuleInput .cpp and .h .
-
-- Created ModuleRender.cpp and .h .
-
-- Created ModuleTextures .cpp and .h .
-
-- Created ModuleWindow .cpp and .h .
-
-- Created log.cpp .
-
-- Created Main.cpp .
-
-- Created MemLeaks.cpp .
-
-- Created Module.h .
+#### Fixed
 
 
-## [0.2.0] - 2018-04-05
+- Stars
 
+- ModuleAudio init errors with SDL_Mixer.
 
-### Summarized
+- StageClear animations.
 
-- Created the player ship and its movements with inputs.
+- MainMenu animations.
 
-- Added all background (stars, planets, ground, ...) with different scrolls .
-
-### Extended
-
-
-#### Added
-
-
-
-- Created Animation.h .
-
-- Created p2Point.h .
-
-- Created ModuleBackground .cpp and .h .
-
-- Created ModulePlayer. cpp and .h .
+- Stage 1 ground is visible in smaller computers.
 
 
 ## [0.2.1] - 2018-04-08
@@ -121,3 +90,73 @@ All notable changes to this project will be documented in this file.
 - Changed ModulePlayer to ModulePlayer1.
 
 - Changed ModuleBackground to ModuleStage1.
+
+
+## [0.2.0] - 2018-04-05
+
+
+### Summarized
+
+- Created the player ship and its movements with inputs.
+
+- Added all background (stars, planets, ground, ...) with different scrolls .
+
+### Extended
+
+
+#### Added
+
+
+
+- Created Animation.h .
+
+- Created p2Point.h .
+
+- Created ModuleBackground .cpp and .h .
+
+- Created ModulePlayer. cpp and .h .
+
+
+## [0.1.0] - 2018-03-22
+
+
+### Summarized
+
+- Created the base of the code.
+
+- Added background and scroll.
+
+### Extended
+
+
+#### Added
+
+
+
+- Uploaded SDL_AndroDunos in Github.
+
+- Added SDL libraries (main, audio, mixer).
+
+- Added background.
+
+- Created Application .cpp and .h .
+
+- Created Globals .cpp and .h .
+
+- Created ModuleAudio.cpp and .h .
+
+- Created ModuleInput .cpp and .h .
+
+- Created ModuleRender.cpp and .h .
+
+- Created ModuleTextures .cpp and .h .
+
+- Created ModuleWindow .cpp and .h .
+
+- Created log.cpp .
+
+- Created Main.cpp .
+
+- Created MemLeaks.cpp .
+
+- Created Module.h .

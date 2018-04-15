@@ -12,6 +12,8 @@
 #include "ModuleStageClear.h"
 #include "ModuleAudio.h"
 #include "ModuleGameOver.h"
+#include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 ModuleStage1::ModuleStage1()
 {
@@ -113,9 +115,13 @@ bool ModuleStage1::Start()
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
 
-	App->audio->PlayMusic(0);
+	App->collision->AddCollider({ 0,195,3001,253 }, COLLIDER_WALL);
+
+	App->audio->PlayMusic("assets/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
+	App->particles->Enable();
+	App->collision->Enable();
 
 	if (App->player2->insert2 == true) 
 	{
@@ -123,6 +129,24 @@ bool ModuleStage1::Start()
 	}
 
 	return ret;
+}
+
+bool ModuleStage1::CleanUp()
+{
+	LOG("Unloading players");
+	App->player1->Disable();
+	App->player2->Disable();
+	App->collision->Disable();
+	App->particles->Disable();
+
+	LOG("Unloading stage1");
+	App->textures->Unload(stars_tx);
+	App->textures->Unload(back_tx);
+	App->textures->Unload(ground_tx);
+
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
+	return true;
 }
 
 // Update: draw background
@@ -421,18 +445,3 @@ update_status ModuleStage1::Update()
 	return UPDATE_CONTINUE;
 }
 
-bool ModuleStage1::CleanUp()
-{
-	LOG("Unloading players");
-	App->player1->Disable();
-	App->player2->Disable();
-
-	LOG("Unloading stage1");
-	App->textures->Unload(stars_tx);
-	App->textures->Unload(back_tx);
-	App->textures->Unload(ground_tx);
-
-	App->render->camera.x = 0;
-	App->render->camera.y = 0;
-	return true;
-}
