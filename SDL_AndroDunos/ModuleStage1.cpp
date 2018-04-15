@@ -472,6 +472,10 @@ update_status ModuleStage1::Update()
 			for (int j = 20; j < 100; j++)
 				App->render->Blit(stars_tx, starpos[i] + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		}
+		if (part_stage == 14) {
+			App->fade->FadeToBlack(this, App->stageclear, 1);
+		}
+
 		break;
 	}
 	
@@ -483,6 +487,7 @@ update_status ModuleStage1::Update()
 		App->player1->position.y = camera_limit.yi;
 	if (App->player1->position.y > camera_limit.yf)
 		App->player1->position.y = camera_limit.yf;
+
 	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
