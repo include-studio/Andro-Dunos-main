@@ -60,7 +60,7 @@ bool ModulePlayer1::Start()
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT / 3;
 
-	player_col = App->collision->AddCollider({ position.x,position.y-17,39,17 }, COLLIDER_PLAYER, this);
+	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
 	return ret;
 }
 
@@ -146,14 +146,13 @@ update_status ModulePlayer1::Update()
 		animationShip = &up;
 		break;
 	}
-
-	player_col->SetPos(position.x, position.y-17);
+	player_col->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
 	ship = animationShip->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y - ship.h, &ship);
+	App->render->Blit(graphics, position.x, position.y, &ship);
 	
 	return UPDATE_CONTINUE;
 }
