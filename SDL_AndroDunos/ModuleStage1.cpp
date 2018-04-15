@@ -472,9 +472,9 @@ update_status ModuleStage1::Update()
 			for (int j = 20; j < 100; j++)
 				App->render->Blit(stars_tx, starpos[i] + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		}
-		if (part_stage == 14) {
+		for (int i = 150; i < 200; i++)
 			App->fade->FadeToBlack(this, App->stageclear, 1);
-		}
+
 
 		break;
 	}

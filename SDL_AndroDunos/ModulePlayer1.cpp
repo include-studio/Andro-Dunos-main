@@ -70,6 +70,7 @@ update_status ModulePlayer1::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 		if (god_mode == false) {
+
 			player_col->type = COLLIDER_NONE;
 			god_mode = true;
 		}
