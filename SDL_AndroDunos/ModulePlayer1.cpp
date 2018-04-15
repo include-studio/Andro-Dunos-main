@@ -8,6 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleAudio.h"
 
 
 ModulePlayer1::ModulePlayer1()
@@ -68,8 +69,9 @@ bool ModulePlayer1::Start()
 update_status ModulePlayer1::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
-		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-14, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-6, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, position.x+38, position.y+3, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser, position.x+38, position.y+11, COLLIDER_PLAYER_SHOT);
+	
 	}
 	if (App->input->keyboard[SDL_SCANCODE_D])
 		position.x += speedMoveShip;
