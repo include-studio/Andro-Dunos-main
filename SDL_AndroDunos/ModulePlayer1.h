@@ -43,5 +43,7 @@ public:
 	iPoint position;
 	Collider* player_col=nullptr;
 
+	bool god_mode = false;
+
 };
 #endif
