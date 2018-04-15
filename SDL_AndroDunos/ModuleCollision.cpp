@@ -20,6 +20,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_SHOT] = true;
 
+
 	matrix[COLLIDER_ENEMY][COLLIDER_WALL] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY] = false;
@@ -173,5 +174,9 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 {
 	if (r.x > rect.x + rect.w || r.x + r.w<rect.x || r.y>rect.y + rect.h || r.y + r.h < rect.y)
 		return false;
+	else if (App->input->keyboard[SDL_SCANCODE_M]) {
+		return false;
+	}
 	else return true;
+
 }

@@ -67,6 +67,19 @@ bool ModulePlayer1::Start()
 // Update: draw background
 update_status ModulePlayer1::Update()
 {
+
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
+		if (god_mode == false) {
+			player_col->type = COLLIDER_NONE;
+			god_mode = true;
+		}
+		else if (god_mode == true) {
+			
+			god_mode = false;
+			player_col->type = COLLIDER_PLAYER;
+		}
+	}
+
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
 		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-14, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->laser, position.x+38, position.y-6, COLLIDER_PLAYER_SHOT);
@@ -156,6 +169,8 @@ update_status ModulePlayer1::Update()
 	
 	return UPDATE_CONTINUE;
 }
+
+
 
 bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
