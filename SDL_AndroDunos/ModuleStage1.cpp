@@ -487,6 +487,17 @@ update_status ModuleStage1::Update()
 		App->player1->position.y = camera_limit.yi;
 	if (App->player1->position.y > camera_limit.yf)
 		App->player1->position.y = camera_limit.yf;
+<<<<<<< HEAD
+=======
+	if (App->player2->position.x < camera_limit.xi)
+		App->player2->position.x = camera_limit.xi;
+	if (App->player2->position.x > camera_limit.xf)
+		App->player2->position.x = camera_limit.xf;
+	if (App->player2->position.y < camera_limit.yi)
+		App->player2->position.y = camera_limit.yi;
+	if (App->player2->position.y > camera_limit.yf)
+		App->player2->position.y = camera_limit.yf;
+>>>>>>> 7454769ba047fb1fdfc0d19d71ecd26bc5cf466d
 
 	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
 	{
