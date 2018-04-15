@@ -77,7 +77,7 @@ update_status ModuleParticles::Update()
 			if(p->fx_played == false)
 			{
 				p->fx_played = true;
-				// Play particle fx here
+				// Play particle fx here!
 				App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
 			}
 		}
