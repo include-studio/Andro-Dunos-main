@@ -31,6 +31,7 @@ bool ModuleParticles::Start()
 	laser.anim.speed = 0.8f;
 	laser.life = 1500;
 	laser.speed.x = 7;
+	laser.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
 
 	return true;
 }

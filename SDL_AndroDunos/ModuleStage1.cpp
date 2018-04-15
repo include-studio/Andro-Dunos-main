@@ -483,6 +483,15 @@ update_status ModuleStage1::Update()
 		App->player1->position.y = camera_limit.yi;
 	if (App->player1->position.y > camera_limit.yf)
 		App->player1->position.y = camera_limit.yf;
+	if (App->player2->position.x < camera_limit.xi)
+		App->player2->position.x = camera_limit.xi;
+	if (App->player2->position.x > camera_limit.xf)
+		App->player2->position.x = camera_limit.xf;
+	if (App->player2->position.y < camera_limit.yi)
+		App->player2->position.y = camera_limit.yi;
+	if (App->player2->position.y > camera_limit.yf)
+		App->player2->position.y = camera_limit.yf;
+
 	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
