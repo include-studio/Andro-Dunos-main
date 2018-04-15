@@ -8,6 +8,31 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [0.4.0] - 2018-04-16
+
+
+### Summarized
+
+-Collisions, camera limits, god mode and module audio improved.
+
+### Extended
+
+
+#### Added
+
+
+- Created Collisions .cpp and .h .
+
+- Camera Limits struct.
+
+- God Mode player doesnt collide.
+
+
+#### Fixed
+
+- Module Audio play fx sounds fixed.
+
+
 ## [0.3.0] - 2018-04-13
 
 
