@@ -11,6 +11,8 @@
 #include "ModuleStageClear.h"
 #include "ModuleAudio.h"
 #include "ModuleGameOver.h"
+#include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 
 ModuleStage2::ModuleStage2() {
@@ -40,7 +42,10 @@ bool ModuleStage2::Start() {
 	App->audio->Load("assets/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 
 	App->player1->Enable();
-	
+
+	App->particles->Enable();
+	App->collision->Enable();
+
 	if (App->player2->insert2 == true)
 	{
 		App->player2->Enable();
