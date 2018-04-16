@@ -44,6 +44,6 @@ public:
 	Collider* player_col=nullptr;
 
 	bool god_mode = false;
-
+	int type_weapon = 0;
 };
 #endif

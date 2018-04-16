@@ -26,14 +26,34 @@ bool ModuleParticles::Start()
 	
 
 	// laser particle
-	laser.anim.PushBack({ 21,6,16,10 });
-	laser.anim.PushBack({ 21,36,16,10 });
-	laser.anim.PushBack({ 21,49,16,10 });
-	laser.anim.loop = false;
-	laser.anim.speed = 0.8f;
-	laser.life = 1500;
-	laser.speed.x = 7;
-	laser.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
+	laser1.anim.PushBack({ 21,6,16,10 });
+	//laser.anim.PushBack({ 21,36,16,10 });
+	//laser.anim.PushBack({ 21,49,16,10 });
+	laser1.anim.loop = false;
+	laser1.anim.speed = 0.8f;
+	laser1.life = 1500;
+	laser1.speed.x = 7;
+	laser1.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
+
+	//laser 2_1 particle
+
+	laser2_1.anim.PushBack({ 6,69,10,3 });
+	//laser2.anim.PushBack({ 21,36,16,10 });
+	//laser2.anim.PushBack({ 21,49,16,10 });
+	laser2_1.anim.loop = false;
+	laser2_1.anim.speed = 0.8f;
+	laser2_1.life = 1500;
+	laser2_1.speed.x = 7;
+
+	//laser 2_2 particle
+
+	laser2_2.anim.PushBack({ 6,84,10,3 });
+	//laser2.anim.PushBack({ 21,36,16,10 });
+	//laser2.anim.PushBack({ 21,49,16,10 });
+	laser2_2.anim.loop = false;
+	laser2_2.anim.speed = 0.8f;
+	laser2_2.life = 1500;
+	laser2_2.speed.x = -7;
 
 	return true;
 }
@@ -79,6 +99,7 @@ update_status ModuleParticles::Update()
 				p->fx_played = true;
 				// Play particle fx here!
 				App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
+				App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships)");
 			}
 		}
 	}
