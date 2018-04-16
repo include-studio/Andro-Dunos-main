@@ -114,6 +114,8 @@ bool ModuleMainMenu::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
+	credit = 0;
+
 	logo_background_tx = App->textures->Load("assets/logo_background.png");
 	logo_andro_tx = App->textures->Load("assets/logo.png");
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
@@ -122,14 +124,16 @@ bool ModuleMainMenu::Start()
 	c1992_tx = App->textures->Load("assets/1992.png");
 	num_count_tx = App->textures->Load("assets/num_counter.png");
 
-	Num_Count.reset();
-
 	return ret;
 }
 
 // Load assets
 bool ModuleMainMenu::CleanUp()
 {
+	Num_Count.reset();
+	Press1P.reset();
+	Press2P.reset();
+
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(logo_andro_tx);
 	App->textures->Unload(logo_background_tx);

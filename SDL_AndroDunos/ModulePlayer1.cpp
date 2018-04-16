@@ -177,6 +177,7 @@ update_status ModulePlayer1::Update()
 
 bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
+	App->collision->CleanUp();
 
 	return true;
 }
