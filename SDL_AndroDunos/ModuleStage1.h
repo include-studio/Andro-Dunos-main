@@ -51,6 +51,7 @@ public:
 	};
 	camera_limit camera_limit;
 	int part_stage = 0;
+	int ground_cont = 0;
 };
 
 #endif

@@ -21,31 +21,31 @@ ModuleStage1::ModuleStage1()
 	ground[0].x = 0;
 	ground[0].y = 0;
 	ground[0].w = 2048;
-	ground[0].h = 543;
+	ground[0].h = 224;
 
 	//ground2
-	ground[1].x = 0;
-	ground[1].y = 543;
+	ground[1].x = 2046;
+	ground[1].y = 0;
 	ground[1].w = 2048;
-	ground[1].h = 543;
+	ground[1].h = 448;
 
 	//ground3
-	ground[2].x = 0;
-	ground[2].y = 1086;
+	ground[2].x = 4094;
+	ground[2].y = 0;
 	ground[2].w = 2048;
-	ground[2].h = 543;
+	ground[2].h = 448;
 
 	//ground 4
-	ground[3].x = 0;
-	ground[3].y = 1629;
+	ground[3].x = 6142;
+	ground[3].y = 0;
 	ground[3].w = 2048;
-	ground[3].h = 543;
+	ground[3].h = 448;
 
 	//ground 5
-	ground[4].x = 0;
-	ground[4].y = 2172;
-	ground[4].w = 1113;
-	ground[4].h = 543;
+	ground[4].x = 8190;
+	ground[4].y = 0;
+	ground[4].w = 1115;
+	ground[4].h = 226;
 
 	// Background / sky
 	background.x = 0;
@@ -150,6 +150,8 @@ bool ModuleStage1::CleanUp()
 
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
+
+	ground_cont = 0;
 	return true;
 }
 
@@ -177,8 +179,10 @@ update_status ModuleStage1::Update()
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -2929 * SCREEN_SIZE)
+		if (App->render->camera.x <= -2945 * SCREEN_SIZE) {
 			part_stage++;
+			ground_cont++;
+		}
 		//draw
 		for (int i = 0; i < 12; i++)
 			App->render->Blit(back_tx, background.w*i, 123, &background, 0.382f);
@@ -186,10 +190,7 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 9; i++)
 			for (int j = 0; j < 20; j++)
 				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
-
 		App->render->Blit(back_tx, 800, 17, &planet1, 0.32f);
-		for (int i = 0; i < 2; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 1: //Downfall 
@@ -214,8 +215,7 @@ update_status ModuleStage1::Update()
 			if (App->render->camera.y >= -130 * SCREEN_SIZE)
 				App->render->Blit(back_tx, background.w*i, 123, &background, 0.40f);
 
-			for (int i = 1; i < 2; i++)
-				App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
+			
 		}
 		break;
 
@@ -233,8 +233,6 @@ update_status ModuleStage1::Update()
 		
 		App->render->Blit(back_tx, 1500, 61, &rocks_entry, 0.40f);
 		
-		for (int i = 1; i < 3; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 3: //Diagonal rise Up
@@ -255,8 +253,6 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
-		for (int i = 1; i < 3; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 4: //Post Diagonal rise Up & Diagonal rise Down  
@@ -272,8 +268,6 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
-		for (int i = 2; i < 3; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		break;
 	
 	case 5:  //Diagonal rise Down
@@ -294,8 +288,6 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
-		for (int i = 2; i < 3; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		break;
 
 	case 6://Post Diagonal rise Down & Pre Diagonal rise Up
@@ -304,15 +296,15 @@ update_status ModuleStage1::Update()
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -5040 * SCREEN_SIZE)
+		if (App->render->camera.x <= -5040 * SCREEN_SIZE) {
 			part_stage++;
+			ground_cont++;
+		}
 
 		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
-		for (int i = 2; i < 3; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		break;
 
 	case 7://Diagonal rise Up
@@ -333,8 +325,6 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
-		for (int i = 2; i < 3; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 8://Post Diagonal rise Up & Pre Diagonal rise Down
@@ -350,8 +340,6 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 		}
-		for (int i = 2; i < 4; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);	
 		break;
 
 	case 9://Diagonal rise Down
@@ -373,8 +361,6 @@ update_status ModuleStage1::Update()
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), -131, &rocks, 0.40f);
 			App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		}
-		for (int i = 2; i < 4; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		break;
 
 	case 10://Post Diagonal Down & Pre Rise Up
@@ -383,15 +369,15 @@ update_status ModuleStage1::Update()
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -7156 * SCREEN_SIZE)
+		if (App->render->camera.x <= -7156 * SCREEN_SIZE) {
 			part_stage++;
+			ground_cont++;
+		}
 
 		for (int i = 0; i < 20; i++) {
 			App->render->Blit(back_tx, 1500 + (rocks.w*i), 61, &rocks, 0.40f);
 			App->render->Blit(back_tx, 2715 + rocks.w, 61, &rocks_escape, 0.40f);
 		}
-		for (int i = 3; i < 4; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 11: //Rise Up
@@ -413,8 +399,6 @@ update_status ModuleStage1::Update()
 				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 			}
 		}
-		for (int i = 3; i < 4; i++) 
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 12:// Post Rise Up & Pre Diagonal to Boss 
@@ -431,8 +415,6 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 9; i++)
 			for (int j = 20; j < 100; j++)
 				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
-		for (int i = 3; i < 5; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);
 		App->render->Blit(back_tx, 2670, 17, &planet2, 0.32f);
 		break;
 
@@ -458,8 +440,6 @@ update_status ModuleStage1::Update()
 		for (int i = 0; i < 9; i++)
 			for (int j = 20; j < 100; j++)
 				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
-		for (int i = 4; i < 5; i++)
-			App->render->Blit(ground_tx, ground[0].w*i, -94, &ground[i]);		
 		break;
 
 	case 14: // Boss
@@ -478,6 +458,8 @@ update_status ModuleStage1::Update()
 
 		break;
 	}
+	for (int i = ground_cont; i < ground_cont+2; i++)
+		App->render->Blit(ground_tx, ground[0].w*i, 0, &ground[i]);
 	
 	if (App->player1->position.x < camera_limit.xi)
 		App->player1->position.x = camera_limit.xi;
