@@ -230,6 +230,9 @@ bool ModuleNeoGeo::CleanUp()
 	App->textures->Unload(snk);
 	App->textures->Unload(machine);
 	NeoGeo.reset();
+	SNK.reset();
+	Machine1.reset();
+	Machine2.reset();
 
 	current_time = 0;
 	
