@@ -33,7 +33,7 @@ ModuleGameOver::ModuleGameOver()
 	game_over.speed = 0.9f;
 
 	//Grey_Square_GM
-	Grey_Square.x = 2512;
+	Grey_Square.x = 2576;
 	Grey_Square.y = 2768;
 	Grey_Square.w = SCREEN_WIDTH;
 	Grey_Square.h = 48;
@@ -93,6 +93,5 @@ update_status ModuleGameOver::Update()
 		Mix_PauseMusic();
 	}
 	
-
 	return UPDATE_CONTINUE;
 }
