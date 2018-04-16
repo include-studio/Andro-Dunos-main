@@ -128,6 +128,7 @@ update_status ModuleStageClear::Update() {
 
 bool ModuleStageClear::CleanUp() {
 
+	StageClear.reset();
 	LOG("Unloading MainMenu stage");
 
 	App->textures->Unload(stage_clear_tx);

@@ -27,6 +27,7 @@ bool ModuleAudio::Start()
 		LOG("Could not initialize Audio lib. MIX_Init: %s", Mix_GetError());
 		ret = false;
 	}
+	
 	return ret;
 }
 
@@ -35,12 +36,16 @@ void ModuleAudio::Load(const char* path) {
 	LOG("Initing %s", path);
 	music = Mix_LoadMUS(path);
 	Mix_PlayMusic(music, -1);
+	Mix_VolumeMusic(volume_music);
+	
 }
 void ModuleAudio::Loadfx(const char* path) {
 
 	LOG("Initing %s", path);
 	fx = Mix_LoadWAV(path);
 	Mix_PlayChannel(-1, fx, 0);
+	Mix_VolumeChunk(fx, volume_fx); //Set up Volume Fx
+	
 }
 
 

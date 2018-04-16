@@ -19,8 +19,13 @@ public:
 	bool CleanUp();
 	Mix_Music *music;
 	Mix_Chunk*fx;
+	
 	void Load(const char* path);
 	void Loadfx(const char* path);
+
+	int volume_fx = 100;
+	int volume_music = 10;
+
 
 };
 //typedef struct _Mix_Music Mix_Music;

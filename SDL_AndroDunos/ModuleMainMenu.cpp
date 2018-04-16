@@ -114,6 +114,8 @@ bool ModuleMainMenu::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 
+	credit = 0;
+
 	logo_background_tx = App->textures->Load("assets/logo_background.png");
 	logo_andro_tx = App->textures->Load("assets/logo.png");
 	visco_games_tx = App->textures->Load("assets/visco_games.png");
@@ -128,6 +130,10 @@ bool ModuleMainMenu::Start()
 // Load assets
 bool ModuleMainMenu::CleanUp()
 {
+	Num_Count.reset();
+	Press1P.reset();
+	Press2P.reset();
+
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(logo_andro_tx);
 	App->textures->Unload(logo_background_tx);
@@ -181,10 +187,6 @@ update_status ModuleMainMenu::Update()
 		}
 	}
 	
-
-
-
-	
 	if (Num_Count.current_frame >= Num_Count.last_frame - 1) 
 	{
 			App->fade->FadeToBlack(this, App->stage1, 0.5);
@@ -202,7 +204,5 @@ update_status ModuleMainMenu::Update()
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 	
-	
-
 	return UPDATE_CONTINUE;
 }
