@@ -8,6 +8,9 @@
 #include "ModuleAudio.h"
 #include "ModuleStage2.h"
 
+#include "SDL/include/SDL.h"
+
+
 #define StageClearWIDTH 304
 
 ModuleStageClear::ModuleStageClear() {
@@ -68,19 +71,23 @@ ModuleStageClear::~ModuleStageClear(){}
 bool ModuleStageClear::Start() {
 	LOG("Loading StageClear textures");
 	bool ret = true;
-
+	init_time = SDL_GetTicks(); //Timer
 	stage_clear_tx = App->textures->Load("assets/StageClear.png");
 	
 	positionstage.x = SCREEN_WIDTH;
 	positionstage.y = 100; //Position Y
 
 	App->audio->Load("assets/06_Stage_Clear.ogg");
+	
 
 	return ret;
 }
 
 update_status ModuleStageClear::Update() {
 	
+
+	//Time
+	current_time = SDL_GetTicks() - init_time;
 	//animation after final state
 	if (positionstage.x) {
 
@@ -113,25 +120,38 @@ update_status ModuleStageClear::Update() {
 		switch (part_stageClear)
 		{
 		case 0:
-			if (App->fade->FadeToBlack(this, App->stage2, 1))
+			if (App->fade->FadeToBlack(this, App->stage2, 1)) {
+				Mix_PauseMusic();
 				part_stageClear++;
+			}
+				
+
 			break;
 		case 1:
-			if (App->fade->FadeToBlack(this, App->visco, 1))
+			if (App->fade->FadeToBlack(this, App->visco, 1)) {
+				Mix_PauseMusic();
 				part_stageClear = 0;
+			}
+				
 			break;
 		}
+	if (current_time >= 4500) {
+		Mix_PauseMusic();
+	}
+	if (current_time >= 5000) {
+		App->fade->FadeToBlack(this, App->stage2, 1);
+		current_time = 0;
 		
+	}
 
 	return UPDATE_CONTINUE;
 }
 
 bool ModuleStageClear::CleanUp() {
 
-	StageClear.reset();
 	LOG("Unloading MainMenu stage");
-
 	App->textures->Unload(stage_clear_tx);
+	StageClear.reset();
 
 	return true;
 }

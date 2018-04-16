@@ -28,7 +28,9 @@ public:
 	Animation* animationStageClear = nullptr;
 
 	int part_stageClear = 0;
-	
+	int current_time = 0;
+	int init_time = 0;
+
 	iPoint positionstage;
 
 	SDL_Rect stage_clear;

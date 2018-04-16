@@ -96,6 +96,8 @@ update_status ModuleViscoGames::Update()
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->insertCoin, 0.5);
+
+
 	}
 
 	return UPDATE_CONTINUE;

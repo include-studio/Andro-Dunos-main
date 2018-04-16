@@ -9,6 +9,7 @@
 #include "ModuleAudio.h"
 #include "Animation.h"
 #include "SDL/include/SDL.h"
+#include "ModuleMainMenu.h"
 #define GMSIZE 256
 
 
@@ -77,13 +78,21 @@ update_status ModuleGameOver::Update()
 	if(current_time>=1550) //ms when Game Over grey bckgnd appears
 		App->render->Blit(gameover_tx, 0, 74, &Grey_Square);
 	App->render->Blit(gameover_tx, 24, -30, &Animation_Rect_game_over);
+
+	if (current_time >= 3000) //ms when Game Over auido stop
+		Mix_PauseMusic();
+	if (current_time >= 3500) //ms when Game Over auido stop
+		App->fade->FadeToBlack(this, App->mainmenu, 0.5f);
+	
 	
 
 	// make so pressing C the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
-		App->fade->FadeToBlack(this, App->visco, 0.5f);
+		App->fade->FadeToBlack(this, App->mainmenu, 0.5f);
+		Mix_PauseMusic();
 	}
+	
 
 	return UPDATE_CONTINUE;
 }
