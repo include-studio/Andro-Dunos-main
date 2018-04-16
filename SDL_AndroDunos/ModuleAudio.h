@@ -24,7 +24,7 @@ public:
 	void Loadfx(const char* path);
 
 	int volume_fx = 100;
-	int volume_music = 100;
+	int volume_music = 10;
 
 
 };
