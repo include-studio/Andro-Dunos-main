@@ -70,7 +70,7 @@ bool ModulePlayer1::Start()
 update_status ModulePlayer1::Update()
 {
 
-	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
 		if (god_mode == false) {
 
 			player_col->type = COLLIDER_NONE;
@@ -95,14 +95,12 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
-
 	}
 
 	//type 2
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
-	App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT);
-	
+		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT);
 	}
 
 	//type 3
@@ -191,6 +189,7 @@ update_status ModulePlayer1::Update()
 		animationShip = &up;
 		break;
 	}
+
 	player_col->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
@@ -202,14 +201,12 @@ update_status ModulePlayer1::Update()
 	return UPDATE_CONTINUE;
 }
 
-
-
 bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
 	App->collision->CleanUp();
-
-	return true;
+		return true;
 }
+
 void ModulePlayer1::OnCollision(Collider* col1, Collider* col2) {
 	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover,0.5f);
 }

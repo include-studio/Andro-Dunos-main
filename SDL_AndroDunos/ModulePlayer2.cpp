@@ -6,6 +6,8 @@
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
+#include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 
 
@@ -55,20 +57,33 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-
 	bool insert2 = false;
-
 	graphics = App->textures->Load("assets/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT * 2 / 3;
-
 	type_weapon = 1;
+	player2_col = App->collision->AddCollider({ position.x,position.y,39, 17 }, COLLIDER_PLAYER, this);
 	return ret;
 }
 
 // Update: draw background
 update_status ModulePlayer2::Update()
 {
+
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN) {
+		if (god_mode == false) {
+
+			player2_col->type = COLLIDER_NONE;
+			god_mode = true;
+		}
+		else if (god_mode == true) {
+
+			god_mode = false;
+			player2_col->type = COLLIDER_PLAYER;
+		}
+	}
+
+	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
 		App->audio->Loadfx("Assets/Laser_Shot_Type_CHANGE.wav");
 		type_weapon++;
@@ -80,27 +95,23 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
 		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y - 12, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y - 4, COLLIDER_PLAYER_SHOT);
-
 	}
 
 	//type 2
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
 		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y - 4, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y - 4, COLLIDER_PLAYER_SHOT);
-
 	}
 
 	//type 3
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 3) {
 		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
-
 	}
 
 	//type 4
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 4) {
 		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
-
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_L])
@@ -130,7 +141,6 @@ update_status ModulePlayer2::Update()
 			state = IDLE_DOWN;
 	}
 
-
 	if (!App->input->keyboard[SDL_SCANCODE_K] && !App->input->keyboard[SDL_SCANCODE_I])
 	{
 		if (state == DOWN)
@@ -153,7 +163,6 @@ update_status ModulePlayer2::Update()
 		}
 
 	}
-
 
 	switch (state)
 	{
@@ -180,6 +189,8 @@ update_status ModulePlayer2::Update()
 		animationShip = &up;
 		break;
 	}
+
+	player2_col->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
@@ -189,8 +200,13 @@ update_status ModulePlayer2::Update()
 
 	return UPDATE_CONTINUE;
 }
+
 bool ModulePlayer2::CleanUp() {
 	App->textures->Unload(graphics);
-
+	App->collision->CleanUp();
 	return true;
+}
+
+void ModulePlayer2::OnCollision(Collider* col1, Collider* col2) {
+	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover, 0.5f);
 }

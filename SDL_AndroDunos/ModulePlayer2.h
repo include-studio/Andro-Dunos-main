@@ -21,6 +21,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void OnCollision(Collider*, Collider*);
+
 public:
 
 	PLAYER_STATE_MOVE state;
@@ -39,9 +41,10 @@ public:
 	Animation downidle;
 	Animation down;
 	iPoint position;
+	Collider* player2_col = nullptr;
 
+	bool god_mode = false;
 	bool insert2;
-
 	int type_weapon = 0;
 };
 
