@@ -61,6 +61,7 @@ bool ModulePlayer1::Start()
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT / 3;
 
+	type_weapon = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
 	return ret;
 }
@@ -82,11 +83,27 @@ update_status ModulePlayer1::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
-		App->particles->AddParticle(App->particles->laser, position.x+38, position.y+3, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser, position.x+38, position.y+11, COLLIDER_PLAYER_SHOT);
+	//change weapon
+	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN) {
+		type_weapon++;
+		if (type_weapon == 3)
+			type_weapon = 1;
+	}
+
+	//type 1
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+
+	}
+
+	//type 2
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
+	App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT);
 	
 	}
+
 	if (App->input->keyboard[SDL_SCANCODE_D])
 		position.x += speedMoveShip;
 

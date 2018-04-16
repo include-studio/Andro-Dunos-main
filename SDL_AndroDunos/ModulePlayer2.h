@@ -41,6 +41,8 @@ public:
 	iPoint position;
 
 	bool insert2;
+
+	int type_weapon = 0;
 };
 
 #endif

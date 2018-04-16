@@ -60,15 +60,32 @@ bool ModulePlayer2::Start()
 	graphics = App->textures->Load("assets/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT * 2 / 3;
+
+	type_weapon = 1;
 	return ret;
 }
 
 // Update: draw background
 update_status ModulePlayer2::Update()
 {
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN) {
-		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y - 14);
-		App->particles->AddParticle(App->particles->laser, position.x + 38, position.y - 6);
+	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
+		type_weapon++;
+		if (type_weapon == 3)
+			type_weapon = 1;
+	}
+
+	//type 1
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
+		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y - 12, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y - 4, COLLIDER_PLAYER_SHOT);
+
+	}
+
+	//type 2
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
+		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y - 4, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y - 4, COLLIDER_PLAYER_SHOT);
+
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_L])
