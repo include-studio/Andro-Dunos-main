@@ -121,13 +121,22 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 				// Play particle fx here!
-				if ((App->player1->type_weapon == 1 || App->player2->type_weapon == 1 ) && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-				App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
-				if ((App->player1->type_weapon == 2 || App->player2->type_weapon == 2) && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-				App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
-				if ((App->player1->type_weapon == 3 || App->player2->type_weapon == 3) && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->player1->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+					App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
+				if (App->player1->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+					App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
+				if (App->player1->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 					App->audio->Loadfx("Assets/Laser_Shot_Type-3_(Main_Ships).wav");
-				if ((App->player1->type_weapon == 4 || App->player2->type_weapon == 4) && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				if (App->player1->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+					App->audio->Loadfx("Assets/Laser_Shot_Type-4_(Main_Ships).wav");
+				
+				if (App->player2->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+					App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
+				if (App->player2->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+					App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
+				if (App->player2->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+					App->audio->Loadfx("Assets/Laser_Shot_Type-3_(Main_Ships).wav");
+				if (App->player2->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
 					App->audio->Loadfx("Assets/Laser_Shot_Type-4_(Main_Ships).wav");
 			}
 		}
