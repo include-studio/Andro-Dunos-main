@@ -24,42 +24,41 @@ ModuleStageClear::ModuleStageClear() {
 
 	animationStageClear = nullptr;
 
-	StageClear.PushBack({ 0, 0 ,304,48 });//stageclear
-	StageClear.PushBack({ 0, 50 ,304,48 });
-	StageClear.PushBack({ 0, 101 ,304,43 });
-	StageClear.PushBack({ 0, 147 ,304,43 });
-	StageClear.PushBack({ 0, 195 ,304,40 });
-	StageClear.PushBack({ 0, 240 ,304,37 });
-	StageClear.PushBack({ 0, 281 ,304,34 });
-	StageClear.PushBack({ 0, 319 ,304,32 });
-	StageClear.PushBack({ 0, 356 ,304,29 });
-	StageClear.PushBack({ 0, 390 ,304,26 });
-	StageClear.PushBack({ 0, 421 ,304,23 });
-	StageClear.PushBack({ 0, 448 ,304,21 });
-	StageClear.PushBack({ 0, 472 ,304,18 });
-	StageClear.PushBack({ 0, 495 ,304,15 });
-	StageClear.PushBack({ 0, 514 ,304,12 });
-	StageClear.PushBack({ 0, 530 ,304,9 });
-	StageClear.PushBack({ 0, 543 ,304,6});
-
-	StageClear.PushBack({ 0, 556 ,304,2 });//clearbonus
-	StageClear.PushBack({ 0, 563 ,304,2 });
-	StageClear.PushBack({ 0, 571 ,304,5 });
-	StageClear.PushBack({ 0, 583 ,304,7 });
-	StageClear.PushBack({ 0, 598 ,304,9 });
-	StageClear.PushBack({ 0, 614 ,304,11 });
-	StageClear.PushBack({ 0, 634 ,304,12 });
-	StageClear.PushBack({ 0, 654 ,304,13 });
-	StageClear.PushBack({ 0, 675 ,304,15 });
-	StageClear.PushBack({ 0, 697 ,304,16 });
-	StageClear.PushBack({ 0, 720 ,304,18 });
-	StageClear.PushBack({ 0, 744 ,304,20 });
-	StageClear.PushBack({ 0, 771 ,304,22 });
-	StageClear.PushBack({ 0, 802 ,304,24 });
-	StageClear.PushBack({ 0, 833 ,304,26 });
-	StageClear.PushBack({ 0, 865 ,304,26 });
-	StageClear.PushBack({ 0, 898 ,304,28 });
-	StageClear.PushBack({ 0, 934 ,304,28 });
+	StageClear.PushBack({ 0, 0, 304, 48 });
+	StageClear.PushBack({ 0, 48, 304, 48 });
+	StageClear.PushBack({ 0, 96, 304, 48 });
+	StageClear.PushBack({ 0, 144, 304, 48 });
+	StageClear.PushBack({ 0, 192, 304, 48 });
+	StageClear.PushBack({ 0, 240, 304, 48 });
+	StageClear.PushBack({ 0, 288, 304, 48 });
+	StageClear.PushBack({ 0, 336, 304, 48 });
+	StageClear.PushBack({ 0, 384, 304, 48 });
+	StageClear.PushBack({ 0, 432, 304, 48 });
+	StageClear.PushBack({ 0, 480, 304, 48 });
+	StageClear.PushBack({ 0, 528, 304, 48 });
+	StageClear.PushBack({ 0, 576, 304, 48 });
+	StageClear.PushBack({ 0, 624, 304, 48 });
+	StageClear.PushBack({ 0, 672, 304, 48 });
+	StageClear.PushBack({ 0, 720, 304, 48 });
+	StageClear.PushBack({ 0, 768, 304, 48 });
+	StageClear.PushBack({ 0, 816, 304, 48 });
+	StageClear.PushBack({ 0, 864, 304, 48 });
+	StageClear.PushBack({ 0, 912, 304, 48 });
+	StageClear.PushBack({ 0, 960, 304, 48 });
+	StageClear.PushBack({ 0, 1008, 304, 48 });
+	StageClear.PushBack({ 0, 1056, 304, 48 });
+	StageClear.PushBack({ 0, 1104, 304, 48 });
+	StageClear.PushBack({ 0, 1152, 304, 48 });
+	StageClear.PushBack({ 0, 1200, 304, 48 });
+	StageClear.PushBack({ 0, 1248, 304, 48 });
+	StageClear.PushBack({ 0, 1296, 304, 48 });
+	StageClear.PushBack({ 0, 1344, 304, 48 });
+	StageClear.PushBack({ 0, 1392, 304, 48 });
+	StageClear.PushBack({ 0, 1440, 304, 48 });
+	StageClear.PushBack({ 0, 1488, 304, 48 });
+	StageClear.PushBack({ 0, 1536, 304, 48 });
+	StageClear.PushBack({ 0, 1584, 304, 48 });
+	StageClear.PushBack({ 0, 1632, 304, 48 });
 
 	StageClear.loop = false;
 
