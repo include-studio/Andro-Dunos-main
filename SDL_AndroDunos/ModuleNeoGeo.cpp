@@ -301,6 +301,8 @@ update_status ModuleNeoGeo::Update()
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
+		Mix_PauseMusic();
+		current_time = 0;
 	}
 
 	//White fade - Flash 
@@ -309,6 +311,13 @@ update_status ModuleNeoGeo::Update()
 			SDL_RenderFillRect(App->render->renderer, &white);
 			W_alph -= 3;
 		}
+	}
+
+	//Neogeo Pause Audio & go to Viscogames
+	if (current_time >= 7000) {
+		App->fade->FadeToBlack(this, App->visco, 0.5);
+		Mix_PauseMusic();
+		current_time = 0;
 	}
 	
 	return UPDATE_CONTINUE;

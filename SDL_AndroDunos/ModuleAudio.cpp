@@ -36,7 +36,7 @@ void ModuleAudio::Load(const char* path) {
 	LOG("Initing %s", path);
 	music = Mix_LoadMUS(path);
 	Mix_PlayMusic(music, -1);
-	Mix_VolumeMusic(volume_music);
+	Mix_VolumeMusic(volume_music); //Set up Volume Music
 	
 }
 void ModuleAudio::Loadfx(const char* path) {
