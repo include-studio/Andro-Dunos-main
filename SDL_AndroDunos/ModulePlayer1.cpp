@@ -85,8 +85,9 @@ update_status ModulePlayer1::Update()
 
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN) {
+		App->audio->Loadfx("Assets/Laser_Shot_Type_CHANGE.wav");
 		type_weapon++;
-		if (type_weapon == 3)
+		if (type_weapon == 5)
 			type_weapon = 1;
 	}
 
@@ -102,6 +103,17 @@ update_status ModulePlayer1::Update()
 	App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 	App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT);
 	
+	}
+
+	//type 3
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type_weapon == 3) {
+		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+	}
+
+	//type 4
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN && type_weapon == 4) {
+		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_D])
