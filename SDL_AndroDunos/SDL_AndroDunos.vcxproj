@@ -126,6 +126,7 @@
     <ClInclude Include="ModuleCollision.h" />
     <ClInclude Include="ModuleGameOver.h" />
     <ClInclude Include="ModuleInput.h" />
+    <ClInclude Include="ModuleInsertCoin.h" />
     <ClInclude Include="ModuleNeoGeo.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleStage1.h" />
@@ -150,6 +151,7 @@
     <ClCompile Include="ModuleCollision.cpp" />
     <ClCompile Include="ModuleGameOver.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
+    <ClCompile Include="ModuleInsertCoin.cpp" />
     <ClCompile Include="ModuleNeoGeo.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModuleStage1.cpp" />

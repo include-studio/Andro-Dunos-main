@@ -61,6 +61,9 @@
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleInsertCoin.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -134,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="p2List.h">
       <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInsertCoin.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

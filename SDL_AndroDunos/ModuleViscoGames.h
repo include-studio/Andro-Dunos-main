@@ -1,5 +1,5 @@
-#ifndef __MODULESVISCOGAMES_H__
-#define __MODULESVISCOGAMES_H__
+#ifndef __MODULEVISCOGAMES_H__
+#define __MODULEVISCOGAMES_H__
 
 #include "Module.h"
 #include "Animation.h"
@@ -33,4 +33,4 @@ public:
 
 };
 
-#endif // __MODULESMAINMENU_H__
+#endif // __MODULEVISCOGAMES_H__
