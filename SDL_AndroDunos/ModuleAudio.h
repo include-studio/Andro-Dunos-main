@@ -23,7 +23,7 @@ public:
 	void Load(const char* path);
 	void Loadfx(const char* path);
 
-	int volume_fx = 100;
+	int volume_fx = 20;
 	int volume_music = 10;
 
 
