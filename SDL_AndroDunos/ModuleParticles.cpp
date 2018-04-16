@@ -6,6 +6,9 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
+#include "ModuleInput.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -98,8 +101,10 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 				// Play particle fx here!
-				App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
-				App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
+				//if ((App->player1->type_weapon == 1 || App->player2->type_weapon == 1 ) && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				//App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
+				//if ((App->player1->type_weapon == 2 || App->player2->type_weapon == 2) && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+				//App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
 			}
 		}
 	}
