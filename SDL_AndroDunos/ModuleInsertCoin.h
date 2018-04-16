@@ -23,16 +23,18 @@ public:
 	SDL_Texture * insert_tx;
 
 	SDL_Rect Insert_Rect;
-	SDL_Rect Insert2_Rect;
+	SDL_Rect white;
+	SDL_Rect black;
 
 	Animation insert;
 	
 	Animation* animationInsert = nullptr;
 	
 
-	int current_time = 0;
-	int init_time = 0;
+	int current_time;
+	int init_time;
 
+	int W_alph;
 	//Credit
 	int credit = 0;
 };

@@ -81,6 +81,14 @@ update_status ModuleViscoGames::Update()
 			positionvisco.x -= 4;
 		}
 	}
+
+	if (current_time >= 4000) {
+		App->fade->FadeToBlack(this, App->insertCoin, 1);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
+	{
+		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+	}
 	
 
 	// make so pressing SPACE the background is loaded

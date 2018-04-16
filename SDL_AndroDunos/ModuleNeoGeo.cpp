@@ -9,6 +9,7 @@
 #include "ModuleAudio.h"
 #include "Animation.h"
 #include "SDL/include/SDL.h"
+#include "ModuleMainMenu.h"
 
 #define SNKWIDTH 72
 #define NeoGeoWIDTH 227
@@ -228,6 +229,10 @@ bool ModuleNeoGeo::CleanUp()
 	App->textures->Unload(neogeo);
 	App->textures->Unload(snk);
 	App->textures->Unload(machine);
+	NeoGeo.reset();
+
+	current_time = 0;
+	
 
 	return true;
 }
@@ -303,6 +308,10 @@ update_status ModuleNeoGeo::Update()
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 		Mix_PauseMusic();
 	}
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
+	{
+		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+	}
 
 	//White fade - Flash 
 	if(current_time >= 200){
@@ -314,8 +323,10 @@ update_status ModuleNeoGeo::Update()
 
 	//Neogeo Pause Audio & go to Viscogames
 	if (current_time >= 7000) {
-		App->fade->FadeToBlack(this, App->visco, 0.5);
+		App->fade->FadeToBlack(this, App->visco, 1);
 		Mix_PauseMusic();
+		current_time = 0;
+		init_time = 0;
 	}
 	
 	return UPDATE_CONTINUE;
