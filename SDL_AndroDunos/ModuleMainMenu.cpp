@@ -122,8 +122,6 @@ bool ModuleMainMenu::Start()
 	c1992_tx = App->textures->Load("assets/1992.png");
 	num_count_tx = App->textures->Load("assets/num_counter.png");
 
-	Num_Count.reset();
-
 	return ret;
 }
 
