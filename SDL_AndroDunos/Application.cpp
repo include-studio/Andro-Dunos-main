@@ -16,6 +16,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
+#include "ModuleInsertCoin.h"
 
 
 
@@ -38,6 +39,7 @@ Application::Application()
 	modules[14] = gameover = new ModuleGameOver();
 	modules[15] = particles = new ModuleParticles();
 	modules[16] = collision = new ModuleCollision();
+	modules[17] = insertCoin = new ModuleInsertCoin();
 
 }	
 
@@ -55,6 +57,7 @@ bool Application::Init()
 	player1->Disable();
 	player2->Disable();
 	// Disable the map that you do not start with
+	insertCoin->Disable();
 	visco->Disable();
 	mainmenu->Disable();
 	gameover->Disable();

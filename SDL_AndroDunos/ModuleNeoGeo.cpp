@@ -208,7 +208,7 @@ bool ModuleNeoGeo::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
-
+	current_time = 0;
 
 	neogeo = App->textures->Load("Assets/neogeo.png");
 	snk = App->textures->Load("Assets/snk_animation.png");
@@ -302,7 +302,6 @@ update_status ModuleNeoGeo::Update()
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 		Mix_PauseMusic();
-		current_time = 0;
 	}
 
 	//White fade - Flash 
@@ -317,7 +316,6 @@ update_status ModuleNeoGeo::Update()
 	if (current_time >= 7000) {
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 		Mix_PauseMusic();
-		current_time = 0;
 	}
 	
 	return UPDATE_CONTINUE;

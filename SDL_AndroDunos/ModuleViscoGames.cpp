@@ -8,6 +8,8 @@
 #include "ModuleViscoGames.h"
 #include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
+#include "ModuleNeoGeo.h"
+#include "ModuleInsertCoin.h"
 
 ModuleViscoGames::ModuleViscoGames()
 {
@@ -85,7 +87,7 @@ update_status ModuleViscoGames::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
-		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+		App->fade->FadeToBlack(this, App->insertCoin, 0.5);
 	}
 
 	return UPDATE_CONTINUE;
