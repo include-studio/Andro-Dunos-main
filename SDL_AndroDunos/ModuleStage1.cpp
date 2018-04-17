@@ -115,7 +115,24 @@ bool ModuleStage1::Start()
 	back_tx = App->textures->Load("assets/Background.png");
 	ground_tx = App->textures->Load("assets/Ground.png");
 
-	App->collision->AddCollider({ 0,195,3001,253 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,195,1098,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1491,195,1497,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1098,204,393,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 905,184,103,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1560,189,103,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2362,189,103,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2601,184,103,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2971,187,39,249 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2960,401,114,47 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 3078,430,1033,18 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3893,418,64,30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4203,311,402,55 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4080,421,29,29 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4109,389,30,58 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4139,359,81,89 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4188,339,20,24 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4193,325,21,21 }, COLLIDER_WALL);
 
 	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	
