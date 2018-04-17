@@ -219,10 +219,8 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 	{
 		App->fade->FadeToBlack((Module*)App->stage2, (Module*)App->gameover);
 
-		App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE, 150);
-		App->particles->AddParticle(App->particles->mini_explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
-		App->particles->AddParticle(App->particles->mini_explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
-		App->particles->AddParticle(App->particles->mini_explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
+		//it has to be big_explosion
+		App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE,150);
 
 		destroyed = true;
 	}

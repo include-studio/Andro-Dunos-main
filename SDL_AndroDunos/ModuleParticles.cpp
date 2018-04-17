@@ -67,12 +67,12 @@ ModuleParticles::ModuleParticles()
 	laser4_2.speed.y = -3;
 
 	//mini explosion particle
-	mini_explosion.anim.PushBack({ 152,0,16,16 });
-	mini_explosion.anim.PushBack({ 168,0,16,16 });
-	mini_explosion.anim.PushBack({ 184,0,16,16 });
-	mini_explosion.anim.PushBack({ 200,0,16,16 });
+	mini_explosion.anim.PushBack({ 160,133,32,32 });
+	mini_explosion.anim.PushBack({ 160,165,32,32 });
+	mini_explosion.anim.PushBack({ 160,197,32,32 });
+	mini_explosion.anim.PushBack({ 160,229,32,32 });
 	mini_explosion.anim.loop = false;
-	mini_explosion.anim.speed = 0.4f;
+	mini_explosion.anim.speed = 0.8f;
 
 	//big explosion particle
 	big_explosion.anim.PushBack({ 41,11,13,2 });
