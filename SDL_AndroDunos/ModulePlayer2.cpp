@@ -198,7 +198,7 @@ update_status ModulePlayer2::Update()
 
 	ship = animationShip->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y - ship.h, &ship);
+	App->render->Blit(graphics, position.x, position.y, &ship);
 
 	return UPDATE_CONTINUE;
 }
