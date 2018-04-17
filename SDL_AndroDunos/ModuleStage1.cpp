@@ -24,27 +24,27 @@ ModuleStage1::ModuleStage1()
 	ground[0].h = 224;
 
 	//ground2
-	ground[1].x = 2046;
-	ground[1].y = 0;
+	ground[1].x = 0;
+	ground[1].y = 224;
 	ground[1].w = 2048;
 	ground[1].h = 448;
 
 	//ground3
-	ground[2].x = 4094;
-	ground[2].y = 0;
+	ground[2].x = 0;
+	ground[2].y = 672;
 	ground[2].w = 2048;
-	ground[2].h = 448;
+	ground[2].h = 447;
 
 	//ground 4
-	ground[3].x = 6142;
-	ground[3].y = 0;
+	ground[3].x = 0;
+	ground[3].y = 1119;
 	ground[3].w = 2048;
-	ground[3].h = 448;
+	ground[3].h = 475;
 
 	//ground 5
-	ground[4].x = 8190;
-	ground[4].y = 0;
-	ground[4].w = 1115;
+	ground[4].x = 0;
+	ground[4].y = 1594;
+	ground[4].w = 1113;
 	ground[4].h = 226;
 
 	// Background / sky
