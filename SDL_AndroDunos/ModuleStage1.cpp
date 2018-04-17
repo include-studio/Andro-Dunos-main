@@ -14,6 +14,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 
 ModuleStage1::ModuleStage1()
 {
@@ -134,11 +135,18 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 4188,339,20,24 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4193,325,21,21 }, COLLIDER_WALL);
 
+	// Enemies ---
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);
+
 	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
+	App->enemies->Enable();
 
 	if (App->player2->insert2 == true) 
 	{
@@ -159,6 +167,7 @@ bool ModuleStage1::CleanUp()
 	App->player2->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
+	App->enemies->Disable();
 
 	LOG("Unloading stage1");
 	App->textures->Unload(stars_tx);

@@ -5,7 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
-//#include "Enemy_RedBird.h"
+#include "Enemy_WavingShip.h"
 
 
 #define SPAWN_MARGIN 50
@@ -127,9 +127,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		//case ENEMY_TYPES::REDBIRD:
-		//	enemies[i] = new Enemy_RedBird(info.x, info.y);
-		//	break;
+		case ENEMY_TYPES::WAVINGSHIP:
+			enemies[i] = new Enemy_WavingShip(info.x, info.y);
+			break;
 		}
 	}
 }
