@@ -43,6 +43,7 @@ public:
 	iPoint position;
 	Collider* player2_col = nullptr;
 
+	bool destroyed = false;
 	bool god_mode = false;
 	bool insert2;
 	int type_weapon = 0;

@@ -47,8 +47,6 @@ private:
 
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
-	SDL_Texture* explosions = nullptr;
-	//uint last_particle = 0;
 
 public:
 	
