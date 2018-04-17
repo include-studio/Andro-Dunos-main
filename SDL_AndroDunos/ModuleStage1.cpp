@@ -136,10 +136,25 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 4193,325,21,21 }, COLLIDER_WALL);
 
 	// Enemies ---
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 300, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 325, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 350, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 375, 60);
+
+	/*App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);*/
 
 	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	
@@ -220,6 +235,7 @@ update_status ModuleStage1::Update()
 			for (int j = 0; j < 20; j++)
 				App->render->Blit(stars_tx, star[i].starposx + SCREEN_WIDTH * j, star[i].starposy, &star[i].star, star[i].speed);
 		App->render->Blit(back_tx, 800, 17, &planet1, 0.32f);
+
 		break;
 
 	case 1: //Downfall 

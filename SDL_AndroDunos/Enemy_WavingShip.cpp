@@ -4,19 +4,24 @@
 
 Enemy_WavingShip::Enemy_WavingShip(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 5,6,24,24 });
-	fly.PushBack({ 38, 6, 24, 24 });
-	fly.PushBack({ 71, 6, 24, 24 });
-	fly.PushBack({ 104, 6, 24, 24 });
-	fly.PushBack({ 137, 6, 24, 24 });
-	fly.PushBack({ 170, 6, 24, 24 });
-	fly.PushBack({ 203, 6, 24, 24 });
-	fly.PushBack({ 236, 6, 24, 24 });
+	fly.PushBack({ 0,0,22,22 });
+	fly.PushBack({ 22, 0, 22, 22 });
+	fly.PushBack({ 44, 0, 22, 22 });
+	fly.PushBack({ 66, 0, 22, 22 });
+	fly.PushBack({ 88, 0, 22, 22 });
+	fly.PushBack({ 110, 0, 22, 22 });
+
+	fly.PushBack({ 0, 22, 22, 22 });
+	fly.PushBack({ 22, 22, 22, 22 });
+	fly.PushBack({ 44, 22, 22, 22 });
+	fly.PushBack({ 66, 22, 22, 22 });
+	fly.PushBack({ 88, 22, 22, 22 });
+
 	fly.speed = 0.2f;
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 22, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 }
