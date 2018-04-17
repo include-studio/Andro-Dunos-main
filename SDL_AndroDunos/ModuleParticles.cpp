@@ -16,16 +16,6 @@ ModuleParticles::ModuleParticles()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
-}
-
-ModuleParticles::~ModuleParticles()
-{}
-
-// Load assets
-bool ModuleParticles::Start()
-{
-	LOG("Loading particles");
-	graphics = App->textures->Load("assets/laser_types.png");
 
 	// laser particle
 	laser1.anim.PushBack({ 21,6,16,10 });
@@ -36,7 +26,6 @@ bool ModuleParticles::Start()
 	laser1.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
 
 	//laser 2_1 particle
-
 	laser2_1.anim.PushBack({ 6,69,10,3 });
 	laser2_1.anim.loop = false;
 	laser2_1.anim.speed = 0.8f;
@@ -44,7 +33,6 @@ bool ModuleParticles::Start()
 	laser2_1.speed.x = 7;
 
 	//laser 2_2 particle
-
 	laser2_2.anim.PushBack({ 6,84,10,3 });
 	laser2_2.anim.loop = false;
 	laser2_2.anim.speed = 0.8f;
@@ -84,15 +72,27 @@ bool ModuleParticles::Start()
 	mini_explosion.anim.PushBack({ 184,0,16,16 });
 	mini_explosion.anim.PushBack({ 200,0,16,16 });
 	mini_explosion.anim.loop = false;
-	mini_explosion.anim.speed = 0.8f;
-	//mini_explosion.life = 1500;
-
+	mini_explosion.anim.speed = 0.4f;
 
 	//big explosion particle
 	big_explosion.anim.PushBack({ 41,11,13,2 });
 	big_explosion.anim.loop = false;
 	big_explosion.anim.speed = 0.8f;
-	//big_explosion.life = 1500;
+}
+
+ModuleParticles::~ModuleParticles()
+{}
+
+// Load assets
+bool ModuleParticles::Start()
+{
+	LOG("Loading particles");
+	graphics = App->textures->Load("assets/laser_types.png");
+	
+	//laser1.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
+	//laser2.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
+	//laser3.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-3_(Main_Ships).wav");
+	//laser4.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-4_(Main_Ships).wav");
 
 	return true;
 }
@@ -102,7 +102,11 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
-	App->textures->Unload(explosions);
+
+	//App->audio->Unload(laser1.fx);
+	//App->audio->Unload(laser2.fx);
+	//App->audio->Unload(laser3.fx);
+	//App->audio->Unload(laser4.fx);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -139,6 +143,7 @@ update_status ModuleParticles::Update()
 			{
 				p->fx_played = true;
 				// Play particle fx here!
+				//App->audio->PlayFx(p->fx);
 				if (App->player1->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 					App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
 				if (App->player1->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)

@@ -61,6 +61,7 @@ bool ModulePlayer1::Start()
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT / 3;
 
+	destroyed = false;
 	type_weapon = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
 	return ret;
@@ -196,7 +197,8 @@ update_status ModulePlayer1::Update()
 
 	ship = animationShip->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y, &ship);
+	if (destroyed == false)
+		App->render->Blit(graphics, position.x, position.y, &ship);
 	
 	return UPDATE_CONTINUE;
 }
@@ -205,9 +207,23 @@ bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
 	App->collision->CleanUp();
 	App->particles->CleanUp();
-		return true;
+
+	if (player_col != nullptr)
+		player_col->to_delete = true;
+	return true;
 }
 
-void ModulePlayer1::OnCollision(Collider* col1, Collider* col2) {
-	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover,0.5f);
+void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
+{
+		if (c1 == player_col && destroyed == false && App->fade->IsFading() == false)
+		{
+			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+
+			App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE, 150);
+			App->particles->AddParticle(App->particles->mini_explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
+			App->particles->AddParticle(App->particles->mini_explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
+			App->particles->AddParticle(App->particles->mini_explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
+
+			destroyed = true;
+		}
 }
