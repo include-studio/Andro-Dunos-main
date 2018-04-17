@@ -93,25 +93,25 @@ update_status ModulePlayer2::Update()
 
 	//type 1
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
-		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y - 12, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y - 4, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +3, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
 	}
 
 	//type 2
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
-		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y - 4, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y - 4, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y +11, COLLIDER_PLAYER_SHOT);
 	}
 
 	//type 3
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 3) {
-		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
 	}
 
 	//type 4
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 4) {
-		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_L])
