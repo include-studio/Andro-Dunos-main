@@ -59,6 +59,7 @@ bool ModuleGameOver::Start()
 // Load assets
 bool ModuleGameOver::CleanUp()
 {
+	game_over.reset();
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(gameover_tx);
 

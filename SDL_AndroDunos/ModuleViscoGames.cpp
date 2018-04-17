@@ -10,6 +10,7 @@
 #include "SDL/include/SDL.h"
 #include "ModuleNeoGeo.h"
 #include "ModuleInsertCoin.h"
+#include "ModuleStage1.h"
 
 ModuleViscoGames::ModuleViscoGames()
 {
@@ -93,12 +94,10 @@ update_status ModuleViscoGames::Update()
 
 	// make so pressing SPACE the background is loaded
 
-	if (App->input->keyboard[SDL_SCANCODE_C])
-	{
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 		App->fade->FadeToBlack(this, App->insertCoin, 0.5);
-
-
-	}
+	if (App->input->keyboard[SDL_SCANCODE_C])
+		App->fade->FadeToBlack(this, App->stage1, 0.5);
 
 	return UPDATE_CONTINUE;
 }

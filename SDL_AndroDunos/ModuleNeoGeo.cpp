@@ -8,6 +8,7 @@
 #include "ModuleNeoGeo.h"
 #include "ModuleAudio.h"
 #include "Animation.h"
+#include "ModuleStage1.h"
 #include "SDL/include/SDL.h"
 #include "ModuleMainMenu.h"
 
@@ -306,7 +307,7 @@ update_status ModuleNeoGeo::Update()
 	}
 
 	// Make so pressing C the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_C])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 		Mix_PauseMusic();
@@ -314,6 +315,10 @@ update_status ModuleNeoGeo::Update()
 	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_C])
+	{
+		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
 	//White fade - Flash 

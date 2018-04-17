@@ -170,7 +170,10 @@ update_status ModuleStage1::Update()
 			break;
 		}
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_X])
+		App->fade->FadeToBlack(this, App->stageclear, 0.5);
+	if (App->input->keyboard[SDL_SCANCODE_C])
+		App->fade->FadeToBlack(this, App->gameover, 0.5);
 	switch (part_stage) {
 	case 0: //case 0: Start & PreDownfall
 		//logic
