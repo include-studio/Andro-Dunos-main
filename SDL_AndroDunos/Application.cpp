@@ -17,6 +17,7 @@
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleInsertCoin.h"
+#include "ModuleEnemies.h"
 
 
 
@@ -40,6 +41,7 @@ Application::Application()
 	modules[15] = particles = new ModuleParticles();
 	modules[16] = collision = new ModuleCollision();
 	modules[17] = insertCoin = new ModuleInsertCoin();
+	modules[18] = enemies = new ModuleEnemies();
 
 }	
 
@@ -66,13 +68,11 @@ bool Application::Init()
 	stage1->Disable();
 	neogeo->Enable();
 	gameover->Disable();
+	collision->Disable();
+	enemies->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
-	{
-		
 		ret = modules[i]->Init();
-	}
-
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;

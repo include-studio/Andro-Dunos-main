@@ -64,6 +64,12 @@
     <ClCompile Include="ModuleInsertCoin.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -141,6 +147,15 @@
     <ClInclude Include="ModuleInsertCoin.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="path.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Containers">
@@ -151,6 +166,9 @@
     </Filter>
     <Filter Include="Modules">
       <UniqueIdentifier>{1d465ab4-4ed3-485c-b491-a407f156d006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Enemies">
+      <UniqueIdentifier>{8de230c8-76ca-4580-8f2f-db34123586b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

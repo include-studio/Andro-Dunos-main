@@ -93,7 +93,7 @@ bool ModuleParticles::Start()
 	//laser2.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
 	//laser3.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-3_(Main_Ships).wav");
 	//laser4.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-4_(Main_Ships).wav");
-
+	//explosion.fx = App->audio->Loadfx("Assets/");
 	return true;
 }
 
@@ -107,6 +107,7 @@ bool ModuleParticles::CleanUp()
 	//App->audio->Unload(laser2.fx);
 	//App->audio->Unload(laser3.fx);
 	//App->audio->Unload(laser4.fx);
+	//App->audio->Unload(explosion.fx);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -161,6 +162,9 @@ update_status ModuleParticles::Update()
 					App->audio->Loadfx("Assets/Laser_Shot_Type-3_(Main_Ships).wav");
 				if (App->player2->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
 					App->audio->Loadfx("Assets/Laser_Shot_Type-4_(Main_Ships).wav");
+				
+				if (App->player1->destroyed == true || App->player2->destroyed == true)
+					App->audio->Loadfx("Assets/Player_Death_Explosion.wav");
 			}
 		}
 	}

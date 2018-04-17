@@ -10,6 +10,7 @@
 #define TIMERETURNIDDLE 10
 
 struct SDL_Texture;
+struct Collider;
 
 class ModulePlayer2 : public Module
 {

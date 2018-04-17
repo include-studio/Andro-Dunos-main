@@ -10,6 +10,7 @@
 #define TIMERETURNIDDLE 10
 
 struct SDL_Texture;
+struct Collider;
 
 class ModulePlayer1 : public Module
 {
@@ -41,7 +42,7 @@ public:
 	Animation downidle;
 	Animation down;
 	iPoint position;
-	Collider* player_col=nullptr;
+	Collider* player_col = nullptr;
 
 	bool destroyed = false;
 	bool god_mode = false;

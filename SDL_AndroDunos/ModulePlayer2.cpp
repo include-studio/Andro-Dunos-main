@@ -116,13 +116,13 @@ update_status ModulePlayer2::Update()
 		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y -4, COLLIDER_PLAYER_SHOT);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_L])
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT])
 		position.x += speedMoveShip;
 
-	if (App->input->keyboard[SDL_SCANCODE_J])
+	if (App->input->keyboard[SDL_SCANCODE_LEFT])
 		position.x -= speedMoveShip;
 
-	if (App->input->keyboard[SDL_SCANCODE_I])
+	if (App->input->keyboard[SDL_SCANCODE_UP])
 	{
 		position.y -= speedMoveShip;
 		counterMoved += speedMoveShip;
@@ -132,7 +132,7 @@ update_status ModulePlayer2::Update()
 		else
 			state = IDLE_UP;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_K])
+	if (App->input->keyboard[SDL_SCANCODE_DOWN])
 	{
 		position.y += speedMoveShip;
 		counterMoved2 += speedMoveShip;
@@ -143,7 +143,7 @@ update_status ModulePlayer2::Update()
 			state = IDLE_DOWN;
 	}
 
-	if (!App->input->keyboard[SDL_SCANCODE_K] && !App->input->keyboard[SDL_SCANCODE_I])
+	if (!App->input->keyboard[SDL_SCANCODE_DOWN] && !App->input->keyboard[SDL_SCANCODE_UP])
 	{
 		if (state == DOWN)
 			state = IDLE_DOWN;
