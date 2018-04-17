@@ -115,7 +115,7 @@ update_status ModuleStageClear::Update() {
 		App->render->Blit(stage_clear_tx, 0, 36, &animation_StageClear);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_C])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
 		switch (part_stageClear)
 		{
 		case 0:
@@ -137,11 +137,11 @@ update_status ModuleStageClear::Update() {
 	if (current_time >= 4500) {
 		Mix_PauseMusic();
 	}
-	if (current_time >= 5000) {
+	/*if (current_time >= 5000) {
 		App->fade->FadeToBlack(this, App->stage2, 1);
 		current_time = 0;
 		
-	}
+	}*/
 
 	return UPDATE_CONTINUE;
 }
