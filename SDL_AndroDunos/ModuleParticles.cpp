@@ -26,7 +26,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("assets/laser_types.png");
-	
 
 	// laser particle
 	laser1.anim.PushBack({ 21,6,16,10 });
@@ -78,6 +77,23 @@ bool ModuleParticles::Start()
 	laser4_2.life = 1500;
 	laser4_2.speed.x = 7;
 	laser4_2.speed.y = -3;
+
+	//mini explosion particle
+	mini_explosion.anim.PushBack({ 152,0,16,16 });
+	mini_explosion.anim.PushBack({ 168,0,16,16 });
+	mini_explosion.anim.PushBack({ 184,0,16,16 });
+	mini_explosion.anim.PushBack({ 200,0,16,16 });
+	mini_explosion.anim.loop = false;
+	mini_explosion.anim.speed = 0.8f;
+	//mini_explosion.life = 1500;
+
+
+	//big explosion particle
+	big_explosion.anim.PushBack({ 41,11,13,2 });
+	big_explosion.anim.loop = false;
+	big_explosion.anim.speed = 0.8f;
+	//big_explosion.life = 1500;
+
 	return true;
 }
 
@@ -86,6 +102,7 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
+	App->textures->Unload(explosions);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -117,6 +134,7 @@ update_status ModuleParticles::Update()
 		else if(SDL_GetTicks() >= p->born)
 		{
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+
 			if(p->fx_played == false)
 			{
 				p->fx_played = true;

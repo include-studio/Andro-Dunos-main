@@ -44,7 +44,7 @@ void ModuleAudio::Loadfx(const char* path) {
 	LOG("Initing %s", path);
 	fx = Mix_LoadWAV(path);
 	Mix_PlayChannel(-1, fx, 0);
-	Mix_VolumeChunk(fx, volume_fx); //Set up Volume Fx
+	//Mix_VolumeChunk(fx, volume_fx); //Set up Volume Fx
 	
 }
 
@@ -54,8 +54,9 @@ bool ModuleAudio::CleanUp() {
 	LOG("Freeing Audio library");
 	Mix_CloseAudio();
 	Mix_FreeMusic(music);
+	Mix_FreeChunk(fx);
 	music = NULL;
-
+	fx = NULL;
 
 	return true;
 }
