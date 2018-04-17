@@ -15,7 +15,7 @@
 
 ModuleStageClear::ModuleStageClear() {
 	
-	//rect new coord in new texture
+	//Animation StageClear
 
 	stage_clear.x = 0;
 	stage_clear.y = 0;
@@ -63,6 +63,12 @@ ModuleStageClear::ModuleStageClear() {
 	StageClear.loop = false;
 
 	StageClear.speed = 0.5f;
+
+	//Blue Rect 
+	small_blue.x = 0;
+	small_blue.y = 0;
+	small_blue.w = 124;
+	small_blue.h = 75;
 }
 
 ModuleStageClear::~ModuleStageClear(){}
@@ -72,9 +78,13 @@ bool ModuleStageClear::Start() {
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
 	stage_clear_tx = App->textures->Load("assets/StageClear.png");
+	small_blue_tx = App->textures->Load("assets/clear_bonus_small_screen.png");
 	
 	positionstage.x = SCREEN_WIDTH;
-	positionstage.y = 100; //Position Y
+	positionstage.y = 100; 
+
+	position_small_blue.x = 24;
+	position_small_blue.y = SCREEN_HEIGHT;
 
 	App->audio->Load("assets/06_Stage_Clear.ogg");
 	
@@ -87,12 +97,21 @@ update_status ModuleStageClear::Update() {
 
 	//Time
 	current_time = SDL_GetTicks() - init_time;
-	//animation after final state
+
+	if (current_time >= 4500) {
+		Mix_PauseMusic();
+	}
+
+	//Blit: Blue small screen 
+	App->render->Blit(small_blue_tx, position_small_blue.x, position_small_blue.y , &small_blue);
+
+
+	//Animation after final state
 	if (positionstage.x) {
 
 		App->render->Blit(stage_clear_tx, positionstage.x, positionstage.y, &stage_clear);
 
-		positionstage.x -= 4;
+		positionstage.x -= 8;
 
 	}
 
@@ -100,11 +119,11 @@ update_status ModuleStageClear::Update() {
 
 		App->render->Blit(stage_clear_tx, positionstage.x, positionstage.y, &stage_clear);
 
-		positionstage.y -= 4;
+		positionstage.y -= 3;
 
 	}
 
-	else if (positionstage.y == 36) 
+	else if (positionstage.y <= 36) 
 	{
 		animationStageClear = &StageClear;
 
@@ -134,14 +153,11 @@ update_status ModuleStageClear::Update() {
 				
 			break;
 		}
-	if (current_time >= 4500) {
-		Mix_PauseMusic();
-	}
-	/*if (current_time >= 5000) {
-		App->fade->FadeToBlack(this, App->stage2, 1);
-		current_time = 0;
-		
-	}*/
+
+	if (position_small_blue.y > 83 && current_time >= 2000)
+		position_small_blue.y -= 5;
+	
+	
 
 	return UPDATE_CONTINUE;
 }
@@ -150,6 +166,8 @@ bool ModuleStageClear::CleanUp() {
 
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(stage_clear_tx);
+	App->textures->Unload(small_blue_tx);
+
 	StageClear.reset();
 
 	return true;

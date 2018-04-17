@@ -22,9 +22,12 @@ public:
 public:
 
 	SDL_Texture * stage_clear_tx = nullptr;
+	SDL_Texture * small_blue_tx = nullptr;
+
+	SDL_Rect small_blue;
+	SDL_Rect stage_clear;
 
 	Animation StageClear;
-
 	Animation* animationStageClear = nullptr;
 
 	int part_stageClear = 0;
@@ -32,7 +35,7 @@ public:
 	int init_time = 0;
 
 	iPoint positionstage;
-
-	SDL_Rect stage_clear;
+	iPoint position_small_blue;
+	
 };
 #endif // !__MODULESTAGECLEAR__H__
