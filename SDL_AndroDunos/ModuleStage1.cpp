@@ -141,20 +141,21 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 350, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 375, 60);
 
-	/*App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 500, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 525, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 550, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 575, 140);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 625, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 665, 80);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 700, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 725, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 750, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 775, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 900, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 925, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 950, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 975, 140);
 
 	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	
