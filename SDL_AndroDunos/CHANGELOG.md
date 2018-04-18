@@ -8,6 +8,29 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [0.4.5] - 2018-04-18
+
+### Summarized
+
+-Added enemies, explosions and collision boxes. Also new animation in stage clear.
+
+### Extended
+
+
+#### Added
+
+
+- Created ModuleEnemies.cpp and .h .
+
+- Created Enemies.cpp and .h .
+
+- Created Enemy_WavingShip.cpp and .h .
+
+- Score box in stageclear.
+
+- Mini Explosion animated.
+
+
 ## [0.4.0] - 2018-04-16
 
 
@@ -25,7 +48,7 @@ All notable changes to this project will be documented in this file.
 
 - Camera Limits struct.
 
-- God Mode player doesnt collide.
+- God Mode, player doesnt collide.
 
 
 #### Fixed
