@@ -117,13 +117,13 @@ bool ModuleStage1::Start()
 	ground_tx = App->textures->Load("assets/Ground.png");
 
 	App->collision->AddCollider({ 0,195,1098,39 }, COLLIDER_WALL); //Initial Floor
-	App->collision->AddCollider({ 1491,195,1497,39 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1491,195,1480,39 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 1098,204,393,20 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 905,184,103,39 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 1560,189,103,39 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 2362,189,103,39 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 2601,184,103,39 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 2971,187,39,249 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 905,184,103,11 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1560,189,103,6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2362,189,103,6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2601,184,103,11 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2971,187,39,214 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 2960,401,114,47 }, COLLIDER_WALL);
 	
 	App->collision->AddCollider({ 3204,187 ,45,108 }, COLLIDER_WALL); //Top
@@ -147,10 +147,7 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 7156, 185, 45, 105 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 7036, 240, 120, 20 }, COLLIDER_WALL);
 
-
-
-
-	App->collision->AddCollider({ 3078,430,1002,18 }, COLLIDER_WALL); //Downfall
+	App->collision->AddCollider({ 3074,430,1002,18 }, COLLIDER_WALL); //Downfall
 	App->collision->AddCollider({ 3893,418,64,30 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4080,421,29,29 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4109,389,30,58 }, COLLIDER_WALL);
