@@ -138,7 +138,7 @@ update_status ModuleStageClear::Update() {
 		switch (part_stageClear)
 		{
 		case 0:
-			if (App->fade->FadeToBlack(this, App->stage2, 1)) {
+			if (App->fade->FadeToBlack(this, App->visco, 1)) {
 				Mix_PauseMusic();
 				part_stageClear++;
 			}

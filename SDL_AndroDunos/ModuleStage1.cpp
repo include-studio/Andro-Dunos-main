@@ -137,6 +137,19 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 4156, 90 ,30,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4186, 70 ,600,40 }, COLLIDER_WALL);
 
+	App->collision->AddCollider({ 6286, 0, 30, 30 }, COLLIDER_WALL); //Top 2
+	App->collision->AddCollider({ 6316, 30, 30, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6346, 60, 50, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6396, 90, 40, 50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6426, 140, 40, 40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6466, 170, 40, 35 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6506, 205, 650, 35 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7156, 185, 45, 105 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7036, 240, 120, 20 }, COLLIDER_WALL);
+
+
+
+
 	App->collision->AddCollider({ 3078,430,1002,18 }, COLLIDER_WALL); //Downfall
 	App->collision->AddCollider({ 3893,418,64,30 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4080,421,29,29 }, COLLIDER_WALL);
@@ -167,9 +180,10 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 6408,415,32,25 }, COLLIDER_WALL); 
 	App->collision->AddCollider({ 6440,435,910,25 }, COLLIDER_WALL);
 
+
 	App->collision->AddCollider({ 7350,415,90,25 }, COLLIDER_WALL);//Rise
 	App->collision->AddCollider({ 7370,400,90,15 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 7400,200,90,205 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7400,200,90,200 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 7412,180,20,20 }, COLLIDER_WALL);
 
 	App->collision->AddCollider({ 7490,200,1700,40 }, COLLIDER_WALL); // Final Floor
