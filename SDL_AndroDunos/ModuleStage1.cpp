@@ -274,7 +274,7 @@ update_status ModuleStage1::Update()
 	switch (part_stage) {
 	case 0: //case 0: Start & PreDownfall
 		//logic
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
@@ -295,7 +295,7 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 1: //Downfall 
-		App->render->camera.y -= 3;
+		App->render->camera.y += 3;
 		App->player1->position.y++;
 		App->player2->position.y++;
 		camera_limit.yi++;

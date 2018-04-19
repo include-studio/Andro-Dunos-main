@@ -98,7 +98,7 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 			if (text[i] == fonts[font_id].table[j])
 				rect.x = rect.w * (j % font->row_chars);
 				rect.y = rect.h * (j / font->row_chars);
-				App->render->Blit(font->graphic, x, y, &rect, 1.0f);
+				App->render->Blit(font->graphic, x, y, &rect, 1.0f,false);
 				x += rect.w;
 				break;
 		}

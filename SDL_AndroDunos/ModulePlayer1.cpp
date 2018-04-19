@@ -203,7 +203,7 @@ update_status ModulePlayer1::Update()
 	ship = animationShip->GetCurrentFrame();
 
 	if (destroyed == false)
-		App->render->Blit(graphics, position.x, position.y, &ship);
+		App->render->Blit(graphics, position.x, position.y, &ship); // 0.0f, false
 	
 	sprintf_s(score_text, 10, "%7d", App->enemies->score);
 	
