@@ -147,13 +147,12 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 7156, 185, 45, 105 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 7036, 240, 120, 20 }, COLLIDER_WALL);
 
-	App->collision->AddCollider({ 3074,430,1002,18 }, COLLIDER_WALL); //Downfall
-	App->collision->AddCollider({ 3893,418,64,30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3074,430,1006,18 }, COLLIDER_WALL); //Downfall
+	App->collision->AddCollider({ 3893,418,64,12 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4080,421,29,29 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4109,389,30,58 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 4139,359,81,89 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 4188,339,20,24 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 4193,325,21,24 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4139,351,81,89 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 4183,325,20,26 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4203,311,402,40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4605,331,15,30 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 4605,361,65,55 }, COLLIDER_WALL);
