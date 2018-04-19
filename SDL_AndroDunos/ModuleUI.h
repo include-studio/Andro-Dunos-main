@@ -20,12 +20,13 @@ public:
 
 	int font_score = -1;
 	char score_text[10];
+	int font_score2 = -1;
 	char coins_text[10];
 
 	uint coins = 0;
 
 	Uint32 score;
-	uint high_score = 10000;
+	uint high_score = 0;
 
 };
 

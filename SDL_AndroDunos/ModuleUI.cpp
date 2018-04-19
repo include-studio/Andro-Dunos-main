@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include "ModuleStageClear.h"
 #include "ModuleStage1.h"
+#include "ModuleGameOver.h"
 
 ModuleUI::ModuleUI() {}
 
@@ -22,7 +23,8 @@ bool ModuleUI::Start()
 {
 	LOG("Loading intro");
 	font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1);
-	/*coins_font = App->fonts->Load("Assets/coins_font.png", "CREDITS0123456789", 1);*/
+	font_score2 = App->fonts->Load("Assets/red_font_high_score.png", "HI-1234567890", 1);
+	/*coins_font = App->fonts->Load("Assets/credits.png", "CREDITS0123456789", 1);*/
 
 	return true;
 }
@@ -34,13 +36,13 @@ update_status ModuleUI::Update()
 	if (App->player1->score > high_score) {
 		high_score = App->player1->score;
 	}
-	if (App->stage1->IsEnabled() == true) {
+	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		sprintf_s(score_text, 10, "%7d", high_score);
-		App->fonts->BlitText(100, 6, font_score, score_text);
+		App->fonts->BlitText(100, 6, font_score2, score_text);
 	}
 
 	//final score in stage
-	if (App->stageclear->IsEnabled() == true) {
+	if (App->stageclear->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		sprintf_s(score_text, 10, "%7d", App->player1->score);
 		App->fonts->BlitText(20, 100, font_score, score_text);
 	}
