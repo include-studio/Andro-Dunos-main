@@ -9,6 +9,7 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
+#include "ModulePlayer1.h"
 
 
 ModulePlayer2::ModulePlayer2()
@@ -72,16 +73,14 @@ bool ModulePlayer2::Start()
 update_status ModulePlayer2::Update()
 {
 
-	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN) {
-		if (god_mode == false) {
-
+	if (god_mode != App->player1->god_mode) {
+		if (god_mode) {
+			player2_col->type = COLLIDER_PLAYER;
+			god_mode = false;
+		}
+		else {
 			player2_col->type = COLLIDER_NONE;
 			god_mode = true;
-		}
-		else if (god_mode == true) {
-
-			god_mode = false;
-			player2_col->type = COLLIDER_PLAYER;
 		}
 	}
 
