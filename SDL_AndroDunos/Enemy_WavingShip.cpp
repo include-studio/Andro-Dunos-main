@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "Enemy_WavingShip.h"
 #include "ModuleCollision.h"
+#include "Globals.h"
+
 
 Enemy_WavingShip::Enemy_WavingShip(int x, int y) : Enemy(x, y)
 {

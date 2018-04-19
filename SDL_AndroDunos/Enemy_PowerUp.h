@@ -1,0 +1,25 @@
+#ifndef __ENEMY_POWERUP_H__
+#define __ENEMY_POWERUP_H__
+
+#include "Enemy.h"
+#include "path.h"
+
+
+class Enemy_PowerUp : public Enemy
+{
+private:
+	
+	Path path;
+	iPoint original_pos;
+	Animation left, left_down, left_up, right, transition1, transition2, transition3, transition4;
+
+public:
+
+	Enemy_PowerUp(int x, int y);
+	//void OnCollision(Collider* collider);
+
+	void Move();
+};
+
+#endif // __ENEMY_POWERUP_H__
+

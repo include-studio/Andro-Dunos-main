@@ -4,7 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleStage1.h"
-#include "ModuleStage2.h"
+//#include "ModuleStage2.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleAudio.h"
@@ -19,6 +19,7 @@
 #include "ModuleInsertCoin.h"
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
+#include "ModulePowerUp.h"
 #include "ModuleUI.h"
 
 
@@ -45,8 +46,8 @@ Application::Application()
 	modules[16] = insertCoin = new ModuleInsertCoin();
 	modules[17] = enemies = new ModuleEnemies();
 	modules[18] = fonts = new ModuleFonts();
-	modules[19] = ui = new ModuleUI();
-
+	modules[19] = powerup = new ModulePowerUp();
+	modules[20] = ui = new ModuleUI();
 }	
 
 Application::~Application()

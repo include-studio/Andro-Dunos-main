@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "Enemy_HorizontalRocket.h"
 #include "ModuleCollision.h"
+#include "Globals.h"
+
 
 Enemy_HorizontalRocket::Enemy_HorizontalRocket(int x, int y) : Enemy(x, y)
 {

@@ -79,6 +79,14 @@
     <ClCompile Include="Enemy_HorizontalRocket.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Enemy_PowerUp.cpp">
+      <Filter>Modules\Enemies</Filter>
+=======
+    <ClCompile Include="ModulePowerUp.cpp">
+      <Filter>Modules</Filter>
+>>>>>>> 916ede4c2c3f7a1caf221ad59645fa784264c1f7
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -173,6 +181,14 @@
     </ClInclude>
     <ClInclude Include="Enemy_HorizontalRocket.h">
       <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Enemy_PowerUp.h">
+      <Filter>Modules\Enemies</Filter>
+=======
+    <ClInclude Include="ModulePowerUp.h">
+      <Filter>Modules</Filter>
+>>>>>>> 916ede4c2c3f7a1caf221ad59645fa784264c1f7
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
