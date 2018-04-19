@@ -59,7 +59,7 @@ bool ModulePlayer2::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	bool insert2 = false;
-	graphics = App->textures->Load("assets/ships.png");
+	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT * 2 / 3;
 
@@ -86,7 +86,7 @@ update_status ModulePlayer2::Update()
 
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
-		App->audio->Loadfx("Assets/Laser_Shot_Type_CHANGE.wav");
+		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;

@@ -212,12 +212,12 @@ bool ModuleNeoGeo::Start()
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
 
-	neogeo = App->textures->Load("Assets/neogeo.png");
-	snk = App->textures->Load("Assets/snk_animation.png");
-	machine = App->textures->Load("Assets/snk_intro_font.png");
+	neogeo = App->textures->Load("Assets/Sprites/neogeo.png");
+	snk = App->textures->Load("Assets/Sprites/snk_animation.png");
+	machine = App->textures->Load("Assets/Sprites/snk_intro_font.png");
 	
 	
-	App->audio->Load("assets/01_Neo_Geo_Logo.ogg");
+	App->audio->Load("assets/Audio/01_Neo_Geo_Logo.ogg");
 
 	return ret;
 }

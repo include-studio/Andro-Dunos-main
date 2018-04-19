@@ -21,7 +21,7 @@ ModuleUI::~ModuleUI() {}
 bool ModuleUI::Start()
 {
 	LOG("Loading intro");
-	font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1);
+	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	/*coins_font = App->fonts->Load("Assets/coins_font.png", "CREDITS0123456789", 1);*/
 
 	return true;

@@ -49,9 +49,9 @@ bool ModuleGameOver::Start()
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
 
-	gameover_tx = App->textures->Load("Assets/gameover.png");
+	gameover_tx = App->textures->Load("Assets/Sprites/gameover.png");
 
-	App->audio->Load("assets/18_Game_Over.ogg");
+	App->audio->Load("assets/Audio/18_Game_Over.ogg");
 
 	return ret;
 }

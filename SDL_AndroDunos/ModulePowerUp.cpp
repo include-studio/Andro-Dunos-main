@@ -18,7 +18,7 @@ ModulePowerUp::ModulePowerUp() {
 ModulePowerUp::~ModulePowerUp() {}
 
 bool ModulePowerUp::Start() {
-	graphics = App->textures->Load("assets/power_up.png");
+	graphics = App->textures->Load("assets/Sprites/power_up.png");
 
 	return true;
 }
