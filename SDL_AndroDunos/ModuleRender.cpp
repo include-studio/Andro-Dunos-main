@@ -52,17 +52,17 @@ update_status ModuleRender::Update()
 	int speed = 3;
 
 	if (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)
-		camera.y += speed*10;
+		camera.y -= speed*10;
 	if (App->input->keyboard[SDL_SCANCODE_U] == KEY_STATE::KEY_REPEAT)
-		camera.x -= speed*50;
+		camera.x += speed*50;
 
 	if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_REPEAT)
-		camera.y -= speed*10;
+		camera.y += speed*10;
 
 	if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_REPEAT)
-		camera.x -= speed*20;
+		camera.x += speed*20;
 	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_REPEAT)
-		camera.x += speed*10;
+		camera.x -= speed*10;
 	return update_status::UPDATE_CONTINUE;
 }
 
