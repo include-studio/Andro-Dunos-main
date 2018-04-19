@@ -36,7 +36,7 @@ bool ModuleViscoGames::Start()
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
 
-	visco = App->textures->Load("Assets/visco_games_intro.png");
+	visco = App->textures->Load("Assets/Sprites/visco_games_intro.png");
 
 	positionvisco.x = SCREEN_WIDTH / 2;
 	positionvisco.y = SCREEN_HEIGHT / 2;

@@ -51,7 +51,7 @@ bool ModuleInsertCoin::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer	
-	insert_tx = App->textures->Load("Assets/insert_coin.png");
+	insert_tx = App->textures->Load("Assets/Sprites/insert_coin.png");
 
 	current_time = 0;
 	

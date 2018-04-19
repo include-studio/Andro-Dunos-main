@@ -112,9 +112,9 @@ bool ModuleStage1::Start()
 	App->render->camera.x = 0;
 	App->render->camera.x = 0;
 
-	stars_tx = App->textures->Load("assets/Stars.png");
-	back_tx = App->textures->Load("assets/Background.png");
-	ground_tx = App->textures->Load("assets/Ground.png");
+	stars_tx = App->textures->Load("assets/Sprites/Stars.png");
+	back_tx = App->textures->Load("assets/Sprites/Background.png");
+	ground_tx = App->textures->Load("assets/Sprites/Ground.png");
 
 	App->collision->AddCollider({ 0,195,1098,39 }, COLLIDER_WALL); //Initial Floor
 	App->collision->AddCollider({ 1491,195,1480,39 }, COLLIDER_WALL);
@@ -240,7 +240,7 @@ bool ModuleStage1::Start()
 
 
 
-	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
+	App->audio->Load("assets/Audio/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
 	App->particles->Enable();
