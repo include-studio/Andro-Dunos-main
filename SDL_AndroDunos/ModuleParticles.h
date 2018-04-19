@@ -59,6 +59,8 @@ public:
 
 	Particle mini_explosion;
 	Particle big_explosion;
+	Particle explosion_player1;
+	Particle explosion_player2;
 };
 
 #endif // __MODULEPARTICLES_H__

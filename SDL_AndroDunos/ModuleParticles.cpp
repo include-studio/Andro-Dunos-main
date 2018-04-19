@@ -78,6 +78,46 @@ ModuleParticles::ModuleParticles()
 	big_explosion.anim.PushBack({ 41,11,13,2 });
 	big_explosion.anim.loop = false;
 	big_explosion.anim.speed = 0.8f;
+
+	explosion_player1.anim.PushBack({ 189,0,32,32 });
+	explosion_player1.anim.PushBack({ 229,0,32,32 });
+	explosion_player1.anim.PushBack({ 270,0,32,32 });
+	explosion_player1.anim.PushBack({ 308,0,32,32 });
+	explosion_player1.anim.PushBack({ 351,0,32,32 });
+	explosion_player1.anim.PushBack({ 398,0,32,32 });
+	explosion_player1.anim.PushBack({ 192,32,32,32 });
+	explosion_player1.anim.PushBack({ 232,32,32,32 });
+	explosion_player1.anim.PushBack({ 269,32,32,32 });
+	explosion_player1.anim.PushBack({ 309,32,32,32 });
+	explosion_player1.anim.PushBack({ 351,32,32,32 });
+	explosion_player1.anim.PushBack({ 398,32,32,32 });
+	explosion_player1.anim.PushBack({ 191,79,32,32 });
+	explosion_player1.anim.PushBack({ 231,79,32,32 });
+	explosion_player1.anim.PushBack({ 266,79,32,32 });
+	explosion_player1.anim.PushBack({ 307,79,32,32 });
+	explosion_player1.anim.loop = false;
+	explosion_player1.anim.speed = 0.5f;
+
+	explosion_player2.anim.PushBack({ 189,117,32,32 });
+	explosion_player2.anim.PushBack({ 229,117,32,32 });
+	explosion_player2.anim.PushBack({ 270,117,32,32 });
+	explosion_player2.anim.PushBack({ 308,117,32,32 });
+	explosion_player2.anim.PushBack({ 351,117,32,32 });
+	explosion_player2.anim.PushBack({ 398,117,32,32 });
+	explosion_player2.anim.PushBack({ 192,154,32,32 });
+	explosion_player2.anim.PushBack({ 232,32,32,32 });
+	explosion_player2.anim.PushBack({ 269,32,32,32 });
+	explosion_player2.anim.PushBack({ 309,32,32,32 });
+	explosion_player2.anim.PushBack({ 351,32,32,32 });
+	explosion_player2.anim.PushBack({ 398,32,32,32 });
+	explosion_player2.anim.PushBack({ 191,79,32,32 });
+	explosion_player2.anim.PushBack({ 231,79,32,32 });
+	explosion_player2.anim.PushBack({ 266,79,32,32 });
+	explosion_player2.anim.PushBack({ 307,79,32,32 });
+	explosion_player2.anim.loop = false;
+	explosion_player2.anim.speed = 0.5f;
+
+
 }
 
 ModuleParticles::~ModuleParticles()

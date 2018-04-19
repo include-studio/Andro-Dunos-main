@@ -197,7 +197,8 @@ update_status ModulePlayer2::Update()
 
 	ship = animationShip->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y, &ship);
+	if (!destroyed)
+		App->render->Blit(graphics, position.x, position.y, &ship);
 
 	return UPDATE_CONTINUE;
 }
@@ -217,9 +218,10 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 	if (col1 == player2_col && destroyed == false && App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+		animationShip->reset();
 
 		//it has to be big_explosion
-		App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE,150);
+		App->particles->AddParticle(App->particles->explosion_player2, position.x+15, position.y-2);
 
 		destroyed = true;
 	}
