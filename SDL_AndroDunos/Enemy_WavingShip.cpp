@@ -43,6 +43,6 @@ void Enemy_WavingShip::Move()
 			wave -= 0.05f;
 	}
 
-	position.y = int(float(original_y) + (25.0f * sinf(wave)));
+	position.y = original_y + int(25.0f * sinf(wave));
 	position.x -= 1;
 }
