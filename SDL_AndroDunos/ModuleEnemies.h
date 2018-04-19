@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Enemy_WavingShip.h"
+#include "Enemy_HorizontalRocket.h"
 
 
 #define MAX_ENEMIES 200
@@ -10,7 +11,8 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
-	WAVINGSHIP
+	WAVINGSHIP,
+	HORIZONTALROCKET
 };
 
 class Enemy;
