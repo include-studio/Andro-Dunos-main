@@ -211,6 +211,8 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 726, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 738, 140);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 838, 100); // ENEMY_POWERUP
+
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 935, 40); //HORIZONTALROCKET
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 915, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 936, 80);
@@ -226,7 +228,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1285, 45);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1265, 65);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1245, 85);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1230, 87);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1230, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1265, 105);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1285, 125);
 
@@ -237,6 +239,10 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1440, 87);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1465, 105);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1485, 125);
+
+	
+
+
 
 
 
