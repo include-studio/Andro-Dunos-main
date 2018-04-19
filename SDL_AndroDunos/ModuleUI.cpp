@@ -22,14 +22,9 @@ ModuleUI::~ModuleUI() {}
 bool ModuleUI::Start()
 {
 	LOG("Loading intro");
-<<<<<<< HEAD
-	font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1);
-	font_score2 = App->fonts->Load("Assets/red_font_high_score.png", "HI-1234567890", 1);
-	/*coins_font = App->fonts->Load("Assets/credits.png", "CREDITS0123456789", 1);*/
-=======
+	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	/*coins_font = App->fonts->Load("Assets/coins_font.png", "CREDITS0123456789", 1);*/
->>>>>>> 5d27dbc1e868cffa352d7dd0b2ea8b1b7811d031
 
 	return true;
 }
