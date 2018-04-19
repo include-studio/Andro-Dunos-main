@@ -45,7 +45,7 @@ Application::Application()
 	modules[16] = insertCoin = new ModuleInsertCoin();
 	modules[17] = enemies = new ModuleEnemies();
 	modules[18] = fonts = new ModuleFonts();
-	//modules[20] = ui = new ModuleUI();
+	//modules[19] = ui = new ModuleUI();
 
 }	
 

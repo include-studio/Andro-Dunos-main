@@ -43,13 +43,13 @@ int ModuleFonts::Load(const char* texture_path, const char* characters, uint row
 		LOG("Cannot load font %s. Array is full (max %d).", texture_path, MAX_FONTS);
 		return id;
 	}
-
+	 
 	fonts[id].graphic = tex; // graphic: pointer to the texture
 	fonts[id].rows = rows; // rows: rows of characters in the texture
 	fonts[id].len = 0;// len: length of the table
 
-										// table: array of chars to have the list of characters
-	strcpy_s(fonts[id].table, MAX_FONT_CHARS, characters);
+	// table: array of chars to have the list of characters
+	strcpy_s(fonts[id].table, MAX_FONT_CHARS, characters); //
 	// row_chars: amount of chars per row of the texture
 	fonts[id].len = strlen(characters);
 	fonts[id].row_chars = fonts[id].len / rows;
@@ -92,15 +92,18 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 
 	for (uint i = 0; i < len; ++i)
 	{
-		// Find the character in the table and its position in the texture, then Blit
-	
-		for (uint j = 0; j < fonts[font_id].len; ++j) {
+		// Finds the character in the table and its position in the texture, then Blit
+		uint j = 0;
+
+		for (; j < fonts[font_id].len; ++j) {
 			if (text[i] == fonts[font_id].table[j])
-				rect.x = rect.w * (j % font->row_chars);
-				rect.y = rect.h * (j / font->row_chars);
-				App->render->Blit(font->graphic, x, y, &rect, 1.0f,false);
-				x += rect.w;
 				break;
+
 		}
+
+		rect.x = j % font->row_chars * rect.w;
+		rect.y = j / font->row_chars * rect.h;
+
+		App->render->Blit(font->graphic, x + i * font->char_w, y, &rect, 0.0f, false);
 	}
 }

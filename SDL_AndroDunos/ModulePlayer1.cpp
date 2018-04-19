@@ -68,6 +68,7 @@ bool ModulePlayer1::Start()
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
 	hp = 3;
 	font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1);
+	score = 0;
 
 	return ret;
 }
@@ -204,11 +205,11 @@ update_status ModulePlayer1::Update()
 	if (!destroyed)
 		App->render->Blit(graphics, position.x, position.y, &ship);
 	
-	sprintf_s(score_text, 10, "%7d", App->enemies->score);
+	sprintf_s(score_text, 10, "%7d", score);
 	
 	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(10, 10, font_score, score_text);
-	App->fonts->BlitText(73, 10, font_score, "P");
+	App->fonts->BlitText(30, 6, font_score, score_text);
+	App->fonts->BlitText(10, 6, font_score, "P1");
 
 	return UPDATE_CONTINUE;
 }

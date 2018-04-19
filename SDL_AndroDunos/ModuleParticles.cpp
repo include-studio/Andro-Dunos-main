@@ -21,7 +21,7 @@ ModuleParticles::ModuleParticles()
 	laser1.anim.PushBack({ 21,6,16,10 });
 	laser1.anim.loop = false;
 	laser1.anim.speed = 0.8f;
-	laser1.life = 1500;
+	laser1.life = 670;
 	laser1.speed.x = 7;
 	laser1.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
 
@@ -29,21 +29,21 @@ ModuleParticles::ModuleParticles()
 	laser2_1.anim.PushBack({ 6,69,10,3 });
 	laser2_1.anim.loop = false;
 	laser2_1.anim.speed = 0.8f;
-	laser2_1.life = 1500;
+	laser2_1.life = 670;
 	laser2_1.speed.x = 7;
 
 	//laser 2_2 particle
 	laser2_2.anim.PushBack({ 6,84,10,3 });
 	laser2_2.anim.loop = false;
 	laser2_2.anim.speed = 0.8f;
-	laser2_2.life = 1500;
+	laser2_2.life = 670;
 	laser2_2.speed.x = -7;
 
 	//laser 3 particle
 	laser3.anim.PushBack({ 16,101,32,3 });
 	laser3.anim.loop = false;
 	laser3.anim.speed = 0.8f;
-	laser3.life = 1500;
+	laser3.life = 670;
 	laser3.speed.x = 7;
 
 	//laser 4_1 particle
@@ -52,7 +52,7 @@ ModuleParticles::ModuleParticles()
 	laser4_1.anim.PushBack({ 41,38,13,8 });
 	laser4_1.anim.loop = false;
 	laser4_1.anim.speed = 0.8f;
-	laser4_1.life = 1500;
+	laser4_1.life = 670;
 	laser4_1.speed.x = 7;
 	laser4_1.speed.y = 3;
 
@@ -62,7 +62,7 @@ ModuleParticles::ModuleParticles()
 	laser4_2.anim.PushBack({ 41,38,13,8 });
 	laser4_2.anim.loop = false;
 	laser4_2.anim.speed = 0.8f;
-	laser4_2.life = 1500;
+	laser4_2.life = 670;
 	laser4_2.speed.x = 7;
 	laser4_2.speed.y = -3;
 
