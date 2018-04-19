@@ -59,6 +59,7 @@ public:
 
 	Particle mini_explosion;
 	Particle big_explosion;
+	Particle ring_explosion;
 	Particle explosion_player1;
 	Particle explosion_player2;
 };

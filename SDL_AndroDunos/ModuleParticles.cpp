@@ -75,9 +75,36 @@ ModuleParticles::ModuleParticles()
 	mini_explosion.anim.speed = 0.8f;
 
 	//big explosion particle
-	big_explosion.anim.PushBack({ 41,11,13,2 });
+	big_explosion.anim.PushBack({ 65,133,32,32 });
+	big_explosion.anim.PushBack({ 65,165,32,32 });
+	big_explosion.anim.PushBack({ 65,197,32,32 });
+	big_explosion.anim.PushBack({ 65,229,32,32 });
+	big_explosion.anim.PushBack({ 65,261,32,32 });
+	big_explosion.anim.PushBack({ 97,133,32,32 });
+	big_explosion.anim.PushBack({ 97,165,32,32 });
+	big_explosion.anim.PushBack({ 97,197,32,32 });
+	big_explosion.anim.PushBack({ 96,229,32,32 });
+	big_explosion.anim.PushBack({ 96,261,32,32 });
+	big_explosion.anim.PushBack({ 128,133,32,32 });
+	big_explosion.anim.PushBack({ 128,164,32,32 });
+	big_explosion.anim.PushBack({ 128,197,32,32 });
+	big_explosion.anim.PushBack({ 128,228,32,32 });
+	big_explosion.anim.PushBack({ 128,260,32,32 });
 	big_explosion.anim.loop = false;
 	big_explosion.anim.speed = 0.8f;
+
+	//ring explosion
+	ring_explosion.anim.PushBack({ 0,133,32,32 });
+	ring_explosion.anim.PushBack({ 0,165,32,32 });
+	ring_explosion.anim.PushBack({ 0,197,32,32 });
+	ring_explosion.anim.PushBack({ 0,229,32,32 });
+	ring_explosion.anim.PushBack({ 0,261,32,32 });
+	ring_explosion.anim.PushBack({ 32,133,32,32 });
+	ring_explosion.anim.PushBack({ 32,165,32,32 });
+	ring_explosion.anim.PushBack({ 32,197,32,32 });
+	ring_explosion.anim.PushBack({ 32,229,32,32 });
+	ring_explosion.anim.PushBack({ 32,261,32,32 });
+
 
 	explosion_player1.anim.PushBack({ 189,0,32,32 });
 	explosion_player1.anim.PushBack({ 229,0,32,32 });
