@@ -190,7 +190,7 @@ bool ModuleStage1::Start()
 
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 300, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 300, 60); //WAVINGSHIP
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 315, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 326, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 338, 60);
@@ -201,7 +201,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 468, 140);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 555, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 550, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 565, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 576, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 588, 60);
@@ -210,6 +210,41 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 715, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 726, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 738, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 935, 40); //HORIZONTALROCKET
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 915, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 936, 80);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1035, 100); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1015, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1036, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1135, 40); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1115, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1136, 80);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1285, 45);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1265, 65);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1245, 85);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1230, 87);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1265, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1285, 125);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1375, 45);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1365, 65);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1345, 85);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1440, 87);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1465, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1485, 125);
+
+
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1038, 170);
+
+
+
+
 
 	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	

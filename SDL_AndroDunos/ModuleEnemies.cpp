@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_WavingShip.h"
 #include "ModulePlayer1.h"
+#include "Enemy_HorizontalRocket.h"
 
 
 #define SPAWN_MARGIN 15
@@ -136,7 +137,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::WAVINGSHIP:
 			enemies[i] = new Enemy_WavingShip(info.x, info.y);
 			break;
+		case ENEMY_TYPES::HORIZONTALROCKET:
+			enemies[i] = new Enemy_HorizontalRocket(info.x, info.y);
+			break;
 		}
+
 	}
 }
 
