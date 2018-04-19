@@ -9,7 +9,7 @@
 #include "ModulePlayer1.h"
 
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 15
 
 ModuleEnemies::ModuleEnemies()
 {
