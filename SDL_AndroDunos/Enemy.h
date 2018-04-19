@@ -10,8 +10,8 @@ struct Collider;
 class Enemy
 {
 protected:
-	Animation * animation = nullptr;
-	Collider* collider = nullptr;
+	Animation * animation;
+	Collider* collider;
 
 public:
 	iPoint position;
@@ -24,7 +24,7 @@ public:
 
 	virtual void Move() {};
 	virtual void Draw(SDL_Texture* sprites);
-	virtual void OnCollision(Collider* collider);
+	//virtual void OnCollision(Collider* collider);
 };
 
 #endif // __ENEMY_H__

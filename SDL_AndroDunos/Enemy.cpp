@@ -23,11 +23,13 @@ void Enemy::Draw(SDL_Texture* sprites)
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	if (animation != nullptr)
-		App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+	/*if (animation != nullptr)
+		App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));*/
 }
 
-void Enemy::OnCollision(Collider* collider)
-{
-	App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y);
-}
+//void Enemy::OnCollision(Collider* collider)
+//{
+//	App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y);
+//}
