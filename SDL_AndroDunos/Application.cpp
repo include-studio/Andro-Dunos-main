@@ -30,21 +30,21 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = stage1 = new ModuleStage1();
-	modules[5] = stage2 = new ModuleStage2();
-	modules[6] = player1 = new ModulePlayer1();
-	modules[7] = player2 = new ModulePlayer2();
-	modules[8] = audio = new ModuleAudio();
-	modules[9] = neogeo = new ModuleNeoGeo();
-	modules[10] = visco = new ModuleViscoGames();
-	modules[11] = mainmenu = new ModuleMainMenu();
-	modules[12] = fade = new ModuleFadeToBlack();
-	modules[13] = stageclear = new ModuleStageClear();
-	modules[14] = gameover = new ModuleGameOver();
-	modules[15] = particles = new ModuleParticles();
-	modules[16] = collision = new ModuleCollision();
-	modules[17] = insertCoin = new ModuleInsertCoin();
-	modules[18] = enemies = new ModuleEnemies();
-	modules[19] = fonts = new ModuleFonts();
+	//modules[5] = stage2 = new ModuleStage2();
+	modules[5] = player1 = new ModulePlayer1();
+	modules[6] = player2 = new ModulePlayer2();
+	modules[7] = audio = new ModuleAudio();
+	modules[8] = neogeo = new ModuleNeoGeo();
+	modules[9] = visco = new ModuleViscoGames();
+	modules[10] = mainmenu = new ModuleMainMenu();
+	modules[11] = fade = new ModuleFadeToBlack();
+	modules[12] = stageclear = new ModuleStageClear();
+	modules[13] = gameover = new ModuleGameOver();
+	modules[14] = particles = new ModuleParticles();
+	modules[15] = collision = new ModuleCollision();
+	modules[16] = insertCoin = new ModuleInsertCoin();
+	modules[17] = enemies = new ModuleEnemies();
+	modules[18] = fonts = new ModuleFonts();
 	//modules[20] = ui = new ModuleUI();
 
 }	
@@ -68,7 +68,7 @@ bool Application::Init()
 	mainmenu->Disable();
 	gameover->Disable();
 	stageclear->Disable();
-	stage2->Disable();
+	//stage2->Disable();
 	stage1->Disable();
 	neogeo->Enable();
 	gameover->Disable();

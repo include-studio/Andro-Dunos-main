@@ -217,7 +217,7 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 {
 	if (col1 == player2_col && destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->stage2, (Module*)App->gameover);
+		App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 
 		//it has to be big_explosion
 		App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE,150);

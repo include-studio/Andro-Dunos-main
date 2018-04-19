@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 20 //21 with UI
+#define NUM_MODULES 19 //20 with UI
 
 class ModuleWindow;
 class ModuleInput;
@@ -46,7 +46,7 @@ public:
 	ModuleNeoGeo* neogeo = nullptr;
 	ModuleViscoGames* visco = nullptr;
 	ModuleStageClear* stageclear = nullptr;
-	ModuleStage2* stage2 = nullptr;
+	//ModuleStage2* stage2 = nullptr;
 	ModuleGameOver* gameover = nullptr;
 	ModuleParticles* particles = nullptr;
 	ModuleCollision* collision = nullptr;
