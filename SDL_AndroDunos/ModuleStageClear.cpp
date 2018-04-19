@@ -77,8 +77,8 @@ bool ModuleStageClear::Start() {
 	LOG("Loading StageClear textures");
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
-	stage_clear_tx = App->textures->Load("assets/StageClear.png");
-	small_blue_tx = App->textures->Load("assets/clear_bonus_small_screen.png");
+	stage_clear_tx = App->textures->Load("assets/Sprites/StageClear.png");
+	small_blue_tx = App->textures->Load("assets/Sprites/clear_bonus_small_screen.png");
 	
 	positionstage.x = SCREEN_WIDTH;
 	positionstage.y = 100; 
@@ -86,7 +86,7 @@ bool ModuleStageClear::Start() {
 	position_small_blue.x = 24;
 	position_small_blue.y = SCREEN_HEIGHT;
 
-	App->audio->Load("assets/06_Stage_Clear.ogg");
+	App->audio->Load("assets/Audio/06_Stage_Clear.ogg");
 	
 
 	return ret;

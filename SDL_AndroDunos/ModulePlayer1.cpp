@@ -59,7 +59,7 @@ bool ModulePlayer1::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("assets/ships.png");
+	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT / 3;
 
@@ -67,7 +67,7 @@ bool ModulePlayer1::Start()
 	type_weapon = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
 	hp = 3;
-	font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1);
+	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
 
 	return ret;
@@ -92,7 +92,7 @@ update_status ModulePlayer1::Update()
 
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN) {
-		App->audio->Loadfx("Assets/Laser_Shot_Type_CHANGE.wav");
+		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;

@@ -116,13 +116,13 @@ bool ModuleMainMenu::Start()
 
 	credit = 0;
 
-	logo_background_tx = App->textures->Load("assets/logo_background.png");
-	logo_andro_tx = App->textures->Load("assets/logo.png");
-	visco_games_tx = App->textures->Load("assets/visco_games.png");
-	press1P_tx = App->textures->Load("assets/press_1p.png");
-	press2P_tx = App->textures->Load("assets/press_2p.png");
-	c1992_tx = App->textures->Load("assets/1992.png");
-	num_count_tx = App->textures->Load("assets/num_counter.png");
+	logo_background_tx = App->textures->Load("assets/Sprites/logo_background.png");
+	logo_andro_tx = App->textures->Load("assets/Sprites/logo.png");
+	visco_games_tx = App->textures->Load("assets/Sprites/visco_games.png");
+	press1P_tx = App->textures->Load("assets/Sprites/press_1p.png");
+	press2P_tx = App->textures->Load("assets/Sprites/press_2p.png");
+	c1992_tx = App->textures->Load("assets/Sprites/1992.png");
+	num_count_tx = App->textures->Load("assets/Sprites/num_counter.png");
 
 	return ret;
 }
