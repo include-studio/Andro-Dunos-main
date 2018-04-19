@@ -20,7 +20,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
 #include "ModulePowerUp.h"
-//#include "ModuleUI.h"
+#include "ModuleUI.h"
 
 
 
@@ -47,8 +47,7 @@ Application::Application()
 	modules[17] = enemies = new ModuleEnemies();
 	modules[18] = fonts = new ModuleFonts();
 	modules[19] = powerup = new ModulePowerUp();
-	//modules[19] = ui = new ModuleUI();
-
+	modules[20] = ui = new ModuleUI();
 }	
 
 Application::~Application()

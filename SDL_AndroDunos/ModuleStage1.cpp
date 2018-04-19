@@ -240,12 +240,6 @@ bool ModuleStage1::Start()
 
 
 
-	//App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1038, 170);
-
-
-
-
-
 	App->audio->Load("assets/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
