@@ -195,14 +195,14 @@ update_status ModulePlayer1::Update()
 		animationShip = &up;
 		break;
 	}
-
+	position.x++;
 	player_col->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
 	ship = animationShip->GetCurrentFrame();
 
-	if (destroyed == false)
+	if (!destroyed)
 		App->render->Blit(graphics, position.x, position.y, &ship); // 0.0f, false
 	
 	sprintf_s(score_text, 10, "%7d", App->enemies->score);
