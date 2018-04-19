@@ -66,7 +66,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	animation = &transition4;
 
 	path.PushBack({ -0.0f, 0.0f }, 110, &left);
-	path.PushBack({ 4.0f, 0.0f }, 100, &transition1);
+	path.PushBack({ 0.0f, 0.0f }, 100, &transition1);
 	path.PushBack({ 0.0f, 0.0f }, 30, &left_down);
 	path.PushBack({ 0.0f, 0.0f }, 15, &transition2);
 	path.PushBack({ 0.0f, 0.0f }, 30, &left_up);
