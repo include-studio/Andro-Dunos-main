@@ -4,7 +4,7 @@
 
 Enemy_WavingShip::Enemy_WavingShip(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 0,0,22,22 });
+	fly.PushBack({ 0,  0, 22, 22 });
 	fly.PushBack({ 22, 0, 22, 22 });
 	fly.PushBack({ 44, 0, 22, 22 });
 	fly.PushBack({ 66, 0, 22, 22 });

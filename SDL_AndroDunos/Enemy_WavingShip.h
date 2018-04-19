@@ -14,6 +14,7 @@ private:
 public:
 
 	Enemy_WavingShip(int x, int y);
+	//void OnCollision(Collider* collider);
 
 	void Move();
 };

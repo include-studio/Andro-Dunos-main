@@ -147,7 +147,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			//enemies[i]->OnCollision(c2);
-			App->particles->AddParticle(App->particles->mini_explosion, enemies[i]->position.x, enemies[i]->position.y);
+			App->particles->AddParticle(App->particles->ring_explosion, enemies[i]->position.x, enemies[i]->position.y,COLLIDER_NONE);
+			App->particles->AddParticle(App->particles->big_explosion, enemies[i]->position.x+15, enemies[i]->position.y+5, COLLIDER_NONE, 150);
+			App->particles->AddParticle(App->particles->ring_explosion, enemies[i]->position.x+15, enemies[i]->position.y+15, COLLIDER_NONE, 250);
+			App->particles->AddParticle(App->particles->mini_explosion, enemies[i]->position.x, enemies[i]->position.y-5, COLLIDER_NONE, 350);
 			delete enemies[i];
 			score += 100;
 			enemies[i] = nullptr;
