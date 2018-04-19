@@ -28,7 +28,7 @@ ModuleStage1::ModuleStage1()
 	ground[1].x = 0;
 	ground[1].y = 224;
 	ground[1].w = 2048;
-	ground[1].h = 448;
+	ground[1].h = 447;
 
 	//ground3
 	ground[2].x = 0;
@@ -275,10 +275,10 @@ update_status ModuleStage1::Update()
 	case 0: //case 0: Start & PreDownfall
 		//logic
 		App->render->camera.x += 3;
-		//App->player1->position.x++;
+		App->player1->position.x++;
 		App->player2->position.x++;
-		//camera_limit.xi++;
-		//camera_limit.xf++;
+		camera_limit.xi++;
+		camera_limit.xf++;
 		if (App->render->camera.x >= 2945 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
@@ -300,7 +300,7 @@ update_status ModuleStage1::Update()
 		App->player2->position.y++;
 		camera_limit.yi++;
 		camera_limit.yf++;
-		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE) {
+		if (App->render->camera.y >= (SCREEN_HEIGHT-1) * SCREEN_SIZE) {
 			part_stage++;
 			for (int i = 0; i < 9; i++)
 				starpos[i] = star[i].starposx;//resets auxiliar variable star position
@@ -321,12 +321,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 2: //Post Downfall & Pre Diagonal rise  
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -4000 * SCREEN_SIZE)
+		if (App->render->camera.x >= 4000 * SCREEN_SIZE)
 			part_stage++;
 
 		for (int i = 0; i < 20; i++)
@@ -337,8 +337,8 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 3: //Diagonal rise Up
-		App->render->camera.x -= 3;
-		App->render->camera.y += 3;
+		App->render->camera.x += 3;
+		App->render->camera.y -= 3;
 		App->player1->position.x++;
 		App->player1->position.y--;
 		App->player2->position.x++;
@@ -347,7 +347,7 @@ update_status ModuleStage1::Update()
 		camera_limit.xf++;
 		camera_limit.yi--;
 		camera_limit.yf--;
-		if (App->render->camera.y >= -294)
+		if (App->render->camera.y <= 294)
 			part_stage++;
 
 		for (int i = 0; i < 50; i++) {
@@ -357,12 +357,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 4: //Post Diagonal rise Up & Diagonal rise Down  
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -4538 * SCREEN_SIZE)
+		if (App->render->camera.x >= 4538 * SCREEN_SIZE)
 			part_stage++;
 
 		for (int i = 0; i < 12; i++) {
@@ -372,8 +372,8 @@ update_status ModuleStage1::Update()
 		break;
 	
 	case 5:  //Diagonal rise Down
-		App->render->camera.x -= 3;
-		App->render->camera.y -= 3;
+		App->render->camera.x += 3;
+		App->render->camera.y += 3;
 		App->player1->position.x++;
 		App->player1->position.y++;
 		App->player2->position.x++;
@@ -382,7 +382,7 @@ update_status ModuleStage1::Update()
 		camera_limit.xf++;
 		camera_limit.yi++;
 		camera_limit.yf++;
-		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
+		if (App->render->camera.y >= (SCREEN_HEIGHT-1) * SCREEN_SIZE)
 			part_stage++;
 
 		for (int i = 0; i < 12; i++) {
@@ -392,12 +392,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 6://Post Diagonal rise Down & Pre Diagonal rise Up
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -5040 * SCREEN_SIZE) {
+		if (App->render->camera.x >= 5040 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
 		}
@@ -409,8 +409,8 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 7://Diagonal rise Up
-		App->render->camera.x -= 3;
-		App->render->camera.y += 3;
+		App->render->camera.x += 3;
+		App->render->camera.y -= 3;
 		App->player1->position.x++;
 		App->player1->position.y--;
 		App->player2->position.x++;
@@ -419,7 +419,7 @@ update_status ModuleStage1::Update()
 		camera_limit.xf++;
 		camera_limit.yi--;
 		camera_limit.yf--;
-		if (App->render->camera.y >= 0)
+		if (App->render->camera.y <= 0)
 			part_stage++;
 
 		for (int i = 0; i < 30; i++) {
@@ -429,12 +429,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 8://Post Diagonal rise Up & Pre Diagonal rise Down
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -6020 * SCREEN_SIZE)
+		if (App->render->camera.x >= 6020 * SCREEN_SIZE)
 			part_stage++;
 
 		for (int i = 0; i < 20; i++) {
@@ -444,8 +444,8 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 9://Diagonal rise Down
-		App->render->camera.x -= 3;
-		App->render->camera.y -= 3;
+		App->render->camera.x += 3;
+		App->render->camera.y += 3;
 		App->player1->position.x++;
 		App->player1->position.y++;
 		App->player2->position.x++;
@@ -454,7 +454,7 @@ update_status ModuleStage1::Update()
 		camera_limit.xf++;
 		camera_limit.yi++;
 		camera_limit.yf++;
-		if (App->render->camera.y <= -SCREEN_HEIGHT * SCREEN_SIZE)
+		if (App->render->camera.y >= (SCREEN_HEIGHT - 1) * SCREEN_SIZE)
 			part_stage++;
 
 		for (int i = 0; i < 20; i++) {
@@ -465,12 +465,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 10://Post Diagonal Down & Pre Rise Up
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -7156 * SCREEN_SIZE) {
+		if (App->render->camera.x >= 7156 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
 		}
@@ -482,12 +482,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 11: //Rise Up
-		App->render->camera.y += 3;
+		App->render->camera.y -= 3;
 		App->player1->position.y--;
 		App->player2->position.y--;
 		camera_limit.yi--;
 		camera_limit.yf--;
-		if (App->render->camera.y >= 0)
+		if (App->render->camera.y <= 0)
 			part_stage++;
 
 		for (int i = 0; i < 20; i++)
@@ -503,12 +503,12 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 12:// Post Rise Up & Pre Diagonal to Boss 
-		App->render->camera.x -= 3;
+		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		camera_limit.xi++;
 		camera_limit.xf++;
-		if (App->render->camera.x <= -26241)
+		if (App->render->camera.x >= 26241)
 			part_stage++;
 
 		for (int i = 0; i < 200; i++)
@@ -520,8 +520,8 @@ update_status ModuleStage1::Update()
 		break;
 
 	case 13://Diagonal to Boss
-		App->render->camera.x -= 3;
-		App->render->camera.y += 3;
+		App->render->camera.x += 3;
+		App->render->camera.y -= 3;
 		App->player1->position.x++;
 		App->player1->position.y--;
 		App->player2->position.x++;
@@ -530,7 +530,7 @@ update_status ModuleStage1::Update()
 		camera_limit.xf++;
 		camera_limit.yi--;
 		camera_limit.yf--;
-		if (App->render->camera.y >= 228) {
+		if (App->render->camera.y <= -228) {
 			part_stage++;
 			for (int i = 0; i < 9; i++)
 				starpos[i] = star[i].starposx;
@@ -562,7 +562,7 @@ update_status ModuleStage1::Update()
 	for (int i = ground_cont; i < ground_cont+2; i++)
 		App->render->Blit(ground_tx, ground[0].w*i, 0, &ground[i]);
 	
-	/*if (App->player1->position.x < camera_limit.xi)
+	if (App->player1->position.x < camera_limit.xi)
 		App->player1->position.x = camera_limit.xi;
 	if (App->player1->position.x > camera_limit.xf)
 		App->player1->position.x = camera_limit.xf;
@@ -578,7 +578,7 @@ update_status ModuleStage1::Update()
 	if (App->player2->position.y < camera_limit.yi)
 		App->player2->position.y = camera_limit.yi;
 	if (App->player2->position.y > camera_limit.yf)
-		App->player2->position.y = camera_limit.yf;*/
+		App->player2->position.y = camera_limit.yf;
 
 
 	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
