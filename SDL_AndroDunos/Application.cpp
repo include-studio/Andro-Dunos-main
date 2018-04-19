@@ -19,7 +19,7 @@
 #include "ModuleInsertCoin.h"
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
-//#include "ModuleUI.h"
+#include "ModuleUI.h"
 
 
 
@@ -45,7 +45,7 @@ Application::Application()
 	modules[16] = insertCoin = new ModuleInsertCoin();
 	modules[17] = enemies = new ModuleEnemies();
 	modules[18] = fonts = new ModuleFonts();
-	//modules[19] = ui = new ModuleUI();
+	modules[19] = ui = new ModuleUI();
 
 }	
 
