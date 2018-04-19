@@ -133,6 +133,7 @@
     <ClInclude Include="ModuleInsertCoin.h" />
     <ClInclude Include="ModuleNeoGeo.h" />
     <ClInclude Include="ModuleParticles.h" />
+    <ClInclude Include="ModulePowerUp.h" />
     <ClInclude Include="ModuleStage1.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleMainMenu.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="ModuleInsertCoin.cpp" />
     <ClCompile Include="ModuleNeoGeo.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
+    <ClCompile Include="ModulePowerUp.cpp" />
     <ClCompile Include="ModuleStage1.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleMainMenu.cpp" />
