@@ -18,6 +18,8 @@
 #include "ModuleCollision.h"
 #include "ModuleInsertCoin.h"
 #include "ModuleEnemies.h"
+#include "ModuleFonts.h"
+//#include "ModuleUI.h"
 
 
 
@@ -42,6 +44,8 @@ Application::Application()
 	modules[16] = collision = new ModuleCollision();
 	modules[17] = insertCoin = new ModuleInsertCoin();
 	modules[18] = enemies = new ModuleEnemies();
+	modules[19] = fonts = new ModuleFonts();
+	//modules[20] = ui = new ModuleUI();
 
 }	
 
@@ -70,6 +74,8 @@ bool Application::Init()
 	gameover->Disable();
 	collision->Disable();
 	enemies->Disable();
+	fonts->Disable();
+	//ui->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

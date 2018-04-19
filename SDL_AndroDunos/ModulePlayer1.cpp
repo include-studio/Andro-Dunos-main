@@ -9,7 +9,9 @@
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
-
+#include "ModuleFonts.h"
+#include <stdio.h>
+#include "ModuleEnemies.h"
 
 ModulePlayer1::ModulePlayer1()
 {
@@ -64,6 +66,9 @@ bool ModulePlayer1::Start()
 	destroyed = false;
 	type_weapon = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
+	hp = 3;
+	font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1);
+
 	return ret;
 }
 
@@ -200,6 +205,12 @@ update_status ModulePlayer1::Update()
 	if (destroyed == false)
 		App->render->Blit(graphics, position.x, position.y, &ship);
 	
+	sprintf_s(score_text, 10, "%7d", App->enemies->score);
+	
+	// Blit the text of the score in at the bottom of the screen	
+	App->fonts->BlitText(10, 10, font_score, score_text);
+	App->fonts->BlitText(73, 10, font_score, "P");
+
 	return UPDATE_CONTINUE;
 }
 
@@ -207,9 +218,11 @@ bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
 	App->collision->CleanUp();
 	App->particles->CleanUp();
+	App->fonts->UnLoad(font_score);
 
 	if (player_col != nullptr)
 		player_col->to_delete = true;
+
 	return true;
 }
 
@@ -218,6 +231,9 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		if (c1 == player_col && destroyed == false && App->fade->IsFading() == false)
 		{
 			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+
+			hp--;
+			animationShip->reset();
 
 			//it has to be big_explosion
 			App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE, 150);

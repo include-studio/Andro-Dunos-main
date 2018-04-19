@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_WavingShip.h"
+#include "ModulePlayer1.h"
 
 
 #define SPAWN_MARGIN 50
@@ -143,6 +144,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		{
 			enemies[i]->OnCollision(c2);
 			delete enemies[i];
+			score += 100;
 			enemies[i] = nullptr;
 			break;
 		}

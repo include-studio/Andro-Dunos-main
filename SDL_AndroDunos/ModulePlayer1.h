@@ -47,5 +47,9 @@ public:
 	bool destroyed = false;
 	bool god_mode = false;
 	int type_weapon = 0;
+	uint hp;
+
+	int font_score = 1;
+	char score_text[10];
 };
 #endif
