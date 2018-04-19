@@ -37,9 +37,6 @@
     <ClCompile Include="ModuleStage1.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleStage2.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleStageClear.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -124,9 +121,6 @@
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleStage1.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleStage2.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleStageClear.h">
