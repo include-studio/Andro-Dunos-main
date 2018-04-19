@@ -10,8 +10,8 @@ struct Collider;
 class Enemy
 {
 protected:
-	Animation * animation = nullptr;
-	Collider* collider = nullptr;
+	Animation * animation;
+	Collider* collider;
 
 public:
 	iPoint position;

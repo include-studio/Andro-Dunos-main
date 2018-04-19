@@ -4,7 +4,7 @@
 
 Enemy_WavingShip::Enemy_WavingShip(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 0,0,22,22 });
+	fly.PushBack({ 0,  0, 22, 22 });
 	fly.PushBack({ 22, 0, 22, 22 });
 	fly.PushBack({ 44, 0, 22, 22 });
 	fly.PushBack({ 66, 0, 22, 22 });
@@ -43,6 +43,6 @@ void Enemy_WavingShip::Move()
 			wave -= 0.05f;
 	}
 
-	position.y = int(float(original_y) + (25.0f * sinf(wave)));
+	position.y = original_y + int(25.0f * sinf(wave));
 	position.x -= 1;
 }

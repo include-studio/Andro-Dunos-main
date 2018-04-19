@@ -236,7 +236,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			animationShip->reset();
 
 			//it has to be big_explosion
-			App->particles->AddParticle(App->particles->mini_explosion, position.x, position.y, COLLIDER_NONE, 150);
+			App->particles->AddParticle(App->particles->explosion_player1, position.x+15, position.y-2);
 
 			destroyed = true;
 		}

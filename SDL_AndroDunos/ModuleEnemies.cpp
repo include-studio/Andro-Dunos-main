@@ -9,7 +9,7 @@
 #include "ModulePlayer1.h"
 
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 15
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -37,13 +37,17 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if (queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			//if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
-			if (queue[i].x > App->render->camera.x)
-			{
+			if (queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN) {
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
 				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
 			}
+			/*if (queue[i].x > App->render->camera.x)
+			{
+				SpawnEnemy(queue[i]);
+				queue[i].type = ENEMY_TYPES::NO_TYPE;
+				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
+			}*/
 		}
 	}
 
@@ -142,7 +146,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c2);
+			//enemies[i]->OnCollision(c2);
+			App->particles->AddParticle(App->particles->ring_explosion, enemies[i]->position.x, enemies[i]->position.y,COLLIDER_NONE);
+			App->particles->AddParticle(App->particles->big_explosion, enemies[i]->position.x+15, enemies[i]->position.y+5, COLLIDER_NONE, 150);
+			App->particles->AddParticle(App->particles->ring_explosion, enemies[i]->position.x+15, enemies[i]->position.y+15, COLLIDER_NONE, 250);
+			App->particles->AddParticle(App->particles->mini_explosion, enemies[i]->position.x, enemies[i]->position.y-5, COLLIDER_NONE, 350);
 			delete enemies[i];
 			App->player1->score += 100;
 			enemies[i] = nullptr;
