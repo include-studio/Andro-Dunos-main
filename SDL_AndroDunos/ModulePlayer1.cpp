@@ -11,7 +11,6 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 #include <stdio.h>
-#include "ModuleEnemies.h"
 
 ModulePlayer1::ModulePlayer1()
 {
@@ -202,7 +201,7 @@ update_status ModulePlayer1::Update()
 
 	ship = animationShip->GetCurrentFrame();
 
-	if (!destroyed)
+	if (!destroyed && dead == false)
 		App->render->Blit(graphics, position.x, position.y, &ship);
 	
 	sprintf_s(score_text, 10, "%7d", score);
@@ -230,13 +229,18 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
 		if (c1 == player_col && destroyed == false && App->fade->IsFading() == false)
 		{
-			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-
 			hp--;
 			animationShip->reset();
 
+			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+
 			//it has to be big_explosion
 			App->particles->AddParticle(App->particles->explosion_player1, position.x+15, position.y-2);
+
+			//if (hp == 0) {
+			//	
+			//	dead = true;
+			//}
 
 			destroyed = true;
 		}
