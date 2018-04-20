@@ -71,6 +71,12 @@ ModuleStageClear::ModuleStageClear() {
 	small_blue.y = 0;
 	small_blue.w = 124;
 	small_blue.h = 75;
+
+	//Blue Rect  2
+	small_blue2.x = 125;
+	small_blue2.y = 0;
+	small_blue2.w = 124;
+	small_blue2.h = 75;
 }
 
 ModuleStageClear::~ModuleStageClear(){}
@@ -109,7 +115,7 @@ update_status ModuleStageClear::Update() {
 	
 	if (App->player2->insert2 == true)
 	{
-		App->render->Blit(small_blue_tx, position_small_blue.x + 135, position_small_blue.y, &small_blue);
+		App->render->Blit(small_blue_tx, position_small_blue.x + 128, position_small_blue.y, &small_blue2);
 	}
 
 	//Animation after final state
