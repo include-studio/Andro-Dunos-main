@@ -10,6 +10,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer1.h"
+#include "ModuleFonts.h"
+#include <stdio.h>
 
 
 ModulePlayer2::ModulePlayer2()
@@ -66,6 +68,10 @@ bool ModulePlayer2::Start()
 	destroyed = false;
 	type_weapon = 1;
 	player2_col = App->collision->AddCollider({ position.x,position.y,39, 17 }, COLLIDER_PLAYER, this);
+	hp = 3;
+	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
+	score = 0;
+
 	return ret;
 }
 
@@ -197,8 +203,14 @@ update_status ModulePlayer2::Update()
 
 	ship = animationShip->GetCurrentFrame();
 
-	if (!destroyed)
+	if (!destroyed ) //&& dead == false
 		App->render->Blit(graphics, position.x, position.y, &ship);
+
+	sprintf_s(score_text, 10, "%7d", score);
+
+	// Blit the text of the score in at the bottom of the screen	
+	App->fonts->BlitText(210, 6, font_score, score_text);
+	App->fonts->BlitText(190, 6, font_score, "P2");
 
 	return UPDATE_CONTINUE;
 }
@@ -217,12 +229,25 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 {
 	if (col1 == player2_col && destroyed == false && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+		hp--;
 		animationShip->reset();
+
+		App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 
 		//it has to be big_explosion
 		App->particles->AddParticle(App->particles->explosion_player2, position.x+15, position.y-2);
+		/*if (hp > 0) {
+			
+			dead = false;
+		}
+			
+		if (hp == 0) {
+			App->particles->AddParticle(App->particles->explosion_player2, position.x + 15, position.y - 2);
+			
+			dead = true;
+		}*/
 
 		destroyed = true;
+
 	}
 }

@@ -45,6 +45,7 @@ public:
 	Collider* player_col = nullptr;
 
 	bool destroyed = false;
+	bool dead = false;
 	bool god_mode = false;
 	int type_weapon = 0;
 	uint hp;

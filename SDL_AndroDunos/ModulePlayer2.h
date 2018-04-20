@@ -45,9 +45,16 @@ public:
 	Collider* player2_col = nullptr;
 
 	bool destroyed = false;
+	bool dead = false;
 	bool god_mode = false;
-	bool insert2;
 	int type_weapon = 0;
+	uint hp;
+
+	bool insert2;
+
+	int font_score = 1;
+	char score_text[10];
+	uint score = 0;
 };
 
 #endif
