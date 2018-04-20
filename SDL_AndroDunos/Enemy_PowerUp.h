@@ -15,6 +15,7 @@ private:
 
 public:
 
+	int part_power_up = 0;
 	Enemy_PowerUp(int x, int y);
 	//void OnCollision(Collider* collider);
 
