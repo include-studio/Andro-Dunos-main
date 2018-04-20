@@ -212,6 +212,8 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 738, 140);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 838, 90); // ENEMY_POWERUP
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1738, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2558, 90);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 935, 40); //HORIZONTALROCKET
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 915, 60);

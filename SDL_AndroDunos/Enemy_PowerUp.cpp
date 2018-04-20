@@ -18,12 +18,12 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 
 	transition2.PushBack({ 153 + (PIXEL * 5), 0, PIXEL, PIXEL }); //transition2
 	transition2.PushBack({ 153 + (PIXEL * 6), 0, PIXEL, PIXEL });
-
-	left_up.PushBack({ 153 + (PIXEL * 7), 0, PIXEL, PIXEL }); //left_up
-	left_up.PushBack({ 153 + (PIXEL * 8), 0, PIXEL, PIXEL });
-
-	transition3.PushBack({ 153 + (PIXEL * 9), 0, PIXEL, PIXEL }); //transition3
-	transition3.PushBack({ 153 + (PIXEL * 10), 0, PIXEL, PIXEL });
+	transition2.PushBack({ 153 + (PIXEL * 7), 0, PIXEL, PIXEL });
+	 
+	left_up.PushBack({ 153 + (PIXEL * 8), 0, PIXEL, PIXEL });//left_up
+	left_up.PushBack({ 153 + (PIXEL * 9), 0, PIXEL, PIXEL });
+	
+	transition3.PushBack({ 153 + (PIXEL * 10), 0, PIXEL, PIXEL }); //transition3
 	transition3.PushBack({ 153 + (PIXEL * 0), PIXEL, PIXEL, PIXEL });     //2nd row
 	transition3.PushBack({ 153 + (PIXEL * 1), PIXEL, PIXEL, PIXEL });
 	transition3.PushBack({ 153 + (PIXEL * 2), PIXEL, PIXEL, PIXEL });
@@ -35,7 +35,8 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	transition3.PushBack({ 153 + (PIXEL * 8), PIXEL, PIXEL, PIXEL });
 	transition3.PushBack({ 153 + (PIXEL * 9), PIXEL, PIXEL, PIXEL });
 	transition3.PushBack({ 153 + (PIXEL * 10), PIXEL, PIXEL, PIXEL });
-	transition3.PushBack({ 153 + (PIXEL * 0), PIXEL * 2, PIXEL, PIXEL });     //3th row
+	transition3.PushBack({ 153 + (PIXEL * 0), PIXEL * 2, PIXEL, PIXEL });//3th row
+	transition3.PushBack({ 153 + (PIXEL * 1), PIXEL * 2, PIXEL, PIXEL });
 
 	right.PushBack({ 153 + (PIXEL * 1), PIXEL * 2, PIXEL, PIXEL }); //right
 	right.PushBack({ 153 + (PIXEL * 2), PIXEL * 2, PIXEL, PIXEL });
@@ -123,13 +124,13 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	//transition4.PushBack({ 283, 78, 26, 26 });
 	//transition4.PushBack({ 153, 0, 26, 26 }); // End
 
-	left.speed = 0.1f;
-	transition1.speed = 0.1f;
-	left_down.speed = 0.1f;
-	transition2.speed = 0.1f;
-	left_up.speed = 0.1f;
-	transition3.speed = 0.1f;
-	right.speed = 0.1f;
+	left.speed = 0.25f;
+	transition1.speed = 0.25f;
+	left_down.speed = 0.25f;
+	transition2.speed = 0.25f;
+	left_up.speed = 0.25f;
+	transition3.speed = 0.25f;
+	right.speed = 0.25f;
 	transition4.speed = 0.25f;
 
 	transition1.loop = false;
@@ -152,7 +153,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	path.PushBack({ -1.0f, 1.0f }, 25, &left_down);//Important
 	path.PushBack({ 1.0f, 0.0f }, 20, &transition2);
 	path.PushBack({ -1.0f, -1.0f }, 25, &left_up);//Important
-	path.PushBack({ 1.0f, 0.0f }, 20, &transition3);
+	path.PushBack({ 1.0f, 0.0f }, 45, &transition3);
 	path.PushBack({ 3.0f, 0.0f }, 70, &right);//Important Important
 	path.PushBack({ 1.0f, 0.0f }, 45, &transition4);
 
@@ -161,7 +162,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	path.PushBack({ -1.0f, 1.0f }, 25, &left_down);//Important
 	path.PushBack({ 1.0f, 0.0f }, 20, &transition2);
 	path.PushBack({ -1.0f, -1.0f }, 25, &left_up);//Important
-	path.PushBack({ 1.0f, 0.0f }, 20, &transition3);
+	path.PushBack({ 1.0f, 0.0f }, 45, &transition3);
 	path.PushBack({ 3.0f, 0.0f }, 70, &right);//Important Important
 	path.PushBack({ 1.0f, 0.0f }, 45, &transition4);
 
@@ -170,7 +171,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	path.PushBack({ -1.0f, 1.0f }, 25, &left_down);//Important
 	path.PushBack({ 1.0f, 0.0f }, 20, &transition2);
 	path.PushBack({ -1.0f, -1.0f }, 25, &left_up);//Important
-	path.PushBack({ 1.0f, 0.0f }, 20, &transition3);
+	path.PushBack({ 1.0f, 0.0f }, 45, &transition3);
 	path.PushBack({ 3.0f, 0.0f }, 70, &right);//Important Important
 	path.PushBack({ 1.0f, 0.0f }, 45, &transition4);
 
@@ -179,20 +180,11 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	path.PushBack({ -1.0f, 1.0f }, 25, &left_down);//Important
 	path.PushBack({ 1.0f, 0.0f }, 20, &transition2);
 	path.PushBack({ -1.0f, -1.0f }, 25, &left_up);//Important
-	path.PushBack({ 1.0f, 0.0f }, 20, &transition3);
+	path.PushBack({ 1.0f, 0.0f }, 45, &transition3);
 	path.PushBack({ 3.0f, 0.0f }, 70, &right);//Important Important
 	path.PushBack({ 1.0f, 0.0f }, 45, &transition4);
 
 	path.PushBack({ -1.0f, 0.0f }, 500, &left); // you're no longer welcome here.
-
-
-
-
-
-	
-
-	
-
 
 	collider = App->collision->AddCollider({ 0, 0, 26, 26 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
