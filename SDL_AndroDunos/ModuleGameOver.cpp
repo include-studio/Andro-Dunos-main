@@ -10,6 +10,7 @@
 #include "Animation.h"
 #include "SDL/include/SDL.h"
 #include "ModuleMainMenu.h"
+#include "ModuleUI.h"
 #define GMSIZE 256
 
 
@@ -82,8 +83,13 @@ update_status ModuleGameOver::Update()
 
 	if (current_time >= 3000) //ms when Game Over auido stop
 		Mix_PauseMusic();
-	if (current_time >= 3500) //ms when Game Over auido stop
+	if (current_time >= 3500) { //ms when Game Over auido stop
+		if (App->ui->credit >0)
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5f);
+		else if(App->ui->credit == 0) {
+			App->fade->FadeToBlack(this, App->visco, 0.5f);
+		}
+	}
 	
 	
 

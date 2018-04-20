@@ -14,9 +14,13 @@ public:
 
 	bool Start();
 	update_status Update();
-	/*bool CleanUp(); //textures*/
+	bool CleanUp();
 
 public:
+
+	SDL_Texture * user_interface = nullptr;
+
+	SDL_Rect credits_rect;
 
 	int font_score = -1;
 	char score_text[10];

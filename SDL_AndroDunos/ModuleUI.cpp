@@ -26,15 +26,33 @@ bool ModuleUI::Start()
 {
 	LOG("Loading intro");
 
+	user_interface = App->textures->Load("Assets/Fonts/user_interface.png");
+
+	credits_rect.x = 0;
+	credits_rect.y = 0;
+	credits_rect.w = 45;//38 for credit
+	credits_rect.h = 8;
+
+
+
+
 	//font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1); //not needed for the moment
 	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
-	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "CREDITS0123456789", 1);
+	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "0123456789", 1);
 
 	credit = 0;
 
 	return true;
 }
 
+bool ModuleUI::CleanUp()
+{
+	LOG("Unloading user interface")
+
+	App->textures->Unload(user_interface);
+
+	return true;
+}
 update_status ModuleUI::Update()
 {
 
@@ -44,7 +62,7 @@ update_status ModuleUI::Update()
 	}
 	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
-		App->fonts->BlitText(100, 7, font_score2, HighScore_text);
+		App->fonts->BlitText(120, 7, font_score2, HighScore_text);
 		App->fonts->BlitText(100, 7, font_score2, "HI-");
 	}
 
@@ -64,18 +82,26 @@ update_status ModuleUI::Update()
 		sprintf_s(credits_text, 17, "%7d", credit);
 
 		if (credit == 0) {
-			App->fonts->BlitText(230, 200, font_credits, "CREDIT");
+			credits_rect.w = 38;
+			App->render->Blit(user_interface, 230, 200, &credits_rect, 0.0f);
 			App->fonts->BlitText(280, 200, font_credits, "00");
 		}
 
 		else if (credit == 1) {
-			App->fonts->BlitText(230, 200, font_credits, "CREDIT");
+			credits_rect.w = 38;
+			App->render->Blit(user_interface, 230, 200, &credits_rect, 0.0f);
 			App->fonts->BlitText(280, 200, font_credits, "01");
 		}
 
 		else if (credit >= 2) {
-			App->fonts->BlitText(230, 200, font_credits, "CREDITS");
-			App->fonts->BlitText(240, 200, font_credits, credits_text);
+			credits_rect.w = 45;
+			App->render->Blit(user_interface, 230, 200, &credits_rect, 0.0f);
+			if (credit < 10) {
+				App->fonts->BlitText(280, 200, font_credits, "0");
+				App->fonts->BlitText(240, 200, font_credits, credits_text);
+			}
+			else 
+				App->fonts->BlitText(240, 200, font_credits, credits_text);
 		}
 
 		//need (&& players are dead)
