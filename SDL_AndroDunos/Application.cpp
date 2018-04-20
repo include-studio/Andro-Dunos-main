@@ -76,6 +76,7 @@ bool Application::Init()
 	collision->Disable();
 	enemies->Disable();
 	fonts->Disable();
+	powerup->Disable();
 	//ui->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

@@ -2,6 +2,8 @@
 #include "Enemy_PowerUp.h"
 #include "ModuleCollision.h"
 #include "Globals.h"
+#include "ModulePowerUp.h"
+#include "ModulePlayer1.h"
 
 #define PIXEL 26
 
@@ -196,4 +198,11 @@ void Enemy_PowerUp::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 	part_power_up = 1;
+}
+
+void Enemy_PowerUp::OnCollision(Collider* c1) {
+
+	App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_ITEM);
+
+	LOG("ItemBonus Created")
 }

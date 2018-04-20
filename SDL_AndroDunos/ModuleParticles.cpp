@@ -144,7 +144,7 @@ ModuleParticles::ModuleParticles()
 	explosion_player2.anim.loop = false;
 	explosion_player2.anim.speed = 0.5f;
 
-
+	
 }
 
 ModuleParticles::~ModuleParticles()

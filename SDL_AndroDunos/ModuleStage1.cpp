@@ -15,6 +15,7 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModulePowerUp.h"
 
 ModuleStage1::ModuleStage1()
 {
@@ -254,7 +255,7 @@ bool ModuleStage1::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
-
+	App->powerup->Enable();
 	if (App->player2->insert2 == true) 
 	{
 		App->player2->Enable();
@@ -275,6 +276,7 @@ bool ModuleStage1::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
+	App->powerup->Disable();
 
 	LOG("Unloading stage1");
 	App->textures->Unload(stars_tx);
