@@ -50,6 +50,7 @@ private:
 
 public:
 	Item bonus;
+	Item powerup_S;
 };
 
 #endif // __MODULEPARTICLES_H__

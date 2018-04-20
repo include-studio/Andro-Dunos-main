@@ -23,6 +23,9 @@ ModulePowerUp::ModulePowerUp()
 	bonus.speed.x = 1;
 	bonus.anim.loop = false;
 	bonus.anim.speed = 0.7f;
+
+	powerup_S.anim.PushBack({ 80,64,16,16 });
+	powerup_S.life = 5000000;
 }
 
 ModulePowerUp::~ModulePowerUp()
