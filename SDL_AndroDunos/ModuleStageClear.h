@@ -25,6 +25,7 @@ public:
 	SDL_Texture * small_blue_tx = nullptr;
 
 	SDL_Rect small_blue;
+	SDL_Rect small_blue2;
 	SDL_Rect stage_clear;
 
 	Animation StageClear;
