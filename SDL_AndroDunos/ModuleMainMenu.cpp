@@ -9,6 +9,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "Animation.h"
+#include "ModuleUI.h"
 
 ModuleMainMenu::ModuleMainMenu()
 {
@@ -172,10 +173,7 @@ update_status ModuleMainMenu::Update()
 
 	//Credit to P2
 
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
-		credit++;
-
-	if (credit >= 8) {
+	if (App->ui->credit >= 2) {
 		if(Press1P.current_frame >= Press1P.last_frame - 1) {
 
 			animationPress2P = &Press2P;
@@ -198,7 +196,7 @@ update_status ModuleMainMenu::Update()
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_2] && credit >= 2)
+	if (App->input->keyboard[SDL_SCANCODE_2] && App->ui->credit >= 2)
 	{
 		App->player2->insert2 = true;
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
