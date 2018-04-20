@@ -7,6 +7,8 @@
 #include "ModuleViscoGames.h"
 #include "ModuleAudio.h"
 #include "ModuleStage2.h"
+#include "ModulePlayer2.h"
+#include "ModuleStage1.h"
 
 #include "SDL/include/SDL.h"
 
@@ -104,7 +106,11 @@ update_status ModuleStageClear::Update() {
 
 	//Blit: Blue small screen 
 	App->render->Blit(small_blue_tx, position_small_blue.x, position_small_blue.y , &small_blue);
-
+	
+	if (App->player2->insert2 == true)
+	{
+		App->render->Blit(small_blue_tx, position_small_blue.x + 135, position_small_blue.y, &small_blue);
+	}
 
 	//Animation after final state
 	if (positionstage.x) {

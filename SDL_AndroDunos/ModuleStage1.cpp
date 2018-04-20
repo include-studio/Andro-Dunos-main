@@ -300,6 +300,7 @@ update_status ModuleStage1::Update()
 			App->player2->Enable();
 			App->player2->position.x = App->player1->position.x;
 			App->player2->position.y = 2 * SCREEN_HEIGHT / 3;
+			App->player2->insert2 = true;
 			break;
 		}
 	}
