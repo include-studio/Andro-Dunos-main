@@ -177,15 +177,11 @@ update_status ModuleMainMenu::Update()
 	}
 
 	if (App->ui->credit >= 2) {
-		if(Press1P.current_frame >= Press1P.last_frame - 1) {
-
 			animationPress2P = &Press2P;
 			SDL_Rect animation_Rect_Press2P;
 			animation_Rect_Press2P = animationPress2P->GetCurrentFrame();
 			App->render->Blit(press2P_tx, 68, 152, &animation_Rect_Press2P);
 			Press1P.loop = false;
-
-		}
 	}
 	
 	if (Num_Count.current_frame >= Num_Count.last_frame - 1) 

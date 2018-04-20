@@ -10,10 +10,28 @@
     <ClCompile Include="Main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleAudio.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollision.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleFadeToBlack.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleGameOver.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInsertCoin.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleMainMenu.cpp">
@@ -31,6 +49,9 @@
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModulePowerUp.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleRender.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -43,58 +64,29 @@
     <ClCompile Include="ModuleTextures.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleUI.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleViscoGames.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleWindow.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleAudio.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleCollision.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleInsertCoin.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleEnemies.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy_WavingShip.cpp">
-      <Filter>Modules\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleFonts.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleUI.cpp">
-      <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_HorizontalRocket.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Enemy_PowerUp.cpp">
       <Filter>Modules\Enemies</Filter>
-=======
-    <ClCompile Include="ModulePowerUp.cpp">
-      <Filter>Modules</Filter>
->>>>>>> 916ede4c2c3f7a1caf221ad59645fa784264c1f7
+    </ClCompile>
+    <ClCompile Include="Enemy_WavingShip.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h">
-      <Filter>Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="p2Point.h">
-      <Filter>Containers</Filter>
-    </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>Core</Filter>
     </ClInclude>
@@ -104,13 +96,43 @@
     <ClInclude Include="MemLeaks.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="path.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="p2List.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
     <ClInclude Include="Module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleAudio.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleCollision.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleFadeToBlack.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleGameOver.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInsertCoin.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleMainMenu.h">
@@ -128,6 +150,9 @@
     <ClInclude Include="ModulePlayer2.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModulePowerUp.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleRender.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -140,69 +165,40 @@
     <ClInclude Include="ModuleTextures.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleUI.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleViscoGames.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleWindow.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleInput.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleAudio.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleCollision.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="p2List.h">
-      <Filter>Containers</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInsertCoin.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="path.h">
-      <Filter>Containers</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleEnemies.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy_WavingShip.h">
-      <Filter>Modules\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleFonts.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleUI.h">
-      <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_HorizontalRocket.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Enemy_PowerUp.h">
       <Filter>Modules\Enemies</Filter>
-=======
-    <ClInclude Include="ModulePowerUp.h">
-      <Filter>Modules</Filter>
->>>>>>> 916ede4c2c3f7a1caf221ad59645fa784264c1f7
+    </ClInclude>
+    <ClInclude Include="Enemy_WavingShip.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Containers">
-      <UniqueIdentifier>{4bc6166b-3ee0-4985-9c19-016ab9fc8d39}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
-      <UniqueIdentifier>{78aaa3f9-2962-4bb9-85a4-e09797c56cab}</UniqueIdentifier>
+      <UniqueIdentifier>{7022b4de-37d2-4398-a543-d5f36ca3bf2d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules">
-      <UniqueIdentifier>{1d465ab4-4ed3-485c-b491-a407f156d006}</UniqueIdentifier>
+      <UniqueIdentifier>{bde203b7-aba7-4797-98ec-7205f13915c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Containers">
+      <UniqueIdentifier>{876bcc0b-df0f-4805-85bc-29cc4fcc5f31}</UniqueIdentifier>
     </Filter>
     <Filter Include="Modules\Enemies">
-      <UniqueIdentifier>{8de230c8-76ca-4580-8f2f-db34123586b3}</UniqueIdentifier>
+      <UniqueIdentifier>{582f5592-4433-4485-95be-66632d80ae76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
