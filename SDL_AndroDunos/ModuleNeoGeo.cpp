@@ -11,6 +11,7 @@
 #include "ModuleStage1.h"
 #include "SDL/include/SDL.h"
 #include "ModuleMainMenu.h"
+#include "ModuleUI.h"
 
 #define SNKWIDTH 72
 #define NeoGeoWIDTH 227
@@ -315,6 +316,7 @@ update_status ModuleNeoGeo::Update()
 	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+		App->ui->credit = 1;
 		Mix_PauseMusic();
 	}
 	if (App->input->keyboard[SDL_SCANCODE_C])

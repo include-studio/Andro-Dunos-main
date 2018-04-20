@@ -10,7 +10,7 @@
 #include "Enemy_HorizontalRocket.h"
 #include "Enemy_PowerUp.h"
 #include "ModulePowerUp.h"
-
+#include "ModulePlayer2.h"
 
 #define SPAWN_MARGIN 15
 
@@ -164,6 +164,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			enemies[i]->OnCollision(c1);
 			delete enemies[i];
 			App->player1->score += 100;
+			App->player2->score += 200;
 			enemies[i] = nullptr;
 			break;
 		}
