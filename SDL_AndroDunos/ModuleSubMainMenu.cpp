@@ -21,6 +21,12 @@ ModuleSubMainMenu::ModuleSubMainMenu()
 	insert.loop = true;
 	insert.speed = 0.0225f;
 
+	//Background //Provisional
+	sub_background.x = 0;
+	sub_background.y = 0;
+	sub_background.w = 320;
+	sub_background.h = 224;
+
 	// blue title rectangle under the title
 	title_rect.x = 9;
 	title_rect.y = 162;
@@ -57,6 +63,7 @@ bool ModuleSubMainMenu::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer	
+	sub_background_tx = App->textures->Load("assets/Sprites/sub_background.png"); //Provisional
 	insert_tx = App->textures->Load("Assets/Sprites/insert_coin.png");
 	logo_andro_tx = App->textures->Load("assets/Sprites/logo.png");
 	visco_games_tx = App->textures->Load("assets/Sprites/visco_games.png");
@@ -74,6 +81,7 @@ bool ModuleSubMainMenu::CleanUp()
 {
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(insert_tx);
+	App->textures->Unload(sub_background_tx); //Provisional
 	App->textures->Unload(logo_andro_tx);
 	App->textures->Unload(visco_games_tx);
 	App->textures->Unload(c1992_tx);
@@ -93,6 +101,7 @@ update_status ModuleSubMainMenu::Update()
 	animationInsert = &insert;
 	Insert_Rect = animationInsert->GetCurrentFrame();
 
+	App->render->Blit(sub_background_tx, 0, 0, &sub_background); //Provisional
 	App->render->Blit(insert_tx, 104, 152, &Insert_Rect);
 	App->render->Blit(logo_andro_tx, 42, 70, &title_rect);
 	App->render->Blit(logo_andro_tx, 27, 38, &logo_andro);

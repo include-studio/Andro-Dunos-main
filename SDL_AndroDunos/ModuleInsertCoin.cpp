@@ -17,6 +17,12 @@
 
 ModuleInsertCoin::ModuleInsertCoin()
 {
+	// Background //Provisional
+	sub_background.x = 0;
+	sub_background.y = 0;
+	sub_background.w = 320;
+	sub_background.h = 224;
+
 	//Insert Coin
 	insert.PushBack({ 0,0,88,8 }); // x, y, w, h
 	insert.PushBack({ 0,9,88,8 });
@@ -53,6 +59,8 @@ bool ModuleInsertCoin::Start()
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer	
 	insert_tx = App->textures->Load("Assets/Sprites/insert_coin.png");
+	sub_background_tx = App->textures->Load("assets/Sprites/sub_background.png"); //Provisional
+
 
 	current_time = 0;
 
@@ -64,6 +72,8 @@ bool ModuleInsertCoin::CleanUp()
 {
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(insert_tx);
+	App->textures->Unload(sub_background_tx); //Provisional
+
 	current_time = 0;
 	W_alph = 255;
 	
@@ -80,6 +90,8 @@ update_status ModuleInsertCoin::Update()
 	// Draw everything --------------------------------------	
 	animationInsert = &insert;
 	Insert_Rect = animationInsert->GetCurrentFrame();
+
+	App->render->Blit(sub_background_tx, 0, 0, &sub_background); //Provisional
 
 	App->render->Blit(insert_tx, 104, 112, &Insert_Rect);
 	SDL_SetRenderDrawColor(App->render->renderer, 255, 255, 255, W_alph); //Flash White

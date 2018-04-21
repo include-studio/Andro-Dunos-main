@@ -20,10 +20,12 @@ public:
 
 public:
 	
+	SDL_Texture * sub_background_tx = nullptr; //Provisional
 	SDL_Texture* logo_andro_tx = nullptr;
 	SDL_Texture* visco_games_tx = nullptr;
 	SDL_Texture* c1992_tx = nullptr;
 
+	SDL_Rect sub_background; //Provisional
 	SDL_Rect logo_andro;
 	SDL_Rect title_rect;
 	SDL_Rect visco_games;

@@ -21,7 +21,9 @@ public:
 public:
 
 	SDL_Texture * insert_tx;
+	SDL_Texture * sub_background_tx = nullptr; //Provisional
 
+	SDL_Rect sub_background; //Provisional
 	SDL_Rect Insert_Rect;
 	SDL_Rect white;
 	SDL_Rect black;
