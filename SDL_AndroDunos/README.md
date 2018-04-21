@@ -22,7 +22,10 @@ Controls:
 
 - 2 (to play with two players).
 
+- F2 (to increase power up).
+
 - F3 (to pause music).
+
 
 Player 1: 
 

@@ -97,12 +97,26 @@ update_status ModulePlayer1::Update()
 		if (type_weapon == 5)
 			type_weapon = 1;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+		powerup++;
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
 		switch (type_weapon) {
 		case 1:
-			App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+			switch (powerup) {
+			case 0:
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 16, COLLIDER_PLAYER_SHOT);
+				break;
+			case 2:
+				break;
+			}
+
 			break;
 		case 2:
 			App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);

@@ -112,6 +112,8 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
+			if (App->player1->powerup < 1)
+				App->player1->powerup++;
 			delete active[i];
 			active[i] = nullptr;
 			break;
