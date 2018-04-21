@@ -110,9 +110,9 @@ update_status ModuleUI::Update()
 
 	if (App->neogeo->IsEnabled() == false) {
 		
-		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN) {
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN && credit < 99) {
 			App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
-			credit++;
+			credit++;	
 		}
 
 		sprintf_s(credits_text, 17, "%7d", credit);
