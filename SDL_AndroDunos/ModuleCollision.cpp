@@ -157,6 +157,9 @@ void ModuleCollision::DebugDraw()
 		case COLLIDER_BONUS: //magenta
 			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
 			break;
+		case COLLIDER_POWER_S: //magenta
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
+			break;
 		}
 	}
 }
