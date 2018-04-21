@@ -68,8 +68,8 @@ bool ModuleInsertCoin::CleanUp()
 {
 	LOG("Unloading MainMenu stage");
 	App->textures->Unload(insert_tx);
-	
 	current_time = 0;
+	W_alph = 255;
 	
 	//animation_transition = 0;
 
@@ -93,7 +93,8 @@ update_status ModuleInsertCoin::Update()
 	
 
 	// make so pressing SPACE the background is loaded
-
+	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+		App->fade->FadeToBlack(this, App->neogeo, 0.5);
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
@@ -111,11 +112,9 @@ update_status ModuleInsertCoin::Update()
 		}
 	}
 	//Fade to neogeo Completloop
-	if (current_time >= 15000) {
+	if (current_time >= 10000) {
 		App->fade->FadeToBlack(this, App->neogeo, 1);
 		current_time = 0;
-		init_time = 0;
-
 	}
 
 	return UPDATE_CONTINUE;

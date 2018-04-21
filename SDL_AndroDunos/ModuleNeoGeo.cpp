@@ -237,7 +237,7 @@ bool ModuleNeoGeo::CleanUp()
 	Machine2.reset();
 
 	current_time = 0;
-	
+	W_alph = 255;
 
 	return true;
 }
@@ -334,11 +334,12 @@ update_status ModuleNeoGeo::Update()
 	}
 
 	//Neogeo Pause Audio & go to Viscogames
-	if (current_time >= 7000) {
+	if (current_time >= 8000) 
+		Mix_PauseMusic();
+	if (current_time >= 9000) {
 		App->fade->FadeToBlack(this, App->visco, 1);
 		Mix_PauseMusic();
 		current_time = 0;
-		init_time = 0;
 	}
 	
 	return UPDATE_CONTINUE;
