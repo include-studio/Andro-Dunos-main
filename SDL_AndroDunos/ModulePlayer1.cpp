@@ -278,7 +278,7 @@ bool ModulePlayer1::CleanUp() {
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == player_col && destroyed == false && App->fade->IsFading() == false && c2->type != COLLIDER_TYPE::COLLIDER_ITEM)
+	if (c1 == player_col && destroyed == false && App->fade->IsFading() == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWER_S)
 	{
 		hp--;
 		animationShip->reset();

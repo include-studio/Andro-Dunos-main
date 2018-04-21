@@ -39,7 +39,7 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
-	void OnCollision(Collider* c1, Collider* c2);
+	virtual void OnCollision(Collider* c1, Collider* c2);
 
 	void AddPowerUp(const Item& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 
