@@ -49,7 +49,7 @@ public:
 	bool god_mode = false;
 	int type_weapon = 0;
 	int powerup=0;
-	uint hp;
+	int hp;
 
 	int font_score = 1;
 	char score_text[10];
