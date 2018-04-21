@@ -1,10 +1,12 @@
 #include "Application.h"
 #include "Enemy_WavingShip.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
+#include "ModulePowerUp.h"
 #include "Globals.h"
 
 
-Enemy_WavingShip::Enemy_WavingShip(int x, int y) : Enemy(x, y)
+Enemy_WavingShip::Enemy_WavingShip(int x, int y, bool _drop) : Enemy(x, y)
 {
 	fly.PushBack({ 0,  0, 22, 22 });
 	fly.PushBack({ 22, 0, 22, 22 });
@@ -22,6 +24,8 @@ Enemy_WavingShip::Enemy_WavingShip(int x, int y) : Enemy(x, y)
 	fly.speed = 0.2f;
 
 	animation = &fly;
+
+	drop = _drop;
 
 	collider = App->collision->AddCollider({ 0, 0, 22, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -47,4 +51,9 @@ void Enemy_WavingShip::Move()
 
 	position.y = original_y + int(25.0f * sinf(wave));
 	position.x -= 1;
+}
+
+void Enemy_WavingShip::OnCollision(Collider* collider) {
+	if (drop == true)
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_ITEM);
 }

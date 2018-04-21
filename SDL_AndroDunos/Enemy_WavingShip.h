@@ -10,11 +10,12 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	Animation fly;
+	bool drop;
 
 public:
 
-	Enemy_WavingShip(int x, int y);
-	//void OnCollision(Collider* collider);
+	Enemy_WavingShip(int x, int y, bool drop);
+	void OnCollision(Collider* collider);
 
 	void Move();
 };

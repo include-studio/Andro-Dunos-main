@@ -23,6 +23,7 @@ struct EnemyInfo
 {
 	ENEMY_TYPES type = ENEMY_TYPES::NO_TYPE;
 	int x, y;
+	bool drop;
 
 };
 
@@ -40,7 +41,7 @@ public:
 	bool CleanUp();
 	virtual void OnCollision(Collider* c1, Collider* c2);
 
-	bool AddEnemy(ENEMY_TYPES type, int x, int y);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, bool drop = false);
 
 	uint score = 0;
 
