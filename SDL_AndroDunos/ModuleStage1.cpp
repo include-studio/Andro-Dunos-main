@@ -273,12 +273,13 @@ bool ModuleStage1::CleanUp()
 	LOG("Unloading players");
 	App->player1->Disable();
 	App->player2->Disable();
+	
+
+	LOG("Unloading stage1");
 	App->collision->Disable();
 	App->particles->Disable();
 	App->enemies->Disable();
 	App->powerup->Disable();
-
-	LOG("Unloading stage1");
 	App->textures->Unload(stars_tx);
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);
