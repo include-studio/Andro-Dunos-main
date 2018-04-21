@@ -12,6 +12,11 @@
 struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
+enum OWNER {
+	OWNER_PLAYER1,
+	OWNER_PLAYER2,
+	OWNER_ENEMY
+};
 
 struct Particle
 {
@@ -23,6 +28,7 @@ struct Particle
 	Uint32 life = 0;
 	bool fx_played = false;
 	Collider* collider = nullptr;
+	OWNER owner_type;
 
 	Particle();
 	Particle(const Particle& p);
@@ -41,7 +47,7 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, OWNER owner= OWNER_PLAYER1);
 
 private:
 
