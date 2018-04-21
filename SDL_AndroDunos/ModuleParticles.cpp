@@ -42,9 +42,22 @@ ModuleParticles::ModuleParticles()
 	//laser 3 particle
 	laser3.anim.PushBack({ 16,101,32,3 });
 	laser3.anim.loop = false;
-	laser3.anim.speed = 0.8f;
 	laser3.life = 670;
 	laser3.speed.x = 7;
+
+	//laser 3_1 particle
+	laser3_1.anim.PushBack({ 57,35,16,18 });
+	laser3_1.anim.loop = false;
+	laser3_1.life = 670;
+	laser3_1.speed.x = 7;
+	laser3_1.speed.y = -7;
+
+	//laser 3_2 particle
+	laser3_2.anim.PushBack({ 57,60,16,18 });
+	laser3_2.anim.loop = false;
+	laser3_2.life = 670;
+	laser3_2.speed.x = 7;
+	laser3_2.speed.y = 7;
 
 	//laser 4_1 particle
 	laser4_1.anim.PushBack({ 41,11,13,2 });
@@ -65,6 +78,15 @@ ModuleParticles::ModuleParticles()
 	laser4_2.life = 670;
 	laser4_2.speed.x = 7;
 	laser4_2.speed.y = -3;
+
+	//laser 4_3 upgrade 1 of laser 4
+	laser4_3.anim.PushBack({ 41,11,13,2 });
+	laser4_3.anim.PushBack({ 41,23,13,6 });
+	laser4_3.anim.PushBack({ 41,38,13,8 });
+	laser4_3.anim.loop = false;
+	laser4_3.anim.speed = 0.8f;
+	laser4_3.life = 670;
+	laser4_3.speed.x = 7;
 
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
