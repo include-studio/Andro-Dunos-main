@@ -227,21 +227,21 @@ bool ModulePlayer1::CleanUp() {
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-		if (c1 == player_col && destroyed == false && App->fade->IsFading() == false)
-		{
-			hp--;
-			animationShip->reset();
+	if (c1 == player_col && destroyed == false && App->fade->IsFading() == false && c2->type != COLLIDER_TYPE::COLLIDER_ITEM)
+	{
+		hp--;
+		animationShip->reset();
 
-			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+		App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 
-			//it has to be big_explosion
-			App->particles->AddParticle(App->particles->explosion_player1, position.x+15, position.y-2);
+		//it has to be big_explosion
+		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
 
-			//if (hp == 0) {
-			//	
-			//	dead = true;
-			//}
+		//if (hp == 0) {
+		//	
+		//	dead = true;
+		//}
 
-			destroyed = true;
-		}
+		destroyed = true;
+	}
 }
