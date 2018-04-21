@@ -119,25 +119,25 @@ update_status ModuleUI::Update()
 
 		if (credit == 0) {
 			credits_rect.w = 38;
-			App->render->Blit(user_interface, 230, 200, &credits_rect, 0.0f);
-			App->fonts->BlitText(280, 200, font_credits, "00");
+			App->render->Blit(user_interface, 230, 210, &credits_rect, 0.0f);
+			App->fonts->BlitText(280, 210, font_credits, "00");
 		}
 
 		else if (credit == 1) {
 			credits_rect.w = 38;
-			App->render->Blit(user_interface, 230, 200, &credits_rect, 0.0f);
-			App->fonts->BlitText(280, 200, font_credits, "01");
+			App->render->Blit(user_interface, 230, 210, &credits_rect, 0.0f);
+			App->fonts->BlitText(280, 210, font_credits, "01");
 		}
 
 		else if (credit >= 2) {
 			credits_rect.w = 45;
-			App->render->Blit(user_interface, 230, 200, &credits_rect, 0.0f);
+			App->render->Blit(user_interface, 230, 210, &credits_rect, 0.0f);
 			if (credit < 10) {
-				App->fonts->BlitText(280, 200, font_credits, "0");
-				App->fonts->BlitText(240, 200, font_credits, credits_text);
+				App->fonts->BlitText(280, 210, font_credits, "0");
+				App->fonts->BlitText(240, 210, font_credits, credits_text);
 			}
 			else 
-				App->fonts->BlitText(240, 200, font_credits, credits_text);
+				App->fonts->BlitText(240, 210, font_credits, credits_text);
 		}
 
 		//&& players are dead)
