@@ -48,6 +48,7 @@ public:
 	bool dead = false;
 	bool god_mode = false;
 	int type_weapon = 0;
+	int powerup=0;
 	uint hp;
 
 	int font_score = 1;
