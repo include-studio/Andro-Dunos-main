@@ -334,7 +334,7 @@ update_status ModuleNeoGeo::Update()
 	}
 
 	//Neogeo Pause Audio & go to Viscogames
-	if (current_time >= 8000) 
+	if (current_time >= 7500) 
 		Mix_PauseMusic();
 	if (current_time >= 9000) {
 		App->fade->FadeToBlack(this, App->visco, 1);

@@ -21,6 +21,7 @@
 #include "ModuleFonts.h"
 #include "ModulePowerUp.h"
 #include "ModuleUI.h"
+#include "ModuleSubMainMenu.h"
 
 
 
@@ -48,6 +49,7 @@ Application::Application()
 	modules[18] = fonts = new ModuleFonts();
 	modules[19] = powerup = new ModulePowerUp();
 	modules[20] = ui = new ModuleUI();
+	modules[21] = submainmenu = new ModuleSubMainMenu();
 }	
 
 Application::~Application()
@@ -78,6 +80,7 @@ bool Application::Init()
 	fonts->Disable();
 	powerup->Disable();
 	//ui->Disable();
+	submainmenu->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

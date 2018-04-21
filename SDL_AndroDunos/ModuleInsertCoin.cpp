@@ -10,6 +10,7 @@
 #include "SDL/include/SDL.h"
 #include "ModuleInsertCoin.h"
 #include "ModuleNeoGeo.h"
+#include "ModuleSubMainMenu.h"
 #define MAX_W_ALPH 255 
 
 
@@ -54,11 +55,6 @@ bool ModuleInsertCoin::Start()
 	insert_tx = App->textures->Load("Assets/Sprites/insert_coin.png");
 
 	current_time = 0;
-	
-
-	
-	// play music null
-	//App->audio->PlayMusic(6);
 
 	return ret;
 }
@@ -94,7 +90,7 @@ update_status ModuleInsertCoin::Update()
 
 	// make so pressing SPACE the background is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE])
-		App->fade->FadeToBlack(this, App->neogeo, 0.5);
+		App->fade->FadeToBlack(this, App->submainmenu, 0.5);
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
@@ -113,7 +109,7 @@ update_status ModuleInsertCoin::Update()
 	}
 	//Fade to neogeo Completloop
 	if (current_time >= 10000) {
-		App->fade->FadeToBlack(this, App->neogeo, 1);
+		App->fade->FadeToBlack(this, App->submainmenu, 1);
 		current_time = 0;
 	}
 

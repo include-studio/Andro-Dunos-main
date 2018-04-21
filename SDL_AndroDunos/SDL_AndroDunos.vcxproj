@@ -143,6 +143,7 @@
     <ClInclude Include="ModulePlayer2.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleStageClear.h" />
+    <ClInclude Include="ModuleSubMainMenu.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleUI.h" />
     <ClInclude Include="ModuleViscoGames.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="ModulePlayer2.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleStageClear.cpp" />
+    <ClCompile Include="ModuleSubMainMenu.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleUI.cpp" />
     <ClCompile Include="ModuleViscoGames.cpp" />

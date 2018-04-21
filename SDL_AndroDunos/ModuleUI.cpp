@@ -141,10 +141,22 @@ update_status ModuleUI::Update()
 		}
 
 		//&& players are dead)
-		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN)
-			credit -= 2;
-		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN)
+		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN) {
 			credit --;
+		}
+			
+		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN) {
+			credit--;
+		}
+
+		/*if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && App->player1->destroyed == true) {
+			credit--;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN && App->player2->destroyed == true) {
+			credit--;
+		}*/
+			
 	}
 	
 
