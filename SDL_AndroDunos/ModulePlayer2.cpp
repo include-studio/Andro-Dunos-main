@@ -98,28 +98,74 @@ update_status ModulePlayer2::Update()
 		if (type_weapon == 5)
 			type_weapon = 1;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+		powerup++;
 
-	//type 1
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
-		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +3, COLLIDER_PLAYER_SHOT,0,OWNER_PLAYER2);
-		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-	}
-
-	//type 2
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
-		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-	}
-
-	//type 3
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 3) {
-		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-	}
-
-	//type 4
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 4) {
-		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN) {
+		switch (type_weapon) {
+		case 1:
+			switch (powerup) {
+			case 0:
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT,0,OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 16, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			default:			//in case that the power up is higher than gun power up, the default switch set power up to the last case
+				powerup = 1;
+				break;
+			}
+			break;
+		case 2:
+			switch (powerup) {
+			case 0:
+				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 13, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			default:
+				powerup = 1;
+				break;
+			}
+			break;
+		case 3:
+			switch (powerup) {
+			case 0:
+				App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->laser3_1, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser3_2, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			default:
+				powerup = 1;
+				break;
+			}
+			break;
+		case 4:
+			switch (powerup) {
+			case 0:
+				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			case 1:
+				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				break;
+			default:
+				powerup = 1;
+				break;
+			}
+			break;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT])

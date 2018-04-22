@@ -117,7 +117,6 @@ update_status ModulePlayer1::Update()
 				powerup = 1;
 				break;
 			}
-
 			break;
 		case 2:
 			switch (powerup) {
@@ -134,7 +133,6 @@ update_status ModulePlayer1::Update()
 				powerup = 1;
 				break;
 			}
-		
 			break;
 		case 3:
 			switch (powerup) {
@@ -149,7 +147,6 @@ update_status ModulePlayer1::Update()
 				powerup = 1;
 				break;
 			}
-			
 			break;
 		case 4:
 			switch (powerup) {
@@ -166,7 +163,6 @@ update_status ModulePlayer1::Update()
 				powerup = 1;
 				break;
 			}
-			
 			break;
 		}
 	}
