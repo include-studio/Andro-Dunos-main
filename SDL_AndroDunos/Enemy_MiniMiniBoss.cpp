@@ -4,29 +4,49 @@
 #include "Globals.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
+#include "ModuleRender.h"
+#include "SDL/include/SDL.h"
 
 
 Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y) : Enemy(x, y)
 {
-	fly.PushBack({ 30,50,30,30 });
-	fly.PushBack({ 0,50,30,30 });
+	fly.PushBack({ 0,132,30,30 });
+	fly.PushBack({ 31,132,30,30 });
 
 	fly.speed = 0.1f;
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 30, 13 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 30, 25 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+
+	init_time = SDL_GetTicks(); //Timer
+	current_time = 0;
 }
 
 void Enemy_MiniMiniBoss::Move()
 {
-	position.x -= 1;
+	position.x += 0.7;
+
+	current_time = SDL_GetTicks() - init_time;
+
+	if (current_time <= 800) {
+		if (App->player1->position.y > (float)position.y)
+			position.y += 1;
+
+		if (App->player1->position.y < (float)position.y)
+			position.y -= 0.25;
+	}
+	/*if (current_time >= 800 && current_time <= 2000) {
+
+
+	}*/
 }
 
 void Enemy_MiniMiniBoss::Shoot()
 {
-	if(fly.loop == true )
-		App->particles->AddParticle(App->particles->laser1, position.x, position.y, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->laser1, position.x, position.y, COLLIDER_ENEMY_SHOT);
+
 }
