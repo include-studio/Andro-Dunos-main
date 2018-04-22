@@ -1,4 +1,4 @@
-Andro Dunos v.0.5.1
+Andro Dunos v.0.5.2.1
 
 This is the fifth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1.
 
