@@ -9,6 +9,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
+#include "ModuleStage1.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -22,9 +23,15 @@ ModulePowerUp::ModulePowerUp()
 	bonus.life = 5000000;
 	bonus.anim.loop = false;
 	bonus.anim.speed = 0.7f;
+	bonus.speed.y = 1;
+	bonus.speed.x = 0;
+	bonus.n_collisions = 0;
 
 	powerup_S.anim.PushBack({ 80,64,16,16 });
 	powerup_S.life = 5000000;
+	powerup_S.speed.y = -1;
+	powerup_S.speed.x = 0;
+	powerup_S.n_collisions = 0;
 }
 
 ModulePowerUp::~ModulePowerUp()
@@ -164,6 +171,19 @@ bool Item::Update()
 		if (anim.Finished())
 			ret = false;
 
+	if (n_collisions < 6) {
+		if (position.y <= App->render->camera.y || position.y >= App->render->camera.y+SCREEN_HEIGHT-16) {
+			speed.y *= -1;
+			n_collisions++;
+		}
+		if (position.x > App->stage1->camera_limit.xf+16 || position.x < App->stage1->camera_limit.xi) {
+			n_collisions++;
+			if (speed.x == 2)
+				speed.x = 0;
+			else if (speed.x == 0)
+				speed.x = 2;
+		}
+	}
 	position.x += speed.x;
 	position.y += speed.y;
 
