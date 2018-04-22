@@ -111,6 +111,10 @@ update_status ModulePlayer1::Update()
 	if (god_mode_die == true) {
 		if (current_time < 4000) {
 			player_col->type = COLLIDER_NONE;
+			
+			if (position.x <= 109)
+				position.x ++;
+
 		}
 		else {
 			player_col->type = COLLIDER_PLAYER;
@@ -391,14 +395,10 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			god_mode_die = true;
 			state = CLEAR;
 			current_time = 0;
-			position.x = 109;
+			position.x = -10;
 			position.y = 71;
 
-			/*
-			if (position.x <= 44)
-				position.x += 5;*/
 			
-			/*App->stage1->camera_limit.xi+SCREEN_WIDTH/2*/;
 
 		}
 
