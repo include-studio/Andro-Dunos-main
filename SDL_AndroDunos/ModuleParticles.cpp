@@ -67,6 +67,20 @@ ModuleParticles::ModuleParticles()
 	laser3_2.speed.x = 7;
 	laser3_2.speed.y = 7;
 
+	//laser 3_3 particle
+	laser3_3.anim.PushBack({ 57,35,16,18 });
+	laser3_3.anim.loop = false;
+	laser3_3.life = 670;
+	laser3_3.speed.x = -7;
+	laser3_3.speed.y = 7;
+
+	//laser 3_4 particle
+	laser3_4.anim.PushBack({ 57,60,16,18 });
+	laser3_4.anim.loop = false;
+	laser3_4.life = 670;
+	laser3_4.speed.x = -7;
+	laser3_4.speed.y = -7;
+
 	//laser 4_1 particle
 	laser4_1.anim.PushBack({ 41,11,13,2 });
 	laser4_1.anim.PushBack({ 41,23,13,6 });
@@ -75,7 +89,7 @@ ModuleParticles::ModuleParticles()
 	laser4_1.anim.speed = 0.8f;
 	laser4_1.life = 670;
 	laser4_1.speed.x = 7;
-	laser4_1.speed.y = 3;
+	laser4_1.speed.y = 2;
 
 	//laser 4_2 particle
 	laser4_2.anim.PushBack({ 41,11,13,2 });
@@ -85,7 +99,7 @@ ModuleParticles::ModuleParticles()
 	laser4_2.anim.speed = 0.8f;
 	laser4_2.life = 670;
 	laser4_2.speed.x = 7;
-	laser4_2.speed.y = -3;
+	laser4_2.speed.y = -2;
 
 	//laser 4_3 upgrade 1 of laser 4
 	laser4_3.anim.PushBack({ 41,11,13,2 });
@@ -95,6 +109,35 @@ ModuleParticles::ModuleParticles()
 	laser4_3.anim.speed = 0.8f;
 	laser4_3.life = 670;
 	laser4_3.speed.x = 7;
+
+	//laser 4_1 particle
+	laser4_1_1.anim.PushBack({ 41,11,13,2 });
+	laser4_1_1.anim.PushBack({ 41,23,13,6 });
+	laser4_1_1.anim.PushBack({ 41,38,13,8 });
+	laser4_1_1.anim.loop = false;
+	laser4_1_1.anim.speed = 0.8f;
+	laser4_1_1.life = 670;
+	laser4_1_1.speed.x = 7;
+	laser4_1_1.speed.y = 4;
+
+	//laser 4_2 particle
+	laser4_2_1.anim.PushBack({ 41,11,13,2 });
+	laser4_2_1.anim.PushBack({ 41,23,13,6 });
+	laser4_2_1.anim.PushBack({ 41,38,13,8 });
+	laser4_2_1.anim.loop = false;
+	laser4_2_1.anim.speed = 0.8f;
+	laser4_2_1.life = 670;
+	laser4_2_1.speed.x = 7;
+	laser4_2_1.speed.y = -4;
+
+	//laser 4_3 upgrade 1 of laser 4
+	laser4_3_1.anim.PushBack({ 41,11,13,2 });
+	laser4_3_1.anim.PushBack({ 41,23,13,6 });
+	laser4_3_1.anim.PushBack({ 41,38,13,8 });
+	laser4_3_1.anim.loop = false;
+	laser4_3_1.anim.speed = 0.8f;
+	laser4_3_1.life = 670;
+	laser4_3_1.speed.x = 7;
 
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });

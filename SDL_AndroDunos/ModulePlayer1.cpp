@@ -64,7 +64,7 @@ bool ModulePlayer1::Start()
 
 	destroyed = false;
 	type_weapon = 1;
-	powerup = 0;
+	powerup = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
 	hp = 3;
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
@@ -104,74 +104,86 @@ update_status ModulePlayer1::Update()
 		switch (type_weapon) {
 		case 1:
 			switch (powerup) {
-			case 0:
+			case 1:
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				break;
-			case 1:
+			case 2:
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y + 16, COLLIDER_PLAYER_SHOT);
 				break;
-			case 2:
+			case 3:
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1_1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y + 18, COLLIDER_PLAYER_SHOT);
 				break;
 
 			default:			//in case that the power up is higher than gun power up, the default switch set power up to the last case
-				powerup = 2;
+				powerup = 3;
 				break;
 			}
 			break;
 		case 2:
 			switch (powerup) {
-			case 0:
+			case 1:
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT);
 				break;
-			case 1:
+			case 2:
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 6, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 13, COLLIDER_PLAYER_SHOT);
 				break;
-			case 2:
+			case 3:
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 13, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_diagonal1, position.x+10, position.y + 3, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_diagonal2, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT);
+				break;
 			default:			
-				powerup = 2;
+				powerup = 3;
 				break;
 			}
 			break;
 		case 3:
 			switch (powerup) {
-			case 0:
+			case 1:
 				App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				break;
-			case 1:
+			case 2:
 				App->particles->AddParticle(App->particles->laser3_1, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser3_2, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
 				break;
+			case 3:
+				App->particles->AddParticle(App->particles->laser3_1, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser3_2, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser3_3, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser3_4, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+				break;
 			default:
-				powerup = 1;
+				powerup = 3;
 				break;
 			}
 			break;
 		case 4:
 			switch (powerup) {
-			case 0:
-				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
-				break;
 			case 1:
 				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				break;
+			case 2:
+				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser4_2, position.x + 42, position.y + 11, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser4_3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				break;
+			case 3:
+				App->particles->AddParticle(App->particles->laser4_1_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser4_2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser4_3_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				break;
 			default:
-				powerup = 1;
+				powerup = 2;
 				break;
 			}
 			break;

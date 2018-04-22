@@ -65,9 +65,14 @@ public:
 	Particle laser3;
 	Particle laser3_1;
 	Particle laser3_2;
+	Particle laser3_3;
+	Particle laser3_4;
 	Particle laser4_1;
 	Particle laser4_2;
 	Particle laser4_3;
+	Particle laser4_1_1;
+	Particle laser4_2_1;
+	Particle laser4_3_1;
 
 	Particle mini_explosion;
 	Particle big_explosion;
