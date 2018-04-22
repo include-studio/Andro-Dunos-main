@@ -126,20 +126,24 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			if (c2->callback == App->player1) {
-				if (c1->type == COLLIDER_BONUS)
+				if (c1->type == COLLIDER_BONUS) {
 					App->player1->score += 100;
 					App->audio->PlayFx(bonus_fx);
+				}
 				if (c1->type == COLLIDER_POWER_S)
-						App->player1->powerup++;
+					App->player1->powerup++; {
 					App->audio->PlayFx(powerup_fx);
+				}
 			}
 			if (c2->callback == App->player2) {
-				if (c1->type == COLLIDER_BONUS)
+				if (c1->type == COLLIDER_BONUS) {
 					App->player2->score += 100;
-				App->audio->PlayFx(bonus_fx);
-				if (c1->type == COLLIDER_POWER_S)
-						App->player2->powerup++;
+					App->audio->PlayFx(bonus_fx);
+				}
+				if (c1->type == COLLIDER_POWER_S) {
+					App->player2->powerup++;
 					App->audio->PlayFx(powerup_fx);
+				}
 			}
 			delete active[i];
 			active[i] = nullptr;
