@@ -169,13 +169,6 @@ update_status ModuleUI::Update()
 		if (App->player1->hp == 2) {
 			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);
 		}
-		//if (App->player1->hp == 0) {
-			//animationGameover = &gameover;
-			//SDL_Rect Rect_GameOver;
-			//Rect_GameOver = animationGameover->GetCurrentFrame();
-			//App->render->Blit(user_interface, 10, 40, &Rect_GameOver, 0.0f);
-			//gameover.loop = true;
-		//}
 	}
 
 	if (App->player2->IsEnabled() == true) {
@@ -185,41 +178,8 @@ update_status ModuleUI::Update()
 			App->render->Blit(user_interface, 200, 20, &life2_rect, 0.0f);
 		}
 		if (App->player2->hp == 2) {
-			App->render->Blit(user_interface, 10, 20, &life2_rect, 0.0f);
-		}
-		//if (App->player2->hp == 0) {
-			//animationGameover = &gameover;
-			//SDL_Rect Rect_GameOver;
-			//Rect_GameOver = animationGameover->GetCurrentFrame();
-			//App->render->Blit(user_interface, 180, 40, &Rect_GameOver, 0.0f);
-			//gameover.loop = true;
-		//}
-	}
-
-	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {
-		if (App->player1->hp == 0 && App->player2->hp > 0) {
-			//animationPress1p = &press1p;
-			//SDL_Rect Rect_Press1p;
-			//Rect_Press1p = animationPress1p->GetCurrentFrame();
-			//App->render->Blit(user_interface, 10, 40, &Rect_Press2p, 0.0f);
-			//press1p.loop = true;
-		}
-		if (App->player2->hp == 0 && App->player1->hp > 0) {
-			//animationPress2p = &press2p;
-			//SDL_Rect Rect_Press2p;
-			//Rect_Press2p = animationPress2p->GetCurrentFrame();
-			//App->render->Blit(user_interface, 180, 40, &Rect_Press2p, 0.0f);
-			//press2p.loop = true;
+			App->render->Blit(user_interface, 190, 20, &life2_rect, 0.0f);
 		}
 	}
-
-	if (App->player2->IsEnabled() == false && App->player1->IsEnabled() == true) {
-			//animationPress2p = &press2p;
-			//SDL_Rect Rect_Press2p;
-			//Rect_Press2p = animationPress2p->GetCurrentFrame();
-			//App->render->Blit(user_interface, 180, 40, &Rect_Press2p, 0.0f);
-			//press2p.loop = true;
-	}
-
 	return UPDATE_CONTINUE;
 }

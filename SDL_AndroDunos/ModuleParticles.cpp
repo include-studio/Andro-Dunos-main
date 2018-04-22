@@ -288,10 +288,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			if (c2->type == COLLIDER_ENEMY) {
-				if (active[i]->owner_type == OWNER_PLAYER1)
+				if (active[i]->owner_type == OWNER_PLAYER1) {
 					App->player1->score += 100;
-				if (active[i]->owner_type == OWNER_PLAYER2)
+					LOG("COLLISION PARTICLE PLAYER1");
+				}
+				if (active[i]->owner_type == OWNER_PLAYER2) {
 					App->player2->score += 200;
+					LOG("COLLISION PARTICLE PLAYER2");
+				}
 			}
 			delete active[i];
 			active[i] = nullptr;

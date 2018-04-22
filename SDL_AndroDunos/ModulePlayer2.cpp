@@ -101,25 +101,25 @@ update_status ModulePlayer2::Update()
 
 	//type 1
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 1) {
-		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +3, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +3, COLLIDER_PLAYER_SHOT,0,OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 	}
 
 	//type 2
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 2) {
-		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y +11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->laser2_2, position.x, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 	}
 
 	//type 3
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 3) {
-		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 	}
 
 	//type 4
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN && type_weapon == 4) {
-		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y +11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT])
@@ -196,18 +196,6 @@ update_status ModulePlayer2::Update()
 	case UP:
 		animationShip = &up;
 		break;
-	case DEAD:
-	{
-		player2_col->type = COLLIDER_PLAYER;
-		if (animationShip->Finished() == true) {
-			state = IDLE;
-		}
-		hp--;
-		if (hp == 0) {
-			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-		}
-		break;
-	} break;
 	}
 
 	player2_col->SetPos(position.x, position.y);
@@ -253,18 +241,17 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 	if (col1 == player2_col  && App->fade->IsFading() == false) //&& destroyed == false
 	{
 
-		//destroyed = true;
+		destroyed = true;
 
-		//hp--;
+		hp--;
 
 		animationShip->reset();
+		if (hp < 0)
+			state = DEAD;
+		else position.x -= SCREEN_WIDTH;
 
 		App->particles->AddParticle(App->particles->explosion_player2, position.x + 15, position.y - 2);
 	
-		state = DEAD;
-	
-		//if (hp == 0) {
-		//	App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-		//}
+		
 	}
 }

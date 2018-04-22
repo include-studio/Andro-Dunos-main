@@ -48,7 +48,7 @@ public:
 	bool dead = false;
 	bool god_mode = false;
 	int type_weapon = 0;
-	uint hp;
+	int hp;
 
 	bool insert2;
 
