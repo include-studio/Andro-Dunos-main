@@ -160,7 +160,7 @@ update_status ModuleUI::Update()
 			activate_credit == false;*/
 
 
-		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && activate_credit == false && App->mainmenu->IsEnabled() == false) {
+		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && activate_credit == false && App->mainmenu->IsEnabled() == false && empty_credit == false) {
 			
 			credit--;
 			activate_credit = true;
