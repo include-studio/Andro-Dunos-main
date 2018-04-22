@@ -361,7 +361,10 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 			destroyed = true;
 		}
-		else position.x -= SCREEN_WIDTH;
+		else {
+			position.x = App->stage1->camera_limit.xi+SCREEN_WIDTH/2;
+
+		}
 
 		//it has to be big_explosion
 		
