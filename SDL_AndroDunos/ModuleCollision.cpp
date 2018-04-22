@@ -55,12 +55,14 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_BONUS][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_BONUS][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_BONUS][COLLIDER_ITEM] = false;
+	matrix[COLLIDER_BONUS][COLLIDER_POWER_S] = false;
 	matrix[COLLIDER_POWER_S][COLLIDER_WALL] = false;
 	matrix[COLLIDER_POWER_S][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_POWER_S][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_POWER_S][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_POWER_S][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_POWER_S][COLLIDER_ITEM] = false;
+	matrix[COLLIDER_POWER_S][COLLIDER_BONUS] = false;
 }
 // Destructor
 ModuleCollision::~ModuleCollision()
