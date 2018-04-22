@@ -42,18 +42,22 @@ public:
 	Animation downidle;
 	Animation down;
 	iPoint position;
-	Collider* player2_col = nullptr;
+	Collider* player_col = nullptr;
 
 	uint laser1, laser2, laser3, laser4, explosion_player, type_change;
 
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode = false;
+	bool god_mode_die = false;
 	int type_weapon = 0;
 	int hp;
 	int powerup=1;
 
 	bool insert2;
+
+	int current_time = 0;
+	int init_time = 0;
 
 	int font_score = 1;
 	char score_text[10];

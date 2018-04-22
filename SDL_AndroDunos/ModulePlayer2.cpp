@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "Animation.h"
 #include "ModuleUI.h"
+#include "SDL/include/SDL.h"
 
 
 ModulePlayer2::ModulePlayer2()
@@ -67,9 +68,11 @@ bool ModulePlayer2::Start()
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT * 2 / 3;
 
-	//destroyed = false;
+	init_time = SDL_GetTicks(); //Timer
+
+	destroyed = false;
 	type_weapon = 1;
-	player2_col = App->collision->AddCollider({ position.x,position.y,39, 17 }, COLLIDER_PLAYER, this);
+	player_col = App->collision->AddCollider({ position.x,position.y,39, 17 }, COLLIDER_PLAYER, this);
 	hp = 3;
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
@@ -88,18 +91,29 @@ bool ModulePlayer2::Start()
 // Update: draw background
 update_status ModulePlayer2::Update()
 {
+	current_time = SDL_GetTicks() - init_time;
 
 	if (god_mode != App->player1->god_mode) {
 		if (god_mode) {
-			player2_col->type = COLLIDER_PLAYER;
+			player_col->type = COLLIDER_PLAYER;
 			god_mode = false;
 		}
 		else {
-			player2_col->type = COLLIDER_NONE;
+			player_col->type = COLLIDER_NONE;
 			god_mode = true;
 		}
 	}
-
+	//Respawn 
+	if (god_mode_die == true) {
+		if (current_time < 4000) {
+			player_col->type = COLLIDER_NONE;
+		}
+		else {
+			player_col->type = COLLIDER_PLAYER;
+			god_mode_die = false;
+			state = IDLE;
+		}
+	}
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
 		App->audio->PlayFx(type_change);
@@ -305,13 +319,13 @@ update_status ModulePlayer2::Update()
 		break;
 	}
 
-	player2_col->SetPos(position.x, position.y);
+	player_col->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
 	ship = animationShip->GetCurrentFrame();
 
-	//if (!destroyed ) //&& dead == false
+	if (!destroyed && dead == false)
 		App->render->Blit(graphics, position.x, position.y, &ship);
 
 	sprintf_s(score_text, 10, "%7d", score);
@@ -336,26 +350,30 @@ bool ModulePlayer2::CleanUp() {
 	App->audio->UnLoadFx(laser2);
 	App->audio->UnLoadFx(laser1);
 
-	if (player2_col != nullptr)
-		player2_col->to_delete = true;
+	if (player_col != nullptr)
+		player_col->to_delete = true;
 	return true;
 }
 
 void ModulePlayer2::OnCollision(Collider* col1, Collider* col2) 
 {
-	if (col1 == player2_col  && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S) //&& destroyed == false
+	if (col1 == player_col && destroyed == false && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;
 		animationShip->reset();
-
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
-		if (hp < 0) {
+		if (hp <= 0) {
 			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 			destroyed = true;
 		}
+		else {
 
-		else position.x -= SCREEN_WIDTH;
-		
+			god_mode_die = true;
+			state = CLEAR;
+			init_time = SDL_GetTicks();
+			position.x = 0;
+			position.y = 71;
+		}
 	}
 }
