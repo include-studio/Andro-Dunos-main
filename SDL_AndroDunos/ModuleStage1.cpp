@@ -603,24 +603,25 @@ update_status ModuleStage1::Update()
 	}
 	for (int i = ground_cont; i < ground_cont+2; i++)
 		App->render->Blit(ground_tx, ground[0].w*i, 0, &ground[i]);
-	
-	if (App->player1->position.x < camera_limit.xi)
-		App->player1->position.x = camera_limit.xi;
-	if (App->player1->position.x > camera_limit.xf)
-		App->player1->position.x = camera_limit.xf;
-	if (App->player1->position.y < camera_limit.yi)
-		App->player1->position.y = camera_limit.yi;
-	if (App->player1->position.y > camera_limit.yf)
-		App->player1->position.y = camera_limit.yf;
+	if (!App->player1->god_mode_die) {
+		if (App->player1->position.x < camera_limit.xi)
+			App->player1->position.x = camera_limit.xi;
+		if (App->player1->position.x > camera_limit.xf)
+			App->player1->position.x = camera_limit.xf;
+		if (App->player1->position.y < camera_limit.yi)
+			App->player1->position.y = camera_limit.yi;
+		if (App->player1->position.y > camera_limit.yf)
+			App->player1->position.y = camera_limit.yf;
 
-	if (App->player2->position.x < camera_limit.xi)
-		App->player2->position.x = camera_limit.xi;
-	if (App->player2->position.x > camera_limit.xf)
-		App->player2->position.x = camera_limit.xf;
-	if (App->player2->position.y < camera_limit.yi)
-		App->player2->position.y = camera_limit.yi;
-	if (App->player2->position.y > camera_limit.yf)
-		App->player2->position.y = camera_limit.yf;
+		if (App->player2->position.x < camera_limit.xi)
+			App->player2->position.x = camera_limit.xi;
+		if (App->player2->position.x > camera_limit.xf)
+			App->player2->position.x = camera_limit.xf;
+		if (App->player2->position.y < camera_limit.yi)
+			App->player2->position.y = camera_limit.yi;
+		if (App->player2->position.y > camera_limit.yf)
+			App->player2->position.y = camera_limit.yf;
+	}
 
 
 	if (App->input->keyboard[SDL_SCANCODE_C] == 1)

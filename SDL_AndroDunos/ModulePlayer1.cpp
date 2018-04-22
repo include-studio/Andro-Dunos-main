@@ -110,9 +110,10 @@ update_status ModulePlayer1::Update()
 	if (god_mode_die == true) {
 		if (current_time < 4000) {
 			player_col->type = COLLIDER_NONE;
-			if (position.x <= 109)
+			if (position.x <= App->stage1->camera_limit.xi + 44)
 				position.x++;
 		}
+		
 		else {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode_die = false;
@@ -382,7 +383,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
-			position.x = 0;
+			position.x = App->stage1->camera_limit.xi;
 			position.y = 71;
 		}
 	}
