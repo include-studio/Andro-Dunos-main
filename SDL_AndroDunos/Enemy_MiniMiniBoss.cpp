@@ -39,14 +39,17 @@ void Enemy_MiniMiniBoss::Move()
 		if (App->player1->position.y < (float)position.y)
 			position.y -= 0.25;
 	}
-	/*if (current_time >= 800 && current_time <= 2000) {
-
-
-	}*/
+	if (current_time >= 800 && shoot == false) {
+		Shoot();
+		shoot = true;
+	}
+	
+	if (current_time > 800)
+		position.x--;
 }
 
 void Enemy_MiniMiniBoss::Shoot()
 {
-	App->particles->AddParticle(App->particles->laser1, position.x, position.y, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
 
 }

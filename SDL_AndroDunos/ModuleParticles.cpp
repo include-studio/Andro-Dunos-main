@@ -246,6 +246,15 @@ ModuleParticles::ModuleParticles()
 	explosion_player2.anim.loop = false;
 	explosion_player2.anim.speed = 0.5f;
 
+	//enemy blue shot
+	enemy_blue.anim.PushBack({ 243,148,8,8 });
+	enemy_blue.anim.PushBack({ 243,156,8,8 });
+	enemy_blue.anim.PushBack({ 243,165,8,8 });
+	enemy_blue.anim.PushBack({ 250,148,8,8 });
+	enemy_blue.anim.speed = 0.2f;
+	enemy_blue.life = 1500;
+	enemy_blue.speed.x = -2;
+
 	
 }
 

@@ -84,6 +84,8 @@ public:
 	Particle ring_explosion;
 	Particle explosion_player1;
 	Particle explosion_player2;
+
+	Particle enemy_blue;
 };
 
 #endif // __MODULEPARTICLES_H__
