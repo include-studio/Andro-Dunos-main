@@ -65,7 +65,7 @@ bool ModulePlayer2::Start()
 	bool ret = true;
 	bool insert2 = false;
 	graphics = App->textures->Load("assets/Sprites/ships.png");
-	position.x = SCREEN_WIDTH / 3;
+	position.x = 0;
 	position.y = SCREEN_HEIGHT * 2 / 3;
 
 	init_time = SDL_GetTicks(); //Timer
@@ -77,7 +77,7 @@ bool ModulePlayer2::Start()
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
 	powerup = 1;
-
+	god_mode_die = true;
 	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
 	laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
 	laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
@@ -107,7 +107,10 @@ update_status ModulePlayer2::Update()
 	if (god_mode_die == true) {
 		if (current_time < 4000) {
 			player_col->type = COLLIDER_NONE;
+			if (position.x <= App->stage1->camera_limit.xi + 44)
+				position.x++;
 		}
+
 		else {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode_die = false;
@@ -372,7 +375,7 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
-			position.x = 0;
+			position.x = App->stage1->camera_limit.xi;;
 			position.y = 71;
 		}
 	}

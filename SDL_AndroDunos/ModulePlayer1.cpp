@@ -11,7 +11,6 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 #include "SDL/include/SDL.h"
-
 #include <stdio.h>
 
 ModulePlayer1::ModulePlayer1()
@@ -70,7 +69,7 @@ bool ModulePlayer1::Start()
 	
 
 	graphics = App->textures->Load("assets/Sprites/ships.png");
-	position.x = SCREEN_WIDTH / 3;
+	position.x = 0;
 	position.y = SCREEN_HEIGHT / 3;
 
 	destroyed = false;
@@ -80,7 +79,7 @@ bool ModulePlayer1::Start()
 	hp = 3;
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
-
+	god_mode_die = true;
 	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
 	laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
 	laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
