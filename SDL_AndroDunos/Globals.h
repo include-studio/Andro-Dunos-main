@@ -23,7 +23,8 @@ enum PLAYER_STATE_MOVE
 	IDLE,
 	IDLE_UP,
 	UP,
-	DEAD
+	DEAD,
+	CLEAR
 };
 
 // Useful typedefs ---------

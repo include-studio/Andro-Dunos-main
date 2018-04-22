@@ -10,6 +10,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
+#include "SDL/include/SDL.h"
+
 #include <stdio.h>
 
 ModulePlayer1::ModulePlayer1()
@@ -48,6 +50,11 @@ ModulePlayer1::ModulePlayer1()
 	downidle.PushBack({ 85,76,39,16 });
 
 	downidle.speed = 0.5f;
+
+	clear.PushBack({ 0,48,39,17 });
+	clear.PushBack({ 0,0,10,20 });
+
+	clear.speed = 0.01f;
 }
 
 ModulePlayer1::~ModulePlayer1()
@@ -58,6 +65,10 @@ bool ModulePlayer1::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
+
+	init_time = SDL_GetTicks(); //Timer
+	
+
 	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = SCREEN_WIDTH / 3;
 	position.y = SCREEN_HEIGHT / 3;
@@ -83,7 +94,7 @@ bool ModulePlayer1::Start()
 // Update: draw background
 update_status ModulePlayer1::Update()
 {
-
+	current_time = SDL_GetTicks() - init_time;
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
 		if (god_mode == false) {
 
@@ -95,6 +106,17 @@ update_status ModulePlayer1::Update()
 			god_mode = false;
 			player_col->type = COLLIDER_PLAYER;
 		}
+	}
+	//Respawn 
+	if (god_mode_die == true) {
+		if (current_time < 4000) {
+			player_col->type = COLLIDER_NONE;
+		}
+		else {
+			player_col->type = COLLIDER_PLAYER;
+			god_mode_die = false;
+			state = IDLE;
+		}	
 	}
 
 	//change weapon
@@ -300,6 +322,9 @@ update_status ModulePlayer1::Update()
 	case UP:
 		animationShip = &up;
 		break;
+	case CLEAR:
+		animationShip = &clear;
+		break;
 	}
 	player_col->SetPos(position.x, position.y);
 	// Draw everything --------------------------------------
@@ -352,7 +377,18 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			destroyed = true;
 		}
 		else {
-			position.x = App->stage1->camera_limit.xi+SCREEN_WIDTH/2;
+			
+			god_mode_die = true;
+			state = CLEAR;
+			current_time = 0;
+			position.x = 109;
+			position.y = 71;
+
+			/*
+			if (position.x <= 44)
+				position.x += 5;*/
+			
+			/*App->stage1->camera_limit.xi+SCREEN_WIDTH/2*/;
 
 		}
 
