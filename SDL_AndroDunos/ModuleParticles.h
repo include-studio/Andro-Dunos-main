@@ -60,6 +60,7 @@ public:
 	Particle laser1_1;
 	Particle laser2_1;
 	Particle laser2_2;
+	Particle laser2_3;
 	Particle laser2_diagonal1;
 	Particle laser2_diagonal2;
 	Particle laser3;
@@ -67,6 +68,10 @@ public:
 	Particle laser3_2;
 	Particle laser3_3;
 	Particle laser3_4;
+	Particle laser3_5;
+	Particle laser3_6;
+	Particle laser3_7;
+	Particle laser3_8;
 	Particle laser4_1;
 	Particle laser4_2;
 	Particle laser4_3;
