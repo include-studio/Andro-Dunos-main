@@ -12,6 +12,7 @@
 #include "ModulePowerUp.h"
 #include "ModulePlayer2.h"
 #include "Enemy_MiniMiniBoss.h"
+#include "ModuleAudio.h"
 
 #define SPAWN_MARGIN 15
 
@@ -30,6 +31,8 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("Assets/Sprites/enemies.png");
+
+	big_explosion_fx = App->audio->Loadfx("Assets/Audio/Enemy_Medium_EXPLOSION.wav");
 
 	return true;
 }
@@ -96,6 +99,8 @@ bool ModuleEnemies::CleanUp()
 
 	App->textures->Unload(sprites);
 
+	App->audio->UnLoadFx(big_explosion_fx);
+
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
@@ -161,11 +166,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
+			App->audio->PlayFx(big_explosion_fx);
+
 			App->particles->AddParticle(App->particles->ring_explosion, enemies[i]->position.x, enemies[i]->position.y,COLLIDER_NONE);
 			App->particles->AddParticle(App->particles->big_explosion, enemies[i]->position.x+15, enemies[i]->position.y+5, COLLIDER_NONE, 150);
 			App->particles->AddParticle(App->particles->ring_explosion, enemies[i]->position.x+15, enemies[i]->position.y+15, COLLIDER_NONE, 250);
 			App->particles->AddParticle(App->particles->mini_explosion, enemies[i]->position.x, enemies[i]->position.y-5, COLLIDER_NONE, 350);
 			enemies[i]->OnCollision(c1);
+
 			delete enemies[i];
 			enemies[i] = nullptr;
 			break;
