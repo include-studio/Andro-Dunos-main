@@ -238,7 +238,7 @@ bool ModulePlayer2::CleanUp() {
 //}
 void ModulePlayer2::OnCollision(Collider* col1, Collider* col2) 
 {
-	if (col1 == player2_col  && App->fade->IsFading() == false) //&& destroyed == false
+	if (col1 == player2_col  && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S) //&& destroyed == false
 	{
 
 		destroyed = true;

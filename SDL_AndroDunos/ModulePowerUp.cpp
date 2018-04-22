@@ -112,11 +112,20 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c1->type == COLLIDER_BONUS)
-				App->player1->score += 100;
-			if (c1->type == COLLIDER_POWER_S)
-				if (App->player1->powerup < 1)
-					App->player1->powerup++;
+			if (c2->callback == App->player1) {
+				if (c1->type == COLLIDER_BONUS)
+					App->player1->score += 100;
+				if (c1->type == COLLIDER_POWER_S)
+					if (App->player1->powerup < 1)
+						App->player1->powerup++;
+			}
+			if (c2->callback == App->player2) {
+				if (c1->type == COLLIDER_BONUS)
+					App->player2->score += 100;
+				if (c1->type == COLLIDER_POWER_S)
+					if (App->player2->powerup < 1)
+						App->player2->powerup++;
+			}
 			delete active[i];
 			active[i] = nullptr;
 			break;

@@ -49,6 +49,7 @@ public:
 	bool god_mode = false;
 	int type_weapon = 0;
 	int hp;
+	int powerup;
 
 	bool insert2;
 
