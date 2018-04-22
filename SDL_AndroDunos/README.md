@@ -1,6 +1,6 @@
-Andro Dunos v.0.4.5
+Andro Dunos v.0.5.0
 
-This is the fourth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1.
+This is the fifth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1.
 
 Manager: Lluis Moreu https://github.com/youis11 
 Art: Marc Navas https://github.com/Shocrates 
@@ -21,8 +21,6 @@ Controls:
 - 1 (to play with one player).
 
 - 2 (to play with two players).
-
-- F2 (to increase power up).
 
 - F3 (to pause music).
 
@@ -59,11 +57,14 @@ Player 2:
 
 - F1 (to hide collision squares).
 
+- F2 (to increase power up).
+
 - F5 (to  activate god mode).
 
 - C (to direct win).
 
 - X (to direct lost).
+
 
 Can you finish the game?
 

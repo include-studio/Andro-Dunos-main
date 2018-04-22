@@ -6,7 +6,48 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+
+
+## [0.5.0] - 2018-04-22
+
+
+###Summarized
+
+- UI improvements, some bug fixes and power ups.
+
+###Extended
+
+
+#### Added
+
+
+-Added HP and Credits.
+
+-Added 2nd player score.
+
+-Created ModuleSubMainMenu .cpp and .h .
+
+-Created ModulePowerUp .cpp and .h .
+
+
+#### Fixed
+
+
+- Score and highscore.
+
+- Laser 1 particle.
+
+#### Eliminated
+
+
+- Some .dll in Game folder.
+
+- Stage 2.
+
+
+
 ## [0.4.6] - 2018-04-20
+
 
 ###Summarized
 
@@ -14,13 +55,21 @@ All notable changes to this project will be documented in this file.
 
 ###Extended
 
+
 -Added all collision boxes of stage1.
+
 -Upgraded Camera funcionality.
+
 -God mode player 1 and 2 has linked.
+
 -Some explosions added.
+
 -Score system added.
 
+
+
 ## [0.4.5] - 2018-04-18
+
 
 ### Summarized
 
