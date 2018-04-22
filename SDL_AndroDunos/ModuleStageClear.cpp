@@ -6,9 +6,10 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleViscoGames.h"
 #include "ModuleAudio.h"
-#include "ModuleStage2.h"
+#include "ModuleMainMenu.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleUI.h"
 
 #include "SDL/include/SDL.h"
 
@@ -146,24 +147,21 @@ update_status ModuleStageClear::Update() {
 		App->render->Blit(stage_clear_tx, 0, 36, &animation_StageClear);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
-		switch (part_stageClear)
-		{
-		case 0:
-			if (App->fade->FadeToBlack(this, App->visco, 1)) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE]){
+		//switch (part_stageClear)
+		//{
+		//case 0:
+			if (App->ui->credit	== 0){
+				App->fade->FadeToBlack(this, App->visco, 1);
 				Mix_PauseMusic();
-				part_stageClear++;
 			}
 				
-
-			break;
-		case 1:
-			if (App->fade->FadeToBlack(this, App->visco, 1)) {
+			else if (App->ui->credit > 0){
+				App->fade->FadeToBlack(this, App->mainmenu, 1);
 				Mix_PauseMusic();
-				part_stageClear = 0;
 			}
 				
-			break;
+			//break;
 		}
 
 	if (position_small_blue.y > 83 && current_time >= 2000)
