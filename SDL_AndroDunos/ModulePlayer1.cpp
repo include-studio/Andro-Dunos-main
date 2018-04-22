@@ -97,24 +97,21 @@ update_status ModulePlayer1::Update()
 	current_time = SDL_GetTicks() - init_time;
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
 		if (god_mode == false) {
-
 			player_col->type = COLLIDER_NONE;
 			god_mode = true;
 		}
 		else if (god_mode == true) {
-			
 			god_mode = false;
 			player_col->type = COLLIDER_PLAYER;
 		}
 	}
+
 	//Respawn 
 	if (god_mode_die == true) {
 		if (current_time < 4000) {
 			player_col->type = COLLIDER_NONE;
-			
 			if (position.x <= 109)
-				position.x ++;
-
+				position.x++;
 		}
 		else {
 			player_col->type = COLLIDER_PLAYER;
@@ -384,22 +381,9 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			
 			god_mode_die = true;
 			state = CLEAR;
-			current_time = 0;
-			position.x = -10;
+			init_time = SDL_GetTicks();
+			position.x = 0;
 			position.y = 71;
-
-			
-
 		}
-
-		//it has to be big_explosion
-		
-
-		//if (hp == 0) {
-		//	
-		//	dead = true;
-		//}
-
-		
 	}
 }
