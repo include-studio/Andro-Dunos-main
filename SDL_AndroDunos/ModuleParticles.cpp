@@ -18,26 +18,34 @@ ModuleParticles::ModuleParticles()
 		active[i] = nullptr;
 
 	// laser particle
-	laser1.anim.PushBack({ 21,6,16,10 });
-	laser1.anim.loop = false;
-	laser1.anim.speed = 0.8f;
+	laser1.anim.PushBack({ 24,39,11,4 });
 	laser1.life = 670;
 	laser1.speed.x = 7;
 	laser1.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
 
+	laser1_1.anim.PushBack({ 22,51,15,6 });
+	laser1_1.life = 670;
+	laser1_1.speed.x = 7;
+
 	//laser 2_1 particle
 	laser2_1.anim.PushBack({ 6,69,10,3 });
-	laser2_1.anim.loop = false;
-	laser2_1.anim.speed = 0.8f;
 	laser2_1.life = 670;
 	laser2_1.speed.x = 7;
 
 	//laser 2_2 particle
 	laser2_2.anim.PushBack({ 6,84,10,3 });
-	laser2_2.anim.loop = false;
-	laser2_2.anim.speed = 0.8f;
 	laser2_2.life = 670;
 	laser2_2.speed.x = -7;
+
+	laser2_diagonal1.anim.PushBack({ 5,50,11,8 });
+	laser2_diagonal1.life = 670;
+	laser2_diagonal1.speed.x = -5;
+	laser2_diagonal1.speed.y = -3;
+
+	laser2_diagonal2.anim.PushBack({ 5,37,11,8 });
+	laser2_diagonal2.life = 670;
+	laser2_diagonal2.speed.x = -5;
+	laser2_diagonal2.speed.y = 3;
 
 	//laser 3 particle
 	laser3.anim.PushBack({ 16,101,32,3 });

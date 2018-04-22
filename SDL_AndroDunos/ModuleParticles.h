@@ -57,8 +57,11 @@ private:
 public:
 	
 	Particle laser1;
+	Particle laser1_1;
 	Particle laser2_1;
 	Particle laser2_2;
+	Particle laser2_diagonal1;
+	Particle laser2_diagonal2;
 	Particle laser3;
 	Particle laser3_1;
 	Particle laser3_2;

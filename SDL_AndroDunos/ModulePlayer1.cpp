@@ -109,12 +109,18 @@ update_status ModulePlayer1::Update()
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 				break;
 			case 1:
-				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 16, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y + 16, COLLIDER_PLAYER_SHOT);
 				break;
+			case 2:
+				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1_1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y + 18, COLLIDER_PLAYER_SHOT);
+				break;
+
 			default:			//in case that the power up is higher than gun power up, the default switch set power up to the last case
-				powerup = 1;
+				powerup = 2;
 				break;
 			}
 			break;
@@ -129,8 +135,13 @@ update_status ModulePlayer1::Update()
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 6, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 13, COLLIDER_PLAYER_SHOT);
 				break;
+			case 2:
+				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 13, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser2_diagonal1, position.x+10, position.y + 3, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->laser2_diagonal2, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT);
 			default:			
-				powerup = 1;
+				powerup = 2;
 				break;
 			}
 			break;
