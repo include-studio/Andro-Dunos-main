@@ -17,6 +17,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleNeoGeo.h"
 #include "ModuleViscoGames.h"
+#include "ModuleMainMenu.h"
 
 ModuleUI::ModuleUI() {}
 
@@ -71,6 +72,8 @@ bool ModuleUI::Start()
 	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
 	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "0123456789", 1);
 
+	credit_fx = App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
+
 	credit = 0;
 
 	return true;
@@ -111,8 +114,10 @@ update_status ModuleUI::Update()
 	if (App->neogeo->IsEnabled() == false) {
 		
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN && credit < 99) {
-			App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
+			App->audio->PlayFx(credit_fx);
 			credit++;	
+			empty_credit = false;
+			
 		}
 
 		sprintf_s(credits_text, 17, "%7d", credit);
@@ -140,22 +145,32 @@ update_status ModuleUI::Update()
 				App->fonts->BlitText(240, 210, font_credits, credits_text);
 		}
 
-		//&& players are dead)
-		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN) {
-			credit --;
+		//Main Menu Credits
+		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == true) {
+			credit--;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN &&  App->mainmenu->IsEnabled() == true && credit >= 2) {
+			credit -= 2;
+		}
+
+		//if players are dead
+		
+		/*if (App->player2->destroyed == true)
+			activate_credit == false;*/
+
+
+		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && activate_credit == false && App->mainmenu->IsEnabled() == false) {
+			
+			credit--;
+			activate_credit = true;
+			
+			
 		}
 			
-		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN) {
+		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == false && empty_credit == false &&  activate_credit == false ) {
 			credit--;
+			activate_credit = true;
 		}
-
-		/*if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && App->player1->destroyed == true) {
-			credit--;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN && App->player2->destroyed == true) {
-			credit--;
-		}*/
 			
 	}
 	

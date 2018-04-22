@@ -39,8 +39,11 @@ public:
 	char HighScore_text[13];
 	int font_credits = -1;
 	char credits_text[17];
+	bool activate_credit = true;
+	bool empty_credit = true;
 
 	uint credit = 0;
+	uint credit_fx;
 
 	Uint32 score;
 	uint high_score = 0;
