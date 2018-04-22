@@ -155,6 +155,8 @@ unsigned int ModuleAudio::Loadfx(const char* path) {
 		LOG("Cannot load wav %s. Mix_GetError(): %s", path, Mix_GetError());
 	}
 	else {
+		if (last_fx == MAX_FX)
+			last_fx = 0;
 		fx[last_fx] = chunk;
 		ret = last_fx++;
 	}

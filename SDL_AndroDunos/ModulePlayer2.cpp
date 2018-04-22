@@ -73,6 +73,7 @@ bool ModulePlayer2::Start()
 	hp = 3;
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
+	powerup = 1;
 
 	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
 	laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
@@ -108,6 +109,8 @@ update_status ModulePlayer2::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
+	if (powerup > 4)
+		powerup = 4;
 
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN) {
 		switch (type_weapon) {
@@ -135,9 +138,6 @@ update_status ModulePlayer2::Update()
 				App->particles->AddParticle(App->particles->laser1_1, position.x + 38, position.y + 9, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser1_1, position.x + 33, position.y + 18, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->audio->PlayFx(laser1);
-				break;
-			default:			//in case that the power up is higher than gun power up, the default switch set power up to the last case
-				powerup = 4;
 				break;
 			}
 			break;
@@ -169,9 +169,6 @@ update_status ModulePlayer2::Update()
 				App->particles->AddParticle(App->particles->laser2_3, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->audio->PlayFx(laser2);
 				break;
-			default:
-				powerup = 4;
-				break;
 			}
 			break;
 		case 3:
@@ -198,9 +195,6 @@ update_status ModulePlayer2::Update()
 				App->particles->AddParticle(App->particles->laser3_7, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser3_8, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->audio->PlayFx(laser3);
-				break;
-			default:
-				powerup = 4;
 				break;
 			}
 			break;
@@ -229,9 +223,6 @@ update_status ModulePlayer2::Update()
 				App->particles->AddParticle(App->particles->laser4_1_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->audio->PlayFx(laser4);
-				break;
-			default:
-				powerup = 4;
 				break;
 			}
 			break;
