@@ -9,6 +9,27 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [0.5.2.1] - 2018-04-22
+
+
+###Summarized
+
+- New enemy, audio fixed and bonuses have a path.
+
+###Extended
+
+
+#### Added
+
+
+#### Fixed
+
+
+- Coins fixed when played 2 is enabled.
+
+- Respawn fixed player 1 and 2.
+
+
 ## [0.5.1] - 2018-04-22
 
 
