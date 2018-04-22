@@ -16,7 +16,7 @@ private:
 public:
 
 	Enemy_MiniMiniBoss(int x, int y);
-	void OnCollision(Collider* collider) override;
+	//void OnCollision(Collider* collider) override;
 
 	void Move();
 

@@ -43,6 +43,10 @@ bool ModulePowerUp::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("assets/Sprites/power_up.png");
 
+	powerup_fx = App->audio->Loadfx("Assets/Audio/Power_Up_Picked.wav");
+
+	bonus_fx = App->audio->Loadfx("Assets/Audio/Bonus_Pickup.wav");
+
 	return true;
 }
 
@@ -51,6 +55,9 @@ bool ModulePowerUp::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
+
+	App->audio->UnLoadFx(powerup_fx);
+	App->audio->UnLoadFx(bonus_fx);
 
 	for (uint i = 0; i < MAX_ACTIVE_ITEMS; ++i)
 	{
@@ -121,14 +128,18 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			if (c2->callback == App->player1) {
 				if (c1->type == COLLIDER_BONUS)
 					App->player1->score += 100;
+					App->audio->PlayFx(bonus_fx);
 				if (c1->type == COLLIDER_POWER_S)
 						App->player1->powerup++;
+					App->audio->PlayFx(powerup_fx);
 			}
 			if (c2->callback == App->player2) {
 				if (c1->type == COLLIDER_BONUS)
 					App->player2->score += 100;
+				App->audio->PlayFx(bonus_fx);
 				if (c1->type == COLLIDER_POWER_S)
 						App->player2->powerup++;
+					App->audio->PlayFx(powerup_fx);
 			}
 			delete active[i];
 			active[i] = nullptr;
