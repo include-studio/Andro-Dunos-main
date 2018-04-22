@@ -109,14 +109,24 @@ update_status ModuleSubMainMenu::Update()
 	App->render->Blit(c1992_tx, 48, 192, &c1992);
 
 																 // make so pressing SPACE the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE]) {
+		Mix_PauseMusic();
 		App->fade->FadeToBlack(this, App->neogeo, 0.5);
+	}
+		
 
-	if (App->input->keyboard[SDL_SCANCODE_C])
+	if (App->input->keyboard[SDL_SCANCODE_C]) {
+		Mix_PauseMusic();
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+	}
+		
 	
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL]) {
+		Mix_PauseMusic();
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
+	}
+		
+
 	
 	//Fade to neogeo Completloop
 	if (current_time >= 4000)
