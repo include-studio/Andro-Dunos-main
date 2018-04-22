@@ -72,6 +72,8 @@ bool ModuleUI::Start()
 	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
 	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "0123456789", 1);
 
+	credit_fx = App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
+
 	credit = 0;
 
 	return true;
@@ -82,6 +84,7 @@ bool ModuleUI::CleanUp()
 	LOG("Unloading user interface")
 
 	App->textures->Unload(user_interface);
+	App->audio->UnLoadFx(credit_fx);
 
 	return true;
 }
@@ -112,7 +115,7 @@ update_status ModuleUI::Update()
 	if (App->neogeo->IsEnabled() == false) {
 		
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN && credit < 99) {
-			App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
+			App->audio->PlayFx(credit_fx);
 			credit++;	
 			empty_credit = false;
 			

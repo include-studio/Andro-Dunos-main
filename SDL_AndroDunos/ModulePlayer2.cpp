@@ -74,6 +74,13 @@ bool ModulePlayer2::Start()
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
 
+	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
+	laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
+	laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
+	laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
+	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
+	type_change = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+
 	return ret;
 }
 
@@ -94,7 +101,7 @@ update_status ModulePlayer2::Update()
 
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
-		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+		App->audio->PlayFx(type_change);
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
@@ -108,22 +115,26 @@ update_status ModulePlayer2::Update()
 			switch (powerup) {
 			case 1:
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT,0,OWNER_PLAYER2);
-				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+				App->audio->PlayFx(laser1);
 				break;
 			case 2:
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y + 16, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser1);
 				break;
 			case 3:
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser1_1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser1, position.x + 33, position.y + 18, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser1);
 				break;
 			case 4:
 				App->particles->AddParticle(App->particles->laser1_1, position.x + 33, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-				App->particles->AddParticle(App->particles->laser1_1, position.x + 38, position.y + 8, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser1_1, position.x + 38, position.y + 9, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser1_1, position.x + 33, position.y + 18, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser1);
 				break;
 			default:			//in case that the power up is higher than gun power up, the default switch set power up to the last case
 				powerup = 4;
@@ -135,20 +146,31 @@ update_status ModulePlayer2::Update()
 			case 1:
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser2);
 				break;
 			case 2:
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser2_2, position.x, position.y + 13, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser2);
 				break;
 			case 3:
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 13, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser2_diagonal1, position.x + 10, position.y + 3, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser2_diagonal2, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser2);
+				break;
+			case 4:
+				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_1, position.x + 38, position.y + 13, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_diagonal1, position.x + 10, position.y + 3, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_diagonal2, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser2_3, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser2);
 				break;
 			default:
-				powerup = 3;
+				powerup = 4;
 				break;
 			}
 			break;
@@ -156,19 +178,29 @@ update_status ModulePlayer2::Update()
 			switch (powerup) {
 			case 1:
 				App->particles->AddParticle(App->particles->laser3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser3);
 				break;
 			case 2:
 				App->particles->AddParticle(App->particles->laser3_1, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser3_2, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser3);
 				break;
 			case 3:
 				App->particles->AddParticle(App->particles->laser3_1, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser3_2, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser3_3, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser3_4, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser3);
+				break;
+			case 4:
+				App->particles->AddParticle(App->particles->laser3_5, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser3_6, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser3_7, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser3_8, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser3);
 				break;
 			default:
-				powerup = 3;
+				powerup = 4;
 				break;
 			}
 			break;
@@ -177,19 +209,29 @@ update_status ModulePlayer2::Update()
 			case 1:
 				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser4);
 				break;
 			case 2:
 				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_2, position.x + 42, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_3, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser4);
 				break;
 			case 3:
 				App->particles->AddParticle(App->particles->laser4_1_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-				App->particles->AddParticle(App->particles->laser4_2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_2_1, position.x + 42, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_3_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser4);
+				break;
+			case 4:
+				App->particles->AddParticle(App->particles->laser4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_1_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->particles->AddParticle(App->particles->laser4_2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				App->audio->PlayFx(laser4);
 				break;
 			default:
-				powerup = 2;
+				powerup = 4;
 				break;
 			}
 			break;
@@ -295,37 +337,34 @@ bool ModulePlayer2::CleanUp() {
 	App->collision->CleanUp();
 	App->particles->CleanUp();
 	App->fonts->UnLoad(font_score);
+	App->fonts->UnLoad(font_score);
+	App->audio->UnLoadFx(type_change);
+	App->audio->UnLoadFx(explosion_player);
+	App->audio->UnLoadFx(laser4);
+	App->audio->UnLoadFx(laser3);
+	App->audio->UnLoadFx(laser2);
+	App->audio->UnLoadFx(laser1);
 
 	if (player2_col != nullptr)
 		player2_col->to_delete = true;
 	return true;
 }
 
-//void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
-//{
-//	animationShip->reset();
-//
-//	App->particles->AddParticle(App->particles->explosion_player2, position.x + 15, position.y - 2);
-//
-//	state = DEAD;
-//	
-//}
 void ModulePlayer2::OnCollision(Collider* col1, Collider* col2) 
 {
 	if (col1 == player2_col  && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S) //&& destroyed == false
 	{
-
-		destroyed = true;
-
+		App->audio->PlayFx(explosion_player);
 		hp--;
-
 		animationShip->reset();
-		if (hp <= 0)
-			state = DEAD;
-		else position.x -= SCREEN_WIDTH;
 
-		App->particles->AddParticle(App->particles->explosion_player2, position.x + 15, position.y - 2);
-	
+		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
+		if (hp < 0) {
+			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+			destroyed = true;
+		}
+
+		else position.x -= SCREEN_WIDTH;
 		
 	}
 }

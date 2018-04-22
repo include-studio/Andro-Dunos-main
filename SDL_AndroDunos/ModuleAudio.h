@@ -1,13 +1,13 @@
-
 #ifndef __ModuleAudio_H__
 #define __ModuleAudio_H__
 
 #include "Module.h"
 #include "Globals.h"
+
 #include "SDL_mixer/include/SDL_mixer.h"
 
-//#define MAX_BGMS 5
-//#define MAX_FXS 30
+#define DEFAULT_MUSIC_FADE_TIME 2.0f
+#define MAX_FX 50
 
 class ModuleAudio :public Module
 {
@@ -17,17 +17,23 @@ public:
 
 	bool Start();
 	bool CleanUp();
-	Mix_Music *music;
-	Mix_Chunk*fx;
-	
-	void Load(const char* path);
-	void Loadfx(const char* path);
+
+	bool PlayMusic(const char* path, float fade_time = DEFAULT_MUSIC_FADE_TIME);
+	bool PlayFx(unsigned int id, int repeat = 0);
+	unsigned int Loadfx(const char* path);
+	bool UnLoadFx(unsigned int id);
+
+private:
+
+	Mix_Music* music;
+	Mix_Chunk* fx[MAX_FX];
+
+	uint last_fx = 1;
 
 	int volume_fx = 20;
 	int volume_music = 10;
-
-
 };
+
 //typedef struct _Mix_Music Mix_Music;
 //struct Mix_Chunk;
 //
@@ -54,4 +60,4 @@ public:
 //
 //};
 
-#endif //__ModuleRenderer_H__
+#endif //__ModuleAudio_H__

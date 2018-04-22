@@ -9,6 +9,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
+#include "ModuleStage1.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -20,12 +21,17 @@ ModulePowerUp::ModulePowerUp()
 			if (i == 2 && j == 4) break;
 		}
 	bonus.life = 5000000;
-	bonus.speed.x = 1;
 	bonus.anim.loop = false;
 	bonus.anim.speed = 0.7f;
+	bonus.speed.y = 1;
+	bonus.speed.x = 0;
+	bonus.n_collisions = 0;
 
 	powerup_S.anim.PushBack({ 80,64,16,16 });
 	powerup_S.life = 5000000;
+	powerup_S.speed.y = -1;
+	powerup_S.speed.x = 0;
+	powerup_S.n_collisions = 0;
 }
 
 ModulePowerUp::~ModulePowerUp()
@@ -164,7 +170,27 @@ bool Item::Update()
 	else
 		if (anim.Finished())
 			ret = false;
+	if (screen_col == 0)
+		if (position.x < App->stage1->camera_limit.xf + 16)
+			screen_col++;
 
+	if (screen_col > 0) {
+		if (n_collisions < 6) {
+			if (position.y <= App->stage1->camera_limit.yi || position.y >= App->stage1->camera_limit.yf) {
+				if (speed.y == -1)speed.y = 1;
+				else speed.y = -1;
+				n_collisions++;
+			}
+			if (position.x > App->stage1->camera_limit.xf + 16 || position.x < App->stage1->camera_limit.xi) {
+				if (speed.x == 2) {
+					speed.x = 0;
+					n_collisions++;
+				}
+				else if (speed.x == 0)
+					speed.x = 2;
+			}
+		}
+	}
 	position.x += speed.x;
 	position.y += speed.y;
 
