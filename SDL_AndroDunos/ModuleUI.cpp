@@ -84,6 +84,7 @@ bool ModuleUI::CleanUp()
 	LOG("Unloading user interface")
 
 	App->textures->Unload(user_interface);
+	App->audio->UnLoadFx(credit_fx);
 
 	return true;
 }
