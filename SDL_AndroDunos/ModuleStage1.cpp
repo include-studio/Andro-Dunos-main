@@ -243,7 +243,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1465, 105);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1485, 125);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1500, 40); //MINIBOSS
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1500, 40); //MINI-MINIBOSS
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1500, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1500, 80);
 
@@ -295,7 +295,7 @@ update_status ModuleStage1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_2]==KEY_STATE::KEY_DOWN) {
 		switch (App->player2->IsEnabled()) {
 		case true:
-			App->player2->Disable();
+			//App->player2->Disable();    //DANGER, BE CAREFULY, THAT MAKES BUG IT ALL
 			break;
 		case false:
 			App->player2->Enable();

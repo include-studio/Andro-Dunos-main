@@ -325,7 +325,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		hp--;
 		animationShip->reset();
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
-		if (hp < 0) {
+		if (hp <= 0) {
 			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 			destroyed = true;
 		}

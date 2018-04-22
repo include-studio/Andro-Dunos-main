@@ -13,6 +13,7 @@
 #include "ModuleFonts.h"
 #include <stdio.h>
 #include "Animation.h"
+#include "ModuleUI.h"
 
 
 ModulePlayer2::ModulePlayer2()
@@ -319,7 +320,7 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 		hp--;
 
 		animationShip->reset();
-		if (hp < 0)
+		if (hp <= 0)
 			state = DEAD;
 		else position.x -= SCREEN_WIDTH;
 
