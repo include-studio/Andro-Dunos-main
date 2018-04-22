@@ -43,6 +43,7 @@ public:
 	bool empty_credit = true;
 
 	uint credit = 0;
+	uint credit_fx;
 
 	Uint32 score;
 	uint high_score = 0;

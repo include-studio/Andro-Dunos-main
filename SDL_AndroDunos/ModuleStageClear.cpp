@@ -94,7 +94,7 @@ bool ModuleStageClear::Start() {
 	position_small_blue.x = 24;
 	position_small_blue.y = SCREEN_HEIGHT;
 
-	App->audio->Load("assets/Audio/06_Stage_Clear.ogg");
+	App->audio->PlayMusic("assets/Audio/06_Stage_Clear.ogg");
 	
 
 	return ret;

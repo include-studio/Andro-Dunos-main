@@ -44,6 +44,8 @@ public:
 	iPoint position;
 	Collider* player_col = nullptr;
 
+	uint laser1, laser2, laser3, laser4, explosion_player, type_change;
+
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode = false;
