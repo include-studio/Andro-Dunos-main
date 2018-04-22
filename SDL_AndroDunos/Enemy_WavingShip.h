@@ -20,4 +20,4 @@ public:
 	void Move();
 };
 
-#endif // __ENEMY_REDBIRD_H__
+#endif // __ENEMY_WAVESHIP_H__

@@ -5,6 +5,7 @@
 #include "Enemy_WavingShip.h"
 #include "Enemy_HorizontalRocket.h"
 #include "Enemy_PowerUp.h"
+#include "Enemy_MiniMiniBoss.h"
 
 
 #define MAX_ENEMIES 200
@@ -14,7 +15,8 @@ enum ENEMY_TYPES
 	NO_TYPE,
 	WAVINGSHIP,
 	HORIZONTALROCKET,
-	POWERUP
+	POWERUP,
+	MINIMINIBOSS
 };
 
 class Enemy;

@@ -91,6 +91,9 @@
     <ClCompile Include="ModuleSubMainMenu.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_MiniMiniBoss.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -197,6 +200,9 @@
     </ClInclude>
     <ClInclude Include="ModuleSubMainMenu.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_MiniMiniBoss.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

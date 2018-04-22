@@ -11,6 +11,7 @@
 #include "Enemy_PowerUp.h"
 #include "ModulePowerUp.h"
 #include "ModulePlayer2.h"
+#include "Enemy_MiniMiniBoss.h"
 
 #define SPAWN_MARGIN 15
 
@@ -145,6 +146,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::POWERUP:
 			enemies[i] = new Enemy_PowerUp(info.x, info.y);
+			break;
+		case ENEMY_TYPES::MINIMINIBOSS:
+			enemies[i] = new Enemy_MiniMiniBoss(info.x, info.y);
 			break;
 		}
 
