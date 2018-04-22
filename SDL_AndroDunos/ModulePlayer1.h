@@ -41,6 +41,7 @@ public:
 	Animation up;
 	Animation downidle;
 	Animation down;
+	Animation clear;
 	iPoint position;
 	Collider* player_col = nullptr;
 
@@ -49,9 +50,14 @@ public:
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode = false;
+	bool god_mode_die = false;
+
 	int type_weapon = 0;
 	int powerup=1;
 	int hp;
+
+	int current_time = 0;
+	int init_time = 0;
 
 	int font_score = 1;
 	char score_text[10];
