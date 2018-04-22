@@ -110,6 +110,8 @@ update_status ModulePlayer1::Update()
 	if (god_mode_die == true) {
 		if (current_time < 4000) {
 			player_col->type = COLLIDER_NONE;
+			if (position.x <= 109)
+				position.x++;
 		}
 		else {
 			player_col->type = COLLIDER_PLAYER;
