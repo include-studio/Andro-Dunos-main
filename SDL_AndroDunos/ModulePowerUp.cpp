@@ -170,18 +170,25 @@ bool Item::Update()
 	else
 		if (anim.Finished())
 			ret = false;
+	if (screen_col == 0)
+		if (position.x < App->stage1->camera_limit.xf + 16)
+			screen_col++;
 
-	if (n_collisions < 6) {
-		if (position.y <= App->render->camera.y || position.y >= App->render->camera.y+SCREEN_HEIGHT-16) {
-			speed.y *= -1;
-			n_collisions++;
-		}
-		if (position.x > App->stage1->camera_limit.xf+16 || position.x < App->stage1->camera_limit.xi) {
-			n_collisions++;
-			if (speed.x == 2)
-				speed.x = 0;
-			else if (speed.x == 0)
-				speed.x = 2;
+	if (screen_col > 0) {
+		if (n_collisions < 6) {
+			if (position.y <= App->stage1->camera_limit.yi || position.y >= App->stage1->camera_limit.yf) {
+				if (speed.y == -1)speed.y = 1;
+				else speed.y = -1;
+				n_collisions++;
+			}
+			if (position.x > App->stage1->camera_limit.xf + 16 || position.x < App->stage1->camera_limit.xi) {
+				if (speed.x == 2) {
+					speed.x = 0;
+					n_collisions++;
+				}
+				else if (speed.x == 0)
+					speed.x = 2;
+			}
 		}
 	}
 	position.x += speed.x;
