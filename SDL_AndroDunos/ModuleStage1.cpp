@@ -309,9 +309,9 @@ update_status ModuleStage1::Update()
 			break;
 		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_X])
+	if (App->input->keyboard[SDL_SCANCODE_F11])
 		App->fade->FadeToBlack(this, App->stageclear, 0.5);
-	if (App->input->keyboard[SDL_SCANCODE_C])
+	if (App->input->keyboard[SDL_SCANCODE_F12])
 		App->fade->FadeToBlack(this, App->gameover, 0.5);
 	switch (part_stage) {
 	case 0: //case 0: Start & PreDownfall
@@ -623,11 +623,11 @@ update_status ModuleStage1::Update()
 		App->player2->position.y = camera_limit.yf;
 
 
-	if (App->input->keyboard[SDL_SCANCODE_C] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_F11] == 1)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}
-	if (App->input->keyboard[SDL_SCANCODE_X] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_F12] == 1)
 	{
 		App->fade->FadeToBlack(this, App->gameover, 1);
 	}
