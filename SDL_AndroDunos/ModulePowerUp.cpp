@@ -20,7 +20,6 @@ ModulePowerUp::ModulePowerUp()
 			if (i == 2 && j == 4) break;
 		}
 	bonus.life = 5000000;
-	bonus.speed.x = 1;
 	bonus.anim.loop = false;
 	bonus.anim.speed = 0.7f;
 
