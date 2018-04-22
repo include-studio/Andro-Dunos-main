@@ -8,6 +8,35 @@ All notable changes to this project will be documented in this file.
 
 
 
+
+## [0.5.1] - 2018-04-22
+
+
+###Summarized
+
+- New enemy, audio fixed and bonuses have a path.
+
+###Extended
+
+
+#### Added
+
+
+- Created MiniMiniBoss .cpp and .h .
+
+
+#### Fixed
+
+
+- AudioFx modified (now it unloads).
+
+- Now both bonuses have a path.
+
+- Music now fades in and out.
+
+- Credits can't go less than 0.
+
+
 ## [0.5.0] - 2018-04-22
 
 
@@ -36,6 +65,7 @@ All notable changes to this project will be documented in this file.
 - Score and highscore.
 
 - Laser 1 particle.
+
 
 #### Eliminated
 
