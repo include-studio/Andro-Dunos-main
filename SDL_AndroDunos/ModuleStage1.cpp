@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleStage1.h"
-#include "ModuleStage2.h"
+#include "ModuleUI.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleMainMenu.h"
@@ -256,10 +256,12 @@ bool ModuleStage1::Start()
 	App->collision->Enable();
 	App->enemies->Enable();
 	App->powerup->Enable();
+
 	if (App->player2->insert2 == true) 
 	{
 		App->player2->Enable();
 	}
+
 	camera_limit.xi = 0;
 	camera_limit.xf = SCREEN_WIDTH-39;//-player width
 	camera_limit.yi = 0;
@@ -294,7 +296,7 @@ bool ModuleStage1::CleanUp()
 // Update: draw background
 update_status ModuleStage1::Update()
 {
-	if (App->input->keyboard[SDL_SCANCODE_2]==KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_2]==KEY_STATE::KEY_DOWN && App->ui->credit >= 2) {
 		switch (App->player2->IsEnabled()) {
 		case true:
 			//App->player2->Disable();    //DANGER, BE CAREFULY, THAT MAKES BUG IT ALL
