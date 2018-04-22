@@ -338,10 +338,10 @@ bool ModuleStage1::Start()
 	 //WAVINGSHIP
 	
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7435, 140 );
+	/*App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7435, 140 );
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7445, 140 );
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7456, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7468, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7468, 140);*/
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 7550, 60 , true);
