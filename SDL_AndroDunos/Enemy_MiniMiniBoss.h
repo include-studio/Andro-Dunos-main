@@ -26,6 +26,8 @@ public:
 	int current_time;
 	int init_time = 0;
 	bool shoot = 0;
+
+	int hp = 6;
 };
 
 #endif // __ENEMY_MINIMINIBOSS_H__

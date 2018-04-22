@@ -6,6 +6,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleRender.h"
+#include "ModuleEnemies.h"
 #include "SDL/include/SDL.h"
 
 
@@ -24,6 +25,8 @@ Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y) : Enemy(x, y)
 
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
+
+	hp = 6;
 }
 
 void Enemy_MiniMiniBoss::Move()
@@ -45,11 +48,17 @@ void Enemy_MiniMiniBoss::Move()
 	}
 	
 	if (current_time > 800)
-		position.x--;
+		position.x -= 0.25;
 }
 
 void Enemy_MiniMiniBoss::Shoot()
 {
 	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
-
 }
+
+/*void Enemy_MiniMiniBoss::OnCollision(Collider* collider) {
+	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT)
+		hp--;
+	if (hp < 0)
+		App->enemies->OnCollision(this->collider,collider);
+}*/
