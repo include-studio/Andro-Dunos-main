@@ -27,6 +27,6 @@ void Enemy_MiniMiniBoss::Move()
 
 void Enemy_MiniMiniBoss::Shoot()
 {
-	if(fly.loop == true )
+	for (int bullets = 0; bullets <100; bullets++)
 		App->particles->AddParticle(App->particles->laser1, position.x, position.y, COLLIDER_ENEMY_SHOT);
 }

@@ -218,7 +218,7 @@ bool ModuleNeoGeo::Start()
 	machine = App->textures->Load("Assets/Sprites/snk_intro_font.png");
 	
 	
-	App->audio->Load("assets/Audio/01_Neo_Geo_Logo.ogg");
+	App->audio->PlayMusic("assets/Audio/01_Neo_Geo_Logo.ogg");
 
 	return ret;
 }
@@ -235,6 +235,7 @@ bool ModuleNeoGeo::CleanUp()
 	SNK.reset();
 	Machine1.reset();
 	Machine2.reset();
+
 
 	current_time = 0;
 	W_alph = 255;

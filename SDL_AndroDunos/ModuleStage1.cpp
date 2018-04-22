@@ -247,7 +247,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1500, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1500, 80);
 
-	App->audio->Load("assets/Audio/Stage_1__The_Moon_Loop.ogg");
+	App->audio->PlayMusic("assets/Audio/Stage_1__The_Moon_Loop.ogg");
 	
 	App->player1->Enable();
 	App->particles->Enable();

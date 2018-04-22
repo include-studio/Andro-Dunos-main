@@ -71,7 +71,7 @@ bool ModuleSubMainMenu::Start()
 	current_time = 0;
 
 
-	App->audio->Load("assets/Audio/02_Title.ogg");
+	App->audio->PlayMusic("assets/Audio/02_Title.ogg");
 
 	return ret;
 }

@@ -73,6 +73,13 @@ bool ModulePlayer2::Start()
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
 
+	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
+	laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
+	laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
+	laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
+	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
+	type_change = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+
 	return ret;
 }
 
@@ -93,7 +100,7 @@ update_status ModulePlayer2::Update()
 
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
-		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+		App->audio->PlayFx(type_change);
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
@@ -186,6 +193,7 @@ update_status ModulePlayer2::Update()
 				App->particles->AddParticle(App->particles->laser4_1_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_2_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 				App->particles->AddParticle(App->particles->laser4_3_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+				
 				break;
 			default:
 				powerup = 2;
@@ -294,37 +302,32 @@ bool ModulePlayer2::CleanUp() {
 	App->collision->CleanUp();
 	App->particles->CleanUp();
 	App->fonts->UnLoad(font_score);
+	App->fonts->UnLoad(font_score);
+	App->audio->UnLoadFx(type_change);
+	App->audio->UnLoadFx(explosion_player);
+	App->audio->UnLoadFx(laser4);
+	App->audio->UnLoadFx(laser3);
+	App->audio->UnLoadFx(laser2);
+	App->audio->UnLoadFx(laser1);
 
 	if (player2_col != nullptr)
 		player2_col->to_delete = true;
 	return true;
 }
 
-//void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
-//{
-//	animationShip->reset();
-//
-//	App->particles->AddParticle(App->particles->explosion_player2, position.x + 15, position.y - 2);
-//
-//	state = DEAD;
-//	
-//}
 void ModulePlayer2::OnCollision(Collider* col1, Collider* col2) 
 {
 	if (col1 == player2_col  && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S) //&& destroyed == false
 	{
-
-		destroyed = true;
-
+		App->audio->PlayFx(explosion_player);
 		hp--;
-
 		animationShip->reset();
-		if (hp < 0)
-			state = DEAD;
+		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
+		if (hp < 0) {
+			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+			destroyed = true;
+		}
 		else position.x -= SCREEN_WIDTH;
-
-		App->particles->AddParticle(App->particles->explosion_player2, position.x + 15, position.y - 2);
-	
 		
 	}
 }

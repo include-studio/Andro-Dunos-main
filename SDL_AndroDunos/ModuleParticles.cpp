@@ -21,7 +21,6 @@ ModuleParticles::ModuleParticles()
 	laser1.anim.PushBack({ 24,39,11,4 });
 	laser1.life = 670;
 	laser1.speed.x = 7;
-	laser1.fx;//("Laser_Shot_Type-1_(Main_Ships).wav")
 
 	laser1_1.anim.PushBack({ 22,51,15,6 });
 	laser1_1.life = 670;
@@ -258,12 +257,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("assets/Sprites/laser_types.png");
-	
-	//laser1.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-1_(Main_Ships).wav");
-	//laser2.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-2_(Main_Ships).wav");
-	//laser3.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-3_(Main_Ships).wav");
-	//laser4.fx = App->audio->Loadfx("Assets/Laser_Shot_Type-4_(Main_Ships).wav");
-	//explosion.fx = App->audio->Loadfx("Assets/");
+
 	return true;
 }
 
@@ -272,12 +266,6 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
-
-	//App->audio->Unload(laser1.fx);
-	//App->audio->Unload(laser2.fx);
-	//App->audio->Unload(laser3.fx);
-	//App->audio->Unload(laser4.fx);
-	//App->audio->Unload(explosion.fx);
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -313,28 +301,29 @@ update_status ModuleParticles::Update()
 			if(p->fx_played == false)
 			{
 				p->fx_played = true;
-				// Play particle fx here!
-				//App->audio->PlayFx(p->fx);
-				if (App->player1->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
-				if (App->player1->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
-				if (App->player1->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
-				if (App->player1->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
+				//Play particle fx here!
 				
-				if (App->player2->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
-				if (App->player2->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
-				if (App->player2->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
-				if (App->player2->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-					App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
-				
-				if (App->player1->destroyed == true || App->player2->destroyed == true)
-					App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
+
+			//	/*if (App->player1->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
+			//	if (App->player1->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
+			//	if (App->player1->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
+			//	if (App->player1->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
+			//	
+			//	if (App->player2->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
+			//	if (App->player2->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
+			//	if (App->player2->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
+			//	if (App->player2->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
+			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
+			//	
+			//	if (App->player1->destroyed == true || App->player2->destroyed == true)
+			//		App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");*/
 			}
 		}
 	}
