@@ -148,7 +148,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_PowerUp(info.x, info.y);
 			break;
 		case ENEMY_TYPES::MINIMINIBOSS:
-			enemies[i] = new Enemy_MiniMiniBoss(info.x, info.y);
+			enemies[i] = new Enemy_MiniMiniBoss(info.x, info.y, info.drop);
 			break;
 		}
 

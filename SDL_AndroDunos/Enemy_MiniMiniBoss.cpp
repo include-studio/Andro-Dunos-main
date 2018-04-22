@@ -7,10 +7,11 @@
 #include "ModulePlayer2.h"
 #include "ModuleRender.h"
 #include "ModuleEnemies.h"
+#include "ModulePowerUp.h"
 #include "SDL/include/SDL.h"
 
 
-Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y) : Enemy(x, y)
+Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y, bool _drop) : Enemy(x, y)
 {
 	fly.PushBack({ 0,132,30,30 });
 	fly.PushBack({ 31,132,30,30 });
@@ -23,6 +24,7 @@ Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
+	drop = _drop;
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
 
@@ -56,9 +58,7 @@ void Enemy_MiniMiniBoss::Shoot()
 	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
 }
 
-/*void Enemy_MiniMiniBoss::OnCollision(Collider* collider) {
-	if (collider->type == COLLIDER_TYPE::COLLIDER_PLAYER_SHOT)
-		hp--;
-	if (hp < 0)
-		App->enemies->OnCollision(this->collider,collider);
-}*/
+void Enemy_MiniMiniBoss::OnCollision(Collider* collider) {
+	if (drop == true)
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
+}

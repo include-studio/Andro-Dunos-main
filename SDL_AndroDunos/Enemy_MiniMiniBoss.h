@@ -15,8 +15,8 @@ private:
 
 public:
 
-	Enemy_MiniMiniBoss(int x, int y);
-	//void OnCollision(Collider* collider) override;
+	Enemy_MiniMiniBoss(int x, int y, bool drop);
+	void OnCollision(Collider* collider) override;
 
 	void Move();
 
@@ -26,6 +26,7 @@ public:
 	int current_time;
 	int init_time = 0;
 	bool shoot = 0;
+	bool drop;
 
 	int hp = 6;
 };
