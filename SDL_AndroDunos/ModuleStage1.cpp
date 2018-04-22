@@ -16,6 +16,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
+#include "ModuleInsertCoin.h"
 
 ModuleStage1::ModuleStage1()
 {
@@ -450,16 +451,12 @@ bool ModuleStage1::CleanUp()
 update_status ModuleStage1::Update()
 {
 	if (App->input->keyboard[SDL_SCANCODE_2]==KEY_STATE::KEY_DOWN && App->ui->credit >= 1) {
-		switch (App->player2->IsEnabled()) {
-		case true:
-			//App->player2->Disable();    //DANGER, BE CAREFULY, THAT MAKES BUG IT ALL
-			break;
-		case false:
+		if (!App->player2->IsEnabled()) {
 			App->player2->Enable();
 			App->player2->position.x = App->player1->position.x;
 			App->player2->position.y = 2 * SCREEN_HEIGHT / 3;
 			App->player2->insert2 = true;
-			break;
+			App->ui->credit--;
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F11])

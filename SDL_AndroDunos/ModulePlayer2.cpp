@@ -19,7 +19,7 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	state = IDLE;
+	state = CLEAR;
 
 	animationShip = nullptr;
 
@@ -53,6 +53,11 @@ ModulePlayer2::ModulePlayer2()
 	downidle.PushBack({ 215,76,39,16 });
 
 	downidle.speed = 0.5f;
+
+	clear.PushBack({ 126,48,39,17 });
+	clear.PushBack({ 0,0,10,20 });
+
+	clear.speed = 0.4f;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -105,7 +110,7 @@ update_status ModulePlayer2::Update()
 	}
 	//Respawn 
 	if (god_mode_die == true) {
-		if (current_time < 4000) {
+		if (current_time < 2500) {
 			player_col->type = COLLIDER_NONE;
 			if (position.x <= App->stage1->camera_limit.xi + 44)
 				position.x++;
@@ -320,6 +325,8 @@ update_status ModulePlayer2::Update()
 	case UP:
 		animationShip = &up;
 		break;
+	case CLEAR:
+		animationShip = &clear;
 	}
 
 	player_col->SetPos(position.x, position.y);
@@ -375,8 +382,8 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
-			position.x = App->stage1->camera_limit.xi;;
-			position.y = 71;
+			position.x = App->stage1->camera_limit.xi;
+			position.y = App->stage1->camera_limit.yi + 71;
 		}
 	}
 }

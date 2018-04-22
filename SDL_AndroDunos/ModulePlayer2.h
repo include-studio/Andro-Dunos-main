@@ -41,6 +41,7 @@ public:
 	Animation up;
 	Animation downidle;
 	Animation down;
+	Animation clear;
 	iPoint position;
 	Collider* player_col = nullptr;
 
