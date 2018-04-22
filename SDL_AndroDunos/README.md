@@ -61,9 +61,9 @@ Player 2:
 
 - F5 (to  activate god mode).
 
-- C (to direct win).
+- F11 (to direct win).
 
-- X (to direct lost).
+- F12 (to direct lost).
 
 
 Can you finish the game?
