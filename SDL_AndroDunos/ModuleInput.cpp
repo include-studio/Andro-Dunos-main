@@ -7,6 +7,13 @@ ModuleInput::ModuleInput() : Module()
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)
 		keyboard[i] = KEY_IDLE;
+	//maybe we have to move that to be able to connect controller during play
+	if (SDL_Init(SDL_INIT_GAMECONTROLLER) < 0)
+	{
+		LOG("SDL_VIDEO could not initialize! SDL_Error:\n");
+		LOG(SDL_GetError());
+	}
+	
 }
 
 // Destructor
@@ -25,7 +32,8 @@ bool ModuleInput::Init()
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 	}
-
+	
+	
 	return ret;
 }
 
@@ -35,6 +43,18 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
+
+	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+		if (SDL_IsGameController(i)) {
+			controller = SDL_GameControllerOpen(i);
+			if (controller) {
+				break;
+			}
+			else {
+				LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
+			}
+		}
+	}
 
 	for (int i = 0; i < MAX_KEYS; ++i)
 	{

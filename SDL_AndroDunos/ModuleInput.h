@@ -31,7 +31,8 @@ public:
 
 public:
 	SDL_Event e;
-	//const Uint8 *keys = nullptr;
+	
+	SDL_GameController *controller = NULL;
 	KEY_STATE keyboard[MAX_KEYS];
 };
 
