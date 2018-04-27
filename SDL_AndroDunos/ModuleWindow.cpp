@@ -54,6 +54,8 @@ bool ModuleWindow::Init()
 		{
 			//Get window surface
 			screen_surface = SDL_GetWindowSurface(window);
+			SDL_SetWindowFullscreen(window, flags);
+
 		}
 	}
 

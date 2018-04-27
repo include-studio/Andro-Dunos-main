@@ -29,6 +29,7 @@ bool ModuleRender::Init()
 	}
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
+	SDL_RenderSetLogicalSize(renderer,SCREEN_WIDTH*3, SCREEN_HEIGHT*3);
 	
 	if(renderer == NULL)
 	{
