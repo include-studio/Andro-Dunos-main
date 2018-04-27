@@ -32,7 +32,7 @@ public:
 public:
 	SDL_Event e;
 	
-	SDL_GameController *controller = NULL;
+	SDL_GameController *controller1 = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
 };
 

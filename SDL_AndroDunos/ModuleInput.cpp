@@ -46,8 +46,8 @@ update_status ModuleInput::PreUpdate()
 
 	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
 		if (SDL_IsGameController(i)) {
-			controller = SDL_GameControllerOpen(i);
-			if (controller) {
+			controller1 = SDL_GameControllerOpen(i);
+			if (controller1) {
 				break;
 			}
 			else {
