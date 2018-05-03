@@ -39,7 +39,7 @@ bool ModuleInput::Init()
 update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
-	
+	int huay = SDL_NumJoysticks();
 	if (controller1 == nullptr) {
 		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
 			if (SDL_IsGameController(i)) {

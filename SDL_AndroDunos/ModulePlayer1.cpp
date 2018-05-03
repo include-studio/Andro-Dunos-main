@@ -268,14 +268,13 @@ update_status ModulePlayer1::Update()
 		}
 	}
 	
-
-	if (App->input->keyboard[SDL_SCANCODE_D])
+	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) > 100)
 		position.x += speedMoveShip;
 
-	if (App->input->keyboard[SDL_SCANCODE_A])
+	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) < -100)
 		position.x -= speedMoveShip;
 
-	if (App->input->keyboard[SDL_SCANCODE_W])
+	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTY) < -100)
 	{
 		position.y -= speedMoveShip;
 		counterMoved += speedMoveShip;
@@ -285,7 +284,7 @@ update_status ModulePlayer1::Update()
 		else
 			state = IDLE_UP;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_S])
+	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTY) > 100)
 	{
 		position.y += speedMoveShip;
 		counterMoved2 += speedMoveShip;
