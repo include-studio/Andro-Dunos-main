@@ -377,13 +377,14 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 			destroyed = true;
 		}
+
 		else {
 
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
 			position.x = App->stage1->camera_limit.xi;
-			position.y = App->stage1->camera_limit.yi + 71;
+			position.y = App->stage1->camera_limit.yi + 127;
 		}
 	}
 }
