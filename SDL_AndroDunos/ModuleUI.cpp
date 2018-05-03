@@ -67,6 +67,14 @@ bool ModuleUI::Start()
 
 	press2p.loop = true;
 	press2p.speed = 0.0225f;
+
+	//animationInsertCoin = nullptr;
+
+	//insertCoin.PushBack({ 0,9,124,11 }); // x, y, w, h
+	//insertCoin.PushBack({ 125,9,124,11 });
+
+	//insertCoin.loop = true;
+	//insertCoin.speed = 0.0225f;
 	
 	//font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1); //not needed for the moment
 	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
@@ -197,5 +205,59 @@ update_status ModuleUI::Update()
 			App->render->Blit(user_interface, 190, 20, &life2_rect, 0.0f);
 		}
 	}
+
+	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {
+		if (App->player1->hp == 0) {// && App->player2->hp > 0
+			animationGameover = &gameover;
+			SDL_Rect Rect_Gameover;
+			Rect_Gameover = animationGameover->GetCurrentFrame();
+			App->render->Blit(user_interface, 10, 20, &Rect_Gameover, 0.0f);
+			gameover.loop = true;
+
+			//COUNTDOWN CONTINUE
+
+			/*animationPress1p = &press1p;
+			SDL_Rect Rect_Press1p;
+			Rect_Press1p = animationPress1p->GetCurrentFrame();
+			App->render->Blit(user_interface, 10, 20, &Rect_Press1p, 0.0f);
+			press1p.loop = true;*/	
+		}
+
+		if (App->player2->hp == 0 ) { //&& App->player1->hp > 0
+			animationGameover = &gameover;
+			SDL_Rect Rect_Gameover;
+			Rect_Gameover = animationGameover->GetCurrentFrame();
+			App->render->Blit(user_interface, 10, 20, &Rect_Gameover, 0.0f);
+			gameover.loop = true;
+
+			//COUNTDOWN CONTINUE
+
+			//animationPress2p = &press2p;
+			//SDL_Rect Rect_Press2p;
+			//Rect_Press2p = animationPress2p->GetCurrentFrame();
+			//App->render->Blit(user_interface, 180, 20, &Rect_Press2p, 0.0f);
+			//press2p.loop = true;
+			
+		}
+	}
+	
+	if (App->player2->IsEnabled() == false && App->player1->IsEnabled() == true) {
+
+		//INSERT COIN
+		/*if (credit <= 0) {
+			animationInsertCoin = &insertCoin;
+			SDL_Rect Rect_InsertCoin;
+			Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
+			App->render->Blit(user_interface, 180, 20, &Rect_InsertCoin, 0.0f);
+			press2p.loop = true;
+		}*/
+
+		animationPress2p = &press2p;
+		SDL_Rect Rect_Press2p;
+		Rect_Press2p = animationPress2p->GetCurrentFrame();
+		App->render->Blit(user_interface, 180, 20, &Rect_Press2p, 0.0f);
+		press2p.loop = true;
+	}
+
 	return UPDATE_CONTINUE;
 }
