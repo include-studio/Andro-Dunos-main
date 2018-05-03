@@ -33,6 +33,9 @@ public:
 	Animation press2p;
 	Animation* animationPress2p = nullptr;
 
+	Animation insertCoin;
+	Animation* animationInsertCoin = nullptr;
+
 	int font_score = -1;
 	char score_text[10];
 	int font_score2 = -1;
