@@ -119,20 +119,38 @@ update_status ModulePlayer1::Update()
 			state = IDLE;
 		}	
 	}
+	// input
+		//controller input
+	if (!SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A))
+		stillpressed_a = false;
 
-	//change weapon
-	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN) {
+	if (SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) && !stillpressed_a) {
+		shoot = true;
+		stillpressed_a = true;
+	}
+	if (!SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_X))
+		stillpressed_x = false;
+
+	if (SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_X) && !stillpressed_x) {
+		change = true;
+		stillpressed_x = true;
+	}
+		//change weapon
+	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN || change) {
+		change = false;
 		App->audio->PlayFx(type_change);
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
 	}
+		//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
 	if (powerup > 4)
 		powerup = 4;
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN||shoot) {
+		shoot = false;
 		switch (type_weapon) {
 		case 1:
 			switch (powerup) {
@@ -248,6 +266,7 @@ update_status ModulePlayer1::Update()
 			break;
 		}
 	}
+	
 
 	if (App->input->keyboard[SDL_SCANCODE_D])
 		position.x += speedMoveShip;

@@ -34,6 +34,7 @@ public:
 	
 	SDL_GameController *controller1 = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
+
 };
 
 #endif // __ModuleInput_H__
