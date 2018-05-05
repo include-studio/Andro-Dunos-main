@@ -120,6 +120,13 @@ update_status ModulePlayer1::Update()
 			state = IDLE;
 		}	
 	}
+
+	//powerup+
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
+		powerup++;
+	if (powerup > 4)
+		powerup = 4;
+
 	// input
 		//controller input
 	if (!SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A))
@@ -144,11 +151,7 @@ update_status ModulePlayer1::Update()
 		if (type_weapon == 5)
 			type_weapon = 1;
 	}
-		//powerup+
-	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
-		powerup++;
-	if (powerup > 4)
-		powerup = 4;
+	
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || shoot)
 		Shoot();

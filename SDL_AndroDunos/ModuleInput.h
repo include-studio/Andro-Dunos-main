@@ -29,10 +29,13 @@ public:
 	update_status PreUpdate();
 	bool CleanUp();
 
+	bool controller=true;
+
 public:
 	SDL_Event e;
 	
 	SDL_GameController *controller1 = nullptr;
+	SDL_GameController *controller2 = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
 
 };

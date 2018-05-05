@@ -122,18 +122,67 @@ update_status ModulePlayer2::Update()
 			state = IDLE;
 		}
 	}
-	//change weapon
-	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN) {
-		App->audio->PlayFx(type_change);
-		type_weapon++;
-		if (type_weapon == 5)
-			type_weapon = 1;
-	}
+	
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
 	if (powerup > 4)
 		powerup = 4;
 
+	// input
+	//controller input
+	if (!SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))
+		stillpressed_a = false;
+
+	if (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A) && !stillpressed_a) {
+		shoot = true;
+		stillpressed_a = true;
+	}
+	if (!SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_X))
+		stillpressed_x = false;
+
+	if (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_X) && !stillpressed_x) {
+		change = true;
+		stillpressed_x = true;
+	}
+	//change weapon
+	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN || change) {
+		change = false;
+		App->audio->PlayFx(type_change);
+		type_weapon++;
+		if (type_weapon == 5)
+			type_weapon = 1;
+	}
+
+
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN || shoot)
+		Shoot();
+
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) > 100)
+		position.x += speedMoveShip;
+
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) < -100)
+		position.x -= speedMoveShip;
+
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) < -100)
+	{
+		position.y -= speedMoveShip;
+		counterMoved += speedMoveShip;
+
+		if (state == IDLE_UP && counterMoved > METERSMOVED || state == UP && counterMoved > METERSMOVED)
+			state = UP;
+		else
+			state = IDLE_UP;
+	}
+	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTY) > 100)
+	{
+		position.y += speedMoveShip;
+		counterMoved2 += speedMoveShip;
+
+		if (state == IDLE_DOWN && counterMoved2 > METERSMOVED || state == DOWN && counterMoved2 > METERSMOVED)
+			state = DOWN;
+		else
+			state = IDLE_DOWN;
+	}
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
 		Shoot();
 

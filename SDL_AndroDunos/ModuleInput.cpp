@@ -39,26 +39,7 @@ bool ModuleInput::Init()
 update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
-	if (controller1 == nullptr) {
-		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
-			if (SDL_IsGameController(i)) {
-				controller1 = SDL_GameControllerOpen(i);
-				if (controller1) {
-					char* mapping;
-					mapping = SDL_GameControllerMapping(controller1);
-					SDL_Log("Controller %i is mapped as \"%s\".", i, mapping);
-					SDL_free(mapping);
-					LOG("CONTROLLER1 INITIALIZED\n");
-					break;
-				}
-				else {
-					LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
-				}
-			}
-		}
-	}
 	
-
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 	for (int i = 0; i < MAX_KEYS; ++i)
@@ -79,14 +60,54 @@ update_status ModuleInput::PreUpdate()
 		}
 	}
 
-	if(keys[SDL_SCANCODE_ESCAPE])
+	if (keys[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
-	while (SDL_PollEvent(&e)!= 0) {
+	if (keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN) {
+		controller1 = nullptr;
+		controller2 = nullptr;
+		if (controller)	controller = false;
+		else if (!controller) controller = true;
+	}
+
+	while (SDL_PollEvent(&e) != 0) {
 		if (e.type == SDL_QUIT)
 			return update_status::UPDATE_STOP;
 	}
-	
+
+	if (controller==true) {
+		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+			if (SDL_IsGameController(i)) {
+				if (controller2 == nullptr) {
+					controller2 = SDL_GameControllerOpen(i);
+					if (controller2) {
+						char* mapping;
+						mapping = SDL_GameControllerMapping(controller2);
+						SDL_Log("Controller %i is mapped as \"%s\".", i, mapping);
+						SDL_free(mapping);
+						LOG("CONTROLLER2 INITIALIZED\n");
+					}
+					else {
+						LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
+					}
+				}
+				else if (controller1 == nullptr) {
+					controller1 = SDL_GameControllerOpen(i);
+					if (controller1) {
+						char* mapping;
+						mapping = SDL_GameControllerMapping(controller1);
+						SDL_Log("Controller %i is mapped as \"%s\".", i, mapping);
+						SDL_free(mapping);
+						LOG("CONTROLLER1 INITIALIZED\n");
+					}
+					else {
+						LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
+					}
+				}
+			}
+		}
+	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 
