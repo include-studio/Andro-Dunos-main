@@ -621,11 +621,11 @@ update_status ModuleStage1::Update()
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_F11] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_F11] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}
-	if (App->input->keyboard[SDL_SCANCODE_F12] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_F12] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->gameover, 1);
 	}

@@ -147,7 +147,7 @@ update_status ModuleStageClear::Update() {
 		App->render->Blit(stage_clear_tx, 0, 36, &animation_StageClear);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE]){
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)){
 		//switch (part_stageClear)
 		//{
 		//case 0:

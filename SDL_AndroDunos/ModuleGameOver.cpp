@@ -94,7 +94,7 @@ update_status ModuleGameOver::Update()
 	
 
 	// make so pressing C the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_C])
+	if (App->input->keyboard[SDL_SCANCODE_C]||SDL_GameControllerGetButton(App->input->controller1,SDL_CONTROLLER_BUTTON_A)|| SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5f);
 		Mix_PauseMusic();

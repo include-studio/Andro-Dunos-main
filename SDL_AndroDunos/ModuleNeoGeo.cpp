@@ -309,7 +309,7 @@ update_status ModuleNeoGeo::Update()
 	}
 
 	// Make so pressing C the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))
 	{
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 		Mix_PauseMusic();

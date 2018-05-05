@@ -94,7 +94,7 @@ update_status ModuleViscoGames::Update()
 
 	// make so pressing SPACE the background is loaded
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE])
+	if (App->input->keyboard[SDL_SCANCODE_SPACE]|| SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))
 		App->fade->FadeToBlack(this, App->insertCoin, 0.5);
 	if (App->input->keyboard[SDL_SCANCODE_C])
 		App->fade->FadeToBlack(this, App->stage1, 0.5);

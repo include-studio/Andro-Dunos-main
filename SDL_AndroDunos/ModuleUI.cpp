@@ -122,10 +122,12 @@ update_status ModuleUI::Update()
 
 	if (App->neogeo->IsEnabled() == false) {
 		
-		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN && credit < 99) {
-			App->audio->PlayFx(credit_fx);
-			credit++;	
-			empty_credit = false;
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
+			if (credit < 99) {
+				App->audio->PlayFx(credit_fx);
+				credit++;
+				empty_credit = false;
+			}
 			
 		}
 
@@ -168,7 +170,7 @@ update_status ModuleUI::Update()
 			activate_credit == false;*/
 
 
-		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && activate_credit == false && App->mainmenu->IsEnabled() == false && empty_credit == false) {
+		if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller1,SDL_CONTROLLER_BUTTON_A)) && activate_credit == false && App->mainmenu->IsEnabled() == false && empty_credit == false) {
 			
 			credit--;
 			activate_credit = true;
@@ -176,7 +178,7 @@ update_status ModuleUI::Update()
 			
 		}
 			
-		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == false && empty_credit == false &&  activate_credit == false ) {
+		if ((App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)) && App->mainmenu->IsEnabled() == false && empty_credit == false &&  activate_credit == false ) {
 			credit--;
 			activate_credit = true;
 		}

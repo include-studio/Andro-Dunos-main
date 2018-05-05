@@ -109,7 +109,7 @@ update_status ModuleSubMainMenu::Update()
 	App->render->Blit(c1992_tx, 48, 192, &c1992);
 
 																 // make so pressing SPACE the background is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE]) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE]|| SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)) {
 		Mix_PauseMusic();
 		App->fade->FadeToBlack(this, App->neogeo, 0.5);
 	}
