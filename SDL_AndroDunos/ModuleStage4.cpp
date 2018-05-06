@@ -89,7 +89,7 @@ update_status ModuleStage4::Update() {
 	case 0:				//scroll diagonal to y=43
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y += 1;
-		App->render->Blit(back_tx, 0, 0, NULL, 0.382f);
+		App->render->Blit(back_tx, 0, 0, NULL, BACKGROUND4SPEED);
 		
 
 		if (App->render->camera.y >= 43*SCREEN_SIZE)
@@ -99,9 +99,31 @@ update_status ModuleStage4::Update() {
 		App->render->camera.x += 1 * SCREEN_SIZE;
 
 		for (int i = 0; i < 3; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, 0.382f);
-		App->render->Blit(ground_tx, 0, -52, &ground[0]);
+			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -58, &ground[0], GROUND4SPEED);
+
+		if (App->render->camera.x >= 1950 * SCREEN_SIZE)
+			stage++;;
 		break;
+	case 2:
+		App->render->camera.x += 1 * SCREEN_SIZE;
+		App->render->camera.y--;
+
+		for (int i = 0; i < 3; i++)
+			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -52, &ground[0], GROUND4SPEED);
+
+		if (App->render->camera.y <= -156)
+			stage++;
+		break;
+	case 3:
+		App->render->camera.x += 1 * SCREEN_SIZE;
+
+		for (int i = 0; i < 3; i++)
+			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -52, &ground[0], GROUND4SPEED);
+
+
 	}
 	
 	//case 2 scroll diagonal up right

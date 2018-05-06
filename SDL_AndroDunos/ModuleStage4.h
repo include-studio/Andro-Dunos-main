@@ -1,6 +1,9 @@
 #ifndef __MODULESTAGE4_H__
 #define __MODULESTAGE4_H__
 
+#define GROUND4SPEED 0.7f
+#define BACKGROUND4SPEED 0.3f
+
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
