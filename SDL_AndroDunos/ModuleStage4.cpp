@@ -19,7 +19,7 @@ ModuleStage4::ModuleStage4() {
 	//background
 	back.x = 0;
 	back.y = 0;
-	back.w = 1030;
+	back.w = 1024;
 	back.h = 323;
 	//ground
 
@@ -36,7 +36,7 @@ bool ModuleStage4::Start() {
 	//colliders
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	App->render->camera.y = 43*SCREEN_SIZE;
 	//enemies
 	//audio
 	//enable modules
@@ -63,7 +63,19 @@ update_status ModuleStage4::Update() {
 	//input
 
 	//logic
+	//case 0 scroll diagonal to y=43
+	//case 1 scroll horizontal
 	App->render->camera.x += 1*SCREEN_SIZE;
+	//case 2 scroll diagonal up right
+	//case 3 scroll horizontal
+		//wall brakable
+	//case 4 scroll diagonal down
+	//case 5 scroll horizontal water + big boss
+	//case 6 scroll diagonal up
+	//case 7 scroll horizontal
+	//case 8 scroll horizontal lower until stop
+	//case 9 camera no move, final boss
+		
 
 	App->player1->position.x++;
 
