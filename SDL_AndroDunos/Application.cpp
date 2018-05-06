@@ -4,7 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleStage1.h"
-//#include "ModuleStage2.h"
+#include "ModuleStage4.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleAudio.h"
@@ -32,7 +32,6 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = stage1 = new ModuleStage1();
-	//modules[5] = stage2 = new ModuleStage2();
 	modules[5] = player1 = new ModulePlayer1();
 	modules[6] = player2 = new ModulePlayer2();
 	modules[7] = audio = new ModuleAudio();
@@ -50,6 +49,7 @@ Application::Application()
 	modules[19] = powerup = new ModulePowerUp();
 	modules[20] = ui = new ModuleUI();
 	modules[21] = submainmenu = new ModuleSubMainMenu();
+	modules[22] = stage4 = new ModuleStage4();
 }	
 
 Application::~Application()
