@@ -182,7 +182,34 @@ update_status ModulePlayer1::Update()
 		else
 			state = IDLE_DOWN;
 	}
+	// W A S D 
+	if (App->input->keyboard[SDL_SCANCODE_D])
+		position.x += speedMoveShip;
 
+	if (App->input->keyboard[SDL_SCANCODE_A])
+		position.x -= speedMoveShip;
+
+	if (App->input->keyboard[SDL_SCANCODE_W])
+	{
+		position.y -= speedMoveShip;
+		counterMoved += speedMoveShip;
+
+		if (state == IDLE_UP && counterMoved > METERSMOVED || state == UP && counterMoved > METERSMOVED)
+			state = UP;
+		else
+			state = IDLE_UP;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_S])
+	{
+		position.y += speedMoveShip;
+		counterMoved2 += speedMoveShip;
+
+		if (state == IDLE_DOWN && counterMoved2 > METERSMOVED || state == DOWN && counterMoved2 > METERSMOVED)
+			state = DOWN;
+		else
+			state = IDLE_DOWN;
+	}
+	//End WASD
 	if (!App->input->keyboard[SDL_SCANCODE_S] && !App->input->keyboard[SDL_SCANCODE_W])
 	{
 		if (state == DOWN)
