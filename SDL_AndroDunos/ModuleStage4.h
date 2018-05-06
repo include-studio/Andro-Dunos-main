@@ -19,8 +19,12 @@ public:
 public:
 
 	SDL_Texture *back_tx = nullptr;
+	SDL_Texture *ground_tx = nullptr;
 
 	SDL_Rect back;
+	SDL_Rect ground[4];
+
+	int stage;
 
 
 };
