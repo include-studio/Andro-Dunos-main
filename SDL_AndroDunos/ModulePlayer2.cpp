@@ -325,6 +325,7 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 }
 
 void ModulePlayer2::Shoot() {
+	shoot = false;
 	switch (type_weapon) {
 	case 1:
 		switch (powerup) {
