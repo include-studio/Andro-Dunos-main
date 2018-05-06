@@ -18,5 +18,10 @@ public:
 
 public:
 
+	SDL_Texture *back_tx = nullptr;
+
+	SDL_Rect back;
+
+
 };
 #endif // !__MODULESTAGE!_H__

@@ -17,6 +17,7 @@
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
 #include "ModuleInsertCoin.h"
+#include "ModuleStage4.h"
 
 ModuleStage1::ModuleStage1()
 {
@@ -620,7 +621,10 @@ update_status ModuleStage1::Update()
 			App->player2->position.y = camera_limit.yf;
 	}
 
-
+	if (App->input->keyboard[SDL_SCANCODE_F10] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, App->stage4, 1);
+	}
 	if (App->input->keyboard[SDL_SCANCODE_F11] == KEY_STATE::KEY_DOWN)
 	{
 		App->fade->FadeToBlack(this, App->stageclear, 1);

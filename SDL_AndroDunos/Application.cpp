@@ -71,7 +71,7 @@ bool Application::Init()
 	mainmenu->Disable();
 	gameover->Disable();
 	stageclear->Disable();
-	//stage2->Disable();
+	stage4->Disable();
 	stage1->Disable();
 	neogeo->Enable();
 	gameover->Disable();
