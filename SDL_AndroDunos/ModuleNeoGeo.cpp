@@ -325,6 +325,12 @@ update_status ModuleNeoGeo::Update()
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 		Mix_PauseMusic();
 	}
+	if (App->input->keyboard[SDL_SCANCODE_LCTRL] || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP))
+	{
+		App->ui->credit++;
+		
+	}
+	
 
 	//White fade - Flash 
 	if(current_time >= 200){
