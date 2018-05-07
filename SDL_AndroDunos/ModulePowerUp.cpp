@@ -32,6 +32,13 @@ ModulePowerUp::ModulePowerUp()
 	powerup_S.speed.y = -1;
 	powerup_S.speed.x = 0;
 	powerup_S.n_collisions = 0;
+
+	
+	one_up.anim.PushBack({ 111,34,17,13 });
+	one_up.life = 5000000;
+	one_up.speed.y = -1;
+	one_up.speed.x = 0;
+	one_up.n_collisions = 0;
 }
 
 ModulePowerUp::~ModulePowerUp()
@@ -47,6 +54,8 @@ bool ModulePowerUp::Start()
 
 	bonus_fx = App->audio->Loadfx("Assets/Audio/Bonus_Pickup.wav");
 
+	one_up_fx = App->audio->Loadfx("Assets/Audio/Extra_Life_Pick_Up.wav");
+
 	return true;
 }
 
@@ -58,6 +67,7 @@ bool ModulePowerUp::CleanUp()
 
 	App->audio->UnLoadFx(powerup_fx);
 	App->audio->UnLoadFx(bonus_fx);
+	App->audio->UnLoadFx(one_up_fx);
 
 	for (uint i = 0; i < MAX_ACTIVE_ITEMS; ++i)
 	{
@@ -130,9 +140,13 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->player1->score += 100;
 					App->audio->PlayFx(bonus_fx);
 				}
-				if (c1->type == COLLIDER_POWER_S)
-					App->player1->powerup++; {
+				if (c1->type == COLLIDER_POWER_S) {
+					App->player1->powerup++; 
 					App->audio->PlayFx(powerup_fx);
+				}
+				if (c1->type == COLLIDER_ONE_UP) {
+					App->player1->hp++;
+					App->audio->PlayFx(one_up_fx);
 				}
 			}
 			if (c2->callback == App->player2) {
@@ -143,6 +157,10 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				if (c1->type == COLLIDER_POWER_S) {
 					App->player2->powerup++;
 					App->audio->PlayFx(powerup_fx);
+				}
+				if (c1->type == COLLIDER_ONE_UP) {
+					App->player2->hp++;
+					App->audio->PlayFx(one_up_fx);
 				}
 			}
 			delete active[i];

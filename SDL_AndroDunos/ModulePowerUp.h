@@ -50,11 +50,12 @@ private:
 	SDL_Texture* graphics = nullptr;
 	Item* active[MAX_ACTIVE_ITEMS];
 
-	uint powerup_fx, bonus_fx;
+	uint powerup_fx, bonus_fx, one_up_fx;
 
 public:
 	Item bonus;
 	Item powerup_S;
+	Item one_up;
 };
 
 #endif // __MODULEPARTICLES_H__
