@@ -11,6 +11,7 @@
 #include "ModuleNeoGeo.h"
 #include "ModuleInsertCoin.h"
 #include "ModuleStage1.h"
+#include "ModuleUI.h"
 
 ModuleViscoGames::ModuleViscoGames()
 {
@@ -86,7 +87,7 @@ update_status ModuleViscoGames::Update()
 	if (current_time >= 4000) {
 		App->fade->FadeToBlack(this, App->insertCoin, 1);
 	}
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
+	if (App->ui->credit > 0)
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 	}

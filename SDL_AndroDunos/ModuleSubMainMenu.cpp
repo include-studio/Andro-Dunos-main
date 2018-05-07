@@ -11,6 +11,7 @@
 #include "ModuleInsertCoin.h"
 #include "ModuleNeoGeo.h"
 #include "ModuleSubMainMenu.h"
+#include "ModuleUI.h"
 
 ModuleSubMainMenu::ModuleSubMainMenu()
 {
@@ -121,7 +122,7 @@ update_status ModuleSubMainMenu::Update()
 	}
 		
 	
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL]) {
+	if (App->ui->credit > 0) {
 		Mix_PauseMusic();
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 	}
