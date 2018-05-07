@@ -120,7 +120,10 @@ bool ModuleStage4::Start() {
 	App->render->camera.y = 0;
 	stage = 0;
 	//enemies
+
 	//audio
+	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
+
 	//enable modules
 	App->player1->Enable();
 	App->particles->Enable();
