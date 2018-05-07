@@ -75,23 +75,10 @@ update_status ModuleInput::PreUpdate()
 			return update_status::UPDATE_STOP;
 	}
 
-	if (controller==true) {
+	if (controller == true && (controller1 == nullptr || controller2 == nullptr))
 		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
 			if (SDL_IsGameController(i)) {
-				if (controller2 == nullptr) {
-					controller2 = SDL_GameControllerOpen(i);
-					if (controller2) {
-						char* mapping;
-						mapping = SDL_GameControllerMapping(controller2);
-						SDL_Log("Controller %i is mapped as \"%s\".", i, mapping);
-						SDL_free(mapping);
-						LOG("CONTROLLER2 INITIALIZED\n");
-					}
-					else {
-						LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
-					}
-				}
-				else if (controller1 == nullptr) {
+				if (controller1 == nullptr) {
 					controller1 = SDL_GameControllerOpen(i);
 					if (controller1) {
 						char* mapping;
@@ -104,9 +91,21 @@ update_status ModuleInput::PreUpdate()
 						LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
 					}
 				}
+				else if (controller2 == nullptr) {
+					controller2 = SDL_GameControllerOpen(i);
+					if (controller2) {
+						char* mapping;
+						mapping = SDL_GameControllerMapping(controller2);
+						SDL_Log("Controller %i is mapped as \"%s\".", i, mapping);
+						SDL_free(mapping);
+						LOG("CONTROLLER2 INITIALIZED\n");
+					}
+					else {
+						LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
+					}
+				}
 			}
 		}
-	}
 
 	return update_status::UPDATE_CONTINUE;
 }

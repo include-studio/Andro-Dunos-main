@@ -157,13 +157,13 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN || shoot)
 		Shoot();
 
-	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) > 1000)
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
 		position.x += speedMoveShip;
 
-	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) < -1000)
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) < -6000)
 		position.x -= speedMoveShip;
 
-	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) < -1000)
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) < -6000)
 	{
 		position.y -= speedMoveShip;
 		counterMoved += speedMoveShip;
@@ -173,7 +173,7 @@ update_status ModulePlayer2::Update()
 		else
 			state = IDLE_UP;
 	}
-	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) > 1000)
+	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) > 6000)
 	{
 		position.y += speedMoveShip;
 		counterMoved2 += speedMoveShip;
