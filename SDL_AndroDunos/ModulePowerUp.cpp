@@ -36,7 +36,7 @@ ModulePowerUp::ModulePowerUp()
 	
 	one_up.anim.PushBack({ 111,34,17,13 });
 	one_up.life = 5000000;
-	one_up.speed.y = -1;
+	one_up.speed.y = 0;
 	one_up.speed.x = 0;
 	one_up.n_collisions = 0;
 }

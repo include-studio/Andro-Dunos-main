@@ -190,7 +190,8 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 8410,190,105,10 }, COLLIDER_WALL); // End Crater 2
 	App->collision->AddCollider({ 8650,190,105,10 }, COLLIDER_WALL); // End Crater 3
 
-
+	//1UP
+	App->powerup->AddPowerUp(App->powerup->one_up, 400, 120, COLLIDER_ONE_UP);    //Just a test
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 300, 60); //WAVINGSHIP

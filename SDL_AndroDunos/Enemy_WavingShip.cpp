@@ -55,6 +55,6 @@ void Enemy_WavingShip::Move()
 
 void Enemy_WavingShip::OnCollision(Collider* collider) {
 	if (drop == true)
-		//App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
-		App->powerup->AddPowerUp(App->powerup->one_up, position.x, position.y, COLLIDER_ONE_UP);
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
+		
 }
