@@ -1,6 +1,12 @@
-Andro Dunos v.0.5.2.1
+# Version of the game
 
-This is the fifth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1.
+Andro Dunos v.0.5.3
+
+## Description
+
+This is the fifth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4.
+
+## Links
 
 Manager: Lluis Moreu https://github.com/youis11 
 Art: Marc Navas https://github.com/Shocrates 
@@ -10,7 +16,7 @@ Programer: Marc Galvez https://github.com/optus23
 Github repository: https://github.com/include-studio/Andro-Dunos-main 
 Github organization: https://github.com/include-studio 
 
-Controls:
+## Controls:
 
 - ESC (to close the window).
 
@@ -25,7 +31,7 @@ Controls:
 - F3 (to pause music).
 
 
-Player 1: 
+### Player 1: 
 
 - W (to go up).
 - A (to go backwards).
@@ -36,7 +42,7 @@ Player 1:
 
 - SPACE (to shoot).
 
-Player 2:
+### Player 2:
 
 - UP ARROW (to go up).
 - LEFT ARROW (to go backwards).
@@ -47,8 +53,18 @@ Player 2:
 
 -Right Ctrl (to shoot).
 
+### Controllers:
 
-(for the developer)
+- Joystick (to move player).
+
+- A/X (to shoot).
+
+- X/Square (to change weapon). 
+
+- UpArrow (to add coins).
+
+
+### (for the developer)
 
 - I (to move up the screen).
 - J (to move backwards the screen).
@@ -60,6 +76,8 @@ Player 2:
 - F2 (to increase power up).
 
 - F5 (to  activate god mode).
+
+- F10 (to enter stage4 when stage 1).
 
 - F11 (to direct win).
 

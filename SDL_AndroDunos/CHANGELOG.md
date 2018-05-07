@@ -9,14 +9,42 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [0.5.3] - 2018-05-07
+
+
+### Summarized
+
+- Stage 4 implemented minimally, controllers added with errors and some UI/bonus upgrades. Also Fullscreen is implemented.
+
+### Extended
+
+
+#### Added
+
+- Added Controller inputs in ModuleInput.
+
+- Added GameOver, Press1P/2PButton animations in ModuleUI.
+
+- Created ModuleStage4 .cpp and .h .
+
+- Added one_up in PowerUp .cpp and .h.
+
+- Added Fullscreen in ModuleWindow.
+
+#### Fixed
+
+
+- Respawn player 2 fixed.
+
+
 ## [0.5.2.1] - 2018-04-22
 
 
-###Summarized
+### Summarized
 
 - New enemy, audio fixed and bonuses have a path.
 
-###Extended
+### Extended
 
 
 #### Added
@@ -33,11 +61,11 @@ All notable changes to this project will be documented in this file.
 ## [0.5.1] - 2018-04-22
 
 
-###Summarized
+### Summarized
 
 - New enemy, audio fixed and bonuses have a path.
 
-###Extended
+### Extended
 
 
 #### Added
@@ -61,11 +89,11 @@ All notable changes to this project will be documented in this file.
 ## [0.5.0] - 2018-04-22
 
 
-###Summarized
+### Summarized
 
 - UI improvements, some bug fixes and power ups.
 
-###Extended
+### Extended
 
 
 #### Added
@@ -100,11 +128,11 @@ All notable changes to this project will be documented in this file.
 ## [0.4.6] - 2018-04-20
 
 
-###Summarized
+### Summarized
 
 -Added UI, more enemies and fonts.
 
-###Extended
+### Extended
 
 
 -Added all collision boxes of stage1.
