@@ -4,7 +4,8 @@ about: Create a report to help us improve
 
 ---
 
-### Type:        
+### **Type**        
+Which type of bug is it? UserInterface, Gameplay, Design, Art, others...
 
 ###  **Describe the bug**
 A clear and concise description of what the bug is.
