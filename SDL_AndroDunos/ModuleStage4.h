@@ -26,6 +26,7 @@ public:
 
 	SDL_Rect back;
 	SDL_Rect ground[4];
+	SDL_Rect water;
 
 	int stage;
 

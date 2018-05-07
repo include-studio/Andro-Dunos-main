@@ -44,6 +44,10 @@ ModuleStage4::ModuleStage4() {
 	ground[3].h = 324;
 
 	//water
+	water.x = 1235;
+	water.y = 978;
+	water.w = 304;
+	water.h = 21;
 
 }
 
@@ -85,7 +89,7 @@ update_status ModuleStage4::Update() {
 	//input
 
 	//logic
-	switch (stage) {
+	/*switch (stage) {
 	case 0:				//scroll diagonal to y=43
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y += 1;
@@ -124,7 +128,7 @@ update_status ModuleStage4::Update() {
 		App->render->Blit(ground_tx, 1000, -52, &ground[0], GROUND4SPEED);
 
 
-	}
+	}*/
 	
 	//case 2 scroll diagonal up right
 	//case 3 scroll horizontal
@@ -136,7 +140,14 @@ update_status ModuleStage4::Update() {
 	//case 8 scroll horizontal lower until stop
 	//case 9 camera no move, final boss
 		
+	for (int i = 0; i < 5; i++)
+		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water.w*i-9, 318, &water, GROUND4SPEED);
 
+	App->render->Blit(ground_tx, 1000, -95, &ground[0], GROUND4SPEED);
+	App->render->Blit(ground_tx, 1000 + ground[0].w, 20, &ground[1], GROUND4SPEED);
+	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 54, &ground[2], GROUND4SPEED);
+	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w  + ground[2].w, 15, &ground[3], GROUND4SPEED);
+	App->render->camera.x += 1 * SCREEN_SIZE;
 	App->player1->position.x++;
 
 	//draw everithing
