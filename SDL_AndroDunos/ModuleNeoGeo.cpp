@@ -314,7 +314,7 @@ update_status ModuleNeoGeo::Update()
 		App->fade->FadeToBlack(this, App->visco, 0.5);
 		Mix_PauseMusic();
 	}
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
+	if (App->ui->credit > 0)
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 		App->ui->credit = 1;

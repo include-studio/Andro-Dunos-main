@@ -11,6 +11,7 @@
 #include "ModuleInsertCoin.h"
 #include "ModuleNeoGeo.h"
 #include "ModuleSubMainMenu.h"
+#include "ModuleUI.h"
 #define MAX_W_ALPH 255 
 
 
@@ -107,7 +108,7 @@ update_status ModuleInsertCoin::Update()
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 	}
-	if (App->input->keyboard[SDL_SCANCODE_LCTRL])
+	if (App->ui->credit > 0)
 	{
 		App->fade->FadeToBlack(this, App->mainmenu, 0.5);
 	}
