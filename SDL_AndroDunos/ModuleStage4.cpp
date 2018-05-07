@@ -1,4 +1,4 @@
-#include "Globals.h"
+ #include "Globals.h"
 #include "Application.h"
 #include "ModuleStage4.h"
 #include "ModuleTextures.h"
@@ -59,6 +59,62 @@ bool ModuleStage4::Start() {
 	back_tx = App->textures->Load("assets/Sprites/background4.png");
 	ground_tx = App->textures->Load("assets/Sprites/ground4.png");
 	//colliders
+
+	App->collision->AddCollider({ 1000,215,125,100 }, COLLIDER_WALL); //x y w h
+	App->collision->AddCollider({ 1240,215,125,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1365,200,125,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1490,175,175,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1665,190,80,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1745,200,175,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 1920,185,135,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2055,170,64,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2119,155,65,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2184,140,65,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2249,125,95,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2344,145,110,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2454,125,160,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2614,110,225,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2839,80,80,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2919,45,45,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2964,85,255,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3219,122,127,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3346,142,65,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3411,157,15,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3426,188,33,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3459,203,15,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3474,233,80,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3554,263,30,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3584,288,30,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3614,308,90,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 3704,323,1530,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5234,313,275,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5509,288,25,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5534,268,50,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 5584,328,225,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6065,328,508,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6573,308,130,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6703,298,20,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6723,278,20,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6743,285,90,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6833,265,125,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 6958,250,62,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7020,280,80,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7100,310,80,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7180,290,90,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7270,270,100,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7370,205,65,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7435,160,285,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7720,200,210,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7930,235,500,100 }, COLLIDER_WALL);
+
+
+
+
+
+
+
+
+
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -67,6 +123,11 @@ bool ModuleStage4::Start() {
 	//audio
 	//enable modules
 	App->player1->Enable();
+	App->particles->Enable();
+	App->collision->Enable();
+	/*App->enemies->Enable();*/
+	App->powerup->Enable();
+
 	if (App->player2->insert2 == true)
 	{
 		App->player2->Enable();
