@@ -302,7 +302,7 @@ bool ModulePlayer2::CleanUp() {
 
 void ModulePlayer2::OnCollision(Collider* col1, Collider* col2) 
 {
-	if (col1 == player_col && destroyed == false && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S)
+	if (col1 == player_col && destroyed == false && App->fade->IsFading() == false && col2->type != COLLIDER_TYPE::COLLIDER_BONUS && col2->type != COLLIDER_TYPE::COLLIDER_POWER_S && col2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;
