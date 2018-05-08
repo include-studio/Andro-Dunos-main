@@ -152,6 +152,8 @@ update_status ModulePlayer1::Update()
 			type_weapon = 1;
 	}
 	
+	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp!=7)
+		hp++;
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || shoot)
 		Shoot();

@@ -187,7 +187,27 @@ update_status ModuleUI::Update()
 	
 
 	if (App->player1->IsEnabled() == true) {
-
+		if (App->player1->hp == 7) {
+			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 20, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 30, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 40, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 50, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 60, 20, &life1_rect, 0.0f);
+		}
+		if (App->player1->hp == 6) {
+			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 20, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 30, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 40, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 50, 20, &life1_rect, 0.0f);
+		}
+		if (App->player1->hp == 5) {
+			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 20, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 30, 20, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 40, 20, &life1_rect, 0.0f);
+		}
 		if (App->player1->hp == 4) {
 			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);
 			App->render->Blit(user_interface, 20, 20, &life1_rect, 0.0f);
@@ -204,7 +224,27 @@ update_status ModuleUI::Update()
 	}
 
 	if (App->player2->IsEnabled() == true) {
-
+		if (App->player2->hp == 7) {
+			App->render->Blit(user_interface, 190, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 200, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 210, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 220, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 230, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 240, 20, &life2_rect, 0.0f);
+		}
+		if (App->player2->hp == 6) {
+			App->render->Blit(user_interface, 190, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 200, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 210, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 220, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 230, 20, &life2_rect, 0.0f);
+		}
+		if (App->player2->hp == 5) {
+			App->render->Blit(user_interface, 190, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 200, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 210, 20, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, 220, 20, &life2_rect, 0.0f);
+		}
 		if (App->player2->hp == 4) {
 			App->render->Blit(user_interface, 190, 20, &life2_rect, 0.0f);
 			App->render->Blit(user_interface, 200, 20, &life2_rect, 0.0f);
