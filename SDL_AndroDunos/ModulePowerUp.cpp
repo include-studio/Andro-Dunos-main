@@ -160,9 +160,11 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->player1->powerup++; 
 					App->audio->PlayFx(powerup_fx);
 				}
-				if (c1->type == COLLIDER_ONE_UP && App->player1->hp!=7) {
-					App->player1->hp++;
+				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);
+					if (App->player1->hp != 7) {
+						App->player1->hp++;
+					}
 				}
 			}
 			if (c2->callback == App->player2) {
@@ -174,9 +176,11 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->player2->powerup++;
 					App->audio->PlayFx(powerup_fx);
 				}
-				if (c1->type == COLLIDER_ONE_UP && App->player2->hp != 7) {
-					App->player2->hp++;
+				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);
+					if (App->player2->hp != 7) {
+						App->player2->hp++;
+					}
 				}
 			}
 			delete active[i];
