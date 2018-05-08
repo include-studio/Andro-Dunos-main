@@ -136,6 +136,8 @@ bool ModuleStage4::Start() {
 	stage = 0;
 	//enemies
 
+	App->powerup->AddPowerUp(App->powerup->one_up, 4285, 200, COLLIDER_ONE_UP);
+
 	//audio
 	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
 
