@@ -48,7 +48,7 @@ public:
 	uint credit = 0;
 	uint credit_fx;
 
-	Uint32 score;
+	uint score = 0;
 	uint high_score = 0;
 
 };

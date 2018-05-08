@@ -67,9 +67,9 @@ public:
 	int current_time = 0;
 	int init_time = 0;
 
-	int font_score = 1;
-	char score_text[10];
-	uint score = 0;
+	//int font_score = 1;
+	//char score_text[10];
+	//uint score = 0;
 };
 
 #endif

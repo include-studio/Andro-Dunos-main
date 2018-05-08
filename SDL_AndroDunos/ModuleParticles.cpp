@@ -9,6 +9,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
+#include "ModuleUI.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -372,7 +373,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					LOG("COLLISION PARTICLE PLAYER1");
 				}
 				if (active[i]->owner_type == OWNER_PLAYER2) {
-					App->player2->score += 200;
+					App->ui->score += 200;
 					LOG("COLLISION PARTICLE PLAYER2");
 				}
 			}

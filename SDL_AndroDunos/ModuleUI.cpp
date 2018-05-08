@@ -76,13 +76,14 @@ bool ModuleUI::Start()
 	insertCoin.loop = true;
 	insertCoin.speed = 0.0225f;
 	
-	//font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1); //not needed for the moment
+	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
 	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "0123456789", 1);
 
 	credit_fx = App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
 
 	credit = 0;
+	score = 0;
 
 	return true;
 }
@@ -93,22 +94,29 @@ bool ModuleUI::CleanUp()
 
 	App->textures->Unload(user_interface);
 	App->audio->UnLoadFx(credit_fx);
+	App->fonts->UnLoad(font_score);
 
 	return true;
 }
 update_status ModuleUI::Update()
 {
-
-	//highscore
+	//highscore logic
 	if (App->player1->score > high_score) {
 		high_score = App->player1->score;
 	}
 
-	if (App->player2->score > high_score) {
-		high_score = App->player2->score;
+	if (score > high_score) {
+		high_score = score;
 	}
 
 	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
+		
+		//score2
+		sprintf_s(score_text, 10, "%7d", score);
+		App->fonts->BlitText(210, 6, font_score, score_text);
+		App->fonts->BlitText(190, 6, font_score, "P2");
+
+		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
 		App->fonts->BlitText(120, 7, font_score2, HighScore_text);
 		App->fonts->BlitText(100, 7, font_score2, "HI-");
@@ -182,10 +190,10 @@ update_status ModuleUI::Update()
 			credit--;
 			activate_credit = true;
 		}
-			
+
+		
 	}
 	
-
 	if (App->player1->IsEnabled() == true) {
 		if (App->player1->hp == 7) {
 			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);

@@ -10,6 +10,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleStage1.h"
+#include "ModuleUI.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -169,7 +170,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (c2->callback == App->player2) {
 				if (c1->type == COLLIDER_BONUS) {
-					App->player2->score += 100;
+					App->ui->score += 100;
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWER_S) {

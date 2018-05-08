@@ -79,8 +79,8 @@ bool ModulePlayer2::Start()
 	type_weapon = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39, 17 }, COLLIDER_PLAYER, this);
 	hp = 3;
-	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
-	score = 0;
+	//font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
+	//score = 0;
 	powerup = 1;
 	god_mode_die = true;
 	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
@@ -275,11 +275,11 @@ update_status ModulePlayer2::Update()
 	if (!destroyed && dead == false)
 		App->render->Blit(graphics, position.x, position.y, &ship);
 
-	sprintf_s(score_text, 10, "%7d", score);
+	//sprintf_s(score_text, 10, "%7d", score);
 
-	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(210, 6, font_score, score_text);
-	App->fonts->BlitText(190, 6, font_score, "P2");
+	//// Blit the text of the score in at the bottom of the screen	
+	//App->fonts->BlitText(210, 6, font_score, score_text);
+	//App->fonts->BlitText(190, 6, font_score, "P2");
 
 	return UPDATE_CONTINUE;
 }
@@ -288,8 +288,7 @@ bool ModulePlayer2::CleanUp() {
 	App->textures->Unload(graphics);
 	App->collision->CleanUp();
 	App->particles->CleanUp();
-	App->fonts->UnLoad(font_score);
-	App->fonts->UnLoad(font_score);
+	//App->fonts->UnLoad(font_score);
 	App->audio->UnLoadFx(type_change);
 	App->audio->UnLoadFx(explosion_player);
 	App->audio->UnLoadFx(laser4);
