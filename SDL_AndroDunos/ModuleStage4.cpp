@@ -108,6 +108,21 @@ bool ModuleStage4::Start() {
 	App->collision->AddCollider({ 7930,235,500,100 }, COLLIDER_WALL);
 
 
+	App->collision->AddCollider({ 1645,-40,545,50 }, COLLIDER_WALL); //Up
+	App->collision->AddCollider({ 2190,-60,65,50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2255,-110,295,50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2550,-90,195,50 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 2745,-130,100,50 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 5585,90,50,50 }, COLLIDER_WALL); //Up 2
+	App->collision->AddCollider({ 5635,80,160,100 }, COLLIDER_WALL);  
+	App->collision->AddCollider({ 5795,95,210,50 }, COLLIDER_WALL);
+
+	App->collision->AddCollider({ 7070,90,20,50 }, COLLIDER_WALL); //Up3
+	App->collision->AddCollider({ 7090,80,222,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7312,20,35,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7347,-40,65,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 7412,-65,145,100 }, COLLIDER_WALL);
 
 
 

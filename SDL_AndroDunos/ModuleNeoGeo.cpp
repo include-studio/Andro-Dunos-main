@@ -9,6 +9,7 @@
 #include "ModuleAudio.h"
 #include "Animation.h"
 #include "ModuleStage1.h"
+#include "ModuleStage4.h"
 #include "SDL/include/SDL.h"
 #include "ModuleMainMenu.h"
 #include "ModuleUI.h"
