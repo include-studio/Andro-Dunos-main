@@ -7,6 +7,8 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "p2point.h"
+
 
 struct SDL_Texture;
 
@@ -21,13 +23,16 @@ public:
 
 public:
 
+	
 	SDL_Texture *back_tx = nullptr;
 	SDL_Texture *ground_tx = nullptr;
 
 	SDL_Rect back;
 	SDL_Rect ground[4];
-	SDL_Rect water;
+	SDL_Rect water_rect;
 
+	Animation water;
+	Animation* animation_water = nullptr;
 	int stage;
 
 

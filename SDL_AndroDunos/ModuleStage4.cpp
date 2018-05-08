@@ -14,6 +14,8 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
+#include "SDL/include/SDL.h"
+
 
 ModuleStage4::ModuleStage4() {
 	//background
@@ -44,10 +46,13 @@ ModuleStage4::ModuleStage4() {
 	ground[3].h = 324;
 
 	//water
-	water.x = 1235;
-	water.y = 978;
-	water.w = 304;
-	water.h = 21;
+	water.PushBack({ 1235,978,304,21 });
+	water.PushBack({ 1235,1017,304,21 });
+	water.PushBack({ 1235,1056,304,21 });
+	water.PushBack({ 1235,1095,304,21 });
+	water.PushBack({ 1235,1136,304,21 });
+	water.loop = true;
+	water.speed = 0.08f;
 
 }
 
@@ -125,11 +130,6 @@ bool ModuleStage4::Start() {
 	App->collision->AddCollider({ 7412,-65,145,100 }, COLLIDER_WALL);
 
 
-
-
-
-
-
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -160,7 +160,8 @@ bool ModuleStage4::CleanUp() {
 	App->player2->Disable();
 	//unload textures
 	App->textures->Unload(back_tx);
-
+	App->textures->Unload(ground_tx);
+	
 	return true;
 }
 
@@ -219,11 +220,14 @@ update_status ModuleStage4::Update() {
 	//case 8 scroll horizontal lower until stop
 	//case 9 camera no move, final boss
 
+	animation_water = &water;
+	water_rect = animation_water->GetCurrentFrame();
+
 	for (int i = 0; i < 5; i++)
 		App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
 		
 	for (int i = 0; i < 5; i++)
-		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water.w*i-9, 318, &water, GROUND4SPEED);
+		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i-9, 318, &water_rect, GROUND4SPEED);
 
 	App->render->Blit(ground_tx, 1000, -95, &ground[0], GROUND4SPEED);
 	App->render->Blit(ground_tx, 1000 + ground[0].w, 20, &ground[1], GROUND4SPEED);
