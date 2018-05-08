@@ -265,11 +265,13 @@ update_status ModuleUI::Update()
 			press2p.loop = true;
 		}
 
-		/*animationPress2p = &press2p;
-		SDL_Rect Rect_Press2p;
-		Rect_Press2p = animationPress2p->GetCurrentFrame();
-		App->render->Blit(user_interface, 190, 20, &Rect_Press2p, 0.0f);
-		press2p.loop = true;*/
+		if (credit > 0) {
+			animationPress2p = &press2p;
+			SDL_Rect Rect_Press2p;
+			Rect_Press2p = animationPress2p->GetCurrentFrame();
+			App->render->Blit(user_interface, 180, 20, &Rect_Press2p, 0.0f);
+			press2p.loop = true;
+		}
 	}
 
 	return UPDATE_CONTINUE;
