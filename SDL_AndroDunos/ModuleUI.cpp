@@ -317,7 +317,7 @@ update_status ModuleUI::Update()
 			animationPress2p = &press2p;
 			SDL_Rect Rect_Press2p;
 			Rect_Press2p = animationPress2p->GetCurrentFrame();
-			App->render->Blit(user_interface, 180, 20, &Rect_Press2p, 0.0f);
+			App->render->Blit(user_interface, 171, 20, &Rect_Press2p, 0.0f);
 			press2p.loop = true;
 		}
 	}
