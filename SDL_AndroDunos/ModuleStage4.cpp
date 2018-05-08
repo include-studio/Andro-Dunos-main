@@ -203,6 +203,9 @@ update_status ModuleStage4::Update() {
 	//case 7 scroll horizontal
 	//case 8 scroll horizontal lower until stop
 	//case 9 camera no move, final boss
+
+	for (int i = 0; i < 5; i++)
+		App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
 		
 	for (int i = 0; i < 5; i++)
 		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water.w*i-9, 318, &water, GROUND4SPEED);
