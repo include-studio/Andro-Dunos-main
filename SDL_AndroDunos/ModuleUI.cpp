@@ -68,13 +68,13 @@ bool ModuleUI::Start()
 	press2p.loop = true;
 	press2p.speed = 0.0225f;
 
-	//animationInsertCoin = nullptr;
+	animationInsertCoin = nullptr;
 
-	//insertCoin.PushBack({ 0,9,124,11 }); // x, y, w, h
-	//insertCoin.PushBack({ 125,9,124,11 });
+	insertCoin.PushBack({ 0,45,86,11 }); // x, y, w, h
+	insertCoin.PushBack({ 87,45,86,11 });
 
-	//insertCoin.loop = true;
-	//insertCoin.speed = 0.0225f;
+	insertCoin.loop = true;
+	insertCoin.speed = 0.0225f;
 	
 	//font_score = App->fonts->Load("Assets/font_score.png", "1234567890P", 1); //not needed for the moment
 	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
@@ -248,7 +248,7 @@ update_status ModuleUI::Update()
 			//animationPress2p = &press2p;
 			//SDL_Rect Rect_Press2p;
 			//Rect_Press2p = animationPress2p->GetCurrentFrame();
-			//App->render->Blit(user_interface, 180, 20, &Rect_Press2p, 0.0f);
+			//App->render->Blit(user_interface, 190, 20, &Rect_Press2p, 0.0f);
 			//press2p.loop = true;
 			
 		}
@@ -257,19 +257,19 @@ update_status ModuleUI::Update()
 	if (App->player2->IsEnabled() == false && App->player1->IsEnabled() == true) {
 
 		//INSERT COIN
-		/*if (credit <= 0) {
+		if (credit <= 0) {
 			animationInsertCoin = &insertCoin;
 			SDL_Rect Rect_InsertCoin;
 			Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
-			App->render->Blit(user_interface, 180, 20, &Rect_InsertCoin, 0.0f);
+			App->render->Blit(user_interface, 190, 20, &Rect_InsertCoin, 0.0f);
 			press2p.loop = true;
-		}*/
+		}
 
-		animationPress2p = &press2p;
+		/*animationPress2p = &press2p;
 		SDL_Rect Rect_Press2p;
 		Rect_Press2p = animationPress2p->GetCurrentFrame();
-		App->render->Blit(user_interface, 180, 20, &Rect_Press2p, 0.0f);
-		press2p.loop = true;
+		App->render->Blit(user_interface, 190, 20, &Rect_Press2p, 0.0f);
+		press2p.loop = true;*/
 	}
 
 	return UPDATE_CONTINUE;
