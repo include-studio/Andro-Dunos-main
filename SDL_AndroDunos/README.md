@@ -77,6 +77,8 @@ Github organization: https://github.com/include-studio
 
 - F5 (to  activate god mode).
 
+- F8 (to heal both players into 7 hp).
+
 - F10 (to enter stage4 when stage 1).
 
 - F11 (to direct win).
