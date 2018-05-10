@@ -93,6 +93,9 @@ bool ModuleStageClear::Start() {
 	positionstage.x = SCREEN_WIDTH;
 	positionstage.y = 100; 
 
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
+
 	position_small_blue.x = 24;
 	position_small_blue.y = SCREEN_HEIGHT;
 
