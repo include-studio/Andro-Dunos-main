@@ -1,7 +1,7 @@
 #ifndef __MODULESTAGE4_H__
 #define __MODULESTAGE4_H__
 
-#define GROUND4SPEED 0.8f
+#define GROUND4SPEED 1.0f
 #define BACKGROUND4SPEED 0.3f
 
 #include "Module.h"

@@ -63,8 +63,8 @@ bool ModuleStage4::Start() {
 	//load textures
 	back_tx = App->textures->Load("assets/Sprites/background4.png");
 	ground_tx = App->textures->Load("assets/Sprites/ground4.png");
-	//colliders
 
+	//colliders
 	App->collision->AddCollider({ 1000,215,125,100 }, COLLIDER_WALL4); //x y w h
 	App->collision->AddCollider({ 1240,215,125,100 }, COLLIDER_WALL4);
 	App->collision->AddCollider({ 1365,200,125,100 }, COLLIDER_WALL4);
@@ -173,7 +173,17 @@ update_status ModuleStage4::Update() {
 
 	//logic
 	App->player1->position.x++;
-	switch (stage) {
+	for (int i = 0; i < 4; i++)
+		App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
+	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
+	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
+	animation_water = &water;
+	water_rect = animation_water->GetCurrentFrame();
+	for (int i = 0; i < 5; i++)
+		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 316, &water_rect, GROUND4SPEED);
+	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
+	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
+	/*switch (stage) {
 	case 0:				//scroll diagonal to y=43
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y += 1;
@@ -187,9 +197,9 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 3; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -61, &ground[0], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
 
-		if (App->render->camera.x >= 2445 * SCREEN_SIZE)
+		if (App->render->camera.x >= 1930 * SCREEN_SIZE)
 			stage++;;
 		break;
 	case 2:
@@ -198,7 +208,7 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 3; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -61, &ground[0], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
 
 		if (App->render->camera.y <= -76*SCREEN_SIZE)
 			stage++;
@@ -208,8 +218,8 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 3; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -61, &ground[0], GROUND4SPEED);
-		App->render->Blit(ground_tx, 1000 + ground[0].w, 20, &ground[1], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000 + ground[0].w, -6, &ground[1], GROUND4SPEED);
 
 		if (App->render->camera.x >= 3880 * SCREEN_SIZE)
 			stage++;
@@ -220,8 +230,14 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 3; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -61, &ground[0], GROUND4SPEED);
-		App->render->Blit(ground_tx, 1000 + ground[0].w, 20, &ground[1], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000 + ground[0].w, -6, &ground[1], GROUND4SPEED);
+		
+		animation_water = &water;
+		water_rect = animation_water->GetCurrentFrame();
+
+		for (int i = 0; i < 5; i++)
+			App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 292, &water_rect, GROUND4SPEED);
 
 		if (App->render->camera.y >= 143 * SCREEN_SIZE)
 			stage++;
@@ -231,9 +247,15 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 4; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000 + ground[0].w, 20, &ground[1], GROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 54, &ground[2], GROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 15, &ground[3], GROUND4SPEED);
+		App->render->Blit(ground_tx, 1000 + ground[0].w, -6, &ground[1], GROUND4SPEED);
+		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 28, &ground[2], GROUND4SPEED);
+		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
+		
+		animation_water = &water;
+		water_rect = animation_water->GetCurrentFrame();
+
+		for (int i = 0; i < 5; i++)
+			App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 292, &water_rect, GROUND4SPEED);
 
 		if (App->render->camera.x >= 8952 * SCREEN_SIZE)
 			stage++;
@@ -244,8 +266,8 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 4; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 54, &ground[2], GROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 15, &ground[3], GROUND4SPEED);
+		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 28, &ground[2], GROUND4SPEED);
+		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
 
 		if (App->render->camera.y <= 18 * SCREEN_SIZE)
 			stage++;
@@ -255,7 +277,7 @@ update_status ModuleStage4::Update() {
 
 		for (int i = 0; i < 4; i++)
 			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 15, &ground[3], GROUND4SPEED);
+		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
 
 		if (App->render->camera.x >= 9976 * SCREEN_SIZE)
 			stage++;
@@ -263,15 +285,10 @@ update_status ModuleStage4::Update() {
 	case 8:
 		for (int i = 2; i < 4; i++)
 			App->render->Blit(back_tx, back.w * i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 15, &ground[3], GROUND4SPEED);
+		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
 		break;
-	}
+	}*/
 
-	animation_water = &water;
-	water_rect = animation_water->GetCurrentFrame();
-		
-	for (int i = 0; i < 5; i++)
-		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i-9, 318, &water_rect, GROUND4SPEED);
 
 	return UPDATE_CONTINUE;
 }
