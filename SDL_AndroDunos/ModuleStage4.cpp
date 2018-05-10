@@ -141,6 +141,8 @@ bool ModuleStage4::Start() {
 	//audio
 
 	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
+	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Intro.ogg");
+
 
 	//enable modules
 	App->player1->Enable();
