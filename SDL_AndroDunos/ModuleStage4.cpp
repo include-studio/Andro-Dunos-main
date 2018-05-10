@@ -172,7 +172,6 @@ update_status ModuleStage4::Update() {
 	//input
 
 	//logic
-	App->player1->position.x++;
 	for (int i = 0; i < 4; i++)
 		App->render->Blit(back_tx, back.w*i, -50, NULL, BACKGROUND4SPEED);
 	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
@@ -187,52 +186,52 @@ update_status ModuleStage4::Update() {
 	case 0:				//scroll diagonal to y=43
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y += 1;
-
+		App->player1->position.x++;
 		if (App->render->camera.y >= -2*SCREEN_SIZE)
 			stage++;;
 		break;
 	case 1:				//scroll horizontal
 		App->render->camera.x += 1 * SCREEN_SIZE;
-
+		App->player1->position.x++;
 		if (App->render->camera.x >= 1960 * SCREEN_SIZE)
 			stage++;;
 		break;
 	case 2:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y--;
-
+		App->player1->position.x++;
 		if (App->render->camera.y <= -97*SCREEN_SIZE)
 			stage++;
 		break;
 	case 3:
 		App->render->camera.x += 1 * SCREEN_SIZE;
-
+		App->player1->position.x++;
 		if (App->render->camera.x >= 3092 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 4:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y++;
-
+		App->player1->position.x++;
 		if (App->render->camera.y >= 113 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 5:
 		App->render->camera.x += 1 * SCREEN_SIZE;
-
+		App->player1->position.x++;
 		if (App->render->camera.x >= 7200 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 6:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y--;
-
+		App->player1->position.x++;
 		if (App->render->camera.y <= 13 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 7:
 		App->render->camera.x += 1 * SCREEN_SIZE;
-
+		App->player1->position.x++;
 		if (App->render->camera.x >= 7970 * SCREEN_SIZE)
 			stage++;
 		break;
@@ -240,7 +239,15 @@ update_status ModuleStage4::Update() {
 
 		break;
 	}
-
-
+	if (App->player1->position.x < App->render->camera.x / 3)
+		App->player1->position.x = App->render->camera.x / 3;
+	if (App->player1->position.x > App->render->camera.x / 3 + SCREEN_WIDTH - 40)
+		App->player1->position.x = App->render->camera.x / 3 + SCREEN_WIDTH - 40;
+	if (App->player1->position.y < App->render->camera.y / 3)
+		App->player1->position.y = App->render->camera.y / 3;
+	if (App->player1->position.y > App->render->camera.y / 3+SCREEN_HEIGHT-17)
+		App->player1->position.y = App->render->camera.y / 3+SCREEN_HEIGHT-17;
+	
+		
 	return UPDATE_CONTINUE;
 }
