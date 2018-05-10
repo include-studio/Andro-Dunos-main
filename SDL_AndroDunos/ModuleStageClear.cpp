@@ -153,7 +153,7 @@ update_status ModuleStageClear::Update() {
 		{
 		case 0:
 			App->fade->FadeToBlack(this, App->stage4, 1);
-			part_stageClear++;
+			part_stageClear=1;
 			break;
 		case 1:
 			App->fade->FadeToBlack(this, App->stage1, 1);

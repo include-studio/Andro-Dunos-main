@@ -169,6 +169,9 @@ bool ModuleStage4::CleanUp() {
 	//disable modules
 	App->player1->Disable();
 	App->player2->Disable();
+	App->particles->Disable();
+	App->collision->Disable();
+	App->powerup->Disable();
 	//unload textures
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);
