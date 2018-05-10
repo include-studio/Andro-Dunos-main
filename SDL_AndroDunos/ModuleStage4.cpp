@@ -240,16 +240,7 @@ update_status ModuleStage4::Update() {
 	case 8:
 
 		break;
-	}
-	if (App->player1->position.x < App->render->camera.x / 3)
-		App->player1->position.x = App->render->camera.x / 3;
-	if (App->player1->position.x > App->render->camera.x / 3 + SCREEN_WIDTH - 40)
-		App->player1->position.x = App->render->camera.x / 3 + SCREEN_WIDTH - 40;
-	if (App->player1->position.y < App->render->camera.y / 3)
-		App->player1->position.y = App->render->camera.y / 3;
-	if (App->player1->position.y > App->render->camera.y / 3+SCREEN_HEIGHT-17)
-		App->player1->position.y = App->render->camera.y / 3+SCREEN_HEIGHT-17;
-	
+	}	
 		
 	return UPDATE_CONTINUE;
 }
