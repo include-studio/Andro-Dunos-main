@@ -129,8 +129,29 @@ update_status ModuleUI::Update()
 	//}
 
 	if (App->neogeo->IsEnabled() == false) {
-		
-		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
+
+		if (!still_coin1) {
+			if (SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
+				still_coin1 = true;
+				coin1 = true;
+			}
+		}
+		if (!SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
+			still_coin1 = false;
+		}
+
+
+		if (!still_coin2) {
+			if (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP)) {
+				still_coin2 = true;
+				coin2 = true;
+			}
+		}
+		if (!SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP))
+			still_coin2 = false;
+
+		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN || coin1 || coin2) {
+			coin1 = false; coin2 = false;
 			if (credit < 99) {
 				App->audio->PlayFx(credit_fx);
 				credit++;

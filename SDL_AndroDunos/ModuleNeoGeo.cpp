@@ -321,6 +321,7 @@ update_status ModuleNeoGeo::Update()
 		App->ui->credit = 1;
 		Mix_PauseMusic();
 	}
+	//debug
 	if (App->input->keyboard[SDL_SCANCODE_C])
 	{
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
@@ -329,7 +330,6 @@ update_status ModuleNeoGeo::Update()
 	if (App->input->keyboard[SDL_SCANCODE_LCTRL] || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_DPAD_UP) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_DPAD_UP))
 	{
 		App->ui->credit++;
-		
 	}
 	
 
