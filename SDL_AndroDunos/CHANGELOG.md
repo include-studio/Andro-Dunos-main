@@ -8,6 +8,41 @@ All notable changes to this project will be documented in this file.
 
 
 
+## [0.6.0] - 2018-05-11
+
+
+### Summarized
+
+- Stage 4 implemented almost entirely,controllers fixed.
+
+### Extended
+
+
+#### Added
+
+- Collision map stage 4
+
+- Audio stage 4.
+
+- Water animation in stage 4.
+
+- Heal debugging mode.
+
+- InsertCoin/press2pbutton logic.
+
+#### Fixed
+
+
+- Stage 4 scroll fixed with background.
+
+- Joysticks fixed.
+
+- Now when coin is introduced it enters to the main menu.
+
+- Stageclear fixed.
+
+- DPadUp Controller (insert coin) fixed.
+
 
 ## [0.5.3] - 2018-05-07
 
