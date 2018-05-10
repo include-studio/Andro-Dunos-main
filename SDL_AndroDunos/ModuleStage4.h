@@ -34,7 +34,9 @@ public:
 	Animation water;
 	Animation* animation_water = nullptr;
 	int stage;
-
+	int current_time = 0;
+	int init_time = 0;
+	bool intro_bgm = true;
 
 };
 #endif // !__MODULESTAGE!_H__

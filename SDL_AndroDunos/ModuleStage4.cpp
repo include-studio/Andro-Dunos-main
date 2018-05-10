@@ -59,7 +59,12 @@ ModuleStage4::ModuleStage4() {
 ModuleStage4::~ModuleStage4(){}
 
 bool ModuleStage4::Start() {
+
+	
 	bool ret = true;
+	//Timer
+	init_time = SDL_GetTicks(); 
+	current_time = 0;
 	//load textures
 	back_tx = App->textures->Load("assets/Sprites/background4.png");
 	ground_tx = App->textures->Load("assets/Sprites/ground4.png");
@@ -140,7 +145,7 @@ bool ModuleStage4::Start() {
 
 	//audio
 
-	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
+	//App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
 	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Intro.ogg");
 
 
@@ -166,11 +171,29 @@ bool ModuleStage4::CleanUp() {
 	//unload textures
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);
+
+	current_time = 0;
 	
 	return true;
 }
 
 update_status ModuleStage4::Update() {
+
+	//Time
+	current_time = SDL_GetTicks() - init_time;
+
+	//Audio
+	if (App->input->keyboard[SDL_SCANCODE_H]) {
+		Mix_PlayMusic(App->audio->stage4, -2);
+	}
+	if (current_time >= 3750 && intro_bgm == true) {
+		Mix_PlayMusic(App->audio->stage4, -1);
+		intro_bgm = false;
+	}
+		
+	
+
+
 	//input
 
 	//logic

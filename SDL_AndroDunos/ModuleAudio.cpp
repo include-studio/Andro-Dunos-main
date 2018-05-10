@@ -103,6 +103,7 @@ bool ModuleAudio::PlayMusic(const char* path, float fade_time)
 	//}
 
 	music = Mix_LoadMUS(path);
+	stage4 = Mix_LoadMUS("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
 
 	Mix_VolumeMusic(volume_music);
 
