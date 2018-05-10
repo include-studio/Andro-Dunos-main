@@ -61,7 +61,7 @@ Github organization: https://github.com/include-studio
 
 - X/Square (to change weapon). 
 
-- UpArrow (to add coins).
+- Direction Pad Up (to add coins).
 
 
 ### (for the developer)
