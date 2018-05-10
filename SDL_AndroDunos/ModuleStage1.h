@@ -43,13 +43,7 @@ public:
 	SDL_Rect planet1;
 	SDL_Rect planet2;
 
-	struct camera_limit {
-		int xi;
-		int xf;
-		int yi;
-		int yf;
-	};
-	camera_limit camera_limit;
+	
 	int part_stage = 0;
 	int ground_cont = 0;
 };

@@ -112,7 +112,7 @@ update_status ModulePlayer2::Update()
 	if (god_mode_die == true) {
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_NONE;
-			if (position.x <= App->stage1->camera_limit.xi + 44)
+			if (position.x <= App->render->camera.x / 3 + 44)
 				position.x++;
 		}
 
@@ -267,6 +267,16 @@ update_status ModulePlayer2::Update()
 	}
 
 	player_col->SetPos(position.x, position.y);
+
+	if (position.x < App->render->camera.x / 3)
+		position.x = App->render->camera.x / 3;
+	if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH - 40)
+		position.x = App->render->camera.x / 3 + SCREEN_WIDTH - 40;
+	if (position.y < App->render->camera.y / 3)
+		position.y = App->render->camera.y / 3;
+	if (position.y > App->render->camera.y / 3 + SCREEN_HEIGHT - 17)
+		position.y = App->render->camera.y / 3 + SCREEN_HEIGHT - 17;
+
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 
@@ -319,8 +329,8 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
-			position.x = App->stage1->camera_limit.xi;
-			position.y = App->stage1->camera_limit.yi + 127;
+			position.x = App->render->camera.x / 3;
+			position.y = App->render->camera.y / 3 + 127;
 		}
 	}
 }
