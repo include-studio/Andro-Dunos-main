@@ -184,9 +184,7 @@ update_status ModuleStage4::Update() {
 	current_time = SDL_GetTicks() - init_time;
 
 	//Audio
-	if (App->input->keyboard[SDL_SCANCODE_H]) {
-		Mix_PlayMusic(App->audio->stage4, -2);
-	}
+	
 	if (current_time >= 3750 && intro_bgm == true) {
 		Mix_PlayMusic(App->audio->stage4, -1);
 		intro_bgm = false;
