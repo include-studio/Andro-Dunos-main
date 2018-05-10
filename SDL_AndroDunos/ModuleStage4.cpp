@@ -255,9 +255,14 @@ update_status ModuleStage4::Update() {
 			stage++;
 		break;
 	case 8:
-
+		App->fade->FadeToBlack(this, App->stageclear, 0.5f);
 		break;
 	}	
+
+	if (App->input->keyboard[SDL_SCANCODE_F11] == KEY_STATE::KEY_DOWN)
+	{
+		App->fade->FadeToBlack(this, App->stageclear, 1);
+	}
 		
 	return UPDATE_CONTINUE;
 }
