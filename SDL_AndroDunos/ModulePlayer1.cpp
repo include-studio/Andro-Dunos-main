@@ -264,6 +264,16 @@ update_status ModulePlayer1::Update()
 		break;
 	}
 	player_col->SetPos(position.x, position.y);
+
+	if (position.x < App->render->camera.x / 3)
+		position.x = App->render->camera.x / 3;
+	if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH - 40)
+		position.x = App->render->camera.x / 3 + SCREEN_WIDTH - 40;
+	if (position.y < App->render->camera.y / 3)
+		position.y = App->render->camera.y / 3;
+	if (position.y > App->render->camera.y / 3 + SCREEN_HEIGHT - 17)
+		position.y = App->render->camera.y / 3 + SCREEN_HEIGHT - 17;
+
 	// Draw everything --------------------------------------
 	SDL_Rect ship;
 

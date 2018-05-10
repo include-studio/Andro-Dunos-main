@@ -265,11 +265,6 @@ bool ModuleStage1::Start()
 		App->player2->Enable();
 	}
 
-	camera_limit.xi = 0;
-	camera_limit.xf = SCREEN_WIDTH-39;//-player width
-	camera_limit.yi = 0;
-	camera_limit.yf = SCREEN_HEIGHT-17;//-player height
-
 	return ret;
 }
 
@@ -318,8 +313,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
 		if (App->render->camera.x >= 2945 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
@@ -339,8 +332,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.y += 3;
 		App->player1->position.y++;
 		App->player2->position.y++;
-		camera_limit.yi++;
-		camera_limit.yf++;
 		if (App->render->camera.y >= (SCREEN_HEIGHT-1) * SCREEN_SIZE) {
 			part_stage++;
 			for (int i = 0; i < 9; i++)
@@ -365,8 +356,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
 		if (App->render->camera.x >= 4000 * SCREEN_SIZE)
 			part_stage++;
 
@@ -384,10 +373,6 @@ update_status ModuleStage1::Update()
 		App->player1->position.y--;
 		App->player2->position.x++;
 		App->player2->position.y--;
-		camera_limit.xi++;
-		camera_limit.xf++;
-		camera_limit.yi--;
-		camera_limit.yf--;
 		if (App->render->camera.y <= 294)
 			part_stage++;
 
@@ -401,8 +386,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
 		if (App->render->camera.x >= 4538 * SCREEN_SIZE)
 			part_stage++;
 
@@ -419,10 +402,6 @@ update_status ModuleStage1::Update()
 		App->player1->position.y++;
 		App->player2->position.x++;
 		App->player2->position.y++;
-		camera_limit.xi++;
-		camera_limit.xf++;
-		camera_limit.yi++;
-		camera_limit.yf++;
 		if (App->render->camera.y >= (SCREEN_HEIGHT-1) * SCREEN_SIZE)
 			part_stage++;
 
@@ -436,8 +415,7 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
+
 		if (App->render->camera.x >= 5040 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
@@ -456,10 +434,6 @@ update_status ModuleStage1::Update()
 		App->player1->position.y--;
 		App->player2->position.x++;
 		App->player2->position.y--;
-		camera_limit.xi++;
-		camera_limit.xf++;
-		camera_limit.yi--;
-		camera_limit.yf--;
 		if (App->render->camera.y <= 0)
 			part_stage++;
 
@@ -473,8 +447,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
 		if (App->render->camera.x >= 6020 * SCREEN_SIZE)
 			part_stage++;
 
@@ -491,10 +463,6 @@ update_status ModuleStage1::Update()
 		App->player1->position.y++;
 		App->player2->position.x++;
 		App->player2->position.y++;
-		camera_limit.xi++;
-		camera_limit.xf++;
-		camera_limit.yi++;
-		camera_limit.yf++;
 		if (App->render->camera.y >= (SCREEN_HEIGHT - 1) * SCREEN_SIZE)
 			part_stage++;
 
@@ -509,8 +477,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
 		if (App->render->camera.x >= 7156 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
@@ -526,8 +492,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.y -= 3;
 		App->player1->position.y--;
 		App->player2->position.y--;
-		camera_limit.yi--;
-		camera_limit.yf--;
 		if (App->render->camera.y <= 0)
 			part_stage++;
 
@@ -547,8 +511,6 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
-		camera_limit.xi++;
-		camera_limit.xf++;
 		if (App->render->camera.x >= 26241)
 			part_stage++;
 
@@ -567,10 +529,6 @@ update_status ModuleStage1::Update()
 		App->player1->position.y--;
 		App->player2->position.x++;
 		App->player2->position.y--;
-		camera_limit.xi++;
-		camera_limit.xf++;
-		camera_limit.yi--;
-		camera_limit.yf--;
 		if (App->render->camera.y <= -228) {
 			part_stage++;
 			for (int i = 0; i < 9; i++)
@@ -602,25 +560,6 @@ update_status ModuleStage1::Update()
 	}
 	for (int i = ground_cont; i < ground_cont+2; i++)
 		App->render->Blit(ground_tx, ground[0].w*i, 0, &ground[i]);
-	if (!App->player1->god_mode_die) {
-		if (App->player1->position.x < camera_limit.xi)
-			App->player1->position.x = camera_limit.xi;
-		if (App->player1->position.x > camera_limit.xf)
-			App->player1->position.x = camera_limit.xf;
-		if (App->player1->position.y < camera_limit.yi)
-			App->player1->position.y = camera_limit.yi;
-		if (App->player1->position.y > camera_limit.yf)
-			App->player1->position.y = camera_limit.yf;
-
-		if (App->player2->position.x < camera_limit.xi)
-			App->player2->position.x = camera_limit.xi;
-		if (App->player2->position.x > camera_limit.xf)
-			App->player2->position.x = camera_limit.xf;
-		if (App->player2->position.y < camera_limit.yi)
-			App->player2->position.y = camera_limit.yi;
-		if (App->player2->position.y > camera_limit.yf)
-			App->player2->position.y = camera_limit.yf;
-	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F10] == KEY_STATE::KEY_DOWN)
 	{
