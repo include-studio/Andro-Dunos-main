@@ -132,7 +132,7 @@ bool ModuleStage4::Start() {
 
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
-	App->render->camera.y = 0;
+	App->render->camera.y = -100;
 	stage = 0;
 	//enemies
 
@@ -174,7 +174,7 @@ update_status ModuleStage4::Update() {
 	//logic
 	App->player1->position.x++;
 	for (int i = 0; i < 4; i++)
-		App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
+		App->render->Blit(back_tx, back.w*i, -50, NULL, BACKGROUND4SPEED);
 	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
 	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
 	animation_water = &water;
@@ -183,111 +183,63 @@ update_status ModuleStage4::Update() {
 		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 316, &water_rect, GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
-	/*switch (stage) {
+	switch (stage) {
 	case 0:				//scroll diagonal to y=43
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y += 1;
-		App->render->Blit(back_tx, 0, 0, NULL, BACKGROUND4SPEED);
 
-		if (App->render->camera.y >= 43*SCREEN_SIZE)
+		if (App->render->camera.y >= -2*SCREEN_SIZE)
 			stage++;;
 		break;
 	case 1:				//scroll horizontal
 		App->render->camera.x += 1 * SCREEN_SIZE;
 
-		for (int i = 0; i < 3; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
-
-		if (App->render->camera.x >= 1930 * SCREEN_SIZE)
+		if (App->render->camera.x >= 1960 * SCREEN_SIZE)
 			stage++;;
 		break;
 	case 2:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y--;
 
-		for (int i = 0; i < 3; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
-
-		if (App->render->camera.y <= -76*SCREEN_SIZE)
+		if (App->render->camera.y <= -97*SCREEN_SIZE)
 			stage++;
 		break;
 	case 3:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 
-		for (int i = 0; i < 3; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
-		App->render->Blit(ground_tx, 1000 + ground[0].w, -6, &ground[1], GROUND4SPEED);
-
-		if (App->render->camera.x >= 3880 * SCREEN_SIZE)
+		if (App->render->camera.x >= 3092 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 4:
 		App->render->camera.x += 1 * SCREEN_SIZE;
-		App->render->camera.y += 1;
+		App->render->camera.y++;
 
-		for (int i = 0; i < 3; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000, -87, &ground[0], GROUND4SPEED);
-		App->render->Blit(ground_tx, 1000 + ground[0].w, -6, &ground[1], GROUND4SPEED);
-		
-		animation_water = &water;
-		water_rect = animation_water->GetCurrentFrame();
-
-		for (int i = 0; i < 5; i++)
-			App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 292, &water_rect, GROUND4SPEED);
-
-		if (App->render->camera.y >= 143 * SCREEN_SIZE)
+		if (App->render->camera.y >= 113 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 5:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 
-		for (int i = 0; i < 4; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 1000 + ground[0].w, -6, &ground[1], GROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 28, &ground[2], GROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
-		
-		animation_water = &water;
-		water_rect = animation_water->GetCurrentFrame();
-
-		for (int i = 0; i < 5; i++)
-			App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 292, &water_rect, GROUND4SPEED);
-
-		if (App->render->camera.x >= 8952 * SCREEN_SIZE)
+		if (App->render->camera.x >= 7200 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 6:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y--;
 
-		for (int i = 0; i < 4; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 28, &ground[2], GROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
-
-		if (App->render->camera.y <= 18 * SCREEN_SIZE)
+		if (App->render->camera.y <= 13 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 7:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 
-		for (int i = 0; i < 4; i++)
-			App->render->Blit(back_tx, back.w*i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
-
-		if (App->render->camera.x >= 9976 * SCREEN_SIZE)
+		if (App->render->camera.x >= 7970 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 8:
-		for (int i = 2; i < 4; i++)
-			App->render->Blit(back_tx, back.w * i, 0, NULL, BACKGROUND4SPEED);
-		App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, -11, &ground[3], GROUND4SPEED);
+
 		break;
-	}*/
+	}
 
 
 	return UPDATE_CONTINUE;
