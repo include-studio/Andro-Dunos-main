@@ -139,6 +139,7 @@ bool ModuleStage4::Start() {
 	App->powerup->AddPowerUp(App->powerup->one_up, 4285, 200, COLLIDER_ONE_UP);
 
 	//audio
+	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Intro.ogg");
 	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
 
 	//enable modules
