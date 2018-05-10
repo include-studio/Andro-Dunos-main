@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "ModuleStageClear.h"
 #include "ModuleStage1.h"
+#include "ModuleStage4.h"
 #include "ModuleGameOver.h"
 #include "ModuleNeoGeo.h"
 #include "ModuleViscoGames.h"
@@ -111,6 +112,19 @@ update_status ModuleUI::Update()
 
 	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		
+		//score2
+		sprintf_s(score_text, 10, "%7d", score);
+		App->fonts->BlitText(210, 6, font_score, score_text);
+		App->fonts->BlitText(190, 6, font_score, "P2");
+
+		//highscore print
+		sprintf_s(HighScore_text, 13, "%7d", high_score);
+		App->fonts->BlitText(120, 7, font_score2, HighScore_text);
+		App->fonts->BlitText(100, 7, font_score2, "HI-");
+	}
+
+	if (App->stage4->IsEnabled() == true && App->gameover->IsEnabled() == false) {
+
 		//score2
 		sprintf_s(score_text, 10, "%7d", score);
 		App->fonts->BlitText(210, 6, font_score, score_text);
