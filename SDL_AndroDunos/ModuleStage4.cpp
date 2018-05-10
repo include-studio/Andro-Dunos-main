@@ -14,6 +14,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
+#include "ModuleUI.h"
 #include "SDL/include/SDL.h"
 
 
@@ -172,7 +173,15 @@ bool ModuleStage4::CleanUp() {
 
 update_status ModuleStage4::Update() {
 	//input
-
+	if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN && App->ui->credit >= 1) {
+		if (!App->player2->IsEnabled()) {
+			App->player2->Enable();
+			App->player2->position.x = App->player1->position.x;
+			App->player2->position.y = 2 * SCREEN_HEIGHT / 3;
+			App->player2->insert2 = true;
+			App->ui->credit--;
+		}
+	}
 	//logic
 	for (int i = 0; i < 4; i++)
 		App->render->Blit(back_tx, back.w*i, -50, NULL, BACKGROUND4SPEED);
@@ -189,12 +198,14 @@ update_status ModuleStage4::Update() {
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y += 1;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.y >= -2*SCREEN_SIZE)
 			stage++;;
 		break;
 	case 1:				//scroll horizontal
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.x >= 1960 * SCREEN_SIZE)
 			stage++;;
 		break;
@@ -202,12 +213,14 @@ update_status ModuleStage4::Update() {
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y--;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.y <= -97*SCREEN_SIZE)
 			stage++;
 		break;
 	case 3:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.x >= 3092 * SCREEN_SIZE)
 			stage++;
 		break;
@@ -215,12 +228,14 @@ update_status ModuleStage4::Update() {
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y++;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.y >= 113 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 5:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.x >= 7200 * SCREEN_SIZE)
 			stage++;
 		break;
@@ -228,12 +243,14 @@ update_status ModuleStage4::Update() {
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->render->camera.y--;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.y <= 13 * SCREEN_SIZE)
 			stage++;
 		break;
 	case 7:
 		App->render->camera.x += 1 * SCREEN_SIZE;
 		App->player1->position.x++;
+		App->player2->position.x++;
 		if (App->render->camera.x >= 7970 * SCREEN_SIZE)
 			stage++;
 		break;
