@@ -21,8 +21,20 @@ ModulePowerUp::ModulePowerUp()
 			bonus.anim.PushBack({ 16 * j,16 * i,16,16 });
 			if (i == 2 && j == 4) break;
 		}
+
+	if (bonus.anim.current_frame >= bonus.anim.last_frame - 1) {
+		bonus.anim.loop = false;
+		bonus.anim.PushBack({ 16 * 6,16,16,16 });
+		bonus.anim.PushBack({ 16 * 7,16,16,16 });
+		bonus.anim.PushBack({ 0,16,16,16 });
+		bonus.anim.PushBack({ 16 * 1,32,16,16 });
+		bonus.anim.PushBack({ 16 * 2,32,16,16 });
+		bonus.anim.PushBack({ 16 * 3,32,16,16 });
+		bonus.anim.PushBack({ 16 * 4,32,16,16 });
+	}
+
 	bonus.life = 5000000;
-	bonus.anim.loop = false;
+	//bonus.anim.loop = false;
 	bonus.anim.speed = 0.7f;
 	bonus.speed.y = 1;
 	bonus.speed.x = 0;
@@ -52,7 +64,6 @@ ModulePowerUp::ModulePowerUp()
 
 	one_up.life = 5000000;
 	one_up.anim.speed = 0.25f;
-	bonus.anim.loop = false;
 	one_up.speed.y = 0;
 	one_up.speed.x = 0;
 	one_up.n_collisions = 0;
