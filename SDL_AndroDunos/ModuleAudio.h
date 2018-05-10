@@ -22,16 +22,20 @@ public:
 	bool PlayFx(unsigned int id, int repeat = 0);
 	unsigned int Loadfx(const char* path);
 	bool UnLoadFx(unsigned int id);
+	
 
 private:
 
-	Mix_Music* music;
+	
 	Mix_Chunk* fx[MAX_FX];
 
 	uint last_fx = 1;
 
 	int volume_fx = 20;
 	int volume_music = 10;
+public:
+	Mix_Music * music;
+	Mix_Music* stage4;
 };
 
 //typedef struct _Mix_Music Mix_Music;
