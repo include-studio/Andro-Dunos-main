@@ -74,6 +74,7 @@ bool ModulePlayer1::Start()
 	position.y = SCREEN_HEIGHT / 3;
 
 	destroyed = false;
+	dead = false;
 	type_weapon = 1;
 	powerup = 1;
 	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
@@ -95,6 +96,7 @@ bool ModulePlayer1::Start()
 update_status ModulePlayer1::Update()
 {
 	current_time = SDL_GetTicks() - init_time;
+
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
 		if (god_mode == false) {
 			player_col->type = COLLIDER_NONE;
@@ -119,6 +121,17 @@ update_status ModulePlayer1::Update()
 			god_mode_die = false;
 			state = IDLE;
 		}	
+	}
+
+	//Dead
+	if (hp <= 0)
+	{
+		player_col->type = COLLIDER_NONE;
+	}
+	//Alive
+	if (hp > 0 && god_mode_die == false)
+	{
+		player_col->type = COLLIDER_PLAYER;
 	}
 
 	//powerup+
@@ -155,8 +168,11 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp!=7)
 		hp++;
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || shoot)
-		Shoot();
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || shoot) {
+		if(hp>0) Shoot();
+	}
+		
+		
 	
 	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
 		position.x += speedMoveShip;
@@ -234,7 +250,7 @@ update_status ModulePlayer1::Update()
 		}
 
 	}
-
+	//Satates
 	switch (state)
 	{
 	case DOWN:		
@@ -279,7 +295,7 @@ update_status ModulePlayer1::Update()
 
 	ship = animationShip->GetCurrentFrame();
 
-	if (!destroyed && dead == false)
+	if (hp > 0)														//Render Ship
 		App->render->Blit(graphics, position.x, position.y, &ship);
 	
 	sprintf_s(score_text, 10, "%7d", score);
@@ -313,17 +329,23 @@ bool ModulePlayer1::CleanUp() {
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == player_col && destroyed == false && App->fade->IsFading() == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWER_S && c2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
+	if (c1 == player_col && dead == false && App->fade->IsFading() == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWER_S && c2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;
 		animationShip->reset();
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
-		if (hp <= 0 && App->player2->hp <= 0) {
-			App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-			destroyed = true;
+
+		if (hp <= 0) {
+			if (App->player2->hp <= 0 || App->player2->IsEnabled() == false) 
+			{
+				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+				dead = true;
+			}
+			
 		}
-		else {
+
+		else { //Respawn
 			
 			god_mode_die = true;
 			state = CLEAR;
