@@ -23,8 +23,8 @@ struct Item
 	Uint32 life = 0;
 	bool fx_played = false;
 	Collider* collider = nullptr;
-	int n_collisions = 0;
-	int screen_col = 0;
+	int n_collisions;
+	int screen_col;
 
 	Item();
 	Item(const Item& p);
