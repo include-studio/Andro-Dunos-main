@@ -151,16 +151,16 @@ update_status ModuleStageClear::Update() {
 		App->render->Blit(stage_clear_tx, 0, 36, &animation_StageClear);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)) {
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))&&App->fade->IsFading()==false) {
 		switch (part_stageClear)
 		{
 		case 0:
+			part_stageClear = 1;
 			App->fade->FadeToBlack(this, App->stage4, 1);
-			part_stageClear=1;
 			break;
 		case 1:
+			part_stageClear = 0;
 			App->fade->FadeToBlack(this, App->stage1, 1);
-			part_stageClear=0;
 			break;
 			/*if (App->ui->credit == 0) {
 				App->fade->FadeToBlack(this, App->visco, 1);
