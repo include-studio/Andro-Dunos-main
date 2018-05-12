@@ -196,7 +196,7 @@ update_status ModuleMainMenu::Update()
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_2] || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))
+	if ((App->input->keyboard[SDL_SCANCODE_2] || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)) && App->input->controller2 == nullptr)
 	{
 		if (App->ui->credit >= 2) {
 			App->player2->insert2 = true;
