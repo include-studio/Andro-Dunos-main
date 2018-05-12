@@ -22,23 +22,13 @@ ModulePowerUp::ModulePowerUp()
 			if (i == 2 && j == 4) break;
 		}
 
-	if (bonus.anim.current_frame >= bonus.anim.last_frame - 1) {
-		bonus.anim.loop = false;
-		bonus.anim.PushBack({ 16 * 6,16,16,16 });
-		bonus.anim.PushBack({ 16 * 7,16,16,16 });
-		bonus.anim.PushBack({ 0,16,16,16 });
-		bonus.anim.PushBack({ 16 * 1,32,16,16 });
-		bonus.anim.PushBack({ 16 * 2,32,16,16 });
-		bonus.anim.PushBack({ 16 * 3,32,16,16 });
-		bonus.anim.PushBack({ 16 * 4,32,16,16 });
-	}
-
 	bonus.life = 5000000;
 	//bonus.anim.loop = false;
-	bonus.anim.speed = 0.7f;
+	bonus.anim.speed = 0.5f;
 	bonus.speed.y = 1;
 	bonus.speed.x = 0;
 	bonus.n_collisions = 0;
+	bonus.anim.frame = 13;
 
 	powerup_S.anim.PushBack({ 80,64,16,16 });
 	powerup_S.life = 5000000;
@@ -127,7 +117,7 @@ update_status ModulePowerUp::Update()
 		}
 		else if (SDL_GetTicks() >= it->born)
 		{
-			App->render->Blit(graphics, it->position.x, it->position.y, &(it->anim.GetCurrentFrame()));
+			App->render->Blit(graphics, it->position.x, it->position.y, &(it->anim.GetCurrentFrame(it->anim.frame)));
 
 			if (it->fx_played == false)
 			{
@@ -235,7 +225,10 @@ bool Item::Update()
 	}
 	else
 		if (anim.Finished())
-			ret = false;
+			ret = false;			
+
+	if (collider->type == COLLIDER_BONUS && anim.speed != 0.2f)
+		anim.speed = 0.2f;
 
 	if (this->collider->type != COLLIDER_ONE_UP)
 		if (screen_col == 0)
