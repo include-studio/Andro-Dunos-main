@@ -11,6 +11,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
+#include "ModuleUI.h"
 #include "SDL/include/SDL.h"
 #include <stdio.h>
 
@@ -109,7 +110,19 @@ update_status ModulePlayer1::Update()
 	}
 
 	//Respawn 
-	if (god_mode_die == true) {
+
+	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && dead == true && App->ui->credit > 0) { //Pressing 1
+		hp = 3;
+		App->ui->credit--;
+		god_mode_die = true;
+		state = CLEAR;
+		init_time = SDL_GetTicks();
+		position.x = App->render->camera.x / 3;
+		position.y = App->render->camera.y / 3 + 71;
+		dead = false;
+	}
+	
+	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_NONE;
 			if (position.x <= App->render->camera.x / 3 + 44)
@@ -126,6 +139,7 @@ update_status ModulePlayer1::Update()
 	//Dead
 	if (hp <= 0)
 	{
+		dead = true;
 		player_col->type = COLLIDER_NONE;
 	}
 	//Alive
@@ -340,7 +354,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			if (App->player2->hp <= 0 || App->player2->IsEnabled() == false) 
 			{
 				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-				dead = true;
+				
 			}
 			
 		}
