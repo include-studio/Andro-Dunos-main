@@ -124,7 +124,7 @@ update_status ModulePlayer1::Update()
 	
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
-			player_col->type = COLLIDER_NONE;
+			player_col->type = COLLIDER_DEAD;  
 			if (position.x <= App->render->camera.x / 3 + 44)
 				position.x++;
 		}
