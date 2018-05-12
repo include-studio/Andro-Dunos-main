@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Enemy_WavingShip.h"
 #include "Enemy_HorizontalRocket.h"
+#include "Enemy_GreenMiniShip.h"
 #include "Enemy_PowerUp.h"
 #include "Enemy_MiniMiniBoss.h"
 
@@ -16,7 +17,8 @@ enum ENEMY_TYPES
 	WAVINGSHIP,
 	HORIZONTALROCKET,
 	POWERUP,
-	MINIMINIBOSS
+	MINIMINIBOSS,
+	MINIGREEN
 };
 
 class Enemy;
