@@ -303,7 +303,7 @@ update_status ModuleUI::Update()
 	}
 
 	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {
-		if (App->player1->hp == 0) {// && App->player2->hp > 0
+		if (App->player1->hp <= 0) {// && App->player2->hp > 0
 			animationGameover = &gameover;
 			SDL_Rect Rect_Gameover;
 			Rect_Gameover = animationGameover->GetCurrentFrame();
@@ -319,11 +319,11 @@ update_status ModuleUI::Update()
 			press1p.loop = true;*/	
 		}
 
-		if (App->player2->hp == 0 ) { //&& App->player1->hp > 0
+		if (App->player2->hp <= 0 ) { //&& App->player1->hp > 0
 			animationGameover = &gameover;
 			SDL_Rect Rect_Gameover;
 			Rect_Gameover = animationGameover->GetCurrentFrame();
-			App->render->Blit(user_interface, 10, 20, &Rect_Gameover, 0.0f);
+			App->render->Blit(user_interface, 190, 20, &Rect_Gameover, 0.0f);
 			gameover.loop = true;
 
 			//COUNTDOWN CONTINUE

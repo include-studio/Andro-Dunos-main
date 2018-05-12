@@ -111,7 +111,7 @@ update_status ModulePlayer1::Update()
 
 	//Respawn 
 
-	if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && dead == true && App->ui->credit > 0) { //Pressing 1
+	if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A)) && dead == true && App->ui->credit > 0) { //Pressing 1
 		hp = 3;
 		App->ui->credit--;
 		god_mode_die = true;

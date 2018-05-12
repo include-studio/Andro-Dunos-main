@@ -187,6 +187,7 @@ update_status ModuleMainMenu::Update()
 	if (Num_Count.current_frame >= Num_Count.last_frame - 1) 
 	{
 			App->fade->FadeToBlack(this, App->stage1, 0.5);
+			
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_1]||SDL_GameControllerGetButton(App->input->controller1,SDL_CONTROLLER_BUTTON_A))
