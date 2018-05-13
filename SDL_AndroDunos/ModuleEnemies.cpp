@@ -8,6 +8,7 @@
 #include "Enemy_WavingShip.h"
 #include "ModulePlayer1.h"
 #include "Enemy_HorizontalRocket.h"
+#include "Enemy_GreenMiniShip.h"
 #include "Enemy_PowerUp.h"
 #include "ModulePowerUp.h"
 #include "ModulePlayer2.h"
@@ -154,6 +155,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::MINIMINIBOSS:
 			enemies[i] = new Enemy_MiniMiniBoss(info.x, info.y, info.drop);
+			break;
+		case ENEMY_TYPES::MINIGREEN1:
+			enemies[i] = new Enemy_GreenMiniShip1(info.x, info.y);
+			break;
+		case ENEMY_TYPES::MINIGREEN2:
+			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
 		}
 

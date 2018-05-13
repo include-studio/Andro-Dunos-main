@@ -34,6 +34,8 @@ struct Particle
 	Particle(const Particle& p);
 	~Particle();
 	bool Update();
+	bool blue_followDown = false;
+	bool blue_followUp = false;
 };
 
 class ModuleParticles : public Module
@@ -46,6 +48,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, OWNER owner= OWNER_PLAYER1);
 
@@ -86,6 +89,7 @@ public:
 	Particle explosion_player2;
 
 	Particle enemy_blue;
+	
 };
 
 #endif // __MODULEPARTICLES_H__
