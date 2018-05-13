@@ -156,8 +156,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::MINIMINIBOSS:
 			enemies[i] = new Enemy_MiniMiniBoss(info.x, info.y, info.drop);
 			break;
-		case ENEMY_TYPES::MINIGREEN:
-			enemies[i] = new Enemy_GreenMiniShip(info.x, info.y);
+		case ENEMY_TYPES::MINIGREEN1:
+			enemies[i] = new Enemy_GreenMiniShip1(info.x, info.y);
+			break;
+		case ENEMY_TYPES::MINIGREEN2:
+			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
 		}
 

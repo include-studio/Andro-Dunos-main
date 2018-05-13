@@ -252,7 +252,8 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) + 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) - 40);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN, 315, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 415, 33);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 415, 119);
 
 
 	App->audio->PlayMusic("assets/Audio/Stage_1__The_Moon_Loop.ogg");

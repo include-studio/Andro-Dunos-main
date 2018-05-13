@@ -2,18 +2,37 @@
 #define __ENEMY_GREENMINISHIP_H__
 
 #include "Enemy.h"
+#include "path.h"
 
-class Enemy_GreenMiniShip : public Enemy
+
+class Enemy_GreenMiniShip1 : public Enemy
 {
 private:
 
-	
+	Path path;
+	iPoint original_pos;
 	int original_y = 0;
-	Animation fly;
+	Animation left, right;
 
 public:
 
-	Enemy_GreenMiniShip(int x, int y);
+	Enemy_GreenMiniShip1(int x, int y);
+
+	void Move();
+};
+
+class Enemy_GreenMiniShip2 : public Enemy
+{
+private:
+
+	Path path;
+	iPoint original_pos;
+	int original_y = 0;
+	Animation left, right;
+
+public:
+
+	Enemy_GreenMiniShip2(int x, int y);
 
 	void Move();
 };
