@@ -252,7 +252,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) + 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) - 40);
 
-	
+	//Stage 4
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 405, 53);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 425, 53);
