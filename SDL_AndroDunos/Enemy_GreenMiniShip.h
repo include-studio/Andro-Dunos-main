@@ -12,7 +12,7 @@ private:
 	Path path;
 	iPoint original_pos;
 	int original_y = 0;
-	Animation left, right;
+	Animation left, right, right_go;
 
 public:
 
@@ -28,7 +28,7 @@ private:
 	Path path;
 	iPoint original_pos;
 	int original_y = 0;
-	Animation left, right;
+	Animation left, right, right_go;
 
 public:
 
