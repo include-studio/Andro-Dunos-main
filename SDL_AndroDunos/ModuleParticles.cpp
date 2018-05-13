@@ -255,6 +255,7 @@ ModuleParticles::ModuleParticles()
 	enemy_blue.anim.speed = 0.2f;
 	enemy_blue.life = 1500;
 	enemy_blue.speed.x = -2;
+	
 
 	
 }
@@ -341,6 +342,7 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
+
 void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, OWNER owner)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -423,6 +425,24 @@ bool Particle::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+
+	if (App->player1->position.y > position.y && blue_followUp == false)
+	{
+		position.y += 1;
+		blue_followUp = true;
+	}
+
+	if (App->player1->position.y < position.y && blue_followDown == false)
+	{
+		position.y -= 1;
+		blue_followDown = true;
+	}
+
+	if (blue_followUp == true) position.y += 1;
+	if (blue_followDown == true ) position.y -= 1;
+		
+
+	
 
 	return ret;
 }
