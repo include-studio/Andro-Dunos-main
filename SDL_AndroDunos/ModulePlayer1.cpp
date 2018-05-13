@@ -99,8 +99,9 @@ update_status ModulePlayer1::Update()
 	current_time = SDL_GetTicks() - init_time;
 
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
+		
 		if (god_mode == false) {
-			player_col->type = COLLIDER_NONE;
+			player_col->type = COLLIDER_DEAD;
 			god_mode = true;
 		}
 		else if (god_mode == true) {
@@ -143,7 +144,7 @@ update_status ModulePlayer1::Update()
 		player_col->type = COLLIDER_NONE;
 	}
 	//Alive
-	if (hp > 0 && god_mode_die == false)
+	if (hp > 0 && god_mode_die == false && god_mode == false)
 	{
 		player_col->type = COLLIDER_PLAYER;
 	}
