@@ -17,8 +17,11 @@ private:
 public:
 
 	Enemy_GreenMiniShip1(int x, int y);
-
+	void Shoot();
+	bool shoot = 0;
 	void Move();
+	int current_time;
+	int init_time = 0;
 };
 
 class Enemy_GreenMiniShip2 : public Enemy
@@ -33,8 +36,11 @@ private:
 public:
 
 	Enemy_GreenMiniShip2(int x, int y);
-
+	void Shoot();
+	bool shoot = 0;
 	void Move();
+	int current_time;
+	int init_time = 0;
 };
 
 #endif // __ENEMY_GREENMINISHIP_H__

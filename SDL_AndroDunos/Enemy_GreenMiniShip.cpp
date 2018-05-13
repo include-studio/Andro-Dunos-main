@@ -1,6 +1,9 @@
 #include "Application.h"
 #include "Enemy_GreenMiniShip.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
+#include "SDL/include/SDL.h"
+
 #include "Globals.h"
 
 
@@ -36,13 +39,25 @@ Enemy_GreenMiniShip1::Enemy_GreenMiniShip1(int x, int y) : Enemy(x, y)				//1rst
 
 	original_pos.x = x;
 	original_pos.y = y;
+
+	init_time = SDL_GetTicks(); //Timer
 }
 
 void Enemy_GreenMiniShip1::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+	current_time = SDL_GetTicks() - init_time; //Set Time 
+	if (current_time >= 1000 && shoot == false) {
+		Shoot();
+		shoot = true;
+	}
 }
-																		
+													
+void Enemy_GreenMiniShip1::Shoot()
+{
+	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
+}
+
 Enemy_GreenMiniShip2::Enemy_GreenMiniShip2(int x, int y) : Enemy(x, y)				//2nd path DOWN to UP
 {
 	left.PushBack({ 0,165,16,16 });
@@ -75,9 +90,19 @@ Enemy_GreenMiniShip2::Enemy_GreenMiniShip2(int x, int y) : Enemy(x, y)				//2nd 
 
 	original_pos.x = x;
 	original_pos.y = y;
+	init_time = SDL_GetTicks(); //Timer
 }
 
 void Enemy_GreenMiniShip2::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+	current_time = SDL_GetTicks() - init_time; //Set Time 
+	if (current_time >= 1000 && shoot == false) {
+		Shoot();
+		shoot = true;
+	}
+}
+void Enemy_GreenMiniShip2::Shoot()
+{
+	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
 }
