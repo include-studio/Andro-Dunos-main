@@ -135,6 +135,17 @@ bool ModuleStage4::Start() {
 	App->collision->AddCollider({ 7347,-40,65,100 }, COLLIDER_WALL4);
 	App->collision->AddCollider({ 7412,-65,145,100 }, COLLIDER_WALL4);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 405, 53);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 425, 53);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 445, 53);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 465, 53);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 485, 53);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 405, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 425, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 445, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 465, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 485, 170);
 
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
@@ -154,7 +165,7 @@ bool ModuleStage4::Start() {
 	App->player1->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
-	/*App->enemies->Enable();*/
+	App->enemies->Enable();
 	App->powerup->Enable();
 
 	if (App->player2->insert2 == true)

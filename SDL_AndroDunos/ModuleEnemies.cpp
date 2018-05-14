@@ -103,6 +103,8 @@ bool ModuleEnemies::CleanUp()
 	App->audio->UnLoadFx(big_explosion_fx);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
+		queue[i].type = NO_TYPE;
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
 		if (enemies[i] != nullptr)
 		{
