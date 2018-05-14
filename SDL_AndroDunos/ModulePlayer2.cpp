@@ -141,9 +141,10 @@ update_status ModulePlayer2::Update()
 	{
 		dead = true;
 		player_col->type = COLLIDER_NONE;
+	
 	}
 	//Alive
-	if (hp > 0 && god_mode_die == false)
+	if (hp > 0 && god_mode_die == false && god_mode == false)
 	{
 		player_col->type = COLLIDER_PLAYER;
 	}
