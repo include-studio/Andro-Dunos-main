@@ -25,7 +25,6 @@ ModulePowerUp::ModulePowerUp()
 		}
 
 	bonus.life = 5000000;
-	//bonus.anim.loop = false;
 	bonus.anim.speed = 0.5f;
 	bonus.speed.y = 1;
 	bonus.speed.x = 0;
@@ -38,11 +37,6 @@ ModulePowerUp::ModulePowerUp()
 	powerup_S.speed.x = 0;
 	powerup_S.n_collisions = 0;
 
-	/*for (int i = 2; i < 4; i++)
-		for (int j = 5; j < 8; j++) {
-			one_up.anim.PushBack({ 16 * j,16 * i,16,16 }); //God knows why doesnt work with that for
-			if (i == 3 && j == 6) break;
-		}*/
 	one_up.anim.PushBack({ 16 * 5,  16 * 2, 16, 16 });
 	one_up.anim.PushBack({ 16 * 6, 16 * 2, 16, 16 });
 	one_up.anim.PushBack({ 16 * 7, 16 * 2, 16, 16 });
