@@ -426,7 +426,7 @@ bool Particle::Update()
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	if (App->player1->position.y > position.y && blue_followUp == false)
+	/*if (App->player1->position.y > position.y && blue_followUp == false)
 	{
 		position.y += 1;
 		blue_followUp = true;
@@ -439,7 +439,7 @@ bool Particle::Update()
 	}
 
 	if (blue_followUp == true) position.y += 1;
-	if (blue_followDown == true ) position.y -= 1;
+	if (blue_followDown == true ) position.y -= 1;*/
 		
 
 	
