@@ -42,6 +42,7 @@ bool ModuleShield::Start() {
 	shield2_col = App->collision->AddCollider({ position2.x,position2.y, 16,16 }, COLLIDER_SHIELD, this);
 
 	//reset var
+	hp = 5;
 
 	return ret;
 }
@@ -88,6 +89,12 @@ update_status ModuleShield::Update() {
 	shield1_col->SetPos(position1.x, position1.y);
 	shield2_col->SetPos(position2.x, position2.y);
 
+	if (hp <= 0) {
+		this->Disable();
+		shield1_col->to_delete = true;
+		shield2_col->to_delete = true;
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -95,11 +102,16 @@ bool ModuleShield::CleanUp() {
 	//unload assets
 	App->textures->Unload(tx_shield);
 
+
+
 	return true;
 }
 
 void ModuleShield::OnCollision(Collider* c1, Collider* c2) {
 	//logic collision
 		//hp shields
+	if (c1->type == COLLIDER_SHIELD)
+		if (c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_ENEMY_SHOT)
+			hp--;
 }
 

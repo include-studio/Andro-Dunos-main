@@ -39,6 +39,8 @@ private:
 
 	float rotation = -1.0f;
 
+	int hp = 5;
+
 
 };
 #endif // !__MODULESHIELD_H__
