@@ -100,6 +100,9 @@
     <ClCompile Include="ModuleShield.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_Column.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -215,6 +218,9 @@
     </ClInclude>
     <ClInclude Include="ModuleShield.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Column.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
