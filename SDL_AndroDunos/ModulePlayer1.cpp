@@ -12,7 +12,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 #include "ModuleUI.h"
-#include "ModuleShield.h"
+#include "ModuleShieldPlayer1.h"
 #include "SDL/include/SDL.h"
 #include <stdio.h>
 
@@ -69,8 +69,6 @@ bool ModulePlayer1::Start()
 	bool ret = true;
 
 	init_time = SDL_GetTicks(); //Timer
-	
-	App->shield->Enable();
 
 	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = 0;
@@ -99,7 +97,7 @@ bool ModulePlayer1::CleanUp() {
 	App->textures->Unload(graphics);
 	App->collision->Disable();
 	App->particles->Disable();
-	App->shield->Disable();
+	App->shield1->Disable();
 	App->fonts->UnLoad(font_score);
 	App->audio->UnLoadFx(type_change);
 	App->audio->UnLoadFx(explosion_player);
@@ -149,8 +147,8 @@ update_status ModulePlayer1::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;  
-			if (position.x <= App->render->camera.x / 3 + 44)
-				position.x++;
+			/*if (position.x <= App->render->camera.x / 3 + 44)
+				position.x++;*/
 		}
 		
 		else if(god_mode == false) {

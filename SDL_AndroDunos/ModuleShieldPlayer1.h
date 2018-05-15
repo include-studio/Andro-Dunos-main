@@ -1,5 +1,5 @@
-#ifndef __MODULESHIELD_H__
-#define __MODULESHIELD_H__
+#ifndef __ModuleShieldPlayer1_H__
+#define __ModuleShieldPlayer1_H__
 
 #include "Module.h"
 #include "p2Point.h"
@@ -8,11 +8,11 @@
 struct SDL_Texture;
 struct Collider;
 
-class ModuleShield :public Module {
+class ModuleShieldPlayer1 :public Module {
 
 public: 
-	ModuleShield();
-	~ModuleShield();
+	ModuleShieldPlayer1();
+	~ModuleShieldPlayer1();
 
 	bool Start();
 	update_status Update();
@@ -43,4 +43,4 @@ private:
 
 
 };
-#endif // !__MODULESHIELD_H__
+#endif // !__ModuleShieldPlayer1_H__

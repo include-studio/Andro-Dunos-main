@@ -11,6 +11,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer1.h"
 #include "ModuleFonts.h"
+#include "ModuleShieldPlayer2.h"
 #include <stdio.h>
 #include "Animation.h"
 #include "ModuleUI.h"
@@ -125,11 +126,11 @@ update_status ModulePlayer2::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;
-			if (position.x <= App->render->camera.x / 3 + 44)
-				position.x++;
+			//if (position.x <= App->render->camera.x / 3 + 44)
+			//	position.x++;
 		}
 
-		else {
+		else if (god_mode == false) {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode_die = false;
 			state = IDLE;
@@ -322,8 +323,9 @@ update_status ModulePlayer2::Update()
 
 bool ModulePlayer2::CleanUp() {
 	App->textures->Unload(graphics);
-	App->collision->CleanUp();
-	App->particles->CleanUp();
+	App->collision->Disable();
+	App->particles->Disable();
+	App->shield2->Disable();
 	//App->fonts->UnLoad(font_score);
 	App->audio->UnLoadFx(type_change);
 	App->audio->UnLoadFx(explosion_player);

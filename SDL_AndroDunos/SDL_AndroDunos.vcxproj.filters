@@ -97,7 +97,10 @@
     <ClCompile Include="Enemy_GreenMiniShip.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleShield.cpp">
+    <ClCompile Include="ModuleShieldPlayer1.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShieldPlayer2.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Column.cpp">
@@ -216,7 +219,10 @@
     <ClInclude Include="Enemy_GreenMiniShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleShield.h">
+    <ClInclude Include="ModuleShieldPlayer1.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleShieldPlayer2.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Column.h">

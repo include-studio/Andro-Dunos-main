@@ -167,9 +167,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::COLUMN:
 			enemies[i] = new Enemy_Column(info.x, info.y);
+		case ENEMY_TYPES::WAVINGSHIP2:
+			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
 		}
-
 	}
 }
 

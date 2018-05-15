@@ -11,7 +11,8 @@
 #include "ModuleInput.h"
 #include "ModuleStage1.h"
 #include "ModuleUI.h"
-#include "ModuleShield.h"
+#include "ModuleShieldPlayer1.h"
+#include "ModuleShieldPlayer2.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -24,7 +25,6 @@ ModulePowerUp::ModulePowerUp()
 		}
 
 	bonus.life = 5000000;
-	//bonus.anim.loop = false;
 	bonus.anim.speed = 0.5f;
 	bonus.speed.y = 1;
 	bonus.speed.x = 0;
@@ -37,11 +37,6 @@ ModulePowerUp::ModulePowerUp()
 	powerup_S.speed.x = 0;
 	powerup_S.n_collisions = 0;
 
-	/*for (int i = 2; i < 4; i++)
-		for (int j = 5; j < 8; j++) {
-			one_up.anim.PushBack({ 16 * j,16 * i,16,16 }); //God knows why doesnt work with that for
-			if (i == 3 && j == 6) break;
-		}*/
 	one_up.anim.PushBack({ 16 * 5,  16 * 2, 16, 16 });
 	one_up.anim.PushBack({ 16 * 6, 16 * 2, 16, 16 });
 	one_up.anim.PushBack({ 16 * 7, 16 * 2, 16, 16 });
@@ -163,8 +158,8 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				if (c1->type == COLLIDER_POWER_S) {
 					App->player1->powerup++; 
 					App->audio->PlayFx(powerup_fx);
-					if (App->shield->IsEnabled() == false)
-						App->shield->Enable();
+					if (App->shield1->IsEnabled() == false)
+						App->shield1->Enable();
 				}
 				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);
@@ -181,6 +176,8 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				if (c1->type == COLLIDER_POWER_S) {
 					App->player2->powerup++;
 					App->audio->PlayFx(powerup_fx);
+					if (App->shield2->IsEnabled() == false)
+						App->shield2->Enable();
 				}
 				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);
@@ -235,17 +232,17 @@ bool Item::Update()
 
 	if (this->collider->type != COLLIDER_ONE_UP)
 		if (screen_col == 0)
-			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH + 16)
+			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH)
 				screen_col++;
 
 		if (screen_col > 0) {
 			if (n_collisions < 6) {
-				if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT) {
+				if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT - this->anim.frames->h) {
 					if (speed.y == -1)speed.y = 1;
 					else speed.y = -1;
 					n_collisions++;
 				}
-				if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH + 16 || position.x < App->render->camera.x / 3) {
+				if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w || position.x < App->render->camera.x / 3) {
 					if (speed.x == 2) {
 						speed.x = 0;
 						n_collisions++;
