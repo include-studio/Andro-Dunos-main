@@ -34,6 +34,8 @@ private:
 	Animation s4;//back
 	SDL_Texture* tx_shield = nullptr;
 
+	float rotation = -1.0f;
+
 
 };
 #endif // !__MODULESHIELD_H__

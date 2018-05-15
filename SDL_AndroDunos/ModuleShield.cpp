@@ -46,6 +46,10 @@ update_status ModuleShield::Update() {
 
 	switch (App->player1->type_weapon) {
 	case 1:
+		position1.x=App->player1->position.x + int(27.0f * cosf(rotation))+15;
+		position1.y = App->player1->position.y + int(27.0f * sinf(rotation));
+		rotation += 0.13f;
+		App->render->Blit(tx_shield, position1.x, position1.y, &s3.GetCurrentFrame());
 		break;
 	case 2:
 		position1.x = App->player1->position.x + 16;
