@@ -7,6 +7,8 @@ void log(const char file[], int line, const char* format, ...);
 #define EXIT_FAILURE 1
 #define EXIT_SUCCESS 0
 
+#define PI 3.1415
+
 #define MIN( a, b ) ( ((a) < (b)) ? (a) : (b) )
 // #define MAX( a, b ) ( ((a) > (b)) ? (a) : (b) ) not used for the moment
 
