@@ -14,6 +14,7 @@ public:
 	float current_frame = 0;
 	int frame=-1;
 
+
 private:
 	int loops = 0;
 

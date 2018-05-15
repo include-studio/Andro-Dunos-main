@@ -5,6 +5,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
+#include "ModuleCollision.h"
 
 ModuleShield::ModuleShield() {
 	//animation and states define
@@ -36,6 +37,9 @@ bool ModuleShield::Start() {
 	bool ret = true;
 	//load assets
 	tx_shield = App->textures->Load("assets/Sprites/shield.png");
+
+	shield1_col = App->collision->AddCollider({ position1.x,position1.y, 16,16 }, COLLIDER_SHIELD, this);
+	shield2_col = App->collision->AddCollider({ position2.x,position2.y, 16,16 }, COLLIDER_SHIELD, this);
 
 	//reset var
 
@@ -81,7 +85,8 @@ update_status ModuleShield::Update() {
 		App->render->Blit(tx_shield, position2.x, position2.y, &shield_b);
 		break;
 	}
-	
+	shield1_col->SetPos(position1.x, position1.y);
+	shield2_col->SetPos(position2.x, position2.y);
 
 	return UPDATE_CONTINUE;
 }

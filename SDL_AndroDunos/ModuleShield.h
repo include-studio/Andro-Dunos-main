@@ -34,6 +34,9 @@ private:
 	Animation s4;//back
 	SDL_Texture* tx_shield = nullptr;
 
+	Collider* shield1_col = nullptr;
+	Collider* shield2_col = nullptr;
+
 	float rotation = -1.0f;
 
 
