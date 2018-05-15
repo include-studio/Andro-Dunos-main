@@ -12,6 +12,7 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 #include "ModuleUI.h"
+#include "ModuleShield.h"
 #include "SDL/include/SDL.h"
 #include <stdio.h>
 
@@ -69,6 +70,7 @@ bool ModulePlayer1::Start()
 
 	init_time = SDL_GetTicks(); //Timer
 	
+	App->shield->Enable();
 
 	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = 0;
@@ -91,6 +93,27 @@ bool ModulePlayer1::Start()
 	type_change = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
 
 	return ret;
+}
+
+bool ModulePlayer1::CleanUp() {
+	App->textures->Unload(graphics);
+	App->collision->Disable();
+	App->particles->Disable();
+	App->shield->Disable();
+	App->fonts->UnLoad(font_score);
+	App->audio->UnLoadFx(type_change);
+	App->audio->UnLoadFx(explosion_player);
+	App->audio->UnLoadFx(laser4);
+	App->audio->UnLoadFx(laser3);
+	App->audio->UnLoadFx(laser2);
+	App->audio->UnLoadFx(laser1);
+
+
+
+	if (player_col != nullptr)
+		player_col->to_delete = true;
+
+	return true;
 }
 
 // Update: draw background
@@ -322,25 +345,6 @@ update_status ModulePlayer1::Update()
 	return UPDATE_CONTINUE;
 }
 
-bool ModulePlayer1::CleanUp() {
-	App->textures->Unload(graphics);
-	App->collision->CleanUp();
-	App->particles->CleanUp();
-	App->fonts->UnLoad(font_score);
-	App->audio->UnLoadFx(type_change);
-	App->audio->UnLoadFx(explosion_player);
-	App->audio->UnLoadFx(laser4);
-	App->audio->UnLoadFx(laser3);
-	App->audio->UnLoadFx(laser2);
-	App->audio->UnLoadFx(laser1);
-
-
-
-	if (player_col != nullptr)
-		player_col->to_delete = true;
-
-	return true;
-}
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {

@@ -32,6 +32,17 @@ public:
 	int speedMoveShip = 2;
 	Animation *animationShip;
 
+	iPoint position;
+
+	uint score = 0;
+
+	int hp;
+	int powerup = 1;
+
+	bool god_mode = false;
+
+private:
+
 	int counterMoved = 0;
 	int counterMoved2 = 0;
 	int counterReturn = 0;
@@ -44,14 +55,13 @@ public:
 	Animation downidle;
 	Animation down;
 	Animation clear;
-	iPoint position;
+	
 	Collider* player_col = nullptr;
 
 	uint laser1, laser2, laser3, laser4, explosion_player, type_change;
 
 	bool destroyed = false;
 	bool dead = false;
-	bool god_mode = false;
 	bool god_mode_die = false;
 
 	bool shoot = false;
@@ -60,14 +70,14 @@ public:
 	bool stillpressed_x = false;
 
 	int type_weapon = 0;
-	int powerup=1;
-	int hp;
+	
+
 
 	int current_time = 0;
 	int init_time = 0;
 
 	int font_score = 1;
 	char score_text[10];
-	uint score = 0;
+	
 };
 #endif
