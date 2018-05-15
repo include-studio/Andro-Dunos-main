@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 23
+#define NUM_MODULES 24
 
 
 class ModuleWindow;
@@ -30,6 +30,7 @@ class ModuleFonts;
 class ModulePowerUp;
 class ModuleUI;
 class ModuleSubMainMenu;
+class ModuleShield;
 
 class Application
 {
@@ -59,6 +60,7 @@ public:
 	ModulePowerUp* powerup = nullptr;
 	ModuleUI* ui = nullptr;
 	ModuleSubMainMenu* submainmenu = nullptr;
+	ModuleShield* shield = nullptr;
 
 public:
 

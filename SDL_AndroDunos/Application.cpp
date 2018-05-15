@@ -22,6 +22,7 @@
 #include "ModulePowerUp.h"
 #include "ModuleUI.h"
 #include "ModuleSubMainMenu.h"
+#include "ModuleShield.h"
 
 
 
@@ -50,6 +51,7 @@ Application::Application()
 	modules[20] = powerup = new ModulePowerUp();
 	modules[21] = ui = new ModuleUI();
 	modules[22] = submainmenu = new ModuleSubMainMenu();
+	modules[23] = shield = new ModuleShield();
 	
 }	
 
