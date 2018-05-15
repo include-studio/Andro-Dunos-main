@@ -102,8 +102,6 @@ bool ModuleShield::CleanUp() {
 	//unload assets
 	App->textures->Unload(tx_shield);
 
-
-
 	return true;
 }
 
