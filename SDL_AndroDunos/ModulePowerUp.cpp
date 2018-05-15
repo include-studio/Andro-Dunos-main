@@ -232,17 +232,17 @@ bool Item::Update()
 
 	if (this->collider->type != COLLIDER_ONE_UP)
 		if (screen_col == 0)
-			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH + 16)
+			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH)
 				screen_col++;
 
 		if (screen_col > 0) {
 			if (n_collisions < 6) {
-				if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT) {
+				if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT - this->anim.frames->h) {
 					if (speed.y == -1)speed.y = 1;
 					else speed.y = -1;
 					n_collisions++;
 				}
-				if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH + 16 || position.x < App->render->camera.x / 3) {
+				if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w || position.x < App->render->camera.x / 3) {
 					if (speed.x == 2) {
 						speed.x = 0;
 						n_collisions++;
