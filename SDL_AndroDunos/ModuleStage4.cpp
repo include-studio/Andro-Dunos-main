@@ -151,13 +151,13 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 575, 43);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 595, 43);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 625, 43);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 635, 43);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 645, 43);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 555, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 575, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 595, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 625, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 635, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 645, 200);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 750, 90);
 
@@ -170,6 +170,8 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1060, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1071, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1083, 90);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1190, 90);
 
 
 	//reset variables (camera position, players position...)

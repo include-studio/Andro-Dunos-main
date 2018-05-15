@@ -165,7 +165,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
 		}
-
+		case ENEMY_TYPES::WAVINGSHIP2:
+			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
+			break;
+	}
 	}
 }
 
