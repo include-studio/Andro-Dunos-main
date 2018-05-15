@@ -124,7 +124,7 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
 		
 		if (god_mode == false) {
-			player_col->type = COLLIDER_DEAD;
+			player_col->type = COLLIDER_NONE;
 			god_mode = true;
 		}
 		else if (god_mode == true) {
@@ -153,7 +153,7 @@ update_status ModulePlayer1::Update()
 				position.x++;
 		}
 		
-		else {
+		else if(god_mode == false) {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode_die = false;
 			state = IDLE;
@@ -365,6 +365,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		}
 
 		else { //Respawn
+			
 			
 			god_mode_die = true;
 			state = CLEAR;
