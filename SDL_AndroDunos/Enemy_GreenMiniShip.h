@@ -8,10 +8,12 @@
 class Enemy_GreenMiniShip1 : public Enemy
 {
 private:
+	float wave = 1.0f;
+	int original_y = 0;
+	int original_x = 0;
 
 	Path path;
 	iPoint original_pos;
-	int original_y = 0;
 	Animation left, right, right_go;
 
 public:

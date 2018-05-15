@@ -50,7 +50,16 @@ void Enemy_GreenMiniShip1::Move()
 	if (current_time >= 1000 && shoot == false) {
 		Shoot();
 		shoot = true;
+		
 	}
+	
+	
+	/*wave -= 0.05f;
+	position.y = original_pos.y - int(25.0f * sinf(wave));
+	*/
+	
+	
+	position.x -= 1;
 }
 													
 void Enemy_GreenMiniShip1::Shoot()
