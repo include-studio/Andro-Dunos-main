@@ -130,7 +130,7 @@ update_status ModulePlayer2::Update()
 			//	position.x++;
 		}
 
-		else {
+		else if (god_mode == false) {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode_die = false;
 			state = IDLE;
