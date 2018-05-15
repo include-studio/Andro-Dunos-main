@@ -33,7 +33,7 @@ Enemy_GreenMiniShip1::Enemy_GreenMiniShip1(int x, int y) : Enemy(x, y)				//1rst
 
 	path.PushBack({ -2.0f, +0.3f }, 50, &left);
 	path.PushBack({ +2.0f, +0.5f }, 20, &right);
-	path.PushBack({ +3.0f, +0.8f }, 5000, &right_go);
+	path.PushBack({ +3.0f, +1.3f }, 5000, &right_go);
 
 	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -93,7 +93,7 @@ Enemy_GreenMiniShip2::Enemy_GreenMiniShip2(int x, int y) : Enemy(x, y)				//2nd 
 
 	path.PushBack({ -2.0f, -0.3f }, 50, &left);
 	path.PushBack({ +2.0f, -0.5f }, 20, &right);
-	path.PushBack({ +3.0f, -0.5f }, 5000, &right_go);
+	path.PushBack({ +3.0f, -1.3f }, 5000, &right_go);
 
 	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
