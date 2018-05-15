@@ -135,29 +135,29 @@ bool ModuleStage4::Start() {
 	App->collision->AddCollider({ 7347,-40,65,100 }, COLLIDER_WALL4);
 	App->collision->AddCollider({ 7412,-65,145,100 }, COLLIDER_WALL4);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 405, 33);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 425, 33);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 445, 33);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 465, 33);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 485, 33);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 405, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 425, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 445, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 465, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 485, 30);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 405, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 425, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 445, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 465, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 485, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 405, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 425, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 445, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 465, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 485, 197);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 555, 43);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 575, 43);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 595, 43);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 625, 43);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 645, 43);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 555, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 575, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 595, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 625, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 645, 40);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 555, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 575, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 595, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 625, 200);
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 645, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 555, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 575, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 595, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 625, 197);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN2, 645, 197);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 750, 90);
 
@@ -172,6 +172,12 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1083, 90);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1190, 90);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1500, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1540, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1580, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
+
 
 
 	//reset variables (camera position, players position...)

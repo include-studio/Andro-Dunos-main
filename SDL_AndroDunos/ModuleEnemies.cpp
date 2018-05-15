@@ -149,6 +149,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::WAVINGSHIP:
 			enemies[i] = new Enemy_WavingShip(info.x, info.y, info.drop);
 			break;
+		case ENEMY_TYPES::WAVINGSHIP2:
+			enemies[i] = new Enemy_WavingShip2(info.x, info.y, info.drop);
+			break;
 		case ENEMY_TYPES::HORIZONTALROCKET:
 			enemies[i] = new Enemy_HorizontalRocket(info.x, info.y);
 			break;
@@ -165,11 +168,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
 		}
-		case ENEMY_TYPES::WAVINGSHIP2:
-			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
-			break;
+		
 	}
-	}
+	
 }
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
