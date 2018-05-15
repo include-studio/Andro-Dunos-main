@@ -38,6 +38,7 @@ public:
 
 	int hp;
 	int powerup = 1;
+	int type_weapon = 0;
 
 	bool god_mode = false;
 
@@ -68,10 +69,6 @@ private:
 	bool change = false;
 	bool stillpressed_a = false;
 	bool stillpressed_x = false;
-
-	int type_weapon = 0;
-	
-
 
 	int current_time = 0;
 	int init_time = 0;
