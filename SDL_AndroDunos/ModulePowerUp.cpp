@@ -11,7 +11,8 @@
 #include "ModuleInput.h"
 #include "ModuleStage1.h"
 #include "ModuleUI.h"
-#include "ModuleShield.h"
+#include "ModuleShieldPlayer1.h"
+#include "ModuleShieldPlayer2.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -163,8 +164,8 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				if (c1->type == COLLIDER_POWER_S) {
 					App->player1->powerup++; 
 					App->audio->PlayFx(powerup_fx);
-					if (App->shield->IsEnabled() == false)
-						App->shield->Enable();
+					if (App->shield1->IsEnabled() == false)
+						App->shield1->Enable();
 				}
 				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);
@@ -181,6 +182,8 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 				if (c1->type == COLLIDER_POWER_S) {
 					App->player2->powerup++;
 					App->audio->PlayFx(powerup_fx);
+					if (App->shield2->IsEnabled() == false)
+						App->shield2->Enable();
 				}
 				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);

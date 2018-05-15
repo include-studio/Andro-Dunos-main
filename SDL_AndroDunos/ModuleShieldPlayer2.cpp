@@ -1,13 +1,12 @@
 #include "Globals.h"
-#include "ModuleShield.h"
+#include "ModuleShieldPlayer2.h"
 #include "Application.h"
-#include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 
-ModuleShield::ModuleShield() {
+ModuleShieldPlayer2::ModuleShieldPlayer2() {
 	//animation and states define
 	//p1.PushBack({})
 	for (int i = 0; i < 6; i++) {
@@ -31,9 +30,9 @@ ModuleShield::ModuleShield() {
 
 }
 
-ModuleShield::~ModuleShield() {}
+ModuleShieldPlayer2::~ModuleShieldPlayer2() {}
 
-bool ModuleShield::Start() {
+bool ModuleShieldPlayer2::Start() {
 	bool ret = true;
 	//load assets
 	tx_shield = App->textures->Load("assets/Sprites/shield.png");
@@ -47,41 +46,41 @@ bool ModuleShield::Start() {
 	return ret;
 }
 
-update_status ModuleShield::Update() {
+update_status ModuleShieldPlayer2::Update() {
 
-	switch (App->player1->type_weapon) {
+	switch (App->player2->type_weapon) {
 	case 1:
-		position1.x=App->player1->position.x + int(27.0f * cosf(rotation))+15;
-		position1.y = App->player1->position.y + int(27.0f * sinf(rotation));
-		position2.x = App->player1->position.x + int(27.0f * cosf(rotation+PI)) + 15;
-		position2.y = App->player1->position.y + int(27.0f * sinf(rotation+PI));
+		position1.x=App->player2->position.x + int(27.0f * cosf(rotation))+15;
+		position1.y = App->player2->position.y + int(27.0f * sinf(rotation));
+		position2.x = App->player2->position.x + int(27.0f * cosf(rotation+PI)) + 15;
+		position2.y = App->player2->position.y + int(27.0f * sinf(rotation+PI));
 		rotation += 0.13f;
 		App->render->Blit(tx_shield, position1.x, position1.y, &s3.GetCurrentFrame());
 		App->render->Blit(tx_shield, position2.x, position2.y, &s3.GetCurrentFrame());
 		break;
 	case 2:
-		position1.x = App->player1->position.x + 16;
-		position1.y = App->player1->position.y - 15;
-		position2.x = App->player1->position.x + 16;
-		position2.y = App->player1->position.y + 20;
+		position1.x = App->player2->position.x + 16;
+		position1.y = App->player2->position.y - 15;
+		position2.x = App->player2->position.x + 16;
+		position2.y = App->player2->position.y + 20;
 		App->render->Blit(tx_shield, position1.x, position1.y, &s2u.GetCurrentFrame());
 		App->render->Blit(tx_shield, position2.x, position2.y, &s2d.GetCurrentFrame());
 		break;
 	case 3:
 		SDL_Rect shield_f = s3.GetCurrentFrame(); //in this case we use rects because 2 objects use de same animation, so, if we put GetCurrentFrame() in blit the one shield will be one frame next the other
-		position1.x = App->player1->position.x + 36;
-		position1.y = App->player1->position.y - 8;
-		position2.x = App->player1->position.x + 36;
-		position2.y = App->player1->position.y + 14;
+		position1.x = App->player2->position.x + 36;
+		position1.y = App->player2->position.y - 8;
+		position2.x = App->player2->position.x + 36;
+		position2.y = App->player2->position.y + 14;
 		App->render->Blit(tx_shield, position1.x, position1.y, &shield_f);
 		App->render->Blit(tx_shield, position2.x, position2.y, &shield_f);
 		break;
 	case 4:
 		SDL_Rect shield_b = s4.GetCurrentFrame(); 
-		position1.x = App->player1->position.x -2;
-		position1.y = App->player1->position.y - 8;
-		position2.x = App->player1->position.x -2;
-		position2.y = App->player1->position.y + 14;
+		position1.x = App->player2->position.x -2;
+		position1.y = App->player2->position.y - 8;
+		position2.x = App->player2->position.x -2;
+		position2.y = App->player2->position.y + 14;
 		App->render->Blit(tx_shield, position1.x, position1.y, &shield_b);
 		App->render->Blit(tx_shield, position2.x, position2.y, &shield_b);
 		break;
@@ -98,14 +97,14 @@ update_status ModuleShield::Update() {
 	return UPDATE_CONTINUE;
 }
 
-bool ModuleShield::CleanUp() {
+bool ModuleShieldPlayer2::CleanUp() {
 	//unload assets
 	App->textures->Unload(tx_shield);
 
 	return true;
 }
 
-void ModuleShield::OnCollision(Collider* c1, Collider* c2) {
+void ModuleShieldPlayer2::OnCollision(Collider* c1, Collider* c2) {
 	//logic collision
 		//hp shields
 	if (c1->type == COLLIDER_SHIELD)

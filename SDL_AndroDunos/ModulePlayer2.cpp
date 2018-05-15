@@ -11,6 +11,7 @@
 #include "ModuleAudio.h"
 #include "ModulePlayer1.h"
 #include "ModuleFonts.h"
+#include "ModuleShieldPlayer2.h"
 #include <stdio.h>
 #include "Animation.h"
 #include "ModuleUI.h"
@@ -74,6 +75,7 @@ bool ModulePlayer2::Start()
 	position.y = SCREEN_HEIGHT * 2 / 3;
 
 	init_time = SDL_GetTicks(); //Timer
+	App->shield2->Enable();
 
 	destroyed = false;
 	dead = false;
@@ -322,8 +324,9 @@ update_status ModulePlayer2::Update()
 
 bool ModulePlayer2::CleanUp() {
 	App->textures->Unload(graphics);
-	App->collision->CleanUp();
-	App->particles->CleanUp();
+	App->collision->Disable();
+	App->particles->Disable();
+	App->shield2->Disable();
 	//App->fonts->UnLoad(font_score);
 	App->audio->UnLoadFx(type_change);
 	App->audio->UnLoadFx(explosion_player);
