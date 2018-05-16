@@ -352,7 +352,17 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 		if (hp <= 0) {
 			if (App->player1->hp <= 0 || App->player1->IsEnabled() == false) 
 			{
-				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+				switch (App->player1->part_stagePlayer = 1)
+				{
+				case 0:
+					App->player1->part_stagePlayer= 1;
+					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+					break;
+				case 1:
+					App->player1->part_stagePlayer = 0;
+					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
+					break;
+				}
 			
 			}
 			
