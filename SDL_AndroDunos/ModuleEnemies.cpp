@@ -173,6 +173,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Column(info.x, info.y);
 		case ENEMY_TYPES::TINYREDSHIP:
 			enemies[i] = new Enemy_TinyRedShip(info.x, info.y);
+		case ENEMY_TYPES::TINYREDSHIP2:
+			enemies[i] = new Enemy_TinyRedShip2(info.x, info.y);
 		}
 		
 	}	

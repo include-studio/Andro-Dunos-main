@@ -24,7 +24,7 @@ Enemy_WavingShip2::Enemy_WavingShip2(int x, int y, bool _drop) : Enemy(x, y)
 	fly.PushBack({ 66, 22, 22, 22 });
 	fly.PushBack({ 88, 22, 22, 22 });
 
-	fly.speed = 0.2f;
+	fly.speed = 0.4f;
 
 	animation = &fly;
 

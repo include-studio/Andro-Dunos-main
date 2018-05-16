@@ -14,13 +14,32 @@ private:
 
 	Path path;
 	iPoint original_pos;
-	Animation left, right, right_go;
+	Animation fly;
 
 public:
 
 	Enemy_TinyRedShip(int x, int y);
-	void Shoot();
-	bool shoot = 0;
+	void Move();
+	int current_time;
+	int init_time = 0;
+};
+
+
+
+class Enemy_TinyRedShip2 : public Enemy
+{
+private:
+	float wave = 1.0f;
+	int original_y = 0;
+	int original_x = 0;
+
+	Path path;
+	iPoint original_pos;
+	Animation fly;
+
+public:
+
+	Enemy_TinyRedShip2(int x, int y);
 	void Move();
 	int current_time;
 	int init_time = 0;

@@ -184,7 +184,16 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1580, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1320, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1220, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1260, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1300, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1340, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1350, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1390, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1430, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1470, 50);
+
 
 
 
