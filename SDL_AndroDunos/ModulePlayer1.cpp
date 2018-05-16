@@ -69,8 +69,6 @@ bool ModulePlayer1::Start()
 	bool ret = true;
 
 	init_time = SDL_GetTicks(); //Timer
-	
-	App->shield1->Enable();
 
 	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = 0;
@@ -149,8 +147,8 @@ update_status ModulePlayer1::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;  
-			if (position.x <= App->render->camera.x / 3 + 44)
-				position.x++;
+			/*if (position.x <= App->render->camera.x / 3 + 44)
+				position.x++;*/
 		}
 		
 		else if(god_mode == false) {

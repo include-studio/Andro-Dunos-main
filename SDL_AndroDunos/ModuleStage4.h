@@ -30,6 +30,9 @@ public:
 	SDL_Rect back;
 	SDL_Rect ground[4];
 	SDL_Rect water_rect;
+	SDL_Rect groundColumn;
+
+	iPoint positionGroundColumn;
 
 	Animation water;
 	Animation* animation_water = nullptr;
@@ -39,4 +42,4 @@ public:
 	bool intro_bgm = true;
 
 };
-#endif // !__MODULESTAGE!_H__
+#endif // !__MODULESTAGE4!_H__

@@ -13,6 +13,7 @@
 #include "ModulePowerUp.h"
 #include "ModulePlayer2.h"
 #include "Enemy_MiniMiniBoss.h"
+#include "Enemy_Column.h"
 #include "ModuleAudio.h"
 
 #define SPAWN_MARGIN 15
@@ -167,11 +168,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::MINIGREEN2:
 			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
+		case ENEMY_TYPES::COLUMN:
+			enemies[i] = new Enemy_Column(info.x, info.y);
 		}
-		
-	}
-	
+	}	
 }
+
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {

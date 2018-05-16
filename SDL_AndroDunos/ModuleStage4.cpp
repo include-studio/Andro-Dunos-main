@@ -55,6 +55,12 @@ ModuleStage4::ModuleStage4() {
 	water.loop = true;
 	water.speed = 0.08f;
 
+	//ground column
+	groundColumn.x = 1568;
+	groundColumn.y = 979;
+	groundColumn.w = 368;
+	groundColumn.h = 198;
+
 }
 
 ModuleStage4::~ModuleStage4(){}
@@ -180,10 +186,16 @@ bool ModuleStage4::Start() {
 
 
 
+	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2904, 34);
+
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
 	App->render->camera.y = -100;
 	stage = 0;
+
+	positionGroundColumn.x = 2869;
+	positionGroundColumn.y = -163;
+
 	//enemies
 
 	App->powerup->AddPowerUp(App->powerup->one_up, 4285, 200, COLLIDER_ONE_UP);
@@ -251,16 +263,29 @@ update_status ModuleStage4::Update() {
 		}
 	}
 	//logic
+
+	
+
 	for (int i = 0; i < 4; i++)
 		App->render->Blit(back_tx, back.w*i, -50, NULL, BACKGROUND4SPEED);
 	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
 	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
 	animation_water = &water;
 	water_rect = animation_water->GetCurrentFrame();
+
+	App->render->Blit(ground_tx, positionGroundColumn.x, positionGroundColumn.y, &groundColumn, GROUND4SPEED); //-97
+
+	//columnground moving
+	if (App->render->camera.x >= 2813 * SCREEN_SIZE) {
+		if (positionGroundColumn.y <= -133)
+			positionGroundColumn.y = positionGroundColumn.y + 0.001f;
+	}
+
 	for (int i = 0; i < 5; i++)
 		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 316, &water_rect, GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
+	
 	switch (stage) {
 	case 0:				//scroll diagonal to y=43
 		App->render->camera.x += 1 * SCREEN_SIZE;

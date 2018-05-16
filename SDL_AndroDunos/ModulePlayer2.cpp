@@ -75,7 +75,6 @@ bool ModulePlayer2::Start()
 	position.y = SCREEN_HEIGHT * 2 / 3;
 
 	init_time = SDL_GetTicks(); //Timer
-	App->shield2->Enable();
 
 	destroyed = false;
 	dead = false;
@@ -127,8 +126,8 @@ update_status ModulePlayer2::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;
-			if (position.x <= App->render->camera.x / 3 + 44)
-				position.x++;
+			//if (position.x <= App->render->camera.x / 3 + 44)
+			//	position.x++;
 		}
 
 		else if (god_mode == false) {
