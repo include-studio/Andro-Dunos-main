@@ -12,6 +12,9 @@
 #include "ModuleAudio.h"
 #include "ModuleFonts.h"
 #include "ModuleUI.h"
+#include "ModuleStage4.h"
+
+
 #include "ModuleShieldPlayer1.h"
 #include "SDL/include/SDL.h"
 #include <stdio.h>
@@ -356,8 +359,18 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		if (hp <= 0) {
 			if (App->player2->hp <= 0 || App->player2->IsEnabled() == false) 
 			{
-				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 				
+				switch (part_stagePlayer)
+				{
+				case 0:
+					part_stagePlayer = 1;
+					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+					break;
+				case 1:
+					part_stagePlayer = 0;
+					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);					
+					break;
+				}
 			}
 			
 		}

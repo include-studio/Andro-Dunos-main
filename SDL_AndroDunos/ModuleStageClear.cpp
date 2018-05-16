@@ -162,15 +162,7 @@ update_status ModuleStageClear::Update() {
 			part_stageClear = 0;
 			App->fade->FadeToBlack(this, App->stage1, 1);
 			break;
-			/*if (App->ui->credit == 0) {
-				App->fade->FadeToBlack(this, App->visco, 1);
-				Mix_PauseMusic();
-			}
-
-			else if (App->ui->credit > 0) {
-				App->fade->FadeToBlack(this, App->mainmenu, 1);
-				Mix_PauseMusic();
-			}*/
+			
 		}
 	}
 
