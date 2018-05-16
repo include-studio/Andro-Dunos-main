@@ -141,7 +141,7 @@ bool ModuleStage4::Start() {
 	App->collision->AddCollider({ 7347,-40,65,100 }, COLLIDER_WALL4);
 	App->collision->AddCollider({ 7412,-65,145,100 }, COLLIDER_WALL4);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 405, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 405, 30);  
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 425, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 445, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN1, 465, 30);
@@ -193,6 +193,12 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1410, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1450, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1490, 120);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1950, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1990, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2030, 70);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2490, 10);
 
 
 

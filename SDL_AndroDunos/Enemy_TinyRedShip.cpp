@@ -2,7 +2,6 @@
 #include "Enemy_TinyRedShip.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
-#include "ModuleRender.h"
 #include "SDL/include/SDL.h"
 
 #include "Globals.h"
@@ -47,11 +46,6 @@ void Enemy_TinyRedShip::Move()
 	else position.y += 1;
 
 }
-
-
-
-
-
 
 Enemy_TinyRedShip2::Enemy_TinyRedShip2(int x, int y) : Enemy(x, y)				//path DOWN to UP
 {

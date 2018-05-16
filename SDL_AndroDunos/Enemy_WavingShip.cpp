@@ -3,7 +3,6 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
-#include "ModuleRender.h"
 #include "SDL/include/SDL.h"
 
 #include "Globals.h"
