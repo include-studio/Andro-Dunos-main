@@ -184,6 +184,9 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1580, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1320, 50);
+
+
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2904, 34);

@@ -14,6 +14,7 @@
 #include "ModulePlayer2.h"
 #include "Enemy_MiniMiniBoss.h"
 #include "Enemy_Column.h"
+#include "Enemy_TinyRedShip.h"
 #include "ModuleAudio.h"
 
 #define SPAWN_MARGIN 15
@@ -170,7 +171,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::COLUMN:
 			enemies[i] = new Enemy_Column(info.x, info.y);
+		case ENEMY_TYPES::TINYREDSHIP:
+			enemies[i] = new Enemy_TinyRedShip(info.x, info.y);
 		}
+		
 	}	
 }
 

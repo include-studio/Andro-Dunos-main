@@ -128,6 +128,7 @@
     <ClInclude Include="Enemy_HorizontalRocket.h" />
     <ClInclude Include="Enemy_MiniMiniBoss.h" />
     <ClInclude Include="Enemy_PowerUp.h" />
+    <ClInclude Include="Enemy_TinyRedShip.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Enemy_GreenMiniShip.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Enemy_HorizontalRocket.cpp" />
     <ClCompile Include="Enemy_MiniMiniBoss.cpp" />
     <ClCompile Include="Enemy_PowerUp.cpp" />
+    <ClCompile Include="Enemy_TinyRedShip.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Enemy_GreenMiniShip.cpp" />
     <ClCompile Include="Main.cpp" />

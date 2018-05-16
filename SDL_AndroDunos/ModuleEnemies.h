@@ -8,6 +8,8 @@
 #include "Enemy_PowerUp.h"
 #include "Enemy_MiniMiniBoss.h"
 #include "Enemy_Column.h"
+#include "Enemy_TinyRedShip.h"
+
 
 
 #define MAX_ENEMIES 200
@@ -22,7 +24,8 @@ enum ENEMY_TYPES
 	MINIMINIBOSS,
 	MINIGREEN1,
 	MINIGREEN2,
-	COLUMN
+	COLUMN,
+	TINYREDSHIP
 };
 
 class Enemy;
