@@ -65,11 +65,7 @@ void Enemy_WavingShip2::Move()
 		position.y = original_y - int(40.f * sinf(wave+PI));
 		position.x += 2;
 	}
-	else {
-		
-		position.y = original_y + int(40.0f * sinf(wave));
-		
-	}
+	else position.y = original_y + int(40.0f * sinf(wave));
 	
 }
 

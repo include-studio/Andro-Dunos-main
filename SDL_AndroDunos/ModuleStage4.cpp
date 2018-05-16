@@ -172,10 +172,10 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 971, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 983, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1050, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1060, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1071, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1083, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1050, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1060, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1071, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 1083, 110);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1190, 90);
 
@@ -189,10 +189,10 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1300, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1340, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1350, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1390, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1430, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1470, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1370, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1410, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1450, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1490, 120);
 
 
 

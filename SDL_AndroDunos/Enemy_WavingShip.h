@@ -21,7 +21,6 @@ public:
 	void OnCollision(Collider* collider);
 	int current_time;
 	int init_time = 0;
-	int wave_mid = 0;
 	
 
 	void Move();
