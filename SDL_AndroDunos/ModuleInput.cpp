@@ -63,19 +63,13 @@ update_status ModuleInput::PreUpdate()
 	if (keys[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
-	if (keys[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN) {
-		controller1 = nullptr;
-		controller2 = nullptr;
-		if (controller)	controller = false;
-		else if (!controller) controller = true;
-	}
 
 	while (SDL_PollEvent(&e) != 0) {
 		if (e.type == SDL_QUIT)
 			return update_status::UPDATE_STOP;
 	}
 
-	if (controller == true && (controller1 == nullptr || controller2 == nullptr))
+	if (controller1 == nullptr || controller2 == nullptr)
 		for (int i = 0; i < SDL_NumJoysticks(); ++i) {
 			if (SDL_IsGameController(i)) {
 				if (controller1 == nullptr) {
@@ -91,7 +85,7 @@ update_status ModuleInput::PreUpdate()
 						LOG("Could not open gamecontroller %i: %s\n", i, SDL_GetError());
 					}
 				}
-				else if (controller2 == nullptr) {
+				else if (controller2 == nullptr && SDL_NumJoysticks()>1) {
 					controller2 = SDL_GameControllerOpen(i);
 					if (controller2) {
 						char* mapping;

@@ -29,8 +29,6 @@ public:
 	update_status PreUpdate();
 	bool CleanUp();
 
-	bool controller=true;
-
 public:
 	SDL_Event e;
 	
