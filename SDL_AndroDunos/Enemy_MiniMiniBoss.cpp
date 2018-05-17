@@ -44,9 +44,13 @@ void Enemy_MiniMiniBoss::Move()
 		if (App->player1->position.y < (float)position.y)
 			position.y -= 0.25;
 	}
-	if (current_time >= 800 && shoot == false) {
+	if (current_time >= 300 && shoot == false) {
 		Shoot();
 		shoot = true;
+	}
+	if (current_time >= 1500 && shoot2 == false) {
+		Shoot();
+		shoot2 = true;
 	}
 	
 	if (current_time > 800)

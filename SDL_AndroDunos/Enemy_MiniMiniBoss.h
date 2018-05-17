@@ -25,7 +25,9 @@ public:
 	int shot_actual = 0;*/
 	int current_time;
 	int init_time = 0;
-	bool shoot = 0;
+	bool shoot = false;
+	bool shoot2 = false;
+
 	bool drop;
 
 	int hp = 6;
