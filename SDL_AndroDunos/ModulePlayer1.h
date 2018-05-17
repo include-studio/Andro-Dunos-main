@@ -39,6 +39,7 @@ public:
 	int hp;
 	int powerup = 1;
 	int type_weapon = 0;
+	int part_stagePlayer = 0;
 
 	bool god_mode = false;
 

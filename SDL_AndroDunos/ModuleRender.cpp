@@ -3,6 +3,9 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
+
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -60,7 +63,19 @@ update_status ModuleRender::Update()
 		camera.x += speed*20;
 	if (App->input->keyboard[SDL_SCANCODE_J] == KEY_STATE::KEY_REPEAT)
 		camera.x -= speed*10;
+	//Freeze camera
+	if (App->input->keyboard[SDL_SCANCODE_U] == KEY_STATE::KEY_DOWN) {
+		if (camera_freez == false) camera_freez = true;
+		else if (camera_freez == true) camera_freez = false; 
+	}
 
+	if (camera_freez == true)
+	{
+		camera.x -= 3;
+		App->player1->position.x -= 1;
+		App->player2->position.x -= 1;
+	}
+		
 	return update_status::UPDATE_CONTINUE;
 }
 

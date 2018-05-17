@@ -25,6 +25,7 @@ public:
 public:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Rect camera;
+	bool camera_freez = false;
 };
 
 #endif //__ModuleRenderer_H__

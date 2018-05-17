@@ -1,46 +1,93 @@
-﻿
-# Andro Dunos - Project 1
-Currently we are studying VideoGames Design and Development at the “Centre de la Imatge i Multimèdia” (CITM) in Terrassa, Catalonia, Spain. This is our first project in this degree. This project consists of choosing an arcade game and program it from the beggining, so the whole group is going to program the game but we had to take some responsabilities that were given to each of the group. So for this project we are going to develop Andro Dunos.
+# Version of the game
 
-## Installation
-1. Open the releases tab.
-2. Go to the last release and open it.
-3. Download the .zip archive.
-4. Unzip it.
-5. Open the README.md inside the folder and follow the instructions.
+Andro Dunos v.0.6.1
 
-## Usage
-TODO: Write usage instructions
+## Description
 
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-newfeature`
-3. Commit your changes: `git commit -am 'Add some
-feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+This is the sixth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4 and fight enemies there.
 
-## History
-Wiki: https://github.com/include-studio/Andro-Dunos-main/wiki/General-Analysis
+## Links
 
-## Credits
-Lluís Moreu (youis11: https://github.com/youis11) : Management
+Manager: Lluis Moreu https://github.com/youis11 
+Art: Marc Navas https://github.com/Shocrates 
+Q&A: Christian Martinez https://github.com/christt105 
+Programer: Marc Galvez https://github.com/optus23 
 
-Marc Gálvez (optus23: https://github.com/optus23) : Code
+Github repository: https://github.com/include-studio/Andro-Dunos-main 
+Github organization: https://github.com/include-studio 
 
-Marc Navas (Shocrates: https://github.com/Shocrates) : Art
+## Controls:
 
-Christian Martínez (christt105: https://github.com/christt105) : QA
+- ESC (to close the window).
 
-"For the art, we ripped off the sprites from an emulator, so the art was made by the original Andro Dunos' creators. For more information check out our wiki: https://github.com/include-studio/Andro-Dunos-main/wiki"
+- SPACE (to change between scenes).
 
-## License
-This is free and unencumbered software released into the public domain.
+- Left Ctrl (to add coins(with 2 coins needed to play with 2 players))
 
-Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
+- 1 (to play with one player).
 
-In jurisdictions that recognize copyright laws, the author or authors of this software dedicate any and all copyright interest in the software to the public domain. We make this dedication for the benefit of the public at large and to the detriment of our heirs and successors. We intend this dedication to be an overt act of relinquishment in perpetuity of all present and future rights to this software under copyright law.
+- 2 (to play with two players).
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+- F3 (to pause music).
 
-For more information, please refer to http://unlicense.org/
+
+### Player 1: 
+
+- W (to go up).
+- A (to go backwards).
+- S (to go down).
+- D (to go forwards).
+
+- Q (to change weapons).
+
+- SPACE (to shoot).
+
+### Player 2:
+
+- UP ARROW (to go up).
+- LEFT ARROW (to go backwards).
+- DOWN ARROW (to go down).
+- RIGHT ARROW (to go forwards).
+
+- M (to change between weapons).
+
+-Right Ctrl (to shoot).
+
+### Controllers:
+
+- Joystick (to move player).
+
+- A/X (to shoot).
+
+- X/Square (to change weapon). 
+
+- Direction Pad Up (to add coins).
+
+
+### (for the developer)
+
+- I (to move up the screen).
+- J (to move backwards the screen).
+- K (to move down the screen).
+- L (to move forwards the screen).
+
+- U (stop camera).
+
+- F1 (to hide collision squares).
+
+- F2 (to increase power up).
+
+- F5 (to  activate god mode).
+
+- F8 (to heal both players into 7 hp).
+
+- F10 (to enter stage4 when stage 1).
+
+- F11 (to direct win).
+
+- F12 (to direct lost).
+
+
+Can you finish the game?
+
+We hope you Enjoy! Thanks for playing.

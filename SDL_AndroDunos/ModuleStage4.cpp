@@ -246,12 +246,16 @@ bool ModuleStage4::CleanUp() {
 	App->particles->Disable();
 	App->collision->Disable();
 	App->powerup->Disable();
+	App->enemies->Disable();
 	//unload textures
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);
 
 	current_time = 0;
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
 	
+
 	return true;
 }
 

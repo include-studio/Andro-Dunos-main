@@ -7,6 +7,49 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+## [0.6.1] - 2018-05-17
+
+
+### Summarized
+
+- Shield and enemies in stage 4 added.
+
+### Extended
+
+
+#### Added
+
+
+- Created Enemy_GreenMiniShip .cpp and .h .
+
+- Created Enemy_TinyRedShip .cpp and .h .
+
+- ModuleShieldPlayer1 .cpp and .h .
+
+- ModuleShieldPlayer2 .cpp and .h .
+
+- Wall crashing in Stage4.cpp and .h .
+
+- Created Enemy_Column .cpp and .h .
+
+- New paths in Enemy_WavingShip.cpp and .h . 
+
+
+#### Fixed
+
+
+- Respawn.
+
+- StageClear fades.
+
+- Bonus animation.
+
+- OneUp rebound.
+
+- God Mode when respawn.
+
+- Enemies can respawn in stage4.
+
 
 ## [0.6.0] - 2018-05-11
 
@@ -20,6 +63,7 @@ All notable changes to this project will be documented in this file.
 
 #### Added
 
+
 - Collision map stage 4
 
 - Audio stage 4.
@@ -29,6 +73,7 @@ All notable changes to this project will be documented in this file.
 - Heal debugging mode.
 
 - InsertCoin/press2pbutton logic.
+
 
 #### Fixed
 
@@ -56,6 +101,7 @@ All notable changes to this project will be documented in this file.
 
 #### Added
 
+
 - Added Controller inputs in ModuleInput.
 
 - Added GameOver, Press1P/2PButton animations in ModuleUI.
@@ -65,6 +111,7 @@ All notable changes to this project will be documented in this file.
 - Added one_up in PowerUp .cpp and .h.
 
 - Added Fullscreen in ModuleWindow.
+
 
 #### Fixed
 

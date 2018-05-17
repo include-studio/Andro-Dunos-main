@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleStage4.h"
+
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
@@ -79,7 +81,7 @@ bool ModulePlayer2::Start()
 	destroyed = false;
 	dead = false;
 	type_weapon = 1;
-	player_col = App->collision->AddCollider({ position.x,position.y,39, 17 }, COLLIDER_PLAYER, this);
+	player_col = App->collision->AddCollider({ position.x + 14,position.y + 4,21, 13 }, COLLIDER_PLAYER, this);
 	hp = 3;
 	//font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	//score = 0;
@@ -293,7 +295,7 @@ update_status ModulePlayer2::Update()
 		animationShip = &clear;
 	}
 
-	player_col->SetPos(position.x, position.y);
+	player_col->SetPos(position.x+14, position.y+4);
 
 	if (position.x < App->render->camera.x / 3)
 		position.x = App->render->camera.x / 3;
@@ -350,9 +352,25 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 
 
 		if (hp <= 0) {
-			if (App->player1->hp <= 0 || App->player1->IsEnabled() == false) 
+			if (App->player1->hp <= 0) 
 			{
-				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+
+
+				if (App->stage1->IsEnabled())
+					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+				else if (App->stage4->IsEnabled())
+					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
+				/*switch (App->player1->part_stagePlayer = 1)
+				{
+				case 0:
+					App->player1->part_stagePlayer= 1;
+					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+					break;
+				case 1:
+					App->player1->part_stagePlayer = 0;
+					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
+					break;
+				}*/
 			
 			}
 			
