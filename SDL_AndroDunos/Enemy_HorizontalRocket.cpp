@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_HorizontalRocket.h"
 #include "ModuleCollision.h"
+#include "SDL/include/SDL.h"
 #include "Globals.h"
 
 
@@ -41,4 +42,37 @@ void Enemy_HorizontalRocket::Move()
 	}
 	position.y = int(float(original_y) + (20.0f * sinf(wave)));
 	position.x -= 1;
+}
+
+
+
+
+
+
+
+
+Enemy_HorizontalRocket2::Enemy_HorizontalRocket2(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4
+{
+	fly.PushBack({ 30,50,30,30 });
+
+	animation = &fly;
+
+	collider = App->collision->AddCollider({ 0, 0, 30, 13 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+
+	original_y = y;
+	init_time = SDL_GetTicks(); //Timer
+}
+
+void Enemy_HorizontalRocket2::Move()
+{
+	current_time = SDL_GetTicks() - init_time; //Set time
+
+	if (current_time <= 500) position.x -= 1;
+	else if (current_time >= 500 && current_time <= 700)
+	{
+		position.x += 3;
+		position.y -= 2;
+	}
+	else position.x -= 3;
+	
 }

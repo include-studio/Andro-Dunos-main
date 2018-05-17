@@ -194,13 +194,17 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1450, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1490, 120);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1950, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1950, 70); //1rs Miniminiboss
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1990, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2030, 70);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2200, 60); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2215, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2230, 60);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2550, 10);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2750, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2750, 70); //2nd Miniminiboss
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2790, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2730, 70);
 
