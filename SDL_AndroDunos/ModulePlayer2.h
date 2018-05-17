@@ -59,10 +59,6 @@ public:
 
 	bool insert2;
 
-	bool shoot = false;
-	bool change = false;
-	bool stillpressed_a = false;
-	bool stillpressed_x = false;
 	int current_time = 0;
 	int init_time = 0;
 

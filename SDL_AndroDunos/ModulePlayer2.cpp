@@ -114,7 +114,7 @@ update_status ModulePlayer2::Update()
 	}
 	//Respawn 
 
-	if ((App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)) && dead == true && App->ui->credit > 0 ) { //Pressing 2
+	if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN && dead == true && App->ui->credit > 0) { //Pressing 2
 		hp = 3;
 		App->ui->credit--;
 		god_mode_die = true;
@@ -160,23 +160,8 @@ update_status ModulePlayer2::Update()
 
 	// input
 	//controller input
-	if (!SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A))
-		stillpressed_a = false;
-
-	if (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A) && !stillpressed_a) {
-		shoot = true;
-		stillpressed_a = true;
-	}
-	if (!SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_X))
-		stillpressed_x = false;
-
-	if (SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_X) && !stillpressed_x) {
-		change = true;
-		stillpressed_x = true;
-	}
 	//change weapon
-	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN || change) {
-		change = false;
+	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_X] == KEY_STATE::KEY_DOWN) {
 		App->audio->PlayFx(type_change);
 		type_weapon++;
 		if (type_weapon == 5)
@@ -186,7 +171,7 @@ update_status ModulePlayer2::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp != 7)
 		hp++;
 
-	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN || shoot)
+	if (App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN)
 		if (hp>0) Shoot();
 
 	if (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
@@ -388,7 +373,6 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 }
 
 void ModulePlayer2::Shoot() {
-	shoot = false;
 	switch (type_weapon) {
 	case 1:
 		switch (powerup) {

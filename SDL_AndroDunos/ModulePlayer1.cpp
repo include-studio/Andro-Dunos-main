@@ -173,6 +173,9 @@ update_status ModulePlayer1::Update()
 		player_col->type = COLLIDER_PLAYER;
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp != 7)
+		hp++;
+
 	//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
@@ -181,38 +184,18 @@ update_status ModulePlayer1::Update()
 
 	// input
 		//controller input
-	if (!SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A))
-		stillpressed_a = false;
-
-	if (SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_A) && !stillpressed_a) {
-		shoot = true;
-		stillpressed_a = true;
-	}
-	if (!SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_X))
-		stillpressed_x = false;
-
-	if (SDL_GameControllerGetButton(App->input->controller1, SDL_CONTROLLER_BUTTON_X) && !stillpressed_x) {
-		change = true;
-		stillpressed_x = true;
-	}
-		//change weapon
-	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN || change) {
-		change = false;
+			//change weapon
+	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_X] == KEY_STATE::KEY_DOWN) {
 		App->audio->PlayFx(type_change);
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
 	}
-	
-	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp!=7)
-		hp++;
-
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || shoot) {
+			//shoot
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN) {
 		if(hp>0) Shoot();
 	}
-		
-		
-	//axis
+			//axis
 	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
 		position.x += speedMoveShip;
 
@@ -394,8 +377,6 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 }
 
 void ModulePlayer1::Shoot() {
-	shoot = false;
-
 	switch (type_weapon) {
 	case 1:
 		switch (powerup) {
