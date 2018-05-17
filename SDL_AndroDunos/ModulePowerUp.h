@@ -24,7 +24,7 @@ struct Item
 	bool fx_played = false;
 	Collider* collider = nullptr;
 	int n_collisions;
-	int screen_col;
+	bool screen_col;
 
 	Item();
 	Item(const Item& p);

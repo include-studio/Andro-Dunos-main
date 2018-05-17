@@ -231,11 +231,11 @@ bool Item::Update()
 		anim.speed = 0.2f;
 
 	if (this->collider->type != COLLIDER_ONE_UP)
-		if (screen_col == 0)
+		if (!screen_col)
 			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w)
-				screen_col++;
+				screen_col = true;
 
-	if (screen_col > 0) {
+	if (screen_col) {
 		if (n_collisions < 6) {
 			if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT - this->anim.frames->h) {
 				if (speed.y == -1)speed.y = 1;
