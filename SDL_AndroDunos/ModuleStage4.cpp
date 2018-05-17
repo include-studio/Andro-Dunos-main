@@ -198,13 +198,29 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1990, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2030, 70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2490, 10);
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2550, 10);
 
-
-
-
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2750, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2790, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2730, 70);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2904, 34);
+
+
+
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 200);
+
+
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 6070, 200);
+
+
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 7670, 100);
 
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
