@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleStage4.h"
+
 #include "ModuleParticles.h"
 #include "ModuleCollision.h"
 #include "ModuleFadeToBlack.h"
@@ -350,9 +352,15 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 
 
 		if (hp <= 0) {
-			if (App->player1->hp <= 0 || App->player1->IsEnabled() == false) 
+			if (App->player1->hp <= 0) 
 			{
-				switch (App->player1->part_stagePlayer = 1)
+
+
+				if (App->stage1->IsEnabled())
+					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+				else if (App->stage4->IsEnabled())
+					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
+				/*switch (App->player1->part_stagePlayer = 1)
 				{
 				case 0:
 					App->player1->part_stagePlayer= 1;
@@ -362,7 +370,7 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 					App->player1->part_stagePlayer = 0;
 					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
 					break;
-				}
+				}*/
 			
 			}
 			

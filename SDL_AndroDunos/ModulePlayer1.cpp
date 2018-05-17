@@ -360,7 +360,12 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			if (App->player2->hp <= 0 || App->player2->IsEnabled() == false) 
 			{
 				
-				switch (part_stagePlayer)
+				if (App->stage1->IsEnabled())
+					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+				else if(App->stage4->IsEnabled())
+					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
+
+				/*switch (part_stagePlayer)
 				{
 				case 0:
 					part_stagePlayer = 1;
@@ -370,7 +375,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 					part_stagePlayer = 0;
 					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);					
 					break;
-				}
+				}*/
 			}
 			
 		}
