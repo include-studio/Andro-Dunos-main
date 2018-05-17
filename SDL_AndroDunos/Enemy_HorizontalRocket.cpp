@@ -65,8 +65,8 @@ void Enemy_HorizontalRocket2::Move()
 {
 	current_time = SDL_GetTicks() - init_time; //Set time
 
-	if (current_time <= 500) position.x -= 1;
-	else if (current_time >= 500 && current_time <= 730)
+	if (current_time <= 500) position.x -= 2;
+	else if (current_time >= 500 && current_time <= 750)
 	{
 		position.x += 3;
 		position.y += 2;
@@ -80,7 +80,7 @@ void Enemy_HorizontalRocket2::Move()
 
 
 
-Enemy_HorizontalRocket3::Enemy_HorizontalRocket3(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4 to up
+Enemy_HorizontalRocket3::Enemy_HorizontalRocket3(int x, int y) : Enemy(x, y)             //Zig Zag stage 4 to up
 {
 	fly.PushBack({ 30,50,30,30 });
 
@@ -96,8 +96,8 @@ void Enemy_HorizontalRocket3::Move()
 {
 	current_time = SDL_GetTicks() - init_time; //Set time
 
-	if (current_time <= 500) position.x -= 1;
-	else if (current_time >= 500 && current_time <= 730)
+	if (current_time <= 500) position.x -= 2;
+	else if (current_time >= 500 && current_time <= 750)
 	{
 		position.x += 3;
 		position.y -= 2;

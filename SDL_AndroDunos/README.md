@@ -1,10 +1,10 @@
 # Version of the game
 
-Andro Dunos v.0.6.0
+Andro Dunos v.0.6.1
 
 ## Description
 
-This is the sixth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4.
+This is the sixth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4 and fight enemies there.
 
 ## Links
 
@@ -70,6 +70,8 @@ Github organization: https://github.com/include-studio
 - J (to move backwards the screen).
 - K (to move down the screen).
 - L (to move forwards the screen).
+
+- U (stop camera).
 
 - F1 (to hide collision squares).
 
