@@ -212,7 +212,8 @@ update_status ModulePlayer1::Update()
 	}
 		
 		
-	
+	//axis
+	LOG("countermoved = %i", counterMoved);
 	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
 		position.x += speedMoveShip;
 
@@ -223,6 +224,7 @@ update_status ModulePlayer1::Update()
 	{
 		position.y -= speedMoveShip;
 		counterMoved += speedMoveShip;
+
 
 		if (state == IDLE_UP && counterMoved > METERSMOVED || state == UP && counterMoved > METERSMOVED)
 			state = UP;
@@ -250,6 +252,7 @@ update_status ModulePlayer1::Update()
 	{
 		position.y -= speedMoveShip;
 		counterMoved += speedMoveShip;
+		if (counterMoved == 23);
 
 		if (state == IDLE_UP && counterMoved > METERSMOVED || state == UP && counterMoved > METERSMOVED)
 			state = UP;
@@ -267,7 +270,7 @@ update_status ModulePlayer1::Update()
 			state = IDLE_DOWN;
 	}
 	//End WASD
-	if (!App->input->keyboard[SDL_SCANCODE_S] && !App->input->keyboard[SDL_SCANCODE_W])
+	if ((!App->input->keyboard[SDL_SCANCODE_S] && !App->input->keyboard[SDL_SCANCODE_W]) && (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTY) < 6000 && SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTY) > -6000))
 	{
 		if (state == DOWN)
 			state = IDLE_DOWN;
@@ -278,7 +281,7 @@ update_status ModulePlayer1::Update()
 		else if (state == IDLE_DOWN)
 			counterReturn++;
 
-		else if ( state == IDLE_UP)
+		else if (state == IDLE_UP)
 			counterReturn2++;
 
 		if (counterReturn > TIMERETURNIDDLE || counterReturn2 > TIMERETURNIDDLE)
