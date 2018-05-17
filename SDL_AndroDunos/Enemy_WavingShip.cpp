@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
+#include "ModuleRender.h"
 #include "SDL/include/SDL.h"
 
 #include "Globals.h"
@@ -29,7 +30,7 @@ Enemy_WavingShip2::Enemy_WavingShip2(int x, int y, bool _drop) : Enemy(x, y)
 
 	drop = _drop;
 
-	collider = App->collision->AddCollider({ 0, 0, 22, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 14, 9 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
@@ -73,6 +74,19 @@ void Enemy_WavingShip2::OnCollision(Collider* collider) {
 		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
 		
 }
+void Enemy_WavingShip2::Draw(SDL_Texture* sprites) {
+
+	if (collider != nullptr)
+		collider->SetPos(position.x + 4, position.y + 5);
+
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+}
+
+
+
+
+//Enemy1---------------------------------------------------------------------------
 
 
 
@@ -98,7 +112,7 @@ Enemy_WavingShip::Enemy_WavingShip(int x, int y, bool _drop) : Enemy(x, y)
 
 	drop = _drop;
 
-	collider = App->collision->AddCollider({ 0, 0, 22, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 14, 9 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 }
@@ -128,4 +142,13 @@ void Enemy_WavingShip::OnCollision(Collider* collider) {
 	if (drop == true)
 		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
 
+}
+
+void Enemy_WavingShip::Draw(SDL_Texture* sprites) {
+
+	if (collider != nullptr)
+		collider->SetPos(position.x + 4, position.y + 5);
+
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }

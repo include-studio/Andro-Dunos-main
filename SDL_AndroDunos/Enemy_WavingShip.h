@@ -19,6 +19,7 @@ public:
 
 	Enemy_WavingShip2(int x, int y, bool drop);
 	void OnCollision(Collider* collider);
+	void Draw(SDL_Texture* sprites);
 	int current_time;
 	int init_time = 0;
 	
@@ -39,6 +40,7 @@ public:
 
 	Enemy_WavingShip(int x, int y, bool drop);
 	void OnCollision(Collider* collider);
+	void Draw(SDL_Texture* sprites);
 
 
 	void Move();
