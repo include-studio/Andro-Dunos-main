@@ -213,7 +213,6 @@ update_status ModulePlayer1::Update()
 		
 		
 	//axis
-	LOG("countermoved = %i", counterMoved);
 	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
 		position.x += speedMoveShip;
 
@@ -252,7 +251,6 @@ update_status ModulePlayer1::Update()
 	{
 		position.y -= speedMoveShip;
 		counterMoved += speedMoveShip;
-		if (counterMoved == 23);
 
 		if (state == IDLE_UP && counterMoved > METERSMOVED || state == UP && counterMoved > METERSMOVED)
 			state = UP;

@@ -244,7 +244,7 @@ update_status ModulePlayer2::Update()
 			state = IDLE_DOWN;
 	}
 
-	if (!App->input->keyboard[SDL_SCANCODE_DOWN] && !App->input->keyboard[SDL_SCANCODE_UP])
+	if ((!App->input->keyboard[SDL_SCANCODE_DOWN] && !App->input->keyboard[SDL_SCANCODE_UP]) && (SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) < 6000 && SDL_GameControllerGetAxis(App->input->controller2, SDL_CONTROLLER_AXIS_LEFTY) > -6000))
 	{
 		if (state == DOWN)
 			state = IDLE_DOWN;
