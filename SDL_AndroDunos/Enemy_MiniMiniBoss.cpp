@@ -35,7 +35,7 @@ void Enemy_MiniMiniBoss::Move()
 {
 	position.x += 0.7;
 
-	current_time = SDL_GetTicks() - init_time;
+	current_time = SDL_GetTicks() - init_time; //Set time
 
 	if (current_time <= 800) {
 		if (App->player1->position.y > (float)position.y)
