@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
-## [0.6.1] - 2018-05-17
+## [0.7.0] - 2018-05-17
 
 
 ### Summarized
@@ -34,11 +34,17 @@ All notable changes to this project will be documented in this file.
 
 - New paths in Enemy_WavingShip.cpp and .h . 
 
+- Freeze camera in ModuleRender .cpp .h .
+
+- Second shoot in Enemy_MiniMiniBoss .cpp and .h .
+
+- New path Enemy_HoritzontalRocket .cpp and .h .
+
 
 #### Fixed
 
 
-- Respawn.
+- Respawn of players.
 
 - StageClear fades.
 
@@ -49,6 +55,14 @@ All notable changes to this project will be documented in this file.
 - God Mode when respawn.
 
 - Enemies can respawn in stage4.
+
+- Animation player with controller.
+
+- Players can't collide.
+
+- Buttons structure updated.
+
+- Hp, score and power up don't reset when fading.
 
 
 ## [0.6.0] - 2018-05-11
