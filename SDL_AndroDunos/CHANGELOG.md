@@ -64,6 +64,8 @@ All notable changes to this project will be documented in this file.
 
 - Hp, score and power up don't reset when fading.
 
+- When 1 controller is plugged, it moves 1 player.
+
 
 ## [0.6.0] - 2018-05-11
 
