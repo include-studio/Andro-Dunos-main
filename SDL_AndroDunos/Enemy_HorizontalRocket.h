@@ -20,9 +20,27 @@ public:
 };
 
 
-
-
 class Enemy_HorizontalRocket2 : public Enemy
+{
+private:
+
+
+	int original_y = 0;
+	Animation fly;
+
+public:
+
+	Enemy_HorizontalRocket2(int x, int y);
+
+	void Move();
+	int current_time;
+	int init_time = 0;
+};
+
+
+
+
+class Enemy_HorizontalRocket3 : public Enemy
 {
 private:
 
@@ -32,7 +50,7 @@ private:
 
 public:
 
-	Enemy_HorizontalRocket2(int x, int y);
+	Enemy_HorizontalRocket3(int x, int y);
 
 	void Move();
 	int current_time;

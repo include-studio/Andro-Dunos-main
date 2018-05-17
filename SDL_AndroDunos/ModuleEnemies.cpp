@@ -160,6 +160,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::HORIZONTALROCKET2:
 			enemies[i] = new Enemy_HorizontalRocket2(info.x, info.y);
 			break;
+		case ENEMY_TYPES::HORIZONTALROCKET3:
+			enemies[i] = new Enemy_HorizontalRocket3(info.x, info.y);
+			break;
 		case ENEMY_TYPES::POWERUP:
 			enemies[i] = new Enemy_PowerUp(info.x, info.y);
 			break;
