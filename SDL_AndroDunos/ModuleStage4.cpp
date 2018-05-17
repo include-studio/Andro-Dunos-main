@@ -224,7 +224,7 @@ bool ModuleStage4::Start() {
 
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 5640, 230);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 5655, 230);
@@ -235,7 +235,7 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 5730, 270);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 6070, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 6070, 210);
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6490, 160);
