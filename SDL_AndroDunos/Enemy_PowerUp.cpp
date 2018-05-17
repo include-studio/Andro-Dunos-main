@@ -4,6 +4,7 @@
 #include "Globals.h"
 #include "ModulePowerUp.h"
 #include "ModulePlayer1.h"
+#include "ModuleRender.h"
 
 #define PIXEL 26
 
@@ -122,7 +123,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 
 	path.PushBack({ -1.0f, 0.0f }, 500, &left); // you're no longer welcome here.
 
-	collider = App->collision->AddCollider({ 0, 0, 26, 26 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 18, 15 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -137,4 +138,13 @@ void Enemy_PowerUp::Move()
 void Enemy_PowerUp::OnCollision(Collider* c1) {
 
 	App->powerup->AddPowerUp(App->powerup->powerup_S, position.x, position.y, COLLIDER_POWER_S);
+}
+
+void Enemy_PowerUp::Draw(SDL_Texture* sprites)
+{
+	if (collider != nullptr)
+		collider->SetPos(position.x + 4, position.y + 6);
+
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }
