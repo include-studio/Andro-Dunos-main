@@ -8,6 +8,8 @@
 #include "ModuleGameOver.h"
 #include "ModuleAudio.h"
 #include "Animation.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 #include "SDL/include/SDL.h"
 #include "ModuleMainMenu.h"
 #include "ModuleUI.h"
@@ -49,6 +51,15 @@ bool ModuleGameOver::Start()
 	LOG("Loading background assets");
 	bool ret = true;
 	init_time = SDL_GetTicks(); //Timer
+
+	App->player1->hp = 3;
+	App->player1->type_weapon = 1;
+	App->player1->powerup = 1;
+	App->player1->score = 0;
+
+	App->player2->hp = 3;
+	App->player2->type_weapon = 1;
+	App->player2->powerup = 1;
 
 	gameover_tx = App->textures->Load("Assets/Sprites/gameover.png");
 
