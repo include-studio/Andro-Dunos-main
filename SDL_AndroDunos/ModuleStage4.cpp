@@ -1,4 +1,4 @@
- #include "Globals.h"
+#include "Globals.h"
 #include "Application.h"
 #include "ModuleStage4.h"
 #include "ModuleTextures.h"
@@ -198,10 +198,20 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1990, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2030, 70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2200, 60); 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2215, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2230, 60);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2150, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2165, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2180, 40);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 2220, 80); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 2235, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 2250, 80);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2290, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2305, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 2320, 25);
+
+	
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2550, 10);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2750, 70); //2nd Miniminiboss

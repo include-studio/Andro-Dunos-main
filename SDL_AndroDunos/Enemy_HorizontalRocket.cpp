@@ -49,9 +49,7 @@ void Enemy_HorizontalRocket::Move()
 
 
 
-
-
-Enemy_HorizontalRocket2::Enemy_HorizontalRocket2(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4
+Enemy_HorizontalRocket2::Enemy_HorizontalRocket2(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4 to down
 {
 	fly.PushBack({ 30,50,30,30 });
 
@@ -68,7 +66,38 @@ void Enemy_HorizontalRocket2::Move()
 	current_time = SDL_GetTicks() - init_time; //Set time
 
 	if (current_time <= 500) position.x -= 1;
-	else if (current_time >= 500 && current_time <= 700)
+	else if (current_time >= 500 && current_time <= 730)
+	{
+		position.x += 3;
+		position.y += 2;
+	}
+	else position.x -= 3;
+
+}
+
+
+
+
+
+
+Enemy_HorizontalRocket3::Enemy_HorizontalRocket3(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4 to up
+{
+	fly.PushBack({ 30,50,30,30 });
+
+	animation = &fly;
+
+	collider = App->collision->AddCollider({ 0, 0, 30, 13 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+
+	original_y = y;
+	init_time = SDL_GetTicks(); //Timer
+}
+
+void Enemy_HorizontalRocket3::Move()
+{
+	current_time = SDL_GetTicks() - init_time; //Set time
+
+	if (current_time <= 500) position.x -= 1;
+	else if (current_time >= 500 && current_time <= 730)
 	{
 		position.x += 3;
 		position.y -= 2;
