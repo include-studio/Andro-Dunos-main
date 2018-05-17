@@ -125,6 +125,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_DEAD][COLLIDER_POWER_S] = true;
 	matrix[COLLIDER_DEAD][COLLIDER_ONE_UP] = true;
 	matrix[COLLIDER_DEAD][COLLIDER_SHIELD] = false;
+	matrix[COLLIDER_DEAD][COLLIDER_DEAD] = false;
 
 	matrix[COLLIDER_SHIELD][COLLIDER_WALL] = false;
 	matrix[COLLIDER_SHIELD][COLLIDER_WALL4] = false;
