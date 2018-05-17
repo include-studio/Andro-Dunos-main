@@ -81,7 +81,7 @@ bool ModulePlayer1::Start()
 	dead = false;
 	type_weapon = 1;
 	powerup = 1;
-	player_col = App->collision->AddCollider({ position.x,position.y,39,17 }, COLLIDER_PLAYER, this);
+	player_col = App->collision->AddCollider({ position.x+14,position.y+4,21,13 }, COLLIDER_PLAYER, this);
 	hp = 3;
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	score = 0;
@@ -318,7 +318,7 @@ update_status ModulePlayer1::Update()
 		animationShip = &clear;
 		break;
 	}
-	player_col->SetPos(position.x, position.y);
+	player_col->SetPos(position.x+14, position.y+4);
 
 	if (position.x < App->render->camera.x / 3)
 		position.x = App->render->camera.x / 3;
