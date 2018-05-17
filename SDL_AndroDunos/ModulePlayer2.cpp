@@ -61,6 +61,10 @@ ModulePlayer2::ModulePlayer2()
 	clear.PushBack({ 0,0,10,20 });
 
 	clear.speed = 0.4f;
+
+	hp = 3;
+	type_weapon = 1;
+	powerup = 1;
 }
 
 ModulePlayer2::~ModulePlayer2()
@@ -80,12 +84,12 @@ bool ModulePlayer2::Start()
 
 	destroyed = false;
 	dead = false;
-	type_weapon = 1;
+	
 	player_col = App->collision->AddCollider({ position.x + 14,position.y + 4,21, 13 }, COLLIDER_PLAYER, this);
-	hp = 3;
+	
 	//font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	//score = 0;
-	powerup = 1;
+	
 	god_mode_die = true;
 	laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
 	laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
