@@ -35,6 +35,9 @@ public:
 	SDL_GameController *controller1 = nullptr;
 	SDL_GameController *controller2 = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
+	KEY_STATE buttons1[SDL_CONTROLLER_BUTTON_MAX];
+	KEY_STATE buttons2[SDL_CONTROLLER_BUTTON_MAX];
+	SDL_GameControllerButton B[SDL_CONTROLLER_BUTTON_MAX];
 
 };
 

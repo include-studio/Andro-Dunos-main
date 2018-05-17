@@ -7,6 +7,28 @@ ModuleInput::ModuleInput() : Module()
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)
 		keyboard[i] = KEY_IDLE;
+
+	B[0] = SDL_CONTROLLER_BUTTON_A;
+	B[1] = SDL_CONTROLLER_BUTTON_B;
+	B[2] = SDL_CONTROLLER_BUTTON_X;
+	B[3] = SDL_CONTROLLER_BUTTON_Y;
+	B[4] = SDL_CONTROLLER_BUTTON_BACK;
+	B[5] = SDL_CONTROLLER_BUTTON_GUIDE;
+	B[6] = SDL_CONTROLLER_BUTTON_START;
+	B[7] = SDL_CONTROLLER_BUTTON_LEFTSTICK;
+	B[8] = SDL_CONTROLLER_BUTTON_RIGHTSTICK;
+	B[9] = SDL_CONTROLLER_BUTTON_LEFTSHOULDER;
+	B[10] = SDL_CONTROLLER_BUTTON_RIGHTSHOULDER;
+	B[11] = SDL_CONTROLLER_BUTTON_DPAD_UP;
+	B[12] = SDL_CONTROLLER_BUTTON_DPAD_DOWN;
+	B[13] = SDL_CONTROLLER_BUTTON_DPAD_LEFT;
+	B[14] = SDL_CONTROLLER_BUTTON_DPAD_RIGHT;
+	B[15] = SDL_CONTROLLER_BUTTON_MAX;
+
+	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++) {
+		buttons1[i] = KEY_IDLE;
+		buttons2[i] = KEY_IDLE;
+	}
 }
 
 // Destructor
@@ -100,6 +122,35 @@ update_status ModuleInput::PreUpdate()
 				}
 			}
 		}
+
+	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++) {
+			if (SDL_GameControllerGetButton(controller1, B[i])) {
+				if (buttons1[i] == KEY_IDLE)
+					buttons1[i] = KEY_DOWN;
+				else
+					buttons1[i] = KEY_REPEAT;
+		}
+			else {
+				if (buttons1[i] == KEY_REPEAT || buttons1[i] == KEY_DOWN)
+					buttons1[i] = KEY_UP;
+				else
+					buttons1[i] = KEY_IDLE;
+			}
+	}
+	for (int i = 0; i < SDL_CONTROLLER_BUTTON_MAX; i++) {
+		if (SDL_GameControllerGetButton(controller2, B[i])) {
+			if (buttons2[i] == KEY_IDLE)
+				buttons2[i] = KEY_DOWN;
+			else
+				buttons2[i] = KEY_REPEAT;
+		}
+		else {
+			if (buttons2[i] == KEY_REPEAT || buttons2[i] == KEY_DOWN)
+				buttons2[i] = KEY_UP;
+			else
+				buttons2[i] = KEY_IDLE;
+		}
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }
