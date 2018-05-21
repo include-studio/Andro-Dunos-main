@@ -116,8 +116,8 @@ update_status ModulePlayer2::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;
-			//if (position.x <= App->render->camera.x / 3 + 44)
-			//	position.x++;
+			/*if (position.x <= App->render->camera.x / 3 + 44)
+				position.x++;*/
 		}
 
 		else if (god_mode == false) {
@@ -310,18 +310,19 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 			else if (App->stage4->IsEnabled())
 				App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
-
-
-
-			else { //Respawn
-
-				god_mode_die = true;
-				state = CLEAR;
-				init_time = SDL_GetTicks();
-				position.x = App->render->camera.x / 3;
-				position.y = App->render->camera.y / 3 + 127;
-			}
 		}
+
+
+
+		else { //Respawn
+
+			god_mode_die = true;
+			state = CLEAR;
+			init_time = SDL_GetTicks();
+			position.x = App->render->camera.x / 3;
+			position.y = App->render->camera.y / 3 + 127;
+		}
+		
 	}
 }
 
