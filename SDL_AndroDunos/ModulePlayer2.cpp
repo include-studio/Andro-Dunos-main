@@ -118,15 +118,20 @@ update_status ModulePlayer2::Update()
 	}
 	//Respawn 
 
-	if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN && dead == true && App->ui->credit > 0) { //Pressing 2
+	if ((App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN) && dead == true && App->ui->credit > 0) { //Pressing 2
+		
 		hp = 3;
 		App->ui->credit--;
+		
 		god_mode_die = true;
 		state = CLEAR;
 		init_time = SDL_GetTicks();
 		position.x = App->render->camera.x / 3;
 		position.y = App->render->camera.y / 3 + 71;
 		dead = false;
+		
+
+		
 	}
 
 	if (god_mode_die == true) {  //Winky winky
@@ -146,6 +151,7 @@ update_status ModulePlayer2::Update()
 	//Dead
 	if (hp <= 0)
 	{
+		LOG("Player2 Dead ---");
 		dead = true;
 		player_col->type = COLLIDER_NONE;
 	
@@ -340,29 +346,12 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
 
 
-		if (hp <= 0) {
-			if (App->player1->hp <= 0) 
-			{
+		if (hp <= 0 && App->player1->hp <= 0) {
+			if (App->stage1->IsEnabled())
+				App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
+			else if (App->stage4->IsEnabled())
+				App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
 
-
-				if (App->stage1->IsEnabled())
-					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-				else if (App->stage4->IsEnabled())
-					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
-				/*switch (App->player1->part_stagePlayer = 1)
-				{
-				case 0:
-					App->player1->part_stagePlayer= 1;
-					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-					break;
-				case 1:
-					App->player1->part_stagePlayer = 0;
-					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
-					break;
-				}*/
-			
-			}
-			
 		}
 
 		else { //Respawn
