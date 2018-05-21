@@ -60,28 +60,28 @@ private:
 
 public:
 	
-	Particle laser1;
-	Particle laser1_1;
-	Particle laser2_1;
-	Particle laser2_2;
-	Particle laser2_3;
-	Particle laser2_diagonal1;
-	Particle laser2_diagonal2;
-	Particle laser3;
-	Particle laser3_1;
-	Particle laser3_2;
-	Particle laser3_3;
-	Particle laser3_4;
-	Particle laser3_5;
-	Particle laser3_6;
-	Particle laser3_7;
-	Particle laser3_8;
-	Particle laser4_1;
-	Particle laser4_2;
-	Particle laser4_3;
-	Particle laser4_1_1;
-	Particle laser4_2_1;
-	Particle laser4_3_1;
+	Particle laser_1_1_base;
+	Particle laser_1_2_fat;
+	Particle laser_2_1_front;
+	Particle laser_2_1_back;
+	Particle laser_2_4;
+	Particle laser_2_3_diagonalu;
+	Particle laser_2_3_diagonald;
+	Particle laser_3_1_0;
+	Particle laser_3_2_diagonalupfront;
+	Particle laser_3_2_diagonaldownfront;
+	Particle laser_3_3_diagonalupback;
+	Particle laser_3_3_diagonaldownback;
+	Particle laser_3_4_diagonalupfront;
+	Particle laser_3_4_diagonaldownfront;
+	Particle laser_3_4_diagonaldownback;
+	Particle laser_3_4_diagonalupback;
+	Particle laser_4_1_1;
+	Particle laser_4_1_2;
+	Particle laser_4_2_0;
+	Particle laser_4_3_1;
+	Particle laser_4_4_1;
+	Particle laser_4_4_2;
 
 	Particle mini_explosion;
 	Particle big_explosion;
