@@ -22,45 +22,24 @@
 
 ModulePlayer2::ModulePlayer2()
 {
-	state = CLEAR;
+	state = IDLE;
 
-	animationShip = nullptr;
+	for (int i = 0; i < 5; i++)
+		ship[i].PushBack({ 100,i * 23,32,23 });
 
-	idle.PushBack({ 126,48,39,17 });
-	idle.PushBack({ 169,48,39,17 });
-	idle.PushBack({ 215,48,39,17 });
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 3; j++) {
+			fire[i].PushBack({ j * 12,120 + i * 10,12,10 });
+		}
+		fire[i].speed = 0.8f;
+	}
 
-
-	up.PushBack({ 126,4,39,15 });
-	up.PushBack({ 169,4,39,15 });
-	up.PushBack({ 215,4,39,15 });
-
-	up.speed = 0.5f;
-
-	upidle.PushBack({ 126,24,39,15 });
-	upidle.PushBack({ 169,24,39,15 });
-	upidle.PushBack({ 215,24,39,15 });
-
-
-	upidle.speed = 0.5f;
-
-	down.PushBack({ 126,104,39,17 });
-	down.PushBack({ 169,104,39,17 });
-	down.PushBack({ 215,104,39,17 });
-
-
-	down.speed = 0.5f;
-
-	downidle.PushBack({ 126,76,39,16 });
-	downidle.PushBack({ 169,76,39,16 });
-	downidle.PushBack({ 215,76,39,16 });
-
-	downidle.speed = 0.5f;
-
-	clear.PushBack({ 126,48,39,17 });
-	clear.PushBack({ 0,0,10,20 });
-
-	clear.speed = 0.4f;
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 3; j++) {
+			anim_ultimate[i].PushBack({ 100 + j * 32,i * 23,32,22 });
+		}
+		anim_ultimate[i].speed = 0.9f;
+	}
 
 	hp = 3;
 	type_weapon = 1;
@@ -162,6 +141,10 @@ update_status ModulePlayer2::Update()
 		player_col->type = COLLIDER_PLAYER;
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_REPEAT)
+		ultimate = true;
+	else ultimate = false;
+
 	//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
@@ -262,33 +245,7 @@ update_status ModulePlayer2::Update()
 
 	}
 	//States
-	switch (state)
-	{
-	case DOWN:
-		animationShip = &down;
-		break;
-	case IDLE_DOWN:
-		animationShip = &downidle;
-		break;
-	case IDLE:
-		animationShip = &idle;
-
-		if (counterMoved > 0 || counterMoved2 > 0)
-		{
-			counterMoved = 0;
-			counterMoved2 = 0;
-		}
-
-		break;
-	case IDLE_UP:
-		animationShip = &upidle;
-		break;
-	case UP:
-		animationShip = &up;
-		break;
-	case CLEAR:
-		animationShip = &clear;
-	}
+	States();
 
 	player_col->SetPos(position.x+14, position.y+4);
 
@@ -302,12 +259,14 @@ update_status ModulePlayer2::Update()
 		position.y = App->render->camera.y / 3 + SCREEN_HEIGHT - 17;
 
 	// Draw everything --------------------------------------
-	SDL_Rect ship;
+	Animation *ship_state = ship;
+	if (ultimate)
+		ship_state = anim_ultimate;
 
-	ship = animationShip->GetCurrentFrame();
-
-	if (hp > 0)	       												//Render Ship
-		App->render->Blit(graphics, position.x, position.y, &ship);
+	if (hp > 0) {														//Render Ship
+		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
+		App->render->Blit(graphics, position.x - fire[current_anim].frames->w + 1, position.y + 5, &fire[current_anim].GetCurrentFrame());
+	}
 
 	//sprintf_s(score_text, 10, "%7d", score);
 
@@ -323,7 +282,6 @@ bool ModulePlayer2::CleanUp() {
 	App->collision->Disable();
 	App->particles->Disable();
 	App->shield2->Disable();
-	//App->fonts->UnLoad(font_score);
 	App->audio->UnLoadFx(type_change);
 	App->audio->UnLoadFx(explosion_player);
 	App->audio->UnLoadFx(laser4);
@@ -342,8 +300,9 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;
-		animationShip->reset();
+		//animationShip->reset();
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
+
 
 
 		if (hp <= 0 && App->player1->hp <= 0) {
@@ -352,16 +311,48 @@ void ModulePlayer2::OnCollision(Collider* col1, Collider* col2)
 			else if (App->stage4->IsEnabled())
 				App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
 
+
+
+			else { //Respawn
+
+				god_mode_die = true;
+				state = CLEAR;
+				init_time = SDL_GetTicks();
+				position.x = App->render->camera.x / 3;
+				position.y = App->render->camera.y / 3 + 127;
+			}
+		}
+	}
+}
+
+void ModulePlayer2::States() {
+	switch (state)
+	{
+	case DOWN:
+		current_anim = 4;
+		break;
+	case IDLE_DOWN:
+		current_anim = 3;
+		break;
+	case IDLE:
+		current_anim = 2;
+
+		if (counterMoved > 0 || counterMoved2 > 0)
+		{
+			counterMoved = 0;
+			counterMoved2 = 0;
 		}
 
-		else { //Respawn
-
-			god_mode_die = true;
-			state = CLEAR;
-			init_time = SDL_GetTicks();
-			position.x = App->render->camera.x / 3;
-			position.y = App->render->camera.y / 3 + 127;
-		}
+		break;
+	case IDLE_UP:
+		current_anim = 1;
+		break;
+	case UP:
+		current_anim = 0;
+		break;
+	case CLEAR:
+		//animationShip = &clear;
+		break;
 	}
 }
 
