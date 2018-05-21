@@ -44,6 +44,8 @@ public:
 	char credits_text[17];
 	bool activate_credit = true;
 	bool empty_credit = true;
+	bool credit_on = true;
+
 
 	uint credit = 0;
 	uint credit_fx;
