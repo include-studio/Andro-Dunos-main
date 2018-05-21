@@ -56,6 +56,7 @@ ModuleParticles::ModuleParticles()
 	laser3.anim.loop = false;
 	laser3.life = 670;
 	laser3.speed.x = 7;
+	laser3.hp = 10;
 
 	//laser 3_1 particle
 	laser3_1.anim.PushBack({ 57,35,16,18 });
@@ -312,29 +313,6 @@ update_status ModuleParticles::Update()
 			if(p->fx_played == false)
 			{
 				p->fx_played = true;
-				//Play particle fx here!
-				
-
-			//	/*if (App->player1->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
-			//	if (App->player1->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
-			//	if (App->player1->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
-			//	if (App->player1->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
-			//	
-			//	if (App->player2->type_weapon == 1 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
-			//	if (App->player2->type_weapon == 2 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
-			//	if (App->player2->type_weapon == 3 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
-			//	if (App->player2->type_weapon == 4 && App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_DOWN)
-			//		App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
-			//	
-			//	if (App->player1->destroyed == true || App->player2->destroyed == true)
-			//		App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");*/
 			}
 		}
 	}
@@ -366,7 +344,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
-		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
 			if (c2->type == COLLIDER_ENEMY) {
@@ -379,11 +356,13 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					LOG("COLLISION PARTICLE PLAYER2");
 				}
 			}
-			delete active[i];
-			active[i] = nullptr;
-			break;
+			active[i]->hp-=1;
+			//if (active[i]->hp <= 0) {
+				delete active[i];
+				active[i] = nullptr;
+				break;
+			//}
 		}
-		
 	}
 }
 

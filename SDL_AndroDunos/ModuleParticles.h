@@ -29,6 +29,7 @@ struct Particle
 	bool fx_played = false;
 	Collider* collider = nullptr;
 	OWNER owner_type;
+	int hp = 1;
 
 	Particle();
 	Particle(const Particle& p);

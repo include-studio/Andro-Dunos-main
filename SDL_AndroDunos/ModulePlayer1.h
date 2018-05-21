@@ -30,7 +30,7 @@ public:
 
 	PLAYER_STATE_MOVE state;
 	int speedMoveShip = 2;
-	Animation *animationShip;
+	Animation *fireShip;
 
 	iPoint position;
 
@@ -51,13 +51,31 @@ private:
 	int counterReturn2 = 0;
 
 	SDL_Texture* graphics = nullptr;
-	Animation idle;
+	Animation ship;
+
+	Animation fire_upi;
+	Animation fire_up;
+	Animation fire_i;
+	Animation fire_down;
+	Animation fire_downi;
+
+	Animation anim_ultimate;
+	int frame;
+	/*frame is be current frame:
+		0=upidel
+		1=up
+		2=idle
+		3=down
+		4=downidle*/
+
+
+	/*Animation idle;
 	Animation upidle;
 	Animation up;
 	Animation downidle;
 	Animation down;
 	Animation clear;
-	
+	*/
 	Collider* player_col = nullptr;
 
 	uint laser1, laser2, laser3, laser4, explosion_player, type_change;

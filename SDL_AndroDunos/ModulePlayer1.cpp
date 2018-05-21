@@ -21,48 +21,25 @@
 
 ModulePlayer1::ModulePlayer1()
 {
-	state = CLEAR;
+	state = IDLE;
 
-	animationShip = nullptr;
+	fireShip = nullptr;
 
-	idle.PushBack({ 0,48,39,17 });
-	idle.PushBack({ 42,48,39,17 });
-	idle.PushBack({ 85,48,39,17 });
+	for (int i = 0; i < 5; i++)
+		ship.PushBack({ 0,i * 23,32,23 });
 
-
-	up.PushBack({ 2,4,39,15 });
-	up.PushBack({ 41,4,39,15 });
-	up.PushBack({ 85,4,39,15 });
-	
-	up.speed = 0.5f;
-
-	upidle.PushBack({ 85,24,39,15 });
-	upidle.PushBack({ 43,24,39,15 });
-	upidle.PushBack({ 2,24,39,15 });
-
-
-	upidle.speed = 0.5f;
-	
-	down.PushBack({ 2,104,39,17 });
-	down.PushBack({ 43,104,39,17 });
-	down.PushBack({ 85,104,39,17 });
-
-
-	down.speed = 0.5f;
-
-	downidle.PushBack({ 0,76,39,16 });
-	downidle.PushBack({ 43,76,39,16 });
-	downidle.PushBack({ 85,76,39,16 });
-
-	downidle.speed = 0.5f;
-
-	clear.PushBack({ 0,48,39,17 });
-	clear.PushBack({ 0,0,10,20 });
-
-	clear.speed = 0.4f;
-
-
-
+	for (int i = 0; i < 5; i++) {
+		fire_down.PushBack({ i*12,120,12,10 });
+		fire_downi.PushBack({ i * 12,130,12,10 });
+		fire_i.PushBack({ i * 12,140,12,10 });
+		fire_upi.PushBack({ i * 12,150,12,10 });
+		fire_up.PushBack({ i * 12,160,12,10 });
+	}
+	fire_down.speed = 0.8f;
+	fire_downi.speed = 0.8f;
+	fire_i.speed = 0.8f;
+	fire_upi.speed = 0.8f;
+	fire_up.speed = 0.8f;
 
 	hp = 3;
 	type_weapon = 1;
@@ -87,7 +64,7 @@ bool ModulePlayer1::Start()
 
 	destroyed = false;
 	dead = false;
-	player_col = App->collision->AddCollider({ position.x+14,position.y+4,21,13 }, COLLIDER_PLAYER, this);
+	player_col = App->collision->AddCollider({ position.x+3,position.y+4,21,13 }, COLLIDER_PLAYER, this);
 	
 	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	
@@ -279,17 +256,21 @@ update_status ModulePlayer1::Update()
 		}
 
 	}
-	//Satates
+
+	//States
 	switch (state)
 	{
 	case DOWN:		
-		animationShip = &down;
+		frame = 4;
+		fireShip = &fire_down;
 		break;
 	case IDLE_DOWN:
-		animationShip = &downidle;
+		frame = 3;
+		fireShip = &fire_downi;
 		break;
 	case IDLE:
-		animationShip = &idle;
+		frame = 2;
+		fireShip = &fire_i;
 
 		if (counterMoved > 0 || counterMoved2 > 0)
 		{
@@ -299,16 +280,18 @@ update_status ModulePlayer1::Update()
 		
 		break;
 	case IDLE_UP:
-		animationShip = &upidle;
+		frame = 1;
+		fireShip = &fire_up;
 		break;
 	case UP:
-		animationShip = &up;
+		frame = 0;
+		fireShip = &fire_upi;
 		break;
 	case CLEAR:
-		animationShip = &clear;
+		//animationShip = &clear;
 		break;
 	}
-	player_col->SetPos(position.x+14, position.y+4);
+	player_col->SetPos(position.x+3, position.y+4);
 
 	if (position.x < App->render->camera.x / 3)
 		position.x = App->render->camera.x / 3;
@@ -320,12 +303,12 @@ update_status ModulePlayer1::Update()
 		position.y = App->render->camera.y / 3 + SCREEN_HEIGHT - 17;
 
 	// Draw everything --------------------------------------
-	SDL_Rect ship;
-
-	ship = animationShip->GetCurrentFrame();
-
-	if (hp > 0)														//Render Ship
-		App->render->Blit(graphics, position.x, position.y, &ship);
+	SDL_Rect fire;
+	fire = fireShip->GetCurrentFrame();
+	if (hp > 0) {														//Render Ship
+		App->render->Blit(graphics, position.x, position.y, &ship.frames[frame]);
+		App->render->Blit(graphics, position.x-fire.w+1, position.y+5, &fire);
+	}
 	
 	sprintf_s(score_text, 10, "%7d", score);
 	
@@ -343,7 +326,6 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;
-		animationShip->reset();
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
 
 		if (hp <= 0) {
