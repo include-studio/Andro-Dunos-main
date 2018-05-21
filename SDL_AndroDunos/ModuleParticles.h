@@ -90,6 +90,8 @@ public:
 	Particle explosion_player2;
 
 	Particle enemy_blue;
+	Particle enemy_blue_up;
+	Particle enemy_blue_down;
 	
 };
 

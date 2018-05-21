@@ -60,11 +60,14 @@ void Enemy_GreenMiniShip1::Move()
 	
 	
 	position.x -= 1;
+	
 }
 													
 void Enemy_GreenMiniShip1::Shoot()
 {
 	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
+	
+	
 }
 
 Enemy_GreenMiniShip2::Enemy_GreenMiniShip2(int x, int y) : Enemy(x, y)				//2nd path DOWN to UP
