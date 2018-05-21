@@ -297,13 +297,13 @@ bool ModuleStage1::CleanUp()
 // Update: draw background
 update_status ModuleStage1::Update()
 {
-	if (App->input->keyboard[SDL_SCANCODE_2]==KEY_STATE::KEY_DOWN && App->ui->credit >= 1) {
+	if (App->input->keyboard[SDL_SCANCODE_2]==KEY_STATE::KEY_DOWN && App->ui->credit > 0) {
 		if (!App->player2->IsEnabled()) {
 			App->player2->Enable();
 			App->player2->position.x = App->player1->position.x;
 			App->player2->position.y = 2 * SCREEN_HEIGHT / 3;
 			App->player2->insert2 = true;
-			App->ui->credit--;
+			/*App->ui->credit--;*/
 		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F11])

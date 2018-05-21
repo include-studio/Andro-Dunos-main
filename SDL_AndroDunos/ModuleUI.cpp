@@ -96,7 +96,7 @@ bool ModuleUI::CleanUp()
 	App->textures->Unload(user_interface);
 	App->audio->UnLoadFx(credit_fx);
 	App->fonts->UnLoad(font_score);
-
+	credit_on = true;
 	return true;
 }
 update_status ModuleUI::Update()
@@ -179,11 +179,15 @@ update_status ModuleUI::Update()
 		}
 
 		//Main Menu Credits
-		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == true) {
+		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == true && credit_on == true) {
 			credit--;
+			credit_on = false;
+
 		}
-		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN &&  App->mainmenu->IsEnabled() == true && credit >= 2) {
+		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN &&  App->mainmenu->IsEnabled() == true && credit >= 2 && credit_on == true) {
 			credit -= 2;
+			credit_on = false;
+
 		}
 
 		//if players are dead
@@ -192,7 +196,7 @@ update_status ModuleUI::Update()
 			activate_credit == false;*/
 
 
-		if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller1,SDL_CONTROLLER_BUTTON_A)) && activate_credit == false && App->mainmenu->IsEnabled() == false && empty_credit == false) {
+		/*if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller1,SDL_CONTROLLER_BUTTON_A)) && activate_credit == false && App->mainmenu->IsEnabled() == false && empty_credit == false) {
 			
 			credit--;
 			activate_credit = true;
@@ -203,7 +207,7 @@ update_status ModuleUI::Update()
 		if ((App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || SDL_GameControllerGetButton(App->input->controller2, SDL_CONTROLLER_BUTTON_A)) && App->mainmenu->IsEnabled() == false && empty_credit == false &&  activate_credit == false ) {
 			credit--;
 			activate_credit = true;
-		}
+		}*/
 
 		
 	}

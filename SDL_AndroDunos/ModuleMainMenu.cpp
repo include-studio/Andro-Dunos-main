@@ -116,7 +116,7 @@ bool ModuleMainMenu::Start()
 	bool ret = true;
 
 	credit = 0;
-
+	App->ui->credit_on = true;
 	logo_background_tx = App->textures->Load("assets/Sprites/logo_background.png");
 	logo_andro_tx = App->textures->Load("assets/Sprites/logo.png");
 	visco_games_tx = App->textures->Load("assets/Sprites/visco_games.png");
