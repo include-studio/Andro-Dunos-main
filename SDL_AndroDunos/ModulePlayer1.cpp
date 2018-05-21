@@ -33,7 +33,7 @@ ModulePlayer1::ModulePlayer1()
 
 	for (int i = 0; i < 5; i++)
 		for (int j = 0; j < 2; j++)
-			anim_ultimate[i].PushBack({ 32 + j * 32,i * 23,32,23 });
+			anim_ultimate[i].PushBack({ 32 + j * 32,i * 23,32,22 });
 
 	hp = 3;
 	type_weapon = 1;
@@ -153,10 +153,14 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp != 7)
 		hp++;
 
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_REPEAT)
+		ultimate = true;
+	else ultimate = false;
+
 	//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
-	if (powerup > 4)
+	if (powerup > MAX_POWERUP)
 		powerup = 4;
 
 	// input
@@ -268,9 +272,11 @@ update_status ModulePlayer1::Update()
 		position.y = App->render->camera.y / 3 + SCREEN_HEIGHT - 17;
 
 	// Draw everything --------------------------------------
-
+	Animation *ship_state = ship;
+	if (ultimate)
+		ship_state = anim_ultimate;
 	if (hp > 0) {														//Render Ship
-		App->render->Blit(graphics, position.x, position.y, &ship[current_anim].GetCurrentFrame());
+		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
 		App->render->Blit(graphics, position.x-fire[current_anim].frames->w+1, position.y+5, &fire[current_anim].GetCurrentFrame());
 	}
 	
@@ -300,24 +306,9 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
 				else if(App->stage4->IsEnabled())
 					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);
-
-				/*switch (part_stagePlayer)
-				{
-				case 0:
-					part_stagePlayer = 1;
-					App->fade->FadeToBlack((Module*)App->stage1, (Module*)App->gameover);
-					break;
-				case 1:
-					part_stagePlayer = 0;
-					App->fade->FadeToBlack((Module*)App->stage4, (Module*)App->gameover);					
-					break;
-				}*/
 			}
-			
 		}
-
 		else { //Respawn
-			
 			
 			god_mode_die = true;
 			state = CLEAR;

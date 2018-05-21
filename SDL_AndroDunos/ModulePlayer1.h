@@ -8,6 +8,7 @@
 
 #define METERSMOVED 50
 #define TIMERETURNIDDLE 10
+#define MAX_POWERUP 4
 
 struct SDL_Texture;
 struct Collider;
@@ -60,6 +61,7 @@ private:
 
 	uint laser1, laser2, laser3, laser4, explosion_player, type_change;
 
+	bool ultimate=false;
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode_die = false;

@@ -25,11 +25,6 @@ enum PLAYER_STATE_MOVE
 	IDLE,
 	IDLE_UP,
 	UP,
-	U_DOWN,
-	U_IDLE_DOWN,
-	U_IDLE,
-	U_IDLE_UP,
-	U_UP,
 	CLEAR
 };
 
