@@ -26,14 +26,19 @@ ModulePlayer1::ModulePlayer1()
 	for (int i = 0; i < 5; i++)
 		ship[i].PushBack({ 0,i * 23,32,23 });
 
-	for (int i = 0; i < 5; i++)
-		for (int j = 0; j < 3; j++)
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 3; j++) {
 			fire[i].PushBack({ j * 12,120 + i * 10,12,10 });
-	fire->speed = 0.8f;
-
-	for (int i = 0; i < 5; i++)
-		for (int j = 0; j < 2; j++)
-			anim_ultimate[i].PushBack({ 32 + j * 32,i * 23,32,22 });
+		}
+		fire[i].speed = 0.8f;
+	}
+	
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 3; j++) {
+			anim_ultimate[i].PushBack({ j * 32,i * 23,32,22 });
+		}
+		anim_ultimate[i].speed = 0.9f;
+	}
 
 	hp = 3;
 	type_weapon = 1;

@@ -23,6 +23,7 @@ public:
 	bool CleanUp();
 
 	void Shoot();
+	void States();
 
 	void OnCollision(Collider*, Collider*);
 
@@ -38,17 +39,18 @@ public:
 	int counterReturn2 = 0;
 
 	SDL_Texture* graphics = nullptr;
-	Animation idle;
-	Animation upidle;
-	Animation up;
-	Animation downidle;
-	Animation down;
-	Animation clear;
+	Animation ship[5];
+	Animation anim_ultimate[5];
+	Animation fire[5];
+	int current_anim;
+
 	iPoint position;
+
 	Collider* player_col = nullptr;
 
 	uint laser1, laser2, laser3, laser4, explosion_player, type_change;
 
+	bool ultimate = false;
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode = false;
