@@ -23,23 +23,17 @@ ModulePlayer1::ModulePlayer1()
 {
 	state = IDLE;
 
-	fireShip = nullptr;
+	for (int i = 0; i < 5; i++)
+		ship[i].PushBack({ 0,i * 23,32,23 });
 
 	for (int i = 0; i < 5; i++)
-		ship.PushBack({ 0,i * 23,32,23 });
+		for (int j = 0; j < 3; j++)
+			fire[i].PushBack({ j * 12,120 + i * 10,12,10 });
+	fire->speed = 0.8f;
 
-	for (int i = 0; i < 5; i++) {
-		fire_down.PushBack({ i*12,120,12,10 });
-		fire_downi.PushBack({ i * 12,130,12,10 });
-		fire_i.PushBack({ i * 12,140,12,10 });
-		fire_upi.PushBack({ i * 12,150,12,10 });
-		fire_up.PushBack({ i * 12,160,12,10 });
-	}
-	fire_down.speed = 0.8f;
-	fire_downi.speed = 0.8f;
-	fire_i.speed = 0.8f;
-	fire_upi.speed = 0.8f;
-	fire_up.speed = 0.8f;
+	for (int i = 0; i < 5; i++)
+		for (int j = 0; j < 2; j++)
+			anim_ultimate[i].PushBack({ 32 + j * 32,i * 23,32,23 });
 
 	hp = 3;
 	type_weapon = 1;
@@ -258,41 +252,12 @@ update_status ModulePlayer1::Update()
 	}
 
 	//States
-	switch (state)
-	{
-	case DOWN:		
-		frame = 4;
-		fireShip = &fire_down;
-		break;
-	case IDLE_DOWN:
-		frame = 3;
-		fireShip = &fire_downi;
-		break;
-	case IDLE:
-		frame = 2;
-		fireShip = &fire_i;
-
-		if (counterMoved > 0 || counterMoved2 > 0)
-		{
-			counterMoved = 0;
-			counterMoved2 = 0;
-		}
-		
-		break;
-	case IDLE_UP:
-		frame = 1;
-		fireShip = &fire_up;
-		break;
-	case UP:
-		frame = 0;
-		fireShip = &fire_upi;
-		break;
-	case CLEAR:
-		//animationShip = &clear;
-		break;
-	}
+	States();
+	
+	//collision box position
 	player_col->SetPos(position.x+3, position.y+4);
 
+	//player cannot move out of screen
 	if (position.x < App->render->camera.x / 3)
 		position.x = App->render->camera.x / 3;
 	if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH - 40)
@@ -303,11 +268,10 @@ update_status ModulePlayer1::Update()
 		position.y = App->render->camera.y / 3 + SCREEN_HEIGHT - 17;
 
 	// Draw everything --------------------------------------
-	SDL_Rect fire;
-	fire = fireShip->GetCurrentFrame();
+
 	if (hp > 0) {														//Render Ship
-		App->render->Blit(graphics, position.x, position.y, &ship.frames[frame]);
-		App->render->Blit(graphics, position.x-fire.w+1, position.y+5, &fire);
+		App->render->Blit(graphics, position.x, position.y, &ship[current_anim].GetCurrentFrame());
+		App->render->Blit(graphics, position.x-fire[current_anim].frames->w+1, position.y+5, &fire[current_anim].GetCurrentFrame());
 	}
 	
 	sprintf_s(score_text, 10, "%7d", score);
@@ -361,6 +325,37 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			position.x = App->render->camera.x / 3;
 			position.y = App->render->camera.y / 3 +71;
 		}
+	}
+}
+
+void ModulePlayer1::States() {
+	switch (state)
+	{
+	case DOWN:
+		current_anim = 4;
+		break;
+	case IDLE_DOWN:
+		current_anim = 3;
+		break;
+	case IDLE:
+		current_anim = 2;
+
+		if (counterMoved > 0 || counterMoved2 > 0)
+		{
+			counterMoved = 0;
+			counterMoved2 = 0;
+		}
+
+		break;
+	case IDLE_UP:
+		current_anim = 1;
+		break;
+	case UP:
+		current_anim = 0;
+		break;
+	case CLEAR:
+		//animationShip = &clear;
+		break;
 	}
 }
 
