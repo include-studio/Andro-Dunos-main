@@ -6,6 +6,33 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.7.1] - 2018-05-22
+
+
+### Summarized
+
+- Animation ultimate and Big Ship enemy
+
+### Extended
+
+
+#### Added
+
+- Animation ultimate
+
+-Minimini bos triple shot 
+
+-Big Ship enemy (only shoot and animation added)
+
+
+#### Fixed
+
+- New player structure (optimitzed)
+
+-Game Controller player1
+
+-Spam Credit (wont be negative + only subtracts 1)
+
 
 ## [0.7.0] - 2018-05-17
 
