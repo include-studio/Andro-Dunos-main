@@ -9,6 +9,7 @@
 #include "Enemy_MiniMiniBoss.h"
 #include "Enemy_Column.h"
 #include "Enemy_TinyRedShip.h"
+#include "Enemy_BigShip.h"
 
 
 
@@ -28,7 +29,8 @@ enum ENEMY_TYPES
 	MINIGREEN2,
 	COLUMN,
 	TINYREDSHIP,
-	TINYREDSHIP2
+	TINYREDSHIP2,
+	BIGSHIP
 };
 
 class Enemy;

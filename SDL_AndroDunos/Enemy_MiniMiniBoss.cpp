@@ -33,7 +33,7 @@ Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y, bool _drop) : Enemy(x, y)
 
 void Enemy_MiniMiniBoss::Move()
 {
-	position.x += 0.7;
+	position.x ++;
 
 	current_time = SDL_GetTicks() - init_time; //Set time
 

@@ -75,15 +75,6 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	transition3.loop = false;
 	transition4.loop = false;
 
-	animation = &left;
-	animation = &transition1;
-	animation = &left_down;
-	animation = &transition2;
-	animation = &left_up;
-	animation = &transition3;
-	animation = &right;
-	animation = &transition4;
-
 
 	path.PushBack({ -1.0f, 0.0f }, 40, &left);//Important
 	path.PushBack({ 1.0f, 0.0f }, 20, &transition1);
@@ -132,7 +123,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 void Enemy_PowerUp::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
-	part_power_up = 1;
+	
 }
 
 void Enemy_PowerUp::OnCollision(Collider* c1) {

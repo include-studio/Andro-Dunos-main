@@ -222,7 +222,7 @@ bool ModuleStage4::Start() {
 
 
 
-
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 4080, 165); //Big ship WATER
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
 
