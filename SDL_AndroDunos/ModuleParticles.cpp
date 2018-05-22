@@ -281,15 +281,19 @@ ModuleParticles::ModuleParticles()
 	enemy_blue_down.speed.x = -2;
 	enemy_blue_down.speed.y++;
 
-	//enemy blue diagonal DOWN shot
-	enemy_yellow_laser.anim.PushBack({ 243,148,8,8 });
-	enemy_yellow_laser.anim.PushBack({ 243,156,8,8 });
-	enemy_yellow_laser.anim.PushBack({ 243,165,8,8 });
-	enemy_yellow_laser.anim.PushBack({ 250,148,8,8 });
+	//enemy blue diagonal DOWN shot "32 = w"
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*0,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*1,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*2,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*3,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*4,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*5,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*6,275,32,13 });
+	
 	enemy_yellow_laser.anim.speed = 0.2f;
 	enemy_yellow_laser.life = 1500;
 	enemy_yellow_laser.speed.x = -2;
-	enemy_yellow_laser.speed.y++;
+	enemy_yellow_laser.anim.loop = false;
 	
 	
 

@@ -20,12 +20,21 @@ public:
 	void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	void Shoot();
+	void Shoot_yellow();
 	bool shoot1 = true;
 	bool shoot1_sub = false;
 	bool shoot2 = false;
 	bool shoot3 = false;
 	bool shoot3_sub = false;
 	bool shoot4 = false;
+	bool yellow1 = true;
+	bool yellow1_sub = false;
+	bool yellow2 = false;
+	bool yellow2_sub = false;
+	bool yellow3 = false;
+	bool yellow3_sub = false;
+	bool yellow4 = false;
+	bool yellow4_sub = false;
 	int current_time;
 	int init_time = 0;
 

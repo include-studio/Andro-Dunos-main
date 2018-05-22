@@ -35,7 +35,7 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 void Enemy_BigShip::Move()
 {
 	current_time = SDL_GetTicks() - init_time; //Set Time 
-
+	//Blue Bullet
 	if (current_time >= 2000 && shoot1 == true) {    
 		Shoot();
 		shoot1 = false;
@@ -69,15 +69,78 @@ void Enemy_BigShip::Move()
 		shoot4 = false;
 	}
 
+	//Yellow Laser
+	if (current_time >= 3000 && yellow1 == true) {
+		Shoot_yellow();
+
+		yellow1 = false;
+		yellow1_sub = true;
+	}
+	if (current_time >= 3500 && yellow1_sub == true) {
+		Shoot_yellow();
+
+		yellow1_sub = false;
+		yellow2 = true;
+	}
+	if (current_time >= 8000 && yellow2 == true) {
+		Shoot_yellow();
+
+		yellow2 = false;
+		yellow2_sub = true;
+	}
+	if (current_time >= 8500 && yellow2_sub == true) {
+		Shoot_yellow();
+
+		yellow2_sub = false;
+		yellow3 = true;
+	}
+	if (current_time >= 12000 && yellow3 == true) {
+		Shoot_yellow();
+
+		yellow3 = false;
+		yellow3_sub = true;
+	}
+	if (current_time >= 12500 && yellow3_sub == true) {
+		Shoot_yellow();
+
+		yellow3_sub = false;
+		yellow4 = true;
+	}
+	if (current_time >= 17000 && yellow4 == true) {
+		Shoot_yellow();
+
+		yellow4 = false;
+		yellow4_sub = true;
+	}
+	if (current_time >= 17500 && yellow4_sub == true) {
+		Shoot_yellow();
+
+		yellow4_sub = false;
+		
+	}
+	
+
+
+
+
 	
 	position = original_pos + path.GetCurrentSpeed(&animation);
-	
+	//2, 12, 16, 21
+	//3, 8, 12, 17
 }
 void Enemy_BigShip::Shoot() {
 	
 	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y + 52, COLLIDER_ENEMY_SHOT);
 	App->particles->AddParticle(App->particles->enemy_blue_up, position.x, position.y + 52, COLLIDER_ENEMY_SHOT); //Triple shot
 	App->particles->AddParticle(App->particles->enemy_blue_down, position.x, position.y + 52, COLLIDER_ENEMY_SHOT);
+	
+
+}
+void Enemy_BigShip::Shoot_yellow() {
+
+	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 77, position.y, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 77, position.y + 105, COLLIDER_ENEMY_SHOT);
+
 }
 void Enemy_BigShip::OnCollision(Collider* c1) {
 
