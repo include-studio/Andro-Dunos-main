@@ -170,9 +170,12 @@ ModuleParticles::ModuleParticles()
 	laser_4_3_1.life = 670;
 	laser_4_3_1.speed.x = 7;
 
-	//missils
-	//B1
-
+	//bomb
+	//1_1
+	bomb_1_1.anim.PushBack({ 302,187,13,12 });
+	bomb_1_1.anim.PushBack({ 302,171,13,12 });
+	bomb_1_1.anim.PushBack({ 302,159,13,12 });
+	bomb_1_1.anim.loop = false;
 
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
