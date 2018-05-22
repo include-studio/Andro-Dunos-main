@@ -20,7 +20,14 @@ public:
 	void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	void Shoot();
-	bool shoot = false;
+	bool shoot1 = true;
+	bool shoot1_sub = false;
+	bool shoot2 = false;
+	bool shoot3 = false;
+	bool shoot3_sub = false;
+	bool shoot4 = false;
+	int current_time;
+	int init_time = 0;
 
 	void Move();
 };
