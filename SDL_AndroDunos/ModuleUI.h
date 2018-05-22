@@ -7,10 +7,13 @@
 
 class ModuleUI : public Module
 {
+	int current_time1 = 0;
+	int init_time1 = 0;
 public:
 
 	ModuleUI();
 	~ModuleUI();
+
 
 	bool Start();
 	update_status Update();
@@ -23,9 +26,11 @@ public:
 	SDL_Rect credits_rect;
 	SDL_Rect life1_rect;
 	SDL_Rect life2_rect;
+	SDL_Rect miniCoundown_rect;
+	SDL_Rect gameover_rect;
 
-	Animation gameover;
-	Animation* animationGameover = nullptr;
+	Animation miniContinueNum;
+	Animation* animationMiniContinueNum = nullptr;
 
 	Animation press1p;
 	Animation* animationPress1p = nullptr;
@@ -52,6 +57,9 @@ public:
 	bool empty_credit = true;
 	bool credit_on = true;
 
+	bool game_over_time = true;
+
+
 	uint credit = 0;
 	uint credit_fx;
 
@@ -59,6 +67,7 @@ public:
 	uint score2 = 0;
 	uint high_score = 0;
 
+	
 };
 
 #endif //__MODULEUI_H__
