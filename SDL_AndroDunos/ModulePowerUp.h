@@ -54,7 +54,7 @@ private:
 
 public:
 	Item bonus;
-	Item powerup_S;
+	Item powerup;
 	Item one_up;
 };
 

@@ -128,7 +128,7 @@ void Enemy_PowerUp::Move()
 
 void Enemy_PowerUp::OnCollision(Collider* c1) {
 
-	App->powerup->AddPowerUp(App->powerup->powerup_S, position.x, position.y, COLLIDER_POWER_S);
+	App->powerup->AddPowerUp(App->powerup->powerup, position.x, position.y, COLLIDER_POWER_S);
 }
 
 void Enemy_PowerUp::Draw(SDL_Texture* sprites)

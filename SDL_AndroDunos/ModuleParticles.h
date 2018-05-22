@@ -83,6 +83,11 @@ public:
 	Particle laser_4_4_1;
 	Particle laser_4_4_2;
 
+	Particle bomb_1_1;
+	Particle bomb_2_1;
+	Particle bomb_3_1;
+	Particle bomb_4_1;
+
 	Particle mini_explosion;
 	Particle big_explosion;
 	Particle ring_explosion;

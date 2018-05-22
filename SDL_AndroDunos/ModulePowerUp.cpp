@@ -31,11 +31,23 @@ ModulePowerUp::ModulePowerUp()
 	bonus.n_collisions = 0;
 	bonus.anim.frame = 13;
 
-	powerup_S.anim.PushBack({ 80,64,16,16 });
-	powerup_S.life = 5000000;
-	powerup_S.speed.y = -1;
-	powerup_S.speed.x = 0;
-	powerup_S.n_collisions = 0;
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 7; j++) {
+			if (j == 0)
+				powerup.anim.PushBack({ 112,48,16,16 });//closed
+			else if (j == 5)
+				powerup.anim.PushBack({ 112,64,16,16 });//white
+			else
+				powerup.anim.PushBack({ j * 16,64 + i * 16,16,16 });
+		}
+		for (int j = 3; j > 0; j--)
+			powerup.anim.PushBack({ j * 16,64 + i * 16,16,16 });
+	}
+	powerup.anim.speed = 0.1f;
+	powerup.life = 5000000;
+	powerup.speed.y = -1;
+	powerup.speed.x = 0;
+	powerup.n_collisions = 0;
 
 	one_up.anim.PushBack({ 16 * 5,  16 * 2, 16, 16 });
 	one_up.anim.PushBack({ 16 * 6, 16 * 2, 16, 16 });
