@@ -22,10 +22,11 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 	fly.loop = true;
 	
 
-	path.PushBack({ -1.0f, 0.0f }, 60, &fly);//Important
-	path.PushBack({ +1.0f, 0.0f }, 4000, &fly);//Important
+	path.PushBack({ -1.0f, 0.0f }, 60, &fly);
+	path.PushBack({ +1.0f, 0.0f }, 4000, &fly);
 
-	collider = App->collision->AddCollider({ 10, 10, 90, 90 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 100, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -142,15 +143,15 @@ void Enemy_BigShip::Shoot_yellow() {
 	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 77, position.y + 105, COLLIDER_ENEMY_SHOT);
 
 }
-void Enemy_BigShip::OnCollision(Collider* c1) {
-
-	
-}
+//void Enemy_BigShip::OnCollision(Collider* c1) {
+//
+//	
+//}
 
 void Enemy_BigShip::Draw(SDL_Texture* sprites)
 {
 	if (collider != nullptr)
-		collider->SetPos(position.x + 4, position.y + 6);
+		collider->SetPos(position.x + 7, position.y + 33);
 
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));

@@ -17,7 +17,7 @@ public:
 
 	
 	Enemy_BigShip(int x, int y);
-	void OnCollision(Collider*);
+	//void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	void Shoot();
 	void Shoot_yellow();
