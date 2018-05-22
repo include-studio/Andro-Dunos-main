@@ -152,7 +152,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->callback == App->player1) {
 				if (c1->type == COLLIDER_BONUS) {
-					App->player1->score += 100;
+					App->ui->score1 += 100;
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWER_S) {
@@ -170,7 +170,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (c2->callback == App->player2) {
 				if (c1->type == COLLIDER_BONUS) {
-					App->ui->score += 100;
+					App->ui->score2 += 100;
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWER_S) {

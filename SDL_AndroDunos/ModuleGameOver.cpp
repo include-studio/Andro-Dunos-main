@@ -55,11 +55,12 @@ bool ModuleGameOver::Start()
 	App->player1->hp = 3;
 	App->player1->type_weapon = 1;
 	App->player1->powerup = 1;
-	App->player1->score = 0;
+	App->ui->score1 = 0;
 
 	App->player2->hp = 3;
 	App->player2->type_weapon = 1;
 	App->player2->powerup = 1;
+	App->ui->score2 = 0;
 
 	gameover_tx = App->textures->Load("Assets/Sprites/gameover.png");
 

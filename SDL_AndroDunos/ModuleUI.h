@@ -36,21 +36,27 @@ public:
 	Animation insertCoin;
 	Animation* animationInsertCoin = nullptr;
 
-	int font_score = -1;
-	char score_text[10];
+	int font_score1 = 1;
+	char score1_text[10];
+
 	int font_score2 = -1;
+	char score2_text[10];
+
+	int font_highscore = -1;
 	char HighScore_text[13];
+
 	int font_credits = -1;
 	char credits_text[17];
+
 	bool activate_credit = true;
 	bool empty_credit = true;
 	bool credit_on = true;
 
-
 	uint credit = 0;
 	uint credit_fx;
 
-	uint score = 0;
+	uint score1 = 0;
+	uint score2 = 0;
 	uint high_score = 0;
 
 };

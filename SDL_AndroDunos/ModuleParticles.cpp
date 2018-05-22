@@ -397,11 +397,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->type == COLLIDER_ENEMY) {
 				if (active[i]->owner_type == OWNER_PLAYER1) {
-					App->player1->score += 100;
+					App->ui->score1 += 100;
 					LOG("COLLISION PARTICLE PLAYER1");
 				}
 				if (active[i]->owner_type == OWNER_PLAYER2) {
-					App->ui->score += 200;
+					App->ui->score2 += 200;
 					LOG("COLLISION PARTICLE PLAYER2");
 				}
 			}
