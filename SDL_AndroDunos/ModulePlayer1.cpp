@@ -43,7 +43,7 @@ ModulePlayer1::ModulePlayer1()
 	hp = 3;
 	type_weapon = 1;
 	powerup = 1;
-	score = 0;
+	//score = 0;
 }
 
 ModulePlayer1::~ModulePlayer1()
@@ -65,8 +65,6 @@ bool ModulePlayer1::Start()
 	dead = false;
 	player_col = App->collision->AddCollider({ position.x+3,position.y+4,21,13 }, COLLIDER_PLAYER, this);
 	
-	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
-	
 	god_mode_die = true;
 	fx_laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
 	fx_laser2 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-2_(Main_Ships).wav");
@@ -83,7 +81,7 @@ bool ModulePlayer1::CleanUp() {
 	App->collision->Disable();
 	App->particles->Disable();
 	App->shield1->Disable();
-	App->fonts->UnLoad(font_score);
+
 	App->audio->UnLoadFx(type_change);
 	App->audio->UnLoadFx(explosion_player);
 	App->audio->UnLoadFx(fx_laser4);
@@ -286,12 +284,6 @@ update_status ModulePlayer1::Update()
 		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
 		App->render->Blit(graphics, position.x-fire[current_anim].frames->w+1, position.y+5, &fire[current_anim].GetCurrentFrame());
 	}
-	
-	sprintf_s(score_text, 10, "%7d", score);
-	
-	// Blit the text of the score in at the bottom of the screen	
-	App->fonts->BlitText(30, 6, font_score, score_text);
-	App->fonts->BlitText(10, 6, font_score, "P1");
 
 	return UPDATE_CONTINUE;
 }

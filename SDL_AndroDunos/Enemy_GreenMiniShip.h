@@ -20,7 +20,7 @@ public:
 
 	Enemy_GreenMiniShip1(int x, int y);
 	void Shoot();
-	bool shoot = 0;
+	bool shoot = false;
 	void Move();
 	int current_time;
 	int init_time = 0;

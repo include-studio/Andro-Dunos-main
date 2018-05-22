@@ -263,6 +263,41 @@ ModuleParticles::ModuleParticles()
 	enemy_blue.anim.speed = 0.2f;
 	enemy_blue.life = 1500;
 	enemy_blue.speed.x = -2;
+
+	//enemy blue diagonal UP shot
+	enemy_blue_up.anim.PushBack({ 243,148,8,8 });
+	enemy_blue_up.anim.PushBack({ 243,156,8,8 });
+	enemy_blue_up.anim.PushBack({ 243,165,8,8 });
+	enemy_blue_up.anim.PushBack({ 250,148,8,8 });
+	enemy_blue_up.anim.speed = 0.2f;
+	enemy_blue_up.life = 1500;
+	enemy_blue_up.speed.x = -2;
+	enemy_blue_up.speed.y--;
+
+	//enemy blue diagonal DOWN shot
+	enemy_blue_down.anim.PushBack({ 243,148,8,8 });
+	enemy_blue_down.anim.PushBack({ 243,156,8,8 });
+	enemy_blue_down.anim.PushBack({ 243,165,8,8 });
+	enemy_blue_down.anim.PushBack({ 250,148,8,8 });
+	enemy_blue_down.anim.speed = 0.2f;
+	enemy_blue_down.life = 1500;
+	enemy_blue_down.speed.x = -2;
+	enemy_blue_down.speed.y++;
+
+	//enemy blue diagonal DOWN shot "32 = w"
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*0,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*1,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*2,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*3,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*4,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*5,275,32,13 });
+	enemy_yellow_laser.anim.PushBack({ 208 + 32*6,275,32,13 });
+	
+	enemy_yellow_laser.anim.speed = 0.2f;
+	enemy_yellow_laser.life = 1500;
+	enemy_yellow_laser.speed.x = -2;
+	enemy_yellow_laser.anim.loop = false;
+	
 	
 
 	
@@ -365,11 +400,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			if (c2->type == COLLIDER_ENEMY) {
 				if (active[i]->owner_type == OWNER_PLAYER1) {
-					App->player1->score += 100;
+					App->ui->score1 += 100;
 					LOG("COLLISION PARTICLE PLAYER1");
 				}
 				if (active[i]->owner_type == OWNER_PLAYER2) {
-					App->ui->score += 200;
+					App->ui->score2 += 200;
 					LOG("COLLISION PARTICLE PLAYER2");
 				}
 			}

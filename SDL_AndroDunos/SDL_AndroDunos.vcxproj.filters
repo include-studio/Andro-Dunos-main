@@ -109,6 +109,9 @@
     <ClCompile Include="Enemy_TinyRedShip.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy_BigShip.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -232,6 +235,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_TinyRedShip.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_BigShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

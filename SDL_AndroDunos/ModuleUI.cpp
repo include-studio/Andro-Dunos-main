@@ -77,14 +77,16 @@ bool ModuleUI::Start()
 	insertCoin.loop = true;
 	insertCoin.speed = 0.0225f;
 	
-	font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
-	font_score2 = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
+	font_score1 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
+	font_score2 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
+	font_highscore = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
 	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "0123456789", 1);
 
 	credit_fx = App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
 
 	credit = 0;
-	score = 0;
+	score1 = 0;
+	score2 = 0;
 
 	return true;
 }
@@ -95,45 +97,56 @@ bool ModuleUI::CleanUp()
 
 	App->textures->Unload(user_interface);
 	App->audio->UnLoadFx(credit_fx);
-	App->fonts->UnLoad(font_score);
+	App->fonts->UnLoad(font_score1);
+	App->fonts->UnLoad(font_score2);
+	App->fonts->UnLoad(font_highscore);
+	App->fonts->UnLoad(font_credits);
 	credit_on = true;
 	return true;
 }
 update_status ModuleUI::Update()
 {
 	//highscore logic
-	if (App->player1->score > high_score) {
-		high_score = App->player1->score;
+	if (score1 > high_score) {
+		high_score = score1; //App->player1->score
 	}
 
-	if (score > high_score) {
-		high_score = score;
+	if (score2 > high_score) {
+		high_score = score2;
 	}
 
 	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
-		
+		//score1
+		sprintf_s(score1_text, 10, "%7d", score1);
+		App->fonts->BlitText(30, 6, font_score1, score1_text);
+		App->fonts->BlitText(10, 6, font_score1, "P1");
+
 		//score2
-		sprintf_s(score_text, 10, "%7d", score);
-		App->fonts->BlitText(210, 6, font_score, score_text);
-		App->fonts->BlitText(190, 6, font_score, "P2");
+		sprintf_s(score2_text, 10, "%7d", score2);
+		App->fonts->BlitText(210, 6, font_score2, score2_text);
+		App->fonts->BlitText(190, 6, font_score2, "P2");
 
 		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
-		App->fonts->BlitText(120, 7, font_score2, HighScore_text);
-		App->fonts->BlitText(100, 7, font_score2, "HI-");
+		App->fonts->BlitText(120, 7, font_highscore, HighScore_text);
+		App->fonts->BlitText(100, 7, font_highscore, "HI-");
 	}
 
 	if (App->stage4->IsEnabled() == true && App->gameover->IsEnabled() == false) {
+		//score1
+		sprintf_s(score1_text, 10, "%7d", score1);
+		App->fonts->BlitText(30, 6, font_score1, score1_text);
+		App->fonts->BlitText(10, 6, font_score1, "P1");
 
 		//score2
-		sprintf_s(score_text, 10, "%7d", score);
-		App->fonts->BlitText(210, 6, font_score, score_text);
-		App->fonts->BlitText(190, 6, font_score, "P2");
+		sprintf_s(score2_text, 10, "%7d", score2);
+		App->fonts->BlitText(210, 6, font_score2, score2_text);
+		App->fonts->BlitText(190, 6, font_score2, "P2");
 
 		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
-		App->fonts->BlitText(120, 7, font_score2, HighScore_text);
-		App->fonts->BlitText(100, 7, font_score2, "HI-");
+		App->fonts->BlitText(120, 7, font_highscore, HighScore_text);
+		App->fonts->BlitText(100, 7, font_highscore, "HI-");
 	}
 
 	//final score in stage

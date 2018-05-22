@@ -33,7 +33,7 @@ Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y, bool _drop) : Enemy(x, y)
 
 void Enemy_MiniMiniBoss::Move()
 {
-	position.x += 0.7;
+	position.x ++;
 
 	current_time = SDL_GetTicks() - init_time; //Set time
 
@@ -60,9 +60,13 @@ void Enemy_MiniMiniBoss::Move()
 void Enemy_MiniMiniBoss::Shoot()
 {
 	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
+
 }
 
 void Enemy_MiniMiniBoss::OnCollision(Collider* collider) {
+	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->enemy_blue_up, position.x, position.y, COLLIDER_ENEMY_SHOT); //Triple shot
+	App->particles->AddParticle(App->particles->enemy_blue_down, position.x, position.y, COLLIDER_ENEMY_SHOT);
 	if (drop == true)
 		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
 }

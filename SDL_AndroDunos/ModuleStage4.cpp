@@ -222,7 +222,7 @@ bool ModuleStage4::Start() {
 
 
 
-
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 3950, 165); //Big ship WATER
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
 
@@ -387,7 +387,7 @@ update_status ModuleStage4::Update() {
 		break;
 	case 4:
 		App->render->camera.x += 1 * SCREEN_SIZE;
-		App->render->camera.y++;
+		App->render->camera.y += 1;
 		App->player1->position.x++;
 		App->player2->position.x++;
 		if (App->render->camera.y >= 113 * SCREEN_SIZE)
