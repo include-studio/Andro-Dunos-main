@@ -92,6 +92,8 @@ public:
 	Particle enemy_blue;
 	Particle enemy_blue_up;
 	Particle enemy_blue_down;
+
+	Particle enemy_yellow_laser;
 	
 };
 
