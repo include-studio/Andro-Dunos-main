@@ -50,36 +50,36 @@ update_status ModuleShieldPlayer2::Update() {
 
 	switch (App->player2->type_weapon) {
 	case 1:
-		position1.x=App->player2->position.x + int(27.0f * cosf(rotation))+15;
+		position1.x=App->player2->position.x + int(27.0f * cosf(rotation))+6;
 		position1.y = App->player2->position.y + int(27.0f * sinf(rotation));
-		position2.x = App->player2->position.x + int(27.0f * cosf(rotation+PI)) + 15;
+		position2.x = App->player2->position.x + int(27.0f * cosf(rotation+PI)) + 6;
 		position2.y = App->player2->position.y + int(27.0f * sinf(rotation+PI));
 		rotation += 0.13f;
 		App->render->Blit(tx_shield, position1.x, position1.y, &s3.GetCurrentFrame());
 		App->render->Blit(tx_shield, position2.x, position2.y, &s3.GetCurrentFrame());
 		break;
 	case 2:
-		position1.x = App->player2->position.x + 16;
+		position1.x = App->player2->position.x + 6;
 		position1.y = App->player2->position.y - 15;
-		position2.x = App->player2->position.x + 16;
+		position2.x = App->player2->position.x + 6;
 		position2.y = App->player2->position.y + 20;
 		App->render->Blit(tx_shield, position1.x, position1.y, &s2u.GetCurrentFrame());
 		App->render->Blit(tx_shield, position2.x, position2.y, &s2d.GetCurrentFrame());
 		break;
 	case 3:
 		SDL_Rect shield_f = s3.GetCurrentFrame(); //in this case we use rects because 2 objects use de same animation, so, if we put GetCurrentFrame() in blit the one shield will be one frame next the other
-		position1.x = App->player2->position.x + 36;
+		position1.x = App->player2->position.x + 26;
 		position1.y = App->player2->position.y - 8;
-		position2.x = App->player2->position.x + 36;
+		position2.x = App->player2->position.x + 26;
 		position2.y = App->player2->position.y + 14;
 		App->render->Blit(tx_shield, position1.x, position1.y, &shield_f);
 		App->render->Blit(tx_shield, position2.x, position2.y, &shield_f);
 		break;
 	case 4:
 		SDL_Rect shield_b = s4.GetCurrentFrame(); 
-		position1.x = App->player2->position.x -2;
+		position1.x = App->player2->position.x -12;
 		position1.y = App->player2->position.y - 8;
-		position2.x = App->player2->position.x -2;
+		position2.x = App->player2->position.x -12;
 		position2.y = App->player2->position.y + 14;
 		App->render->Blit(tx_shield, position1.x, position1.y, &shield_b);
 		App->render->Blit(tx_shield, position2.x, position2.y, &shield_b);
