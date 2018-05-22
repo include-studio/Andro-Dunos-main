@@ -26,7 +26,8 @@ ModuleUI::~ModuleUI() {}
 
 bool ModuleUI::Start()
 {
-	LOG("Loading intro");
+	LOG("Loading UI");
+	
 
 	user_interface = App->textures->Load("Assets/Sprites/user_interface.png");
 
@@ -45,13 +46,31 @@ bool ModuleUI::Start()
 	life2_rect.w = 7;
 	life2_rect.h = 7;
 
-	animationGameover = nullptr;
+	miniCoundown_rect.x = 0;
+	miniCoundown_rect.y = 57;
+	miniCoundown_rect.w = 67;
+	miniCoundown_rect.h = 11;
 
-	gameover.PushBack({ 0,33,79,11 }); // x, y, w, h
-	gameover.PushBack({ 80,33,79,11 });
+	gameover_rect.x = 0;
+	gameover_rect.y = 33;
+	gameover_rect.w = 79;
+	gameover_rect.h = 11;
 
-	gameover.loop = true;
-	gameover.speed = 0.0225f;
+	animationMiniContinueNum = nullptr;
+
+	miniContinueNum.PushBack({ 86,69,9,11 }); // x, y, w, h
+	miniContinueNum.PushBack({ 76,69,9,11 });
+	miniContinueNum.PushBack({ 66,69,9,11 });
+	miniContinueNum.PushBack({ 56,69,9,11 });
+	miniContinueNum.PushBack({ 46,69,9,11 }); //5 
+	miniContinueNum.PushBack({ 36,69,9,11 });
+	miniContinueNum.PushBack({ 26,69,9,11 });
+	miniContinueNum.PushBack({ 16,69,9,11 });
+	miniContinueNum.PushBack({ 10,69,5,11 });
+	miniContinueNum.PushBack({ 0,69,9,11 }); //0
+
+	miniContinueNum.loop = false;
+	miniContinueNum.speed = 0.0225f;
 
 	animationPress1p = nullptr;
 
@@ -115,6 +134,7 @@ update_status ModuleUI::Update()
 		high_score = score2;
 	}
 
+	//scores
 	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		//score1
 		sprintf_s(score1_text, 10, "%7d", score1);
@@ -150,11 +170,12 @@ update_status ModuleUI::Update()
 	}
 
 	//final score in stage
-	//if (App->stageclear->IsEnabled() == true && App->gameover->IsEnabled() == false) {
-	//	sprintf_s(score_text, 10, "%7d", App->player1->score);
-	//	App->fonts->BlitText(20, 100, font_score, score_text);
-	//}
+	/*if (App->stageclear->IsEnabled() == true && App->gameover->IsEnabled() == false) {
+		sprintf_s(score_text, 10, "%7d", App->player1->score);
+		App->fonts->BlitText(20, 100, font_score, score_text);
+	}*/
 
+	//credits
 	if (App->neogeo->IsEnabled() == false) {
 
 		if (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_DPAD_UP] == KEY_STATE::KEY_DOWN) {
@@ -225,6 +246,7 @@ update_status ModuleUI::Update()
 		
 	}
 	
+	//hp
 	if (App->player1->IsEnabled() == true) {
 		if (App->player1->hp == 7) {
 			App->render->Blit(user_interface, 10, 20, &life1_rect, 0.0f);
@@ -298,52 +320,121 @@ update_status ModuleUI::Update()
 		}
 	}
 
+	//gameover/countdown/gameover/insert or press
 	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {
 		if (App->player1->hp <= 0) {// && App->player2->hp > 0
-			animationGameover = &gameover;
-			SDL_Rect Rect_Gameover;
-			Rect_Gameover = animationGameover->GetCurrentFrame();
-			App->render->Blit(user_interface, 10, 20, &Rect_Gameover, 0.0f);
-			gameover.loop = true;
+			//Time
+			if (game_over_time == true) {
+				init_time1 = SDL_GetTicks();
+				game_over_time = false;
+			}
 
-			//COUNTDOWN CONTINUE
-
-			/*animationPress1p = &press1p;
-			SDL_Rect Rect_Press1p;
-			Rect_Press1p = animationPress1p->GetCurrentFrame();
-			App->render->Blit(user_interface, 10, 20, &Rect_Press1p, 0.0f);
-			press1p.loop = true;*/	
+			current_time1 = SDL_GetTicks() - init_time1;
+			
+			//gameover longer
+			if (current_time1 <= 2000 ){
+				App->render->Blit(user_interface, 10, 20, &gameover_rect, 0.0f);
+			}
+			//countdown
+			if (current_time1 > 2000 && current_time1 <= 9000) {
+				//word
+				App->render->Blit(user_interface, 10, 20, &miniCoundown_rect, 0.0f);
+				//numbers
+				animationMiniContinueNum = &miniContinueNum;
+				SDL_Rect Rect_miniContinueNum;
+				Rect_miniContinueNum = animationMiniContinueNum->GetCurrentFrame();
+				App->render->Blit(user_interface, 190, 20, &Rect_miniContinueNum, 0.0f);
+				miniContinueNum.loop = false;
+			}
+			//gameover shorter when countdown finishes
+			if (current_time1 > 9000 && current_time1 <= 10000)
+			{
+				App->render->Blit(user_interface, 10, 20, &gameover_rect, 0.0f);
+			}
+			//insert or press depending on credits
+			if (current_time1 >= 10000) {
+				//no credits == insert
+				if (credit <= 0) {
+					animationInsertCoin = &insertCoin;
+					SDL_Rect Rect_InsertCoin;
+					Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
+					App->render->Blit(user_interface, 10, 20, &Rect_InsertCoin, 0.0f);
+					insertCoin.loop = true;
+				}
+				//yes credits == press
+				if (credit > 0) {
+					animationPress1p = &press1p;
+					SDL_Rect Rect_Press1p;
+					Rect_Press1p = animationPress1p->GetCurrentFrame();
+					App->render->Blit(user_interface, 10, 20, &Rect_Press1p, 0.0f);
+					press1p.loop = true;				
+				}
+			}
 		}
 
 		if (App->player2->hp <= 0 ) { //&& App->player1->hp > 0
-			animationGameover = &gameover;
-			SDL_Rect Rect_Gameover;
-			Rect_Gameover = animationGameover->GetCurrentFrame();
-			App->render->Blit(user_interface, 190, 20, &Rect_Gameover, 0.0f);
-			gameover.loop = true;
-
-			//COUNTDOWN CONTINUE
-
-			//animationPress2p = &press2p;
-			//SDL_Rect Rect_Press2p;
-			//Rect_Press2p = animationPress2p->GetCurrentFrame();
-			//App->render->Blit(user_interface, 190, 20, &Rect_Press2p, 0.0f);
-			//press2p.loop = true;
 			
+									  //Time
+			if (game_over_time == true) {
+				init_time1 = SDL_GetTicks();
+				game_over_time = false;
+			}
+
+			current_time1 = SDL_GetTicks() - init_time1;
+
+			//gameover longer
+			if (current_time1 <= 2000) {
+				App->render->Blit(user_interface, 190, 20, &gameover_rect, 0.0f);
+			}
+			//countdown
+			if (current_time1 > 2000 && current_time1 <= 9000) {
+				//word
+				App->render->Blit(user_interface, 10, 20, &miniCoundown_rect, 0.0f);
+				//numbers
+				animationMiniContinueNum = &miniContinueNum;
+				SDL_Rect Rect_miniContinueNum;
+				Rect_miniContinueNum = animationMiniContinueNum->GetCurrentFrame();
+				App->render->Blit(user_interface, 280, 20, &Rect_miniContinueNum, 0.0f);
+				miniContinueNum.loop = false;
+			}
+			//gameover shorter when countdown finishes
+			if (current_time1 > 9000 && current_time1 <= 10000)
+			{
+				App->render->Blit(user_interface, 190, 20, &gameover_rect, 0.0f);
+			}
+			//insert or press depending on credits
+			if (current_time1 >= 10000) {
+				//no credits == insert
+				if (credit <= 0) {
+					animationInsertCoin = &insertCoin;
+					SDL_Rect Rect_InsertCoin;
+					Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
+					App->render->Blit(user_interface, 190, 20, &Rect_InsertCoin, 0.0f);
+					insertCoin.loop = true;
+				}
+				//yes credits == press
+				if (credit > 0) {
+					animationPress2p = &press2p;
+					SDL_Rect Rect_Press2p;
+					Rect_Press2p = animationPress2p->GetCurrentFrame();
+					App->render->Blit(user_interface, 171, 20, &Rect_Press2p, 0.0f);
+					press2p.loop = true;
+				}
+			}
 		}
 	}
 	
 	if (App->player2->IsEnabled() == false && App->player1->IsEnabled() == true) {
 
-		//INSERT COIN
+		//insert
 		if (credit <= 0) {
 			animationInsertCoin = &insertCoin;
 			SDL_Rect Rect_InsertCoin;
 			Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
 			App->render->Blit(user_interface, 190, 20, &Rect_InsertCoin, 0.0f);
-			press2p.loop = true;
+			insertCoin.loop = true;
 		}
-
+		//press
 		if (credit > 0) {
 			animationPress2p = &press2p;
 			SDL_Rect Rect_Press2p;
