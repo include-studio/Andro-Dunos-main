@@ -61,6 +61,8 @@ bool ModulePlayer2::Start()
 
 	init_time = SDL_GetTicks(); //Timer
 
+	if (powerup > 1)
+		App->shield2->Enable();
 	destroyed = false;
 	dead = false;
 	

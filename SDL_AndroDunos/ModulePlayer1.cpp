@@ -61,6 +61,9 @@ bool ModulePlayer1::Start()
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 3;
 
+	if (powerup > 1)
+		App->shield1->Enable();
+
 	destroyed = false;
 	dead = false;
 	player_col = App->collision->AddCollider({ position.x+3,position.y+4,21,13 }, COLLIDER_PLAYER, this);
