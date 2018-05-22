@@ -29,7 +29,7 @@ ModulePowerUp::ModulePowerUp()
 	bonus.speed.y = 1;
 	bonus.speed.x = 0;
 	bonus.n_collisions = 0;
-	bonus.anim.frame = 13;
+	bonus.anim.frame = 14;
 
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 7; j++) {
@@ -239,9 +239,24 @@ bool Item::Update()
 		if (anim.Finished())
 			ret = false;			
 
-	if (collider->type == COLLIDER_BONUS && anim.speed != 0.2f)
-		anim.speed = 0.2f;
+	if (collider->type == COLLIDER_BONUS && anim.speed != 0.2f && anim.current_frame > 11)
+ 		anim.speed = 0.2f;
 
+	if (this->collider->type == COLLIDER_POWER_S) {
+
+		if (anim.speed != 0.005f && (anim.current_frame >= 3 && anim.current_frame < 4 /*|| anim.current_frame == 7 || anim.current_frame == 13 ||
+			anim.current_frame == 17 || anim.current_frame == 23 || anim.current_frame == 27 ||
+			anim.current_frame == 33 || anim.current_frame == 37*/))
+
+			anim.speed = 0.005f;
+
+		else if (anim.speed != 0.3f && (anim.current_frame != 3 /*|| anim.current_frame != 7 || anim.current_frame != 13 ||
+			anim.current_frame != 17 || anim.current_frame != 23 || anim.current_frame != 27 ||
+			anim.current_frame != 33 || anim.current_frame != 37*/))
+
+			anim.speed = 0.3f;
+	}
+			
 	if (this->collider->type != COLLIDER_ONE_UP)
 		if (!screen_col)
 			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w)
