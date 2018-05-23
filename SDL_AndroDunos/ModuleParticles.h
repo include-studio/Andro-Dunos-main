@@ -62,6 +62,7 @@ public:
 	
 	Particle laser_1_1_base;
 	Particle laser_1_2_fat;
+	Particle laser_1_6;
 	Particle laser_2_1_front;
 	Particle laser_2_1_back;
 	Particle laser_2_4;

@@ -28,6 +28,10 @@ ModuleParticles::ModuleParticles()
 	laser_1_2_fat.life = 670;
 	laser_1_2_fat.speed.x = 7;
 
+	laser_1_6.anim.PushBack({ 21,6,16,10 });
+	laser_1_6.life = 670;
+	laser_1_6.speed.x = 7;
+
 	//laser 2_1 particle
 	laser_2_1_front.anim.PushBack({ 6,69,10,3 });
 	laser_2_1_front.life = 670;

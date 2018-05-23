@@ -169,7 +169,7 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
 		powerup++;
 	if (powerup > MAX_POWERUP)
-		powerup = 4;
+		powerup = MAX_POWERUP;
 
 	// input
 		//controller input
@@ -375,6 +375,24 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 33, position.y, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 38, position.y + 9, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 33, position.y + 18, COLLIDER_PLAYER_SHOT);
+			break;
+		case 5:
+			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 33, position.y-1, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 42, position.y + 7, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 42, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 33, position.y + 23, COLLIDER_PLAYER_SHOT);
+			break;
+		case 6:
+			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 33, position.y - 2, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_6, position.x + 42, position.y + 6, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_6, position.x + 42, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_2_fat, position.x + 33, position.y + 27, COLLIDER_PLAYER_SHOT);
+			break;
+		case 7:
+			App->particles->AddParticle(App->particles->laser_1_6, position.x + 33, position.y - 8, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_6, position.x + 42, position.y + 2, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_6, position.x + 42, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_1_6, position.x + 33, position.y + 25, COLLIDER_PLAYER_SHOT);
 			break;
 		}
 		break;
