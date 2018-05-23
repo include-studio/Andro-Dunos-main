@@ -21,9 +21,38 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 	fly.speed = 0.2f;
 	fly.loop = true;
 	
+	//left, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Right, Left, Up-Right, Down, Up-Left, Right, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Down, Right, Left, 
 
-	path.PushBack({ -1.0f, 0.0f }, 60, &fly);
-	path.PushBack({ +1.0f, 0.0f }, 4000, &fly);
+	path.PushBack({ -1.0f, 0.0f }, 85, &fly); //left
+	path.PushBack({ +2.5f, -0.4f }, 45, &fly); //Up-Right
+	path.PushBack({ +1.0f, +0.4f }, 70, &fly); //Down
+	path.PushBack({ -1.0f, -0.4f }, 50, &fly); //Up-Left
+	path.PushBack({ +3.0f, -1.0f }, 45, &fly); // Up-Right
+	path.PushBack({ +1.0f, +2.0f }, 40, &fly); // Down
+	path.PushBack({  0.0f, -0.5f }, 60, &fly); //Up-Left
+	path.PushBack({ +2.5f, 0.0f }, 20, &fly); //Right
+	path.PushBack({ -2.0f, 0.0f }, 35, &fly); //Left
+	path.PushBack({ +2.5f, -0.5f }, 35, &fly); //Up-Right
+	path.PushBack({ +1.0f, +1.0f }, 40, &fly); // Down
+	path.PushBack({ 0.0f, -0.5f }, 40, &fly); //Up-Left
+	path.PushBack({ +2.5f, 0.0f }, 70, &fly); //Right
+	path.PushBack({ +2.5f, -1.0f }, 30, &fly); //Up-Right
+	path.PushBack({ +1.0f, +1.0f }, 60, &fly); // Down
+	path.PushBack({  0.0f, -0.4f }, 80, &fly); //Up-Left
+	path.PushBack({ +2.0f, -0.4f }, 80, &fly); //Up-Right
+	path.PushBack({ +1.0f, +1.0f }, 80, &fly); // Down
+	path.PushBack({ 0.0f, -0.4f }, 80, &fly); //Up-Left
+	path.PushBack({ +2.0f, -0.4f }, 80, &fly); //Up-Right
+	path.PushBack({ +1.0f, +0.5f }, 90, &fly); // Down
+	path.PushBack({ 0.0f, -0.4f }, 80, &fly); //Up-Left
+
+
+	path.PushBack({ +2.5f, 0.0f }, 70, &fly); //Right
+	path.PushBack({ -2.0f, 0.0f }, 2000, &fly); //Left
+
+
+	
+	//path.PushBack({ +1.0f, 0.0f }, 4000, &fly); //IDLE
 
 	collider = App->collision->AddCollider({ 0, 0, 100, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
@@ -126,8 +155,8 @@ void Enemy_BigShip::Move()
 
 	
 	position = original_pos + path.GetCurrentSpeed(&animation);
-	//2, 12, 16, 21
-	//3, 8, 12, 17
+	//2, 12, 16, 21 Seconds Blue
+	//3, 8, 12, 17 Seconds Yellow
 }
 void Enemy_BigShip::Shoot() {
 	

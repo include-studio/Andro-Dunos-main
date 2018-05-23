@@ -262,7 +262,7 @@ bool ModuleStage4::Start() {
 
 	//enemies
 
-	App->powerup->AddPowerUp(App->powerup->one_up, 4285, 200, COLLIDER_ONE_UP);
+	App->powerup->AddPowerUp(App->powerup->one_up, 4285, 220, COLLIDER_ONE_UP);
 
 	//audio
 
