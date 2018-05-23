@@ -28,6 +28,10 @@ ModuleParticles::ModuleParticles()
 	laser_1_2_fat.life = 670;
 	laser_1_2_fat.speed.x = 7;
 
+	laser_1_6.anim.PushBack({ 21,6,16,10 });
+	laser_1_6.life = 670;
+	laser_1_6.speed.x = 7;
+
 	//laser 2_1 particle
 	laser_2_1_front.anim.PushBack({ 6,69,10,3 });
 	laser_2_1_front.life = 670;
@@ -41,6 +45,20 @@ ModuleParticles::ModuleParticles()
 	laser_2_4.anim.PushBack({ 3,23,15,5 });
 	laser_2_4.life = 670;
 	laser_2_4.speed.x = -7;
+
+	laser_2_7_fat.anim.PushBack({ 3,8,15,5 });
+	laser_2_7_fat.life = 670;
+	laser_2_7_fat.speed.x = 7;
+
+	laser_2_3_diagonaluthin.anim.PushBack({ 7,88,8,6 });
+	laser_2_3_diagonaluthin.life = 670;
+	laser_2_3_diagonaluthin.speed.x = -5;
+	laser_2_3_diagonaluthin.speed.y = -3;
+
+	laser_2_3_diagonaldthin.anim.PushBack({ 7,96,8,6 });
+	laser_2_3_diagonaldthin.life = 670;
+	laser_2_3_diagonaldthin.speed.x = -5;
+	laser_2_3_diagonaldthin.speed.y = 3;
 
 	laser_2_3_diagonalu.anim.PushBack({ 5,50,11,8 });
 	laser_2_3_diagonalu.life = 670;
@@ -88,32 +106,116 @@ ModuleParticles::ModuleParticles()
 	laser_3_3_diagonaldownback.speed.y = -7;
 
 	//laser 3_5 particle
-	laser_3_4_diagonalupfront.anim.PushBack({ 76,2,16,22 });
+	laser_3_4_diagonalupfront.anim.PushBack({ 81,28,16,22 });
 	laser_3_4_diagonalupfront.anim.loop = false;
 	laser_3_4_diagonalupfront.life = 670;
 	laser_3_4_diagonalupfront.speed.x = 7;
 	laser_3_4_diagonalupfront.speed.y = -7;
 
 	//laser 3_6 particle
-	laser_3_4_diagonaldownfront.anim.PushBack({ 76,32,16,22 });
+	laser_3_4_diagonaldownfront.anim.PushBack({ 81,52,16,22 });
 	laser_3_4_diagonaldownfront.anim.loop = false;
 	laser_3_4_diagonaldownfront.life = 670;
 	laser_3_4_diagonaldownfront.speed.x = 7;
 	laser_3_4_diagonaldownfront.speed.y = 7;
 
 	//laser 3_7 particle
-	laser_3_4_diagonaldownback.anim.PushBack({ 76,65,16,22 });
+	laser_3_4_diagonaldownback.anim.PushBack({ 97,14,16,22 });
 	laser_3_4_diagonaldownback.anim.loop = false;
 	laser_3_4_diagonaldownback.life = 670;
 	laser_3_4_diagonaldownback.speed.x = -7;
 	laser_3_4_diagonaldownback.speed.y = 7;
 
 	//laser 3_8 particle
-	laser_3_4_diagonalupback.anim.PushBack({ 76,95,16,22 });
+	laser_3_4_diagonalupback.anim.PushBack({ 97,66,16,22 });
 	laser_3_4_diagonalupback.anim.loop = false;
 	laser_3_4_diagonalupback.life = 670;
 	laser_3_4_diagonalupback.speed.x = -7;
 	laser_3_4_diagonalupback.speed.y = -7;
+
+	//laser 3_5 particle
+	laser_3_5_diagonalupfront.anim.PushBack({ 81,14,32,36 });
+	laser_3_5_diagonalupfront.anim.loop = false;
+	laser_3_5_diagonalupfront.life = 670;
+	laser_3_5_diagonalupfront.speed.x = 7;
+	laser_3_5_diagonalupfront.speed.y = -7;
+
+	//laser 3_6 particle
+	laser_3_5_diagonaldownfront.anim.PushBack({ 81,52,32,36 });
+	laser_3_5_diagonaldownfront.anim.loop = false;
+	laser_3_5_diagonaldownfront.life = 670;
+	laser_3_5_diagonaldownfront.speed.x = 7;
+	laser_3_5_diagonaldownfront.speed.y = 7;
+
+	//laser 3_7 particle
+	laser_3_5_diagonaldownback.anim.PushBack({ 81,14,32,36 });
+	laser_3_5_diagonaldownback.anim.loop = false;
+	laser_3_5_diagonaldownback.life = 670;
+	laser_3_5_diagonaldownback.speed.x = -7;
+	laser_3_5_diagonaldownback.speed.y = 7;
+
+	//laser 3_8 particle
+	laser_3_5_diagonalupback.anim.PushBack({ 81,52,32,36 });
+	laser_3_5_diagonalupback.anim.loop = false;
+	laser_3_5_diagonalupback.life = 670;
+	laser_3_5_diagonalupback.speed.x = -7;
+	laser_3_5_diagonalupback.speed.y = -7;
+
+	//laser 3_5 particle
+	laser_3_6_diagonalupfront.anim.PushBack({ 118,32,32,32 });
+	laser_3_6_diagonalupfront.anim.loop = false;
+	laser_3_6_diagonalupfront.life = 670;
+	laser_3_6_diagonalupfront.speed.x = 7;
+	laser_3_6_diagonalupfront.speed.y = -7;
+
+	//laser 3_6 particle
+	laser_3_6_diagonaldownfront.anim.PushBack({ 118,66,32,32 });
+	laser_3_6_diagonaldownfront.anim.loop = false;
+	laser_3_6_diagonaldownfront.life = 670;
+	laser_3_6_diagonaldownfront.speed.x = 7;
+	laser_3_6_diagonaldownfront.speed.y = 7;
+
+	//laser 3_7 particle
+	laser_3_6_diagonaldownback.anim.PushBack({ 118,32,32,32 });
+	laser_3_6_diagonaldownback.anim.loop = false;
+	laser_3_6_diagonaldownback.life = 670;
+	laser_3_6_diagonaldownback.speed.x = -7;
+	laser_3_6_diagonaldownback.speed.y = 7;
+
+	//laser 3_8 particle
+	laser_3_6_diagonalupback.anim.PushBack({ 118,66,32,32 });
+	laser_3_6_diagonalupback.anim.loop = false;
+	laser_3_6_diagonalupback.life = 670;
+	laser_3_6_diagonalupback.speed.x = -7;
+	laser_3_6_diagonalupback.speed.y = -7;
+
+	//laser 3_5 particle
+	laser_3_7_diagonalupfront.anim.PushBack({ 118,2,55,62 });
+	laser_3_7_diagonalupfront.anim.loop = false;
+	laser_3_7_diagonalupfront.life = 670;
+	laser_3_7_diagonalupfront.speed.x = 7;
+	laser_3_7_diagonalupfront.speed.y = -7;
+
+	//laser 3_6 particle
+	laser_3_7_diagonaldownfront.anim.PushBack({ 118,65,55,62 });
+	laser_3_7_diagonaldownfront.anim.loop = false;
+	laser_3_7_diagonaldownfront.life = 670;
+	laser_3_7_diagonaldownfront.speed.x = 7;
+	laser_3_7_diagonaldownfront.speed.y = 7;
+
+	//laser 3_7 particle
+	laser_3_7_diagonaldownback.anim.PushBack({ 118,2,55,62 });
+	laser_3_7_diagonaldownback.anim.loop = false;
+	laser_3_7_diagonaldownback.life = 670;
+	laser_3_7_diagonaldownback.speed.x = -7;
+	laser_3_7_diagonaldownback.speed.y = 7;
+
+	//laser 3_8 particle
+	laser_3_7_diagonalupback.anim.PushBack({ 118,65,55,62 });
+	laser_3_7_diagonalupback.anim.loop = false;
+	laser_3_7_diagonalupback.life = 670;
+	laser_3_7_diagonalupback.speed.x = -7;
+	laser_3_7_diagonalupback.speed.y = -7;
 
 	//laser 4_1 particle
 	laser_4_1_1.anim.PushBack({ 41,11,13,2 });
@@ -127,6 +229,7 @@ ModuleParticles::ModuleParticles()
 	//laser 4_2 particle
 	laser_4_1_2.anim.PushBack({ 41,11,13,2 });
 	laser_4_1_2.anim.PushBack({ 41,23,13,6 });
+	laser_4_1_2.anim.PushBack({ 41,38,13,8 });
 	laser_4_1_2.anim.loop = false;
 	laser_4_1_2.anim.speed = 0.8f;
 	laser_4_1_2.life = 670;
@@ -161,6 +264,30 @@ ModuleParticles::ModuleParticles()
 	laser_4_4_2.speed.x = 7;
 	laser_4_4_2.speed.y = -2;
 
+	//laser 4_1 particle
+	laser_4_5_1.anim.PushBack({ 41,11,13,2 });
+	laser_4_5_1.anim.PushBack({ 41,23,13,6 });
+	laser_4_5_1.anim.PushBack({ 41,38,13,8 });
+	laser_4_5_1.anim.PushBack({ 41,49,13,12 });
+	laser_4_5_1.anim.PushBack({ 41,64,13,14 });
+	laser_4_5_1.anim.loop = false;
+	laser_4_5_1.anim.speed = 0.8f;
+	laser_4_5_1.life = 670;
+	laser_4_5_1.speed.x = 7;
+	laser_4_5_1.speed.y = 1;
+
+	//laser 4_2 particle
+	laser_4_5_2.anim.PushBack({ 41,11,13,2 });
+	laser_4_5_2.anim.PushBack({ 41,23,13,6 });
+	laser_4_5_2.anim.PushBack({ 41,38,13,8 });
+	laser_4_5_2.anim.PushBack({ 41,49,13,12 });
+	laser_4_5_2.anim.PushBack({ 41,64,13,14 });
+	laser_4_5_2.anim.loop = false;
+	laser_4_5_2.anim.speed = 0.8f;
+	laser_4_5_2.life = 670;
+	laser_4_5_2.speed.x = 7;
+	laser_4_5_2.speed.y = -1;
+
 	//laser 4_3 upgrade 1 of laser 4
 	laser_4_3_1.anim.PushBack({ 41,11,13,2 });
 	laser_4_3_1.anim.PushBack({ 41,23,13,6 });
@@ -169,6 +296,41 @@ ModuleParticles::ModuleParticles()
 	laser_4_3_1.anim.speed = 0.8f;
 	laser_4_3_1.life = 670;
 	laser_4_3_1.speed.x = 7;
+
+	laser_4_6.anim.PushBack({ 41,11,13,2 });
+	laser_4_6.anim.PushBack({ 41,23,13,6 });
+	laser_4_6.anim.PushBack({ 41,38,13,8 });
+	laser_4_6.anim.PushBack({ 41,49,13,12 });
+	laser_4_6.anim.PushBack({ 41,64,13,14 });
+	laser_4_6.anim.loop = false;
+	laser_4_6.anim.speed = 0.8f;
+	laser_4_6.life = 670;
+	laser_4_6.speed.x = 7;
+
+	laser_4_7_1.anim.PushBack({ 41,11,13,2 });
+	laser_4_7_1.anim.PushBack({ 41,23,13,6 });
+	laser_4_7_1.anim.PushBack({ 41,38,13,8 });
+	laser_4_7_1.anim.PushBack({ 41,49,13,12 });
+	laser_4_7_1.anim.PushBack({ 41,64,13,14 });
+	laser_4_7_1.anim.loop = false;
+	laser_4_7_1.anim.speed = 0.8f;
+	laser_4_7_1.life = 670;
+	laser_4_7_1.speed.x = 7;
+	laser_4_7_1.speed.y = 2;
+
+	//laser 4_2 particle
+	laser_4_7_2.anim.PushBack({ 41,11,13,2 });
+	laser_4_7_2.anim.PushBack({ 41,23,13,6 });
+	laser_4_7_2.anim.PushBack({ 41,38,13,8 });
+	laser_4_7_2.anim.PushBack({ 41,49,13,12 });
+	laser_4_7_2.anim.PushBack({ 41,64,13,14 });
+	laser_4_7_2.anim.loop = false;
+	laser_4_7_2.anim.speed = 0.8f;
+	laser_4_7_2.life = 670;
+	laser_4_7_2.speed.x = 7;
+	laser_4_7_2.speed.y = -2;
+
+
 
 	//bomb
 	//1_1

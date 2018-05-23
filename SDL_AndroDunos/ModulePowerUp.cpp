@@ -24,7 +24,7 @@ ModulePowerUp::ModulePowerUp()
 			if (i == 2 && j == 4) break;
 		}
 
-	bonus.life = 5000000;
+	bonus.life = 50000;
 	bonus.anim.speed = 0.5f;
 	bonus.speed.y = 1;
 	bonus.speed.x = 0;
@@ -44,7 +44,7 @@ ModulePowerUp::ModulePowerUp()
 			powerup.anim.PushBack({ j * 16,64 + i * 16,16,16 });
 	}
 	powerup.anim.speed = 0.1f;
-	powerup.life = 5000000;
+	powerup.life = 50000;
 	powerup.speed.y = -1;
 	powerup.speed.x = 0;
 	powerup.n_collisions = 0;
@@ -60,7 +60,7 @@ ModulePowerUp::ModulePowerUp()
 	one_up.anim.PushBack({ 16 * 5, 16 * 3, 16, 16 });
 	one_up.anim.PushBack({ 16 * 6, 16 * 3, 16, 16 });
 
-	one_up.life = 5000000;
+	one_up.life = 50000;
 	one_up.anim.speed = 0.25f;
 	one_up.speed.y = 0;
 	one_up.speed.x = 0;
@@ -244,13 +244,13 @@ bool Item::Update()
 
 	if (this->collider->type == COLLIDER_POWER_S) {
 
-		if (anim.speed != 0.005f && (anim.current_frame >= 3 && anim.current_frame < 4 /*|| anim.current_frame == 7 || anim.current_frame == 13 ||
+		if (anim.speed != 0.05f && (anim.current_frame == 3.0f /*|| anim.current_frame == 7 || anim.current_frame == 13 ||
 			anim.current_frame == 17 || anim.current_frame == 23 || anim.current_frame == 27 ||
 			anim.current_frame == 33 || anim.current_frame == 37*/))
 
-			anim.speed = 0.005f;
+			anim.speed = 0.05f;
 
-		else if (anim.speed != 0.3f && (anim.current_frame != 3 /*|| anim.current_frame != 7 || anim.current_frame != 13 ||
+		else if (anim.speed != 0.3f && (anim.current_frame == 4.0f /*|| anim.current_frame != 7 || anim.current_frame != 13 ||
 			anim.current_frame != 17 || anim.current_frame != 23 || anim.current_frame != 27 ||
 			anim.current_frame != 33 || anim.current_frame != 37*/))
 

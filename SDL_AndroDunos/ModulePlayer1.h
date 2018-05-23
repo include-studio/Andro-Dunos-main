@@ -8,7 +8,7 @@
 
 #define METERSMOVED 50
 #define TIMERETURNIDDLE 10
-#define MAX_POWERUP 4
+#define MAX_POWERUP 7
 
 struct SDL_Texture;
 struct Collider;
