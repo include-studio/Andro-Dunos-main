@@ -66,8 +66,11 @@ public:
 	Particle laser_2_1_front;
 	Particle laser_2_1_back;
 	Particle laser_2_4;
+	Particle laser_2_7_fat;
 	Particle laser_2_3_diagonalu;
 	Particle laser_2_3_diagonald;
+	Particle laser_2_3_diagonaluthin;
+	Particle laser_2_3_diagonaldthin;
 	Particle laser_3_1_0;
 	Particle laser_3_2_diagonalupfront;
 	Particle laser_3_2_diagonaldownfront;

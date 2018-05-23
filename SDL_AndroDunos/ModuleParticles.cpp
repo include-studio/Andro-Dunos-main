@@ -46,6 +46,20 @@ ModuleParticles::ModuleParticles()
 	laser_2_4.life = 670;
 	laser_2_4.speed.x = -7;
 
+	laser_2_7_fat.anim.PushBack({ 3,8,15,5 });
+	laser_2_7_fat.life = 670;
+	laser_2_7_fat.speed.x = 7;
+
+	laser_2_3_diagonaluthin.anim.PushBack({ 7,88,8,6 });
+	laser_2_3_diagonaluthin.life = 670;
+	laser_2_3_diagonaluthin.speed.x = -5;
+	laser_2_3_diagonaluthin.speed.y = -3;
+
+	laser_2_3_diagonaldthin.anim.PushBack({ 7,96,8,6 });
+	laser_2_3_diagonaldthin.life = 670;
+	laser_2_3_diagonaldthin.speed.x = -5;
+	laser_2_3_diagonaldthin.speed.y = 3;
+
 	laser_2_3_diagonalu.anim.PushBack({ 5,50,11,8 });
 	laser_2_3_diagonalu.life = 670;
 	laser_2_3_diagonalu.speed.x = -5;
