@@ -41,4 +41,64 @@ public:
 	void Move();
 };
 
+
+
+//Wing1
+
+class Enemy_BigShip2 : public Enemy
+{
+private:
+
+	Path path;
+	iPoint original_pos;
+	Animation fly;
+public:
+
+
+	Enemy_BigShip2(int x, int y);
+	//void OnCollision(Collider*);
+	int WingUp() { return original_pos.y -=2;  }
+	int WingDown() { return original_pos.y += 2; }
+	void Draw(SDL_Texture* sprites);
+	
+	bool open_wing1 = true;
+	bool open_wing2 = false;
+	bool open_wing3 = false;
+	bool open_wing4 = false;
+	bool open_wing5 = false;
+
+
+
+	int current_time;
+	int init_time = 0;
+
+	void Move();
+};
+
+
+//Wing2
+
+class Enemy_BigShip3 : public Enemy
+{
+private:
+
+	Path path;
+	iPoint original_pos;
+	Animation fly;
+public:
+
+
+	Enemy_BigShip3(int x, int y);
+	//void OnCollision(Collider*);
+	void Draw(SDL_Texture* sprites);
+	int WingUp() { return original_pos.y -= 2; }
+	int WingDown() { return original_pos.y += 2; }
+
+	int current_time;
+	int init_time = 0;
+
+	void Move();
+};
+
 #endif // __ENEMY_BIGSHIP_H__
+
