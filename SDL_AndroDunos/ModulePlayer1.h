@@ -43,6 +43,7 @@ public:
 	int part_stagePlayer = 0;
 
 	bool god_mode = false;
+	bool ultimate1 = false;
 
 private:
 
@@ -61,7 +62,6 @@ private:
 
 	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change;
 
-	bool ultimate=false;
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode_die = false;

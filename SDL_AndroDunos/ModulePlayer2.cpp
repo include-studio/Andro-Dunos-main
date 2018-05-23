@@ -144,8 +144,8 @@ update_status ModulePlayer2::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_REPEAT)
-		ultimate = true;
-	else ultimate = false;
+		ultimate2 = true;
+	else ultimate2 = false;
 
 	//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
@@ -262,7 +262,7 @@ update_status ModulePlayer2::Update()
 
 	// Draw everything --------------------------------------
 	Animation *ship_state = ship;
-	if (ultimate)
+	if (ultimate2)
 		ship_state = anim_ultimate;
 
 	if (hp > 0) {														//Render Ship

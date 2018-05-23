@@ -162,8 +162,8 @@ update_status ModulePlayer1::Update()
 		hp++;
 
 	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_REPEAT)
-		ultimate = true;
-	else ultimate = false;
+		ultimate1 = true;
+	else ultimate1 = false;
 
 	//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN)
@@ -281,7 +281,7 @@ update_status ModulePlayer1::Update()
 
 	// Draw everything --------------------------------------
 	Animation *ship_state = ship;
-	if (ultimate)
+	if (ultimate1)
 		ship_state = anim_ultimate;
 	if (hp > 0) {														//Render Ship
 		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());

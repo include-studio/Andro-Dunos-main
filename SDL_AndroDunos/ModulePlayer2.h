@@ -27,6 +27,7 @@ public:
 
 	void OnCollision(Collider*, Collider*);
 
+	bool ultimate2 = false;
 public:
 
 	PLAYER_STATE_MOVE state;
@@ -50,7 +51,7 @@ public:
 
 	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change;
 
-	bool ultimate = false;
+	
 	bool destroyed = false;
 	bool dead = false;
 	bool god_mode = false;
