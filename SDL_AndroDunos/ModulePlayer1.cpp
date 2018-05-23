@@ -312,7 +312,8 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		}
 		else { //Respawn
 			
-			powerup--;
+			if (powerup > 1)
+				powerup--;
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
