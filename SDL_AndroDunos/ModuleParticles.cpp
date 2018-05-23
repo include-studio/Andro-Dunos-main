@@ -229,6 +229,7 @@ ModuleParticles::ModuleParticles()
 	//laser 4_2 particle
 	laser_4_1_2.anim.PushBack({ 41,11,13,2 });
 	laser_4_1_2.anim.PushBack({ 41,23,13,6 });
+	laser_4_1_2.anim.PushBack({ 41,38,13,8 });
 	laser_4_1_2.anim.loop = false;
 	laser_4_1_2.anim.speed = 0.8f;
 	laser_4_1_2.life = 670;
@@ -263,6 +264,30 @@ ModuleParticles::ModuleParticles()
 	laser_4_4_2.speed.x = 7;
 	laser_4_4_2.speed.y = -2;
 
+	//laser 4_1 particle
+	laser_4_5_1.anim.PushBack({ 41,11,13,2 });
+	laser_4_5_1.anim.PushBack({ 41,23,13,6 });
+	laser_4_5_1.anim.PushBack({ 41,38,13,8 });
+	laser_4_5_1.anim.PushBack({ 41,49,13,12 });
+	laser_4_5_1.anim.PushBack({ 41,64,13,14 });
+	laser_4_5_1.anim.loop = false;
+	laser_4_5_1.anim.speed = 0.8f;
+	laser_4_5_1.life = 670;
+	laser_4_5_1.speed.x = 7;
+	laser_4_5_1.speed.y = 1;
+
+	//laser 4_2 particle
+	laser_4_5_2.anim.PushBack({ 41,11,13,2 });
+	laser_4_5_2.anim.PushBack({ 41,23,13,6 });
+	laser_4_5_2.anim.PushBack({ 41,38,13,8 });
+	laser_4_5_2.anim.PushBack({ 41,49,13,12 });
+	laser_4_5_2.anim.PushBack({ 41,64,13,14 });
+	laser_4_5_2.anim.loop = false;
+	laser_4_5_2.anim.speed = 0.8f;
+	laser_4_5_2.life = 670;
+	laser_4_5_2.speed.x = 7;
+	laser_4_5_2.speed.y = -1;
+
 	//laser 4_3 upgrade 1 of laser 4
 	laser_4_3_1.anim.PushBack({ 41,11,13,2 });
 	laser_4_3_1.anim.PushBack({ 41,23,13,6 });
@@ -271,6 +296,41 @@ ModuleParticles::ModuleParticles()
 	laser_4_3_1.anim.speed = 0.8f;
 	laser_4_3_1.life = 670;
 	laser_4_3_1.speed.x = 7;
+
+	laser_4_6.anim.PushBack({ 41,11,13,2 });
+	laser_4_6.anim.PushBack({ 41,23,13,6 });
+	laser_4_6.anim.PushBack({ 41,38,13,8 });
+	laser_4_6.anim.PushBack({ 41,49,13,12 });
+	laser_4_6.anim.PushBack({ 41,64,13,14 });
+	laser_4_6.anim.loop = false;
+	laser_4_6.anim.speed = 0.8f;
+	laser_4_6.life = 670;
+	laser_4_6.speed.x = 7;
+
+	laser_4_7_1.anim.PushBack({ 41,11,13,2 });
+	laser_4_7_1.anim.PushBack({ 41,23,13,6 });
+	laser_4_7_1.anim.PushBack({ 41,38,13,8 });
+	laser_4_7_1.anim.PushBack({ 41,49,13,12 });
+	laser_4_7_1.anim.PushBack({ 41,64,13,14 });
+	laser_4_7_1.anim.loop = false;
+	laser_4_7_1.anim.speed = 0.8f;
+	laser_4_7_1.life = 670;
+	laser_4_7_1.speed.x = 7;
+	laser_4_7_1.speed.y = 2;
+
+	//laser 4_2 particle
+	laser_4_7_2.anim.PushBack({ 41,11,13,2 });
+	laser_4_7_2.anim.PushBack({ 41,23,13,6 });
+	laser_4_7_2.anim.PushBack({ 41,38,13,8 });
+	laser_4_7_2.anim.PushBack({ 41,49,13,12 });
+	laser_4_7_2.anim.PushBack({ 41,64,13,14 });
+	laser_4_7_2.anim.loop = false;
+	laser_4_7_2.anim.speed = 0.8f;
+	laser_4_7_2.life = 670;
+	laser_4_7_2.speed.x = 7;
+	laser_4_7_2.speed.y = -2;
+
+
 
 	//bomb
 	//1_1

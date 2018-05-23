@@ -101,6 +101,11 @@ public:
 	Particle laser_4_3_1;
 	Particle laser_4_4_1;
 	Particle laser_4_4_2;
+	Particle laser_4_5_1;
+	Particle laser_4_5_2;
+	Particle laser_4_6;
+	Particle laser_4_7_1;
+	Particle laser_4_7_2;
 
 	Particle bomb_1_1;
 	Particle bomb_2_1;

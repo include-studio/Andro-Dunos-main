@@ -515,6 +515,26 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->laser_4_4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_4_4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
 			break;
+		case 5:
+			App->particles->AddParticle(App->particles->laser_4_4_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_4_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_5_1, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_5_2, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+			break;
+		case 6:
+			App->particles->AddParticle(App->particles->laser_4_4_1, position.x + 18, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_4_2, position.x + 18, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_5_1, position.x + 28, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_5_2, position.x + 28, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_6, position.x + 42, position.y + 11, COLLIDER_PLAYER_SHOT);
+			break;
+		case 7:
+			App->particles->AddParticle(App->particles->laser_4_5_1, position.x + 28, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_5_2, position.x + 28, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_7_1, position.x + 18, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_7_2, position.x + 18, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_4_6, position.x + 42, position.y + 11, COLLIDER_PLAYER_SHOT);
+			break;
 		}
 		break;
 	}
