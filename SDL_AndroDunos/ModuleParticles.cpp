@@ -446,7 +446,7 @@ ModuleParticles::ModuleParticles()
 	enemy_blue_down.speed.x = -2;
 	enemy_blue_down.speed.y++;
 
-	//enemy blue diagonal DOWN shot "32 = w"
+	//enemy yellow laser shoot
 	enemy_yellow_laser.anim.PushBack({ 208 + 32*0,275,32,13 });
 	enemy_yellow_laser.anim.PushBack({ 208 + 32*1,275,32,13 });
 	enemy_yellow_laser.anim.PushBack({ 208 + 32*2,275,32,13 });

@@ -163,8 +163,8 @@ void Enemy_BigShip::Shoot() {
 }
 void Enemy_BigShip::Shoot_yellow() {
 
-	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 77, position.y, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 77, position.y + 105, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 70, position.y, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 70, position.y + 105, COLLIDER_ENEMY_SHOT);
 
 }
 //void Enemy_BigShip::OnCollision(Collider* c1) {
