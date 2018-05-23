@@ -63,6 +63,7 @@ public:
 	Particle laser_1_1_base;
 	Particle laser_1_2_fat;
 	Particle laser_1_6;
+	
 	Particle laser_2_1_front;
 	Particle laser_2_1_back;
 	Particle laser_2_4;
@@ -71,6 +72,7 @@ public:
 	Particle laser_2_3_diagonald;
 	Particle laser_2_3_diagonaluthin;
 	Particle laser_2_3_diagonaldthin;
+	
 	Particle laser_3_1_0;
 	Particle laser_3_2_diagonalupfront;
 	Particle laser_3_2_diagonaldownfront;
@@ -80,6 +82,19 @@ public:
 	Particle laser_3_4_diagonaldownfront;
 	Particle laser_3_4_diagonaldownback;
 	Particle laser_3_4_diagonalupback;
+	Particle laser_3_5_diagonalupfront;
+	Particle laser_3_5_diagonaldownfront;
+	Particle laser_3_5_diagonaldownback;
+	Particle laser_3_5_diagonalupback;
+	Particle laser_3_6_diagonalupfront;
+	Particle laser_3_6_diagonaldownfront;
+	Particle laser_3_6_diagonaldownback;
+	Particle laser_3_6_diagonalupback;
+	Particle laser_3_7_diagonalupfront;
+	Particle laser_3_7_diagonaldownfront;
+	Particle laser_3_7_diagonaldownback;
+	Particle laser_3_7_diagonalupback;
+
 	Particle laser_4_1_1;
 	Particle laser_4_1_2;
 	Particle laser_4_2_0;

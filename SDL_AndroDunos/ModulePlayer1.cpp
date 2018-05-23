@@ -312,6 +312,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		}
 		else { //Respawn
 			
+			powerup--;
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
@@ -452,23 +453,41 @@ void ModulePlayer1::Shoot() {
 
 		switch (powerup) {
 		case 1:
-			App->particles->AddParticle(App->particles->laser_3_1_0, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_1_0, position.x + 20, position.y + 11, COLLIDER_PLAYER_SHOT);
 			break;
 		case 2:
-			App->particles->AddParticle(App->particles->laser_3_2_diagonalupfront, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_2_diagonaldownfront, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_2_diagonalupfront, position.x +5, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_2_diagonaldownfront, position.x +5, position.y + 5, COLLIDER_PLAYER_SHOT);
 			break;
 		case 3:
-			App->particles->AddParticle(App->particles->laser_3_2_diagonalupfront, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_2_diagonaldownfront, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_3_diagonalupback, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_3_diagonaldownback, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_2_diagonalupfront, position.x +5, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_2_diagonaldownfront, position.x +5, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_3_diagonalupback, position.x +5, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_3_diagonaldownback, position.x +5, position.y + 5, COLLIDER_PLAYER_SHOT);
 			break;
 		case 4:
-			App->particles->AddParticle(App->particles->laser_3_4_diagonalupfront, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_4_diagonaldownfront, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_4_diagonaldownback, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laser_3_4_diagonalupback, position.x + 25, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_4_diagonalupfront, position.x +5, position.y + 2, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_4_diagonaldownfront, position.x +5, position.y + 2, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_4_diagonaldownback, position.x +5, position.y + 2, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_4_diagonalupback, position.x +5, position.y + 2, COLLIDER_PLAYER_SHOT);
+			break;
+		case 5:
+			App->particles->AddParticle(App->particles->laser_3_5_diagonalupfront, position.x -3, position.y - 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_5_diagonaldownfront, position.x -3, position.y - 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_5_diagonaldownback, position.x -3, position.y - 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_5_diagonalupback, position.x -3, position.y - 5, COLLIDER_PLAYER_SHOT);
+			break;
+		case 6:
+			App->particles->AddParticle(App->particles->laser_3_6_diagonalupfront, position.x , position.y , COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_6_diagonaldownfront, position.x , position.y , COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_6_diagonaldownback, position.x , position.y , COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_6_diagonalupback, position.x , position.y , COLLIDER_PLAYER_SHOT);
+			break;
+		case 7:
+			App->particles->AddParticle(App->particles->laser_3_7_diagonalupfront, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_7_diagonaldownfront, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_7_diagonaldownback, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laser_3_7_diagonalupback, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
 			break;
 		}
 		break;
