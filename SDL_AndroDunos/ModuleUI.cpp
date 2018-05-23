@@ -98,83 +98,20 @@ bool ModuleUI::Start()
 
 	animationUltimateBar = nullptr;
 
-	ultimateBar.PushBack({ 0,81,64,6 }); // x, y, w, h
-	ultimateBar.PushBack({ 0,88,64,6 });
-	ultimateBar.PushBack({ 0,95,64,6 });
-	ultimateBar.PushBack({ 0,102,64,6 });
-	ultimateBar.PushBack({ 0,109,64,6 });
-	ultimateBar.PushBack({ 0,116,64,6 });
-	ultimateBar.PushBack({ 0,123,64,6 });
-	ultimateBar.PushBack({ 0,130,64,6 });
-	ultimateBar.PushBack({ 0,137,64,6 });
-	ultimateBar.PushBack({ 0,144,64,6 });
-	ultimateBar.PushBack({ 0,151,64,6 });
-	ultimateBar.PushBack({ 0,158,64,6 });
-	ultimateBar.PushBack({ 0,165,64,6 });
-	ultimateBar.PushBack({ 0,172,64,6 });
-	ultimateBar.PushBack({ 0,179,64,6 });
-	ultimateBar.PushBack({ 0,186,64,6 });
-	ultimateBar.PushBack({ 0,193,64,6 });
-	ultimateBar.PushBack({ 0,200,64,6 });
-	ultimateBar.PushBack({ 0,207,64,6 });
-	ultimateBar.PushBack({ 0,214,64,6 });
-	ultimateBar.PushBack({ 0,221,64,6 });
-	ultimateBar.PushBack({ 0,228,64,6 });
-	ultimateBar.PushBack({ 0,235,64,6 });
-	ultimateBar.PushBack({ 0,242,64,6 });
-	ultimateBar.PushBack({ 0,249,64,6 });
-	ultimateBar.PushBack({ 0,256,64,6 });
-	ultimateBar.PushBack({ 0,263,64,6 });
-	ultimateBar.PushBack({ 0,270,64,6 });
-	ultimateBar.PushBack({ 0,277,64,6 });
-	ultimateBar.PushBack({ 68,82,64,6 }); // x, y, w, h
-	ultimateBar.PushBack({ 68,89,64,6 });
-	ultimateBar.PushBack({ 68,96,64,6 });
-	ultimateBar.PushBack({ 68,103,64,6 });
-	ultimateBar.PushBack({ 68,110,64,6 });
-	ultimateBar.PushBack({ 68,117,64,6 });
-	ultimateBar.PushBack({ 68,124,64,6 });
-	ultimateBar.PushBack({ 68,131,64,6 });
-	ultimateBar.PushBack({ 68,138,64,6 });
-	ultimateBar.PushBack({ 68,145,64,6 });
-	ultimateBar.PushBack({ 68,152,64,6 });
-	ultimateBar.PushBack({ 68,159,64,6 });
-	ultimateBar.PushBack({ 68,166,64,6 });
-	ultimateBar.PushBack({ 68,173,64,6 });
-	ultimateBar.PushBack({ 68,180,64,6 });
-	ultimateBar.PushBack({ 68,187,64,6 });
-	ultimateBar.PushBack({ 68,194,64,6 });
-	ultimateBar.PushBack({ 68,201,64,6 });
-	ultimateBar.PushBack({ 68,208,64,6 });
-	ultimateBar.PushBack({ 68,215,64,6 });
-	ultimateBar.PushBack({ 68,222,64,6 });
-	ultimateBar.PushBack({ 68,229,64,6 });
-	ultimateBar.PushBack({ 68,236,64,6 });
-	ultimateBar.PushBack({ 68,243,64,6 });
-	ultimateBar.PushBack({ 68,250,64,6 });
-	ultimateBar.PushBack({ 68,257,64,6 });
-	ultimateBar.PushBack({ 68,264,64,6 });
-	ultimateBar.PushBack({ 68,271,64,6 });
-	ultimateBar.PushBack({ 68,278,64,6 });
-	ultimateBar.PushBack({ 136,82,64,6 }); // x, y, w, h
-	ultimateBar.PushBack({ 136,89,64,6 });
-	ultimateBar.PushBack({ 136,96,64,6 });
-	ultimateBar.PushBack({ 136,103,64,6 });
-	ultimateBar.PushBack({ 136,110,64,6 });
+	for(int i=0;i<3;i++)
+		for (int j = 0; j < 29; j++) {
+			ultimateBar.PushBack({ i * 64,81 + j * 7,64,7 });
+			if (i == 2 && j > 8)
+				break;
+		}
 
 	ultimateBar.loop = false;
-	ultimateBar.speed = 1.0f;
+	ultimateBar.speed = 0.5f;
 
 	animationUltimateCharged = nullptr;
 
-	//ultimateCharged.PushBack({ 136,117,64,6 });
-	////ultimateCharged.PushBack({ 136,128,64,4 }); 
-	////ultimateCharged.PushBack({ 136,137,64,1 });
-	ultimateCharged.PushBack({ 136,142,64,5 }); // x, y, w, h
-	ultimateCharged.PushBack({ 136,150,64,7 });
-	ultimateCharged.PushBack({ 136,161,64,7 });
-	ultimateCharged.PushBack({ 136,170,64,7 });
-	ultimateCharged.PushBack({ 136,180,64,7 });
+	for (int i = 0; i < 8; i++)
+		ultimateCharged.PushBack({ 128,144 + i * 7,64,7 });
 
 	ultimateCharged.loop = true;
 	ultimateCharged.speed = 1.0f;
