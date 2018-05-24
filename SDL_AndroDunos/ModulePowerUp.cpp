@@ -244,15 +244,15 @@ bool Item::Update()
 
 	if (this->collider->type == COLLIDER_POWER_S) {
 
-		if (anim.speed != 0.05f && (anim.current_frame == 3.0f /*|| anim.current_frame == 7 || anim.current_frame == 13 ||
+		if (anim.speed != 0.005f && anim.isInFrame(3) /*|| anim.current_frame == 7 || anim.current_frame == 13 ||
 			anim.current_frame == 17 || anim.current_frame == 23 || anim.current_frame == 27 ||
-			anim.current_frame == 33 || anim.current_frame == 37*/))
+			anim.current_frame == 33 || anim.current_frame == 37*/)
 
-			anim.speed = 0.05f;
+			anim.speed = 0.005f;
 
-		else if (anim.speed != 0.3f && (anim.current_frame == 4.0f /*|| anim.current_frame != 7 || anim.current_frame != 13 ||
+		else if (anim.speed != 0.3f && !anim.isInFrame(3) /*|| anim.current_frame != 7 || anim.current_frame != 13 ||
 			anim.current_frame != 17 || anim.current_frame != 23 || anim.current_frame != 27 ||
-			anim.current_frame != 33 || anim.current_frame != 37*/))
+			anim.current_frame != 33 || anim.current_frame != 37*/)
 
 			anim.speed = 0.3f;
 	}

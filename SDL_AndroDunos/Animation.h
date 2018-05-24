@@ -51,6 +51,12 @@ public:
 	void reset() {
 		current_frame = 0;
 	}
+
+	bool isInFrame(int f) {
+		if (current_frame >= f && current_frame < f + 1)
+			return true;
+		else return false;
+	}
 };
 
 #endif
