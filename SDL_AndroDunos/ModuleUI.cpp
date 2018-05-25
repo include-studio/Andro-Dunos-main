@@ -183,11 +183,11 @@ bool ModuleUI::Start()
 
 	animationUltimateCharged = nullptr;
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 3; i++)
 		ultimateCharged.PushBack({ 128,144 + i * 7,64,7 });
 
 	ultimateCharged.loop = true;
-	ultimateCharged.speed = 1.0f;
+	ultimateCharged.speed = 0.9f;
 	
 	font_score1 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	font_score2 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
