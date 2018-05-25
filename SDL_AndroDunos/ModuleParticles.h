@@ -123,6 +123,8 @@ public:
 	Particle enemy_blue_down;
 
 	Particle enemy_yellow_laser;
+
+	Particle enemy_blue_laser;
 	
 };
 
