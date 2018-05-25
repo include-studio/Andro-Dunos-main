@@ -174,20 +174,19 @@ bool ModuleUI::Start()
 	for(int i=0;i<3;i++)
 		for (int j = 0; j < 29; j++) {
 			ultimateBar.PushBack({ i * 64,81 + j * 7,64,7 });
-			if (i == 2 && j > 8)
+			if (i == 2 && j > 11)
 				break;
 		}
 
-	ultimateBar.loop = false;
 	ultimateBar.speed = 0.5f;
 
-	animationUltimateCharged = nullptr;
+	//animationUltimateCharged = nullptr;
 
-	for (int i = 0; i < 3; i++)
+	/*for (int i = 0; i < 3; i++)
 		ultimateCharged.PushBack({ 128,144 + i * 7,64,7 });
 
 	ultimateCharged.loop = true;
-	ultimateCharged.speed = 0.9f;
+	ultimateCharged.speed = 0.9f;*/
 	
 	font_score1 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	font_score2 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
@@ -340,79 +339,13 @@ update_status ModuleUI::Update()
 	}
 	
 	//hp
-	if (App->player1->IsEnabled() == true) {
-		if (App->player1->hp == 7) {
-			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 40, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 48, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 56, HP_HEIGHT, &life1_rect, 0.0f);
-		}
-		if (App->player1->hp == 6) {
-			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 40, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 48, HP_HEIGHT, &life1_rect, 0.0f);
-		}
-		if (App->player1->hp == 5) {
-			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 40, HP_HEIGHT, &life1_rect, 0.0f);
-		}
-		if (App->player1->hp == 4) {
-			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
-		}
+	if (App->player1->IsEnabled() == true)
+		for(int i = 0;i<App->player1->hp;i++)
+			App->render->Blit(user_interface, 16+i*8, HP_HEIGHT, &life1_rect, false);
 
-		if (App->player1->hp == 3) {
-			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
-		}
-		if (App->player1->hp == 2) {
-			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
-		}
-	}
-
-	if (App->player2->IsEnabled() == true) {
-		if (App->player2->hp == 7) {
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 48, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 56, HP_HEIGHT, &life2_rect, 0.0f);
-		}
-		if (App->player2->hp == 6) {
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 48, HP_HEIGHT, &life2_rect, 0.0f);
-		}
-		if (App->player2->hp == 5) {
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, HP_HEIGHT, &life2_rect, 0.0f);
-		}
-		if (App->player2->hp == 4) {
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
-		}
-
-		if (App->player2->hp == 3) {
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
-		}
-		if (App->player2->hp == 2) {
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
-		}
-	}
+	if (App->player2->IsEnabled() == true)
+		for (int i = 0; i<App->player1->hp; i++)
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16 + i * 8, HP_HEIGHT, &life2_rect, false);
 
 	//weapon type UI
 	if (App->player1->IsEnabled() == true && App->player1->hp > 0) {
@@ -476,28 +409,12 @@ update_status ModuleUI::Update()
 	}
 
 	//ultimate bar
-	if (App->player1->ultimate1 == true) {
-		animationUltimateBar = &ultimateBar;
-		SDL_Rect Rect_ultimateBar;
-		Rect_ultimateBar = animationUltimateBar->GetCurrentFrame();
-		App->render->Blit(user_interface, 72, HP_HEIGHT, &Rect_ultimateBar, 0.0f);
-		ultimateBar.loop = false;
+	App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.frames[0], false);
 
-		if (ultimateBar.current_frame >= ultimateBar.last_frame - 1) {
-
-			animationUltimateCharged = &ultimateCharged;
-			SDL_Rect Rect_UltimateCharged;
-			Rect_UltimateCharged = animationUltimateCharged->GetCurrentFrame();
-			App->render->Blit(user_interface, 72, HP_HEIGHT, &Rect_UltimateCharged, 0.0f);
-
-		}
-
-		//if () {
-		//	ultimateBar.reset();
-		//	ultimateCharged.reset();
-		//}
-	}
-
+	if (App->player1->charge == true)
+		App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.GetCurrentFrame(67), false);
+	else ultimateBar.reset();
+/*
 	if (App->player2->ultimate2 == true) {
 		animationUltimateBar = &ultimateBar;
 		SDL_Rect Rect_ultimateBar;
@@ -518,7 +435,7 @@ update_status ModuleUI::Update()
 		//	ultimateBar.reset();
 		//	ultimateCharged.reset();
 		//}
-	}
+	}*/
 
 	//gameover/countdown/gameover/insert or press
 	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {

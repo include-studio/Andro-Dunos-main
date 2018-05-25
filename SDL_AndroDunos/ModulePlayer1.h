@@ -43,7 +43,7 @@ public:
 	int part_stagePlayer = 0;
 
 	bool god_mode = false;
-	bool ultimate1 = false;
+	bool charge = false;
 	bool hp_down = false;
 
 private:

@@ -59,8 +59,8 @@ public:
 	Animation ultimateBar;
 	Animation* animationUltimateBar = nullptr;
 
-	Animation ultimateCharged;
-	Animation* animationUltimateCharged = nullptr;
+	//Animation ultimateCharged;
+	//Animation* animationUltimateCharged = nullptr;
 
 	int font_score1 = 1;
 	char score1_text[10];
