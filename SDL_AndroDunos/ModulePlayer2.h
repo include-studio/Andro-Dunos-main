@@ -56,6 +56,8 @@ public:
 	bool dead = false;
 	bool god_mode = false;
 	bool god_mode_die = false;
+	bool hp_down = false;
+
 	int type_weapon = 0;
 	int hp;
 	int powerup=1;

@@ -44,6 +44,7 @@ public:
 
 	bool god_mode = false;
 	bool ultimate1 = false;
+	bool hp_down = false;
 
 private:
 
