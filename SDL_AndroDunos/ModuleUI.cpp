@@ -56,6 +56,71 @@ bool ModuleUI::Start()
 	gameover_rect.w = 79;
 	gameover_rect.h = 11;
 
+	normal1.x = 130;
+	normal1.y = 174;
+	normal1.w = 31;
+	normal1.h = 7;
+
+	reverse.x = 130;
+	reverse.y = 185;
+	reverse.w = 31;
+	reverse.h = 7;
+
+	laser3.x = 130;
+	laser3.y = 208;
+	laser3.w = 31;
+	laser3.h = 7;
+
+	way.x = 130;
+	way.y = 196;
+	way.w = 31;
+	way.h = 7;
+
+	fintrel.x = 130;
+	fintrel.y = 219;
+	fintrel.w = 31;
+	fintrel.h = 7;
+
+	hawk.x = 130;
+	hawk.y = 230;
+	hawk.w = 31;
+	hawk.h = 7;
+
+	normal3.x = 163;
+	normal3.y = 219;
+	normal3.w = 31;
+	normal3.h = 7;
+
+	laser4.x = 130;
+	laser4.y = 241;
+	laser4.w = 31;
+	laser4.h = 7;
+
+	homing.x = 163;
+	homing.y = 230;
+	homing.w = 31;
+	homing.h = 7;
+
+	rolling.x = 163;
+	rolling.y = 174;
+	rolling.w = 31;
+	rolling.h = 7;
+
+	side.x = 163;
+	side.y = 185;
+	side.w = 31;
+	side.h = 7;
+
+	front.x = 163;
+	front.y = 208;
+	front.w = 31;
+	front.h = 7;
+
+	rear.x = 163;
+	rear.y = 196;
+	rear.w = 31;
+	rear.h = 7;
+
 	animationMiniContinueNum = nullptr;
 
 	miniContinueNum.PushBack({ 86,69,9,11 }); // x, y, w, h
@@ -337,6 +402,67 @@ update_status ModuleUI::Update()
 		}
 		if (App->player2->hp == 2) {
 			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
+		}
+	}
+
+	//weapon type UI
+	if (App->player1->IsEnabled() == true) {
+		switch (App->player1->type_weapon)
+		{
+		case 1:
+			App->render->Blit(user_interface, 5, 15, &normal1, 0.0f);
+			App->render->Blit(user_interface, 36, 15, &fintrel, 0.0f);
+			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, 98, 15, &rolling, 0.0f);
+			break;
+		case 2:
+			App->render->Blit(user_interface, 5, 15, &reverse, 0.0f);
+			App->render->Blit(user_interface, 36, 15, &hawk, 0.0f);
+			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, 98, 15, &side, 0.0f);
+			break;
+		case 3:
+			App->render->Blit(user_interface, 5, 15, &laser3, 0.0f);
+			App->render->Blit(user_interface, 36, 15, &normal3, 0.0f);
+			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, 98, 15, &front, 0.0f);
+			break;
+		case 4:
+			App->render->Blit(user_interface, 5, 15, &way, 0.0f);
+			App->render->Blit(user_interface, 36, 15, &laser4, 0.0f);
+			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, 98, 15, &rear, 0.0f);
+			break;
+		}
+	}
+
+	if (App->player2->IsEnabled() == true) {
+		switch (App->player2->type_weapon)
+		{
+		case 1:
+			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 5, 15, &normal1, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 36, 15, &fintrel, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 98, 15, &rolling, 0.0f);
+			break;
+		case 2:
+			App->render->Blit(user_interface, SCREEN_WIDTH/2 + 5, 15, &reverse, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH/2 + 36, 15, &hawk, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 98, 15, &side, 0.0f);
+			break;
+		case 3:
+			App->render->Blit(user_interface, SCREEN_WIDTH + 5, 15, &laser3, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 36, 15, &normal3, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 98, 15, &front, 0.0f);
+			break;
+		case 4:
+			App->render->Blit(user_interface, SCREEN_WIDTH + 5, 15, &way, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 36, 15, &laser4, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 67, 15, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_WIDTH + 98, 15, &rear, 0.0f);
+			break;
 		}
 	}
 

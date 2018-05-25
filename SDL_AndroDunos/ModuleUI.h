@@ -29,6 +29,21 @@ public:
 	SDL_Rect miniCoundown_rect;
 	SDL_Rect gameover_rect;
 
+	SDL_Rect normal1;//blue
+	SDL_Rect reverse;
+	SDL_Rect laser3;
+	SDL_Rect way;
+	SDL_Rect fintrel;//orange
+	SDL_Rect hawk;
+	SDL_Rect normal3;
+	SDL_Rect laser4;
+	SDL_Rect homing;//yellow
+	SDL_Rect rolling;//green
+	SDL_Rect side;
+	SDL_Rect front;
+	SDL_Rect rear;
+
+
 	Animation miniContinueNum;
 	Animation* animationMiniContinueNum = nullptr;
 
