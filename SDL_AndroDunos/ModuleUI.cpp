@@ -462,7 +462,7 @@ update_status ModuleUI::Update()
 			break;
 		case 3:
 			App->render->Blit(user_interface, SCREEN_MIDDLE + 8, WEAPONS_HEIGHT, &laser3, 0.0f);
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 04, WEAPONS_HEIGHT, &normal3, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, WEAPONS_HEIGHT, &normal3, 0.0f);
 			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, WEAPONS_HEIGHT, &homing, 0.0f);
 			App->render->Blit(user_interface, SCREEN_MIDDLE + 104, WEAPONS_HEIGHT, &front, 0.0f);
 			break;
