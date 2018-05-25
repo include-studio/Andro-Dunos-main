@@ -10,6 +10,8 @@
 #include "Enemy_Column.h"
 #include "Enemy_TinyRedShip.h"
 #include "Enemy_BigShip.h"
+#include "Enemy_TripleCanon.h"
+
 
 
 
@@ -32,7 +34,8 @@ enum ENEMY_TYPES
 	TINYREDSHIP2,
 	BIGSHIP,
 	BIGSHIP2,
-	BIGSHIP3
+	BIGSHIP3,
+	TRIPLECANON
 };
 
 class Enemy;

@@ -141,6 +141,7 @@ update_status ModulePlayer1::Update()
 		else if(god_mode == false) {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode_die = false;
+			hp_down = false;
 			state = IDLE;
 		}	
 	}
@@ -294,10 +295,11 @@ update_status ModulePlayer1::Update()
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == player_col && dead == false && App->fade->IsFading() == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWER_S && c2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
+	if (c1 == player_col && dead == false && App->fade->IsFading() == false && hp_down == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWER_S && c2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;
+		hp_down = true;
 		App->particles->AddParticle(App->particles->explosion_player1, position.x + 15, position.y - 2);
 
 		if (hp <= 0) {

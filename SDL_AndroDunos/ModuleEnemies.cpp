@@ -16,6 +16,7 @@
 #include "Enemy_Column.h"
 #include "Enemy_TinyRedShip.h"
 #include "Enemy_BigShip.h"
+#include "Enemy_TripleCanon.h"
 #include "ModuleAudio.h"
 
 #define SPAWN_MARGIN 15
@@ -193,6 +194,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::BIGSHIP3:
 			enemies[i] = new Enemy_BigShip3(info.x, info.y);
+			break;
+		case ENEMY_TYPES::TRIPLECANON:
+			enemies[i] = new Enemy_TripleCanon(info.x, info.y);
 			break;
 		
 		}
