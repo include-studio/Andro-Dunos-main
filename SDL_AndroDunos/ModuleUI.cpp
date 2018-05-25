@@ -20,6 +20,14 @@
 #include "ModuleViscoGames.h"
 #include "ModuleMainMenu.h"
 
+#define SCREEN_MIDDLE 160 //For andro dunos' developers this is the middle (not 152)
+#define SCORES_HEIGHT 7
+#define WEAPONS_HEIGHT 17
+#define HP_HEIGHT 25
+#define CREDITS_HEIGHT 208
+#define CREDITS_X 224
+#define DEAD_UI_X 26
+
 ModuleUI::ModuleUI() {}
 
 ModuleUI::~ModuleUI() {}
@@ -223,35 +231,35 @@ update_status ModuleUI::Update()
 	if (App->stage1->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		//score1
 		sprintf_s(score1_text, 10, "%7d", score1);
-		App->fonts->BlitText(30, 6, font_score1, score1_text);
-		App->fonts->BlitText(10, 6, font_score1, "P1");
+		App->fonts->BlitText(35, SCORES_HEIGHT, font_score1, score1_text);
+		App->fonts->BlitText(10, SCORES_HEIGHT, font_score1, "P1");
 
 		//score2
 		sprintf_s(score2_text, 10, "%7d", score2);
-		App->fonts->BlitText(210, 6, font_score2, score2_text);
-		App->fonts->BlitText(190, 6, font_score2, "P2");
+		App->fonts->BlitText(SCREEN_MIDDLE + 73, SCORES_HEIGHT, font_score2, score2_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 48, SCORES_HEIGHT, font_score2, "P2");
 
 		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
-		App->fonts->BlitText(120, 7, font_highscore, HighScore_text);
-		App->fonts->BlitText(100, 7, font_highscore, "HI-");
+		App->fonts->BlitText(125, SCORES_HEIGHT + 1, font_highscore, HighScore_text);
+		App->fonts->BlitText(104, SCORES_HEIGHT + 1, font_highscore, "HI-");
 	}
 
 	if (App->stage4->IsEnabled() == true && App->gameover->IsEnabled() == false) {
 		//score1
 		sprintf_s(score1_text, 10, "%7d", score1);
-		App->fonts->BlitText(30, 6, font_score1, score1_text);
-		App->fonts->BlitText(10, 6, font_score1, "P1");
+		App->fonts->BlitText(35, SCORES_HEIGHT, font_score1, score1_text);
+		App->fonts->BlitText(10, SCORES_HEIGHT, font_score1, "P1");
 
 		//score2
 		sprintf_s(score2_text, 10, "%7d", score2);
-		App->fonts->BlitText(210, 6, font_score2, score2_text);
-		App->fonts->BlitText(190, 6, font_score2, "P2");
+		App->fonts->BlitText(SCREEN_MIDDLE + 73, SCORES_HEIGHT, font_score2, score2_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 48, SCORES_HEIGHT, font_score2, "P2");
 
 		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
-		App->fonts->BlitText(120, 7, font_highscore, HighScore_text);
-		App->fonts->BlitText(100, 7, font_highscore, "HI-");
+		App->fonts->BlitText(125, SCORES_HEIGHT + 1, font_highscore, HighScore_text);
+		App->fonts->BlitText(104, SCORES_HEIGHT + 1, font_highscore, "HI-");
 	}
 
 	//final score in stage
@@ -276,25 +284,25 @@ update_status ModuleUI::Update()
 
 		if (credit == 0) {
 			credits_rect.w = 38;
-			App->render->Blit(user_interface, 230, 210, &credits_rect, 0.0f);
-			App->fonts->BlitText(280, 210, font_credits, "00");
+			App->render->Blit(user_interface, CREDITS_X, CREDITS_HEIGHT, &credits_rect, 0.0f);
+			App->fonts->BlitText(272, CREDITS_HEIGHT, font_credits, "00"); //280
 		}
 
 		else if (credit == 1) {
 			credits_rect.w = 38;
-			App->render->Blit(user_interface, 230, 210, &credits_rect, 0.0f);
-			App->fonts->BlitText(280, 210, font_credits, "01");
+			App->render->Blit(user_interface, CREDITS_X, CREDITS_HEIGHT, &credits_rect, 0.0f);
+			App->fonts->BlitText(272, CREDITS_HEIGHT, font_credits, "01"); //280
 		}
 
 		else if (credit >= 2) {
 			credits_rect.w = 45;
-			App->render->Blit(user_interface, 230, 210, &credits_rect, 0.0f);
+			App->render->Blit(user_interface, CREDITS_X, CREDITS_HEIGHT, &credits_rect, 0.0f);
 			if (credit < 10) {
-				App->fonts->BlitText(280, 210, font_credits, "0");
-				App->fonts->BlitText(240, 210, font_credits, credits_text);
+				App->fonts->BlitText(272, CREDITS_HEIGHT, font_credits, "0"); //280
+				App->fonts->BlitText(232, CREDITS_HEIGHT, font_credits, credits_text); //240
 			}
 			else 
-				App->fonts->BlitText(240, 210, font_credits, credits_text);
+				App->fonts->BlitText(232, CREDITS_HEIGHT, font_credits, credits_text); //240
 		}
 
 		//Main Menu Credits
@@ -334,134 +342,135 @@ update_status ModuleUI::Update()
 	//hp
 	if (App->player1->IsEnabled() == true) {
 		if (App->player1->hp == 7) {
-			App->render->Blit(user_interface, 10, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 20, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 30, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 40, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 50, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 60, 22, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 40, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 48, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 56, HP_HEIGHT, &life1_rect, 0.0f);
 		}
 		if (App->player1->hp == 6) {
-			App->render->Blit(user_interface, 10, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 20, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 30, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 40, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 50, 22, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 40, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 48, HP_HEIGHT, &life1_rect, 0.0f);
 		}
 		if (App->player1->hp == 5) {
-			App->render->Blit(user_interface, 10, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 20, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 30, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 40, 22, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 40, HP_HEIGHT, &life1_rect, 0.0f);
 		}
 		if (App->player1->hp == 4) {
-			App->render->Blit(user_interface, 10, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 20, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 30, 22, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 32, HP_HEIGHT, &life1_rect, 0.0f);
 		}
 
 		if (App->player1->hp == 3) {
-			App->render->Blit(user_interface, 10, 22, &life1_rect, 0.0f);
-			App->render->Blit(user_interface, 20, 22, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 24, HP_HEIGHT, &life1_rect, 0.0f);
 		}
 		if (App->player1->hp == 2) {
-			App->render->Blit(user_interface, 10, 22, &life1_rect, 0.0f);
+			App->render->Blit(user_interface, 16, HP_HEIGHT, &life1_rect, 0.0f);
 		}
 	}
 
 	if (App->player2->IsEnabled() == true) {
 		if (App->player2->hp == 7) {
-			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 200, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 210, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 220, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 230, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 240, 22, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 48, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 56, HP_HEIGHT, &life2_rect, 0.0f);
 		}
 		if (App->player2->hp == 6) {
-			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 200, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 210, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 220, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 230, 22, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 48, HP_HEIGHT, &life2_rect, 0.0f);
 		}
 		if (App->player2->hp == 5) {
-			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 200, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 210, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 220, 22, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, HP_HEIGHT, &life2_rect, 0.0f);
 		}
 		if (App->player2->hp == 4) {
-			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 200, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 210, 22, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 32, HP_HEIGHT, &life2_rect, 0.0f);
 		}
+
 		if (App->player2->hp == 3) {
-			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
-			App->render->Blit(user_interface, 200, 22, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 24, HP_HEIGHT, &life2_rect, 0.0f);
 		}
 		if (App->player2->hp == 2) {
-			App->render->Blit(user_interface, 190, 22, &life2_rect, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 16, HP_HEIGHT, &life2_rect, 0.0f);
 		}
 	}
 
 	//weapon type UI
-	if (App->player1->IsEnabled() == true) {
+	if (App->player1->IsEnabled() == true && App->player1->hp > 0) {
 		switch (App->player1->type_weapon)
 		{
 		case 1:
-			App->render->Blit(user_interface, 5, 15, &normal1, 0.0f);
-			App->render->Blit(user_interface, 36, 15, &fintrel, 0.0f);
-			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, 98, 15, &rolling, 0.0f);
+			App->render->Blit(user_interface, 8, WEAPONS_HEIGHT, &normal1, 0.0f);
+			App->render->Blit(user_interface, 40, WEAPONS_HEIGHT, &fintrel, 0.0f);
+			App->render->Blit(user_interface, 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &rolling, 0.0f);
 			break;
 		case 2:
-			App->render->Blit(user_interface, 5, 15, &reverse, 0.0f);
-			App->render->Blit(user_interface, 36, 15, &hawk, 0.0f);
-			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, 98, 15, &side, 0.0f);
+			App->render->Blit(user_interface, 8, WEAPONS_HEIGHT, &reverse, 0.0f);
+			App->render->Blit(user_interface, 40, WEAPONS_HEIGHT, &hawk, 0.0f);
+			App->render->Blit(user_interface, 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &side, 0.0f);
 			break;
 		case 3:
-			App->render->Blit(user_interface, 5, 15, &laser3, 0.0f);
-			App->render->Blit(user_interface, 36, 15, &normal3, 0.0f);
-			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, 98, 15, &front, 0.0f);
+			App->render->Blit(user_interface, 8, WEAPONS_HEIGHT, &laser3, 0.0f);
+			App->render->Blit(user_interface, 40, WEAPONS_HEIGHT, &normal3, 0.0f);
+			App->render->Blit(user_interface, 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &front, 0.0f);
 			break;
 		case 4:
-			App->render->Blit(user_interface, 5, 15, &way, 0.0f);
-			App->render->Blit(user_interface, 36, 15, &laser4, 0.0f);
-			App->render->Blit(user_interface, 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, 98, 15, &rear, 0.0f);
+			App->render->Blit(user_interface, 8, WEAPONS_HEIGHT, &way, 0.0f);
+			App->render->Blit(user_interface, 40, WEAPONS_HEIGHT, &laser4, 0.0f);
+			App->render->Blit(user_interface, 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &rear, 0.0f);
 			break;
 		}
 	}
 
-	if (App->player2->IsEnabled() == true) {
+	if (App->player2->IsEnabled() == true && App->player2->hp > 0) {
 		switch (App->player2->type_weapon)
 		{
 		case 1:
-			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 5, 15, &normal1, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 36, 15, &fintrel, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH / 2 + 98, 15, &rolling, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 8, WEAPONS_HEIGHT, &normal1, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, WEAPONS_HEIGHT, &fintrel, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 104, WEAPONS_HEIGHT, &rolling, 0.0f);
 			break;
 		case 2:
-			App->render->Blit(user_interface, SCREEN_WIDTH/2 + 5, 15, &reverse, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH/2 + 36, 15, &hawk, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 98, 15, &side, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 8, WEAPONS_HEIGHT, &reverse, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, WEAPONS_HEIGHT, &hawk, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 104, WEAPONS_HEIGHT, &side, 0.0f);
 			break;
 		case 3:
-			App->render->Blit(user_interface, SCREEN_WIDTH + 5, 15, &laser3, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 36, 15, &normal3, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 98, 15, &front, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 8, WEAPONS_HEIGHT, &laser3, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 04, WEAPONS_HEIGHT, &normal3, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 104, WEAPONS_HEIGHT, &front, 0.0f);
 			break;
 		case 4:
-			App->render->Blit(user_interface, SCREEN_WIDTH + 5, 15, &way, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 36, 15, &laser4, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 67, 15, &homing, 0.0f);
-			App->render->Blit(user_interface, SCREEN_WIDTH + 98, 15, &rear, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 8, WEAPONS_HEIGHT, &way, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 40, WEAPONS_HEIGHT, &laser4, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, WEAPONS_HEIGHT, &homing, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 104, WEAPONS_HEIGHT, &rear, 0.0f);
 			break;
 		}
 	}
@@ -471,7 +480,7 @@ update_status ModuleUI::Update()
 		animationUltimateBar = &ultimateBar;
 		SDL_Rect Rect_ultimateBar;
 		Rect_ultimateBar = animationUltimateBar->GetCurrentFrame();
-		App->render->Blit(user_interface, 80, 22, &Rect_ultimateBar, 0.0f);
+		App->render->Blit(user_interface, 72, HP_HEIGHT, &Rect_ultimateBar, 0.0f);
 		ultimateBar.loop = false;
 
 		if (ultimateBar.current_frame >= ultimateBar.last_frame - 1) {
@@ -479,7 +488,7 @@ update_status ModuleUI::Update()
 			animationUltimateCharged = &ultimateCharged;
 			SDL_Rect Rect_UltimateCharged;
 			Rect_UltimateCharged = animationUltimateCharged->GetCurrentFrame();
-			App->render->Blit(user_interface, 80, 22, &Rect_UltimateCharged, 0.0f); 
+			App->render->Blit(user_interface, 72, HP_HEIGHT, &Rect_UltimateCharged, 0.0f);
 
 		}
 
@@ -493,7 +502,7 @@ update_status ModuleUI::Update()
 		animationUltimateBar = &ultimateBar;
 		SDL_Rect Rect_ultimateBar;
 		Rect_ultimateBar = animationUltimateBar->GetCurrentFrame();
-		App->render->Blit(user_interface, 230, 22, &Rect_ultimateBar, 0.0f);
+		App->render->Blit(user_interface, SCREEN_MIDDLE + 72, HP_HEIGHT, &Rect_ultimateBar, 0.0f);
 		ultimateBar.loop = false;
 
 		if (ultimateBar.current_frame >= ultimateBar.last_frame - 1) {
@@ -501,7 +510,7 @@ update_status ModuleUI::Update()
 			animationUltimateCharged = &ultimateCharged;
 			SDL_Rect Rect_UltimateCharged;
 			Rect_UltimateCharged = animationUltimateCharged->GetCurrentFrame();
-			App->render->Blit(user_interface, 230, 22, &Rect_UltimateCharged, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, HP_HEIGHT, &Rect_UltimateCharged, 0.0f);
 
 		}
 
@@ -524,23 +533,23 @@ update_status ModuleUI::Update()
 			
 			//gameover longer
 			if (current_time1 <= 2000 ){
-				App->render->Blit(user_interface, 10, 20, &gameover_rect, 0.0f);
+				App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
 			}
 			//countdown
 			if (current_time1 > 2000 && current_time1 <= 9000) {
 				//word
-				App->render->Blit(user_interface, 10, 20, &miniCoundown_rect, 0.0f);
+				App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &miniCoundown_rect, 0.0f);
 				//numbers
 				animationMiniContinueNum = &miniContinueNum;
 				SDL_Rect Rect_miniContinueNum;
 				Rect_miniContinueNum = animationMiniContinueNum->GetCurrentFrame();
-				App->render->Blit(user_interface, 190, 20, &Rect_miniContinueNum, 0.0f);
+				App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &Rect_miniContinueNum, 0.0f);
 				miniContinueNum.loop = false;
 			}
 			//gameover shorter when countdown finishes
 			if (current_time1 > 9000 && current_time1 <= 10000)
 			{
-				App->render->Blit(user_interface, 10, 20, &gameover_rect, 0.0f);
+				App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
 			}
 			//insert or press depending on credits
 			if (current_time1 >= 10000) {
@@ -549,7 +558,7 @@ update_status ModuleUI::Update()
 					animationInsertCoin = &insertCoin;
 					SDL_Rect Rect_InsertCoin;
 					Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
-					App->render->Blit(user_interface, 10, 20, &Rect_InsertCoin, 0.0f);
+					App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &Rect_InsertCoin, 0.0f);
 					insertCoin.loop = true;
 				}
 				//yes credits == press
@@ -557,7 +566,7 @@ update_status ModuleUI::Update()
 					animationPress1p = &press1p;
 					SDL_Rect Rect_Press1p;
 					Rect_Press1p = animationPress1p->GetCurrentFrame();
-					App->render->Blit(user_interface, 10, 20, &Rect_Press1p, 0.0f);
+					App->render->Blit(user_interface, 9, WEAPONS_HEIGHT, &Rect_Press1p, 0.0f);
 					press1p.loop = true;				
 				}
 			}
@@ -575,23 +584,23 @@ update_status ModuleUI::Update()
 
 			//gameover longer
 			if (current_time1 <= 2000) {
-				App->render->Blit(user_interface, 190, 20, &gameover_rect, 0.0f);
+				App->render->Blit(user_interface, SCREEN_MIDDLE + DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
 			}
 			//countdown
 			if (current_time1 > 2000 && current_time1 <= 9000) {
 				//word
-				App->render->Blit(user_interface, 10, 20, &miniCoundown_rect, 0.0f);
+				App->render->Blit(user_interface, SCREEN_MIDDLE + DEAD_UI_X, WEAPONS_HEIGHT, &miniCoundown_rect, 0.0f);
 				//numbers
 				animationMiniContinueNum = &miniContinueNum;
 				SDL_Rect Rect_miniContinueNum;
 				Rect_miniContinueNum = animationMiniContinueNum->GetCurrentFrame();
-				App->render->Blit(user_interface, 280, 20, &Rect_miniContinueNum, 0.0f);
+				App->render->Blit(user_interface, SCREEN_MIDDLE + 104, WEAPONS_HEIGHT, &Rect_miniContinueNum, 0.0f);
 				miniContinueNum.loop = false;
 			}
 			//gameover shorter when countdown finishes
 			if (current_time1 > 9000 && current_time1 <= 10000)
 			{
-				App->render->Blit(user_interface, 190, 20, &gameover_rect, 0.0f);
+				App->render->Blit(user_interface, SCREEN_MIDDLE + DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
 			}
 			//insert or press depending on credits
 			if (current_time1 >= 10000) {
@@ -600,7 +609,7 @@ update_status ModuleUI::Update()
 					animationInsertCoin = &insertCoin;
 					SDL_Rect Rect_InsertCoin;
 					Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
-					App->render->Blit(user_interface, 190, 20, &Rect_InsertCoin, 0.0f);
+					App->render->Blit(user_interface, SCREEN_MIDDLE + DEAD_UI_X, WEAPONS_HEIGHT, &Rect_InsertCoin, 0.0f);
 					insertCoin.loop = true;
 				}
 				//yes credits == press
@@ -608,7 +617,7 @@ update_status ModuleUI::Update()
 					animationPress2p = &press2p;
 					SDL_Rect Rect_Press2p;
 					Rect_Press2p = animationPress2p->GetCurrentFrame();
-					App->render->Blit(user_interface, 171, 20, &Rect_Press2p, 0.0f);
+					App->render->Blit(user_interface, SCREEN_MIDDLE + 9, WEAPONS_HEIGHT, &Rect_Press2p, 0.0f);
 					press2p.loop = true;
 				}
 			}
@@ -617,20 +626,20 @@ update_status ModuleUI::Update()
 	
 	if (App->player2->IsEnabled() == false && App->player1->IsEnabled() == true) {
 
-		//insert
+		//no credits == insert
 		if (credit <= 0) {
 			animationInsertCoin = &insertCoin;
 			SDL_Rect Rect_InsertCoin;
 			Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
-			App->render->Blit(user_interface, 190, 20, &Rect_InsertCoin, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + DEAD_UI_X, WEAPONS_HEIGHT, &Rect_InsertCoin, 0.0f);
 			insertCoin.loop = true;
 		}
-		//press
+		//yes credits == press
 		if (credit > 0) {
 			animationPress2p = &press2p;
 			SDL_Rect Rect_Press2p;
 			Rect_Press2p = animationPress2p->GetCurrentFrame();
-			App->render->Blit(user_interface, 171, 20, &Rect_Press2p, 0.0f);
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 9, WEAPONS_HEIGHT, &Rect_Press2p, 0.0f);
 			press2p.loop = true;
 		}
 	}
