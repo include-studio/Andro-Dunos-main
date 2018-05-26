@@ -27,7 +27,6 @@ public:
 
 	void OnCollision(Collider*, Collider*);
 
-	bool ultimate2 = false;
 public:
 
 	PLAYER_STATE_MOVE state;
@@ -57,6 +56,9 @@ public:
 	bool god_mode = false;
 	bool god_mode_die = false;
 	bool hp_down = false;
+
+	bool charge = false;
+	bool charged = false;
 
 	int type_weapon = 0;
 	int hp;

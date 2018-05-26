@@ -168,17 +168,17 @@ bool ModuleUI::Start()
 
 	insertCoin.loop = true;
 	insertCoin.speed = 0.0225f;
+	for (int k = 0; k < 2; k++) {
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 29; j++) {
+				ultimateBar[k].PushBack({ i * 64,81 + j * 7,64,7 });
+				if (i == 2 && j > 11)
+					break;
+			}
+		ultimateBar[k].speed = 0.5f;
+	}
 
-	animationUltimateBar = nullptr;
-
-	for(int i=0;i<3;i++)
-		for (int j = 0; j < 29; j++) {
-			ultimateBar.PushBack({ i * 64,81 + j * 7,64,7 });
-			if (i == 2 && j > 11)
-				break;
-		}
-
-	ultimateBar.speed = 0.5f;
+	
 
 	//animationUltimateCharged = nullptr;
 
@@ -410,16 +410,30 @@ update_status ModuleUI::Update()
 
 	//ultimate bar
 	if (App->player1->IsEnabled() && App->player1->hp > 0) {
-		App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.frames[0], false);
+		App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar[0].frames[0], false);
 
 		if (App->player1->charge == true) {
-			App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.GetCurrentFrame(67), false);
-			if (ultimateBar.current_frame >= 65)
+			App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar[0].GetCurrentFrame(67), false);
+			if (ultimateBar[0].current_frame >= 65)
 				App->player1->charged = true;
 		}
 		else { 
 			App->player1->charged = false;
-			ultimateBar.reset(); 
+			ultimateBar[0].reset();
+		}
+	}
+
+	if (App->player2->IsEnabled() && App->player2->hp > 0) {
+		App->render->Blit(user_interface, SCREEN_MIDDLE + 72, HP_HEIGHT, &ultimateBar[1].frames[0], false);
+
+		if (App->player2->charge == true) {
+			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, HP_HEIGHT, &ultimateBar[1].GetCurrentFrame(67), false);
+			if (ultimateBar[1].current_frame >= 65)
+				App->player2->charged = true;
+		}
+		else {
+			App->player2->charged = false;
+			ultimateBar[1].reset();
 		}
 	}
 /*
