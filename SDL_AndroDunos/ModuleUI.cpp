@@ -409,11 +409,19 @@ update_status ModuleUI::Update()
 	}
 
 	//ultimate bar
-	App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.frames[0], false);
+	if (App->player1->IsEnabled() && App->player1->hp > 0) {
+		App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.frames[0], false);
 
-	if (App->player1->charge == true)
-		App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.GetCurrentFrame(67), false);
-	else ultimateBar.reset();
+		if (App->player1->charge == true) {
+			App->render->Blit(user_interface, 72, HP_HEIGHT, &ultimateBar.GetCurrentFrame(67), false);
+			if (ultimateBar.current_frame >= 65)
+				App->player1->charged = true;
+		}
+		else { 
+			App->player1->charged = false;
+			ultimateBar.reset(); 
+		}
+	}
 /*
 	if (App->player2->ultimate2 == true) {
 		animationUltimateBar = &ultimateBar;

@@ -44,6 +44,7 @@ public:
 
 	bool god_mode = false;
 	bool charge = false;
+	bool charged = false;
 	bool hp_down = false;
 
 private:

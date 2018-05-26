@@ -282,7 +282,7 @@ update_status ModulePlayer1::Update()
 
 	// Draw everything --------------------------------------
 	Animation *ship_state = ship;
-	if (charge)
+	if (charged)
 		ship_state = anim_ultimate;
 	if (hp > 0) {														//Render Ship
 		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
