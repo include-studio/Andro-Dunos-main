@@ -60,6 +60,8 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 	init_time = SDL_GetTicks(); //Timer
+
+	life = 50;
 }
 
 void Enemy_BigShip::Move()

@@ -77,6 +77,7 @@ private:
 	SDL_Texture* sprites;
 
 	uint big_explosion_fx;
+	uint enemy_hit_fx;
 };
 
 #endif // __ModuleEnemies_H__
