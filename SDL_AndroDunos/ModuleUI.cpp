@@ -436,28 +436,6 @@ update_status ModuleUI::Update()
 			ultimateBar[1].reset();
 		}
 	}
-/*
-	if (App->player2->ultimate2 == true) {
-		animationUltimateBar = &ultimateBar;
-		SDL_Rect Rect_ultimateBar;
-		Rect_ultimateBar = animationUltimateBar->GetCurrentFrame();
-		App->render->Blit(user_interface, SCREEN_MIDDLE + 72, HP_HEIGHT, &Rect_ultimateBar, 0.0f);
-		ultimateBar.loop = false;
-
-		if (ultimateBar.current_frame >= ultimateBar.last_frame - 1) {
-
-			animationUltimateCharged = &ultimateCharged;
-			SDL_Rect Rect_UltimateCharged;
-			Rect_UltimateCharged = animationUltimateCharged->GetCurrentFrame();
-			App->render->Blit(user_interface, SCREEN_MIDDLE + 72, HP_HEIGHT, &Rect_UltimateCharged, 0.0f);
-
-		}
-
-		//if () {
-		//	ultimateBar.reset();
-		//	ultimateCharged.reset();
-		//}
-	}*/
 
 	//gameover/countdown/gameover/insert or press
 	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {

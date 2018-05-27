@@ -53,10 +53,13 @@ public:
 	}
 
 	bool isInFrame(int f) {
-		if (current_frame >= f && current_frame < f + 1)
-			return true;
-		else return false;
+		return (current_frame >= f && current_frame < f + 1);
 	}
+
+	bool isBetween(int f1, int f2) {
+		return (current_frame >= f1 && current_frame < f2);
+	}
+
 };
 
 #endif
