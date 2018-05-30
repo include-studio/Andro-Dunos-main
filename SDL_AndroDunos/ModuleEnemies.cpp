@@ -19,7 +19,7 @@
 #include "Enemy_TripleCanon.h"
 #include "ModuleAudio.h"
 
-#define SPAWN_MARGIN 15
+#define SPAWN_MARGIN 200
 
 ModuleEnemies::ModuleEnemies()
 {

@@ -32,6 +32,7 @@ struct Item
 	Collider* collider = nullptr;
 	int n_collisions;
 	bool screen_col;
+	TYPE_POWERUP powert;
 
 	Item();
 	Item(const Item& p);
@@ -64,7 +65,7 @@ public:
 	Item powerup;
 	Item one_up;
 
-	TYPE_POWERUP poweruptype = S;
+	
 };
 
 #endif // __MODULEPARTICLES_H__

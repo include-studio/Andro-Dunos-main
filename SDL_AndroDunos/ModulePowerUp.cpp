@@ -253,7 +253,7 @@ bool Item::Update()
 			if (anim.speed != 0.3f)
 				anim.speed = 0.3f;
 		if (anim.isBetween(0, 9))
-			poweruptype = S;
+			powert = S;
 	}
 			
 	if (this->collider->type != COLLIDER_ONE_UP)
