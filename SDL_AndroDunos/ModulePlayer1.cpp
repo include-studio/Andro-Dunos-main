@@ -124,7 +124,7 @@ update_status ModulePlayer1::Update()
 		App->ui->credit--;
 
 		god_mode_die = true;
-		state = CLEAR;
+		blink = true;
 		init_time = SDL_GetTicks();
 		position.x = App->render->camera.x / 3;
 		position.y = App->render->camera.y / 3 + 71;
@@ -134,12 +134,16 @@ update_status ModulePlayer1::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;  
+			if (blink)
+				blink = false;
+			else blink = true;
 			/*if (position.x <= App->render->camera.x / 3 + 44)
 				position.x++;*/
 		}
 		
 		else if(god_mode == false) {
 			player_col->type = COLLIDER_PLAYER;
+			blink = true;
 			god_mode_die = false;
 			hp_down = false;
 			state = IDLE;
@@ -266,6 +270,7 @@ update_status ModulePlayer1::Update()
 
 	//States
 	States();
+
 	
 	//collision box position
 	player_col->SetPos(position.x+3, position.y+4);
@@ -285,7 +290,8 @@ update_status ModulePlayer1::Update()
 	if (charged)
 		ship_state = anim_ultimate;
 	if (hp > 0) {														//Render Ship
-		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
+		if (blink)
+			App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
 		App->render->Blit(graphics, position.x-fire[current_anim].frames->w+1, position.y+5, &fire[current_anim].GetCurrentFrame());
 	}
 
@@ -349,9 +355,6 @@ void ModulePlayer1::States() {
 		break;
 	case UP:
 		current_anim = 0;
-		break;
-	case CLEAR:
-		//animationShip = &clear;
 		break;
 	}
 }

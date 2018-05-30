@@ -59,6 +59,7 @@ private:
 	Animation anim_ultimate[5];
 	Animation fire[5];
 	int current_anim;
+	bool blink;
 
 	Collider* player_col = nullptr;
 
