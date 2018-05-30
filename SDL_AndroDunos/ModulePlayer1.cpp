@@ -295,7 +295,7 @@ update_status ModulePlayer1::Update()
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == player_col && dead == false && App->fade->IsFading() == false && hp_down == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWER_S && c2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
+	if (c1 == player_col && dead == false && App->fade->IsFading() == false && hp_down == false && c2->type != COLLIDER_TYPE::COLLIDER_BONUS && c2->type != COLLIDER_TYPE::COLLIDER_POWERUP && c2->type != COLLIDER_TYPE::COLLIDER_ONE_UP)
 	{
 		App->audio->PlayFx(explosion_player);
 		hp--;

@@ -13,6 +13,13 @@ struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
 
+enum TYPE_POWERUP {
+	S,
+	B,
+	U,
+	M
+};
+
 struct Item
 {
 	Animation anim;
@@ -56,6 +63,8 @@ public:
 	Item bonus;
 	Item powerup;
 	Item one_up;
+
+	TYPE_POWERUP poweruptype = S;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -167,7 +167,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->ui->score1 += 100;
 					App->audio->PlayFx(bonus_fx);
 				}
-				if (c1->type == COLLIDER_POWER_S) {
+				if (c1->type == COLLIDER_POWERUP) {
 					App->player1->powerup++; 
 					App->audio->PlayFx(powerup_fx);
 					if (App->shield1->IsEnabled() == false)
@@ -185,7 +185,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->ui->score2 += 100;
 					App->audio->PlayFx(bonus_fx);
 				}
-				if (c1->type == COLLIDER_POWER_S) {
+				if (c1->type == COLLIDER_POWERUP) {
 					App->player2->powerup++;
 					App->audio->PlayFx(powerup_fx);
 					if (App->shield2->IsEnabled() == false)
@@ -242,7 +242,7 @@ bool Item::Update()
 	if (collider->type == COLLIDER_BONUS && anim.speed != 0.2f && anim.current_frame > 11)
  		anim.speed = 0.2f;
 
-	if (this->collider->type == COLLIDER_POWER_S) {
+	if (this->collider->type == COLLIDER_POWERUP) {
 		if (anim.isInFrame(3) || anim.isInFrame(7) || anim.isInFrame(13) ||
 			anim.isInFrame(17) || anim.isInFrame(23) || anim.isInFrame(27) ||
 			anim.isInFrame(33) || anim.isInFrame(37)) {
@@ -252,6 +252,8 @@ bool Item::Update()
 		else
 			if (anim.speed != 0.3f)
 				anim.speed = 0.3f;
+		if (anim.isBetween(0, 9))
+			poweruptype = S;
 	}
 			
 	if (this->collider->type != COLLIDER_ONE_UP)
