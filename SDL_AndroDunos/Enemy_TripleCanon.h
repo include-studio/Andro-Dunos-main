@@ -11,6 +11,7 @@ private:
 	Path path;
 
 	int original_y = 0;
+	int original_x = 0;
 	Animation fly;
 
 public:
@@ -26,7 +27,8 @@ public:
 	int current_time;
 	int init_time = 0;
 	bool shoot = false;
-	
+	float rotation;
+
 
 	int hp = 6;
 };

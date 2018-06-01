@@ -28,7 +28,7 @@ Enemy_TripleCanon::Enemy_TripleCanon(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
-
+	original_x = x;
 	
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
@@ -38,7 +38,7 @@ Enemy_TripleCanon::Enemy_TripleCanon(int x, int y) : Enemy(x, y)
 
 void Enemy_TripleCanon::Move()
 {
-	position.x--;
+	
 
 	current_time = SDL_GetTicks() - init_time; //Set time
 
@@ -47,24 +47,22 @@ void Enemy_TripleCanon::Move()
 		Shoot();
 		shoot = true;
 	}
-	/*if (current_time <= 800) {
-		if (App->player1->position.y > (float)position.y)
-			position.y += 1;
-
-		if (App->player1->position.y < (float)position.y)
-			position.y -= 0.25;
+	if (current_time <= 1000) {
+		original_x--;
+		position.x = original_x + int(50.0f * cosf(rotation));
+		position.y = original_y + int(50.0f * sinf(rotation));
+	
 	}
-	if (current_time >= 300 && shoot == false) {
-		Shoot();
-		shoot = true;
+	if (current_time > 1000 && current_time < 4000) {
+		original_x++;
+		position.x = original_x + int(50.0f * cosf(rotation));
+		position.y = original_y + int(50.0f * sinf(rotation));
+	
 	}
-	if (current_time >= 1500 && shoot2 == false) {
-		Shoot();
-		shoot2 = true;
-	}*/
-
-	/*if (current_time > 800)
-		position.x -= 0.25;*/
+	if (current_time > 4000) {
+		position.x+=3;
+	}
+	rotation += 0.045f;
 }
 
 void Enemy_TripleCanon::Shoot()
