@@ -76,6 +76,8 @@ bool ModulePlayer1::Start()
 	fx_laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
 	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
 	type_change = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+	ultimate_charged_fx = App->audio->Loadfx("Assets/Audio/Charged_Special_Attack_Loop.wav");
+	ultimate_charge_fx = App->audio->Loadfx("Assets/Audio/Charging_Special_Attack.wav");
 
 	return ret;
 }
@@ -92,8 +94,8 @@ bool ModulePlayer1::CleanUp() {
 	App->audio->UnLoadFx(fx_laser3);
 	App->audio->UnLoadFx(fx_laser2);
 	App->audio->UnLoadFx(fx_laser1);
-
-
+	App->audio->UnLoadFx(ultimate_charged_fx);
+	App->audio->UnLoadFx(ultimate_charge_fx);
 
 	if (player_col != nullptr)
 		player_col->to_delete = true;
@@ -294,8 +296,13 @@ update_status ModulePlayer1::Update()
 
 	// Draw everything --------------------------------------
 	Animation *ship_state = ship;
-	if (charged)
+	if (charge == true) {
+		App->audio->PlayFx(ultimate_charge_fx);
+	}
+	if (charged == true) {
 		ship_state = anim_ultimate;
+		App->audio->PlayFx(ultimate_charged_fx);
+	}
 	if (hp > 0) {														//Render Ship
 		if (blink)
 			App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());

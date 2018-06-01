@@ -65,7 +65,7 @@ private:
 
 	Collider* player_col = nullptr;
 
-	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change;
+	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change, ultimate_charged_fx, ultimate_charge_fx;
 
 	bool destroyed = false;
 	bool dead = false;
