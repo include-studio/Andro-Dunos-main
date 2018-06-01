@@ -440,53 +440,59 @@ update_status ModuleUI::Update()
 	//gameover/countdown/gameover/insert or press
 	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {
 		if (App->player1->hp <= 0) {// && App->player2->hp > 0
-			//Time
-			if (game_over_time == true) {
-				init_time1 = SDL_GetTicks();
-				game_over_time = false;
-			}
+			if (dead_loop == true) {
+				//Time
+				if (game_over_time == true) {
+					init_time1 = SDL_GetTicks();
+					game_over_time = false;
+				}
 
-			current_time1 = SDL_GetTicks() - init_time1;
-			
-			//gameover longer
-			if (current_time1 <= 2000 ){
-				App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
-			}
-			//countdown
-			if (current_time1 > 2000 && current_time1 <= 9000) {
-				//word
-				App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &miniCoundown_rect, 0.0f);
-				//numbers
-				animationMiniContinueNum = &miniContinueNum;
-				SDL_Rect Rect_miniContinueNum;
-				Rect_miniContinueNum = animationMiniContinueNum->GetCurrentFrame();
-				App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &Rect_miniContinueNum, 0.0f);
-				miniContinueNum.loop = false;
-			}
-			//gameover shorter when countdown finishes
-			if (current_time1 > 9000 && current_time1 <= 10000)
-			{
-				App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
-			}
-			//insert or press depending on credits
-			if (current_time1 >= 10000) {
-				//no credits == insert
-				if (credit <= 0) {
-					animationInsertCoin = &insertCoin;
-					SDL_Rect Rect_InsertCoin;
-					Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
-					App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &Rect_InsertCoin, 0.0f);
-					insertCoin.loop = true;
+				current_time1 = SDL_GetTicks() - init_time1;
+
+				//gameover longer
+				if (current_time1 <= 2000) {
+					App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
 				}
-				//yes credits == press
-				if (credit > 0) {
-					animationPress1p = &press1p;
-					SDL_Rect Rect_Press1p;
-					Rect_Press1p = animationPress1p->GetCurrentFrame();
-					App->render->Blit(user_interface, 9, WEAPONS_HEIGHT, &Rect_Press1p, 0.0f);
-					press1p.loop = true;				
+				//countdown
+				if (current_time1 > 2000 && current_time1 <= 9000) {
+					//word
+					App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &miniCoundown_rect, 0.0f);
+					//numbers
+					animationMiniContinueNum = &miniContinueNum;
+					SDL_Rect Rect_miniContinueNum;
+					Rect_miniContinueNum = animationMiniContinueNum->GetCurrentFrame();
+					App->render->Blit(user_interface, 104, WEAPONS_HEIGHT, &Rect_miniContinueNum, 0.0f);
+					miniContinueNum.loop = false;
 				}
-			}
+				//gameover shorter when countdown finishes
+				if (current_time1 > 9000 && current_time1 <= 10000)
+				{
+					App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &gameover_rect, 0.0f);
+				}
+				//insert or press depending on credits
+				if (current_time1 >= 10000) {
+					//no credits == insert
+					if (credit <= 0) {
+						animationInsertCoin = &insertCoin;
+						SDL_Rect Rect_InsertCoin;
+						Rect_InsertCoin = animationInsertCoin->GetCurrentFrame();
+						App->render->Blit(user_interface, DEAD_UI_X, WEAPONS_HEIGHT, &Rect_InsertCoin, 0.0f);
+						insertCoin.loop = true;
+					}
+					//yes credits == press
+					if (credit > 0) {
+						animationPress1p = &press1p;
+						SDL_Rect Rect_Press1p;
+						Rect_Press1p = animationPress1p->GetCurrentFrame();
+						App->render->Blit(user_interface, 9, WEAPONS_HEIGHT, &Rect_Press1p, 0.0f);
+						press1p.loop = true;
+					}
+				}
+				if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN) && App->mainmenu->IsEnabled() == true && credit_on == true) {
+					//dead_loop == false;
+					current_time1 = 0;
+				}
+			}//deadloop
 		}
 
 		if (App->player2->hp <= 0 ) { //&& App->player1->hp > 0

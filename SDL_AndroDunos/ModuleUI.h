@@ -75,7 +75,7 @@ public:
 	bool credit_on = true;
 
 	bool game_over_time = true;
-
+	bool dead_loop = true;
 
 	uint credit = 0;
 	uint credit_fx;
