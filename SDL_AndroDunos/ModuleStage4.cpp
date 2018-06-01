@@ -316,7 +316,9 @@ update_status ModuleStage4::Update() {
 	//Audio
 	
 	if (current_time >= 3750 && intro_bgm == true) {
-		Mix_PlayMusic(App->audio->stage4, -1);
+		//Mix_PlayMusic(App->audio->stage4, -1);
+		App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg", 0.F);
+
 		intro_bgm = false;
 	}
 		
