@@ -467,7 +467,7 @@ ModuleParticles::ModuleParticles()
 
 	enemy_blue_laser.anim.speed = 0.2f;
 	enemy_blue_laser.life = 1500;
-	enemy_blue_laser.speed.x = -2;
+	enemy_blue_laser.speed.x = -5;
 	enemy_blue_laser.anim.loop = false;
 
 	

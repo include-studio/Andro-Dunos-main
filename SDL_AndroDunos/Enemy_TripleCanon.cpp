@@ -16,19 +16,40 @@
 Enemy_TripleCanon::Enemy_TripleCanon(int x, int y) : Enemy(x, y)
 {
 	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
 	fly.PushBack({ 243 + PIXEL,113,PIXEL,PIXEL });
 	fly.PushBack({ 243 ,113 + PIXEL,PIXEL,PIXEL });
 	fly.PushBack({ 243 + PIXEL,113 + PIXEL,PIXEL,PIXEL });
-
+	fly.PushBack({ 243 + PIXEL,113 + PIXEL,PIXEL,PIXEL });
+	fly.PushBack({ 243 + PIXEL,113 + PIXEL,PIXEL,PIXEL });
+	fly.PushBack({ 243 + PIXEL,113 + PIXEL,PIXEL,PIXEL });
+	fly.PushBack({ 243 + PIXEL,113 + PIXEL,PIXEL,PIXEL });
+	fly.PushBack({ 243 + PIXEL,113 + PIXEL,PIXEL,PIXEL });
+	fly.PushBack({ 243 ,113 + PIXEL,PIXEL,PIXEL });
+	fly.PushBack({ 243 + PIXEL,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
+	fly.PushBack({ 243,113,PIXEL,PIXEL });
 
 	fly.speed = 0.1f;
-
 	animation = &fly;
+	
+
 
 	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
+	original_pos.x = x;
+	original_pos.y = y;
 	
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
@@ -48,7 +69,7 @@ void Enemy_TripleCanon::Move()
 		shoot = true;
 	}
 	if (current_time <= 1000) {
-		original_x--;
+		original_x-= 2;
 		position.x = original_x + int(50.0f * cosf(rotation));
 		position.y = original_y + int(50.0f * sinf(rotation));
 	

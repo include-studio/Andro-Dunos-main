@@ -12,7 +12,9 @@ private:
 
 	int original_y = 0;
 	int original_x = 0;
-	Animation fly;
+	Animation fly, fly2;
+	iPoint original_pos;
+
 
 public:
 
