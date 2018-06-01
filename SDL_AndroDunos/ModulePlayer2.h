@@ -43,6 +43,7 @@ public:
 	Animation anim_ultimate[5];
 	Animation fire[5];
 	int current_anim;
+	bool blink;
 
 	iPoint position;
 
