@@ -71,7 +71,7 @@ private:
 
 	void SpawnEnemy(const EnemyInfo& info);
 
-private:
+protected:
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];

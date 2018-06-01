@@ -10,6 +10,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleInput.h"
 #include "ModuleUI.h"
+#include "ModuleEnemies.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -743,4 +744,17 @@ bool Particle::Update()
 	
 
 	return ret;
+}
+
+Enemy* FindE(iPoint x, iPoint y) {
+	Enemy* e = nullptr;
+	for (int i = 0; i < MAX_ENEMIES; i++)
+		e = App->enemies->enemies[i]
+		if (e != nullptr)
+			if()
+			return e;
+}
+
+void GoToE() {
+
 }
