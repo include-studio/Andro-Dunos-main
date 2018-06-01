@@ -11,7 +11,7 @@
 #include "Enemy_TinyRedShip.h"
 #include "Enemy_BigShip.h"
 #include "Enemy_TripleCanon.h"
-
+#include "Enemy_VendingMachine.h"
 
 
 
@@ -20,6 +20,7 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
+	VENDING,
 	WAVINGSHIP,
 	WAVINGSHIP2,
 	HORIZONTALROCKET,

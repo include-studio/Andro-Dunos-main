@@ -1,5 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
+#include "ModuleEnemies.h"
 #include "ModuleStage4.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
@@ -12,7 +13,6 @@
 #include "ModuleGameOver.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
-#include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
 #include "ModuleUI.h"
 #include "SDL/include/SDL.h"
@@ -179,11 +179,6 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1190, 90);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1500, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1540, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1580, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
-
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1220, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1260, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 1300, 50);
@@ -193,6 +188,14 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1410, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1450, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 1490, 120);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1500, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1540, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1580, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1550, 138);
+
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1950, 70); //1rs Miniminiboss
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1990, 70);

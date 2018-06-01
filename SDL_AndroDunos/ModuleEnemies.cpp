@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_WavingShip.h"
 #include "ModulePlayer1.h"
+#include "Enemy_VendingMachine.h"
 #include "Enemy_HorizontalRocket.h"
 #include "Enemy_GreenMiniShip.h"
 #include "Enemy_PowerUp.h"
@@ -151,6 +152,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
+		case ENEMY_TYPES::VENDING:
+			enemies[i] = new Enemy_VendingMachine(info.x, info.y);
+			break;
 		case ENEMY_TYPES::WAVINGSHIP:
 			enemies[i] = new Enemy_WavingShip(info.x, info.y, info.drop);
 			break;
