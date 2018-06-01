@@ -191,13 +191,13 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 8650,190,105,10 }, COLLIDER_WALL); // End Crater 3
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 400, 60); //WAVINGSHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 400, 100); //WAVINGSHIP
 	
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 300, 60); //WAVINGSHIP
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 315, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 326, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 338, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 370, 60); //WAVINGSHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 385, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 396, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 408, 60);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 435, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 445, 140);

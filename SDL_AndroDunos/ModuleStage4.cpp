@@ -269,7 +269,6 @@ bool ModuleStage4::Start() {
 
 	//audio
 
-	//App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg");
 	App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Intro.ogg");
 
 
@@ -301,6 +300,7 @@ bool ModuleStage4::CleanUp() {
 	App->textures->Unload(ground_tx);
 
 	current_time = 0;
+	intro_bgm = true;
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
 	
