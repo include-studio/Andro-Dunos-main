@@ -340,11 +340,11 @@ update_status ModuleUI::Update()
 	
 	//hp
 	if (App->player1->IsEnabled() == true)
-		for(int i = 0;i<App->player1->hp;i++)
+		for(int i = 0;i<App->player1->hp-1;i++)
 			App->render->Blit(user_interface, 16+i*8, HP_HEIGHT, &life1_rect, false);
 
 	if (App->player2->IsEnabled() == true)
-		for (int i = 0; i<App->player1->hp; i++)
+		for (int i = 0; i<App->player2->hp-1; i++)
 			App->render->Blit(user_interface, SCREEN_MIDDLE + 16 + i * 8, HP_HEIGHT, &life2_rect, false);
 
 	//weapon type UI
