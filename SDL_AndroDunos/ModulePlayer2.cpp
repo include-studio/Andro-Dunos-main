@@ -70,6 +70,7 @@ bool ModulePlayer2::Start()
 	
 	//font_score = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	//score = 0;
+	blink = true;
 	
 	god_mode_die = true;
 	fx_laser1 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-1_(Main_Ships).wav");
@@ -91,11 +92,16 @@ update_status ModulePlayer2::Update()
 		if (god_mode) {
 			player_col->type = COLLIDER_PLAYER;
 			god_mode = false;
+			blink = true;
 		}
 		else {
 			player_col->type = COLLIDER_NONE;
 			god_mode = true;
 		}
+	}
+	if (god_mode == true && god_mode_die == false) {
+		if (blink)	blink = false;
+		else blink = true;
 	}
 	//Respawn 
 
@@ -105,6 +111,7 @@ update_status ModulePlayer2::Update()
 		App->ui->credit--;
 		
 		god_mode_die = true;
+		blink = true;
 		state = CLEAR;
 		init_time = SDL_GetTicks();
 		position.x = App->render->camera.x / 3;
@@ -118,12 +125,17 @@ update_status ModulePlayer2::Update()
 	if (god_mode_die == true) {  //Winky winky
 		if (current_time < 2500) {
 			player_col->type = COLLIDER_DEAD;
+			if (blink)
+				blink = false;
+			else blink = true;
 			/*if (position.x <= App->render->camera.x / 3 + 44)
 				position.x++;*/
 		}
 
-		else if (god_mode == false) {
-			player_col->type = COLLIDER_PLAYER;
+		else {
+			if (god_mode == false)
+				player_col->type = COLLIDER_PLAYER;
+			blink = true;
 			god_mode_die = false;
 			hp_down = false;
 			state = IDLE;
@@ -267,7 +279,8 @@ update_status ModulePlayer2::Update()
 		ship_state = anim_ultimate;
 
 	if (hp > 0) {														//Render Ship
-		App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
+		if (blink)
+			App->render->Blit(graphics, position.x, position.y, &ship_state[current_anim].GetCurrentFrame());
 		App->render->Blit(graphics, position.x - fire[current_anim].frames->w + 1, position.y + 5, &fire[current_anim].GetCurrentFrame());
 	}
 

@@ -64,6 +64,7 @@ bool ModulePlayer1::Start()
 	if (powerup > 1)
 		App->shield1->Enable();
 
+	blink = true;
 	destroyed = false;
 	dead = false;
 	player_col = App->collision->AddCollider({ position.x+3,position.y+4,21,13 }, COLLIDER_PLAYER, this);
@@ -106,19 +107,22 @@ update_status ModulePlayer1::Update()
 	current_time = SDL_GetTicks() - init_time;
 
 	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN) {
-		
 		if (god_mode == false) {
-			player_col->type = COLLIDER_NONE;
+			player_col->type = COLLIDER_DEAD;
 			god_mode = true;
 		}
 		else if (god_mode == true) {
 			god_mode = false;
 			player_col->type = COLLIDER_PLAYER;
+			blink = true;
 		}
+	}
+	if (god_mode == true && god_mode_die == false) {
+		if (blink)	blink = false;
+		else blink = true;
 	}
 
 	//Respawn 
-
 	if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN) && dead == true && App->ui->credit > 0) { //Pressing 1
 		hp = 3;
 		App->ui->credit--;
@@ -141,8 +145,9 @@ update_status ModulePlayer1::Update()
 				position.x++;*/
 		}
 		
-		else if(god_mode == false) {
-			player_col->type = COLLIDER_PLAYER;
+		else {
+			if (god_mode == false)
+				player_col->type = COLLIDER_PLAYER;
 			blink = true;
 			god_mode_die = false;
 			hp_down = false;
