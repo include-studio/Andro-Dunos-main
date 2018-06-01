@@ -305,12 +305,12 @@ update_status ModuleUI::Update()
 		}
 
 		//Main Menu Credits
-		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == true && credit_on == true) {
+		if (App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN && App->mainmenu->IsEnabled() == true && credit_on == true) {
 			credit--;
 			credit_on = false;
 
 		}
-		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN &&  App->mainmenu->IsEnabled() == true && credit >= 2 && credit_on == true) {
+		if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN &&  App->mainmenu->IsEnabled() == true && credit >= 2 && credit_on == true) {
 			credit -= 2;
 			credit_on = false;
 
