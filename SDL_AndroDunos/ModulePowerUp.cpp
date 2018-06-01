@@ -27,7 +27,7 @@ ModulePowerUp::ModulePowerUp()
 	bonus.life = 50000;
 	bonus.anim.speed = 0.5f;
 	bonus.speed.y = 1;
-	bonus.speed.x = 0;
+	bonus.speed.x = 0.5;
 	bonus.n_collisions = 0;
 	bonus.anim.frame = 14;
 
@@ -46,7 +46,7 @@ ModulePowerUp::ModulePowerUp()
 	powerup.anim.speed = 0.1f;
 	powerup.life = 50000;
 	powerup.speed.y = -1;
-	powerup.speed.x = 0;
+	powerup.speed.x = 0.5;
 	powerup.n_collisions = 0;
 
 	one_up.anim.PushBack({ 16 * 5,  16 * 2, 16, 16 });
@@ -258,8 +258,15 @@ bool Item::Update()
 			
 	if (this->collider->type != COLLIDER_ONE_UP)
 		if (!screen_col)
-			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w)
+			if (position.x < App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w) {
 				screen_col = true;
+				n_collisions = 0;
+			}
+			else if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT - this->anim.frames->h) {
+				if (speed.y == -1)speed.y = 1;
+				else speed.y = -1;
+			}
+
 
 	if (screen_col) {
 		if (n_collisions < 6) {
@@ -268,13 +275,13 @@ bool Item::Update()
 				else speed.y = -1;
 				n_collisions++;
 			}
-			if (position.x > App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w || position.x < App->render->camera.x / 3) {
-				if (speed.x == 2) {
-					speed.x = 0;
-					n_collisions++;
-				}
-				else if (speed.x == 0)
-					speed.x = 2;
+			if (position.x >= App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w) {
+				speed.x = 0.5;
+				n_collisions++;
+			}
+			else if(position.x < App->render->camera.x / 3) {
+				speed.x = 2;
+				n_collisions++;
 			}
 		}
 	}
