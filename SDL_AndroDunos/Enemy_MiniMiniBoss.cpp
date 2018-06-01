@@ -9,6 +9,9 @@
 #include "ModuleEnemies.h"
 #include "ModulePowerUp.h"
 #include "SDL/include/SDL.h"
+#include "ModuleStage1.h"
+#include "ModuleStage4.h"
+
 
 
 Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y, bool _drop) : Enemy(x, y)
@@ -64,9 +67,13 @@ void Enemy_MiniMiniBoss::Shoot()
 }
 
 void Enemy_MiniMiniBoss::OnCollision(Collider* collider) {
-	App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->enemy_blue_up, position.x, position.y, COLLIDER_ENEMY_SHOT); //Triple shot
-	App->particles->AddParticle(App->particles->enemy_blue_down, position.x, position.y, COLLIDER_ENEMY_SHOT);
+
+	if (App->stage4->IsEnabled()) {
+		App->particles->AddParticle(App->particles->enemy_blue, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemy_blue_up, position.x, position.y, COLLIDER_ENEMY_SHOT); //Triple shot
+		App->particles->AddParticle(App->particles->enemy_blue_down, position.x, position.y, COLLIDER_ENEMY_SHOT);
+	}
+	
 	if (drop == true)
 		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
 }
