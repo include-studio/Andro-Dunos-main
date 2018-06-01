@@ -168,7 +168,7 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWERUP) {
-					App->player1->powerup++; 
+					App->player1->powerup_s++; 
 					App->audio->PlayFx(powerup_fx);
 					if (App->shield1->IsEnabled() == false)
 						App->shield1->Enable();

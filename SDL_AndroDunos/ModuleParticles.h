@@ -17,6 +17,11 @@ enum OWNER {
 	OWNER_PLAYER2,
 	OWNER_ENEMY
 };
+enum ID {
+	NONIMPORTANT,
+	BOMB,
+	BOMB_DELAY
+};
 
 struct Particle
 {
@@ -30,6 +35,7 @@ struct Particle
 	Collider* collider = nullptr;
 	OWNER owner_type;
 	int hp = 1;
+	ID id;
 
 	Particle();
 	Particle(const Particle& p);
@@ -51,7 +57,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 	
 
-	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, OWNER owner= OWNER_PLAYER1);
+	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0, OWNER owner= OWNER_PLAYER1, ID id=NONIMPORTANT);
 
 private:
 
@@ -108,9 +114,19 @@ public:
 	Particle laser_4_7_2;
 
 	Particle bomb_1_1;
+	Particle bomb_1_2;
 	Particle bomb_2_1;
+	Particle bomb_2_2;
+	Particle bomb_2_3;
+	Particle bomb_2_4;
 	Particle bomb_3_1;
+	Particle bomb_3_2;
+	Particle bomb_3_3;
+	Particle bomb_3_4;
 	Particle bomb_4_1;
+	Particle bomb_4_2;
+	Particle bomb_4_3;
+	Particle bomb_4_4;
 
 	Particle mini_explosion;
 	Particle big_explosion;

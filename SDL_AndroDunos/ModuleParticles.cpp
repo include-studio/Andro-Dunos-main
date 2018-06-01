@@ -338,6 +338,105 @@ ModuleParticles::ModuleParticles()
 	bomb_1_1.anim.PushBack({ 302,171,13,12 });
 	bomb_1_1.anim.PushBack({ 302,159,13,12 });
 	bomb_1_1.anim.loop = false;
+	bomb_1_1.speed.x = 4;
+	bomb_1_1.speed.y = 3;
+	bomb_1_1.anim.speed = 0.1f;
+	bomb_1_1.life = 1000;
+
+
+	//1_2
+	bomb_1_2.anim.PushBack({ 302,187,13,12 });
+	bomb_1_2.anim.PushBack({ 302,202,13,12 });
+	bomb_1_2.anim.PushBack({ 302,214,13,12 });
+	bomb_1_2.anim.loop = false;
+	bomb_1_2.speed.x = 4;
+	bomb_1_2.speed.y = -3;
+	bomb_1_2.anim.speed = 0.1f;
+	bomb_1_2.life = 1000;
+
+	//2_1
+	for (int i = 0; i < 8; i++)
+		bomb_2_1.anim.PushBack({ 273,157 + i * 9,16,9 });
+	bomb_2_1.anim.loop = false;
+	bomb_2_1.speed.x = 1;
+	bomb_2_1.speed.y = 5;
+	bomb_2_1.anim.speed = 0.8f;
+	bomb_2_1.life = 1000;
+
+	//2_2
+	for (int i = 0; i < 8; i++)
+		bomb_2_2.anim.PushBack({ 273,157 + i * 9,16,9 });
+	bomb_2_2.anim.loop = false;
+	bomb_2_2.speed.x = 1;
+	bomb_2_2.speed.y = -5;
+	bomb_2_2.anim.speed = 0.8f;
+	bomb_2_2.life = 1000;
+	
+	//2_3
+	for (int i = 0; i < 8; i++)
+		bomb_2_3.anim.PushBack({ 273,157 + i * 9,16,9 });
+	bomb_2_3.anim.loop = false;
+	bomb_2_3.speed.x = 3;
+	bomb_2_3.speed.y = -5;
+	bomb_2_3.anim.speed = 0.8f;
+	bomb_2_3.life = 1000;
+
+	//2_4
+	for (int i = 0; i < 8; i++)
+		bomb_2_4.anim.PushBack({ 273,157 + i * 9,16,9 });
+	bomb_2_4.anim.loop = false;
+	bomb_2_4.speed.x = 3;
+	bomb_2_4.speed.y = 5;
+	bomb_2_4.anim.speed = 0.8f;
+	bomb_2_4.life = 1000;
+
+	//3_1
+	bomb_3_1.anim.PushBack({ 393,174,6,7});
+	bomb_3_1.speed.x = 3;
+	bomb_3_1.speed.y = 4;
+	bomb_3_1.life = 1000;
+
+	//3_2
+	bomb_3_2.anim.PushBack({ 393,161,6,7 });
+	bomb_3_2.speed.x = 3;
+	bomb_3_2.speed.y = -4;
+	bomb_3_2.life = 1000;
+
+	//3_3
+	bomb_3_3.anim.PushBack({ 393,174,6,7 });
+	bomb_3_3.speed.x = -2;
+	bomb_3_3.speed.y = 4;
+	bomb_3_3.life = 1000;
+
+	//3_4
+	bomb_3_4.anim.PushBack({ 393,161,6,7 });
+	bomb_3_4.speed.x = -2;
+	bomb_3_4.speed.y = -4;
+	bomb_3_4.life = 1000;
+
+	//4_1
+	bomb_4_1.anim.PushBack({ 63,11,3,16 });
+	bomb_4_1.speed.x = 1;
+	bomb_4_1.speed.y = 5;
+	bomb_4_1.life = 1000;
+
+	//4_2
+	bomb_4_2.anim.PushBack({ 63,11,3,16 });
+	bomb_4_2.speed.x = 1;
+	bomb_4_2.speed.y = -5;
+	bomb_4_2.life = 1000;
+
+	//4_3
+	bomb_4_3.anim.PushBack({ 57,35,16,18 });
+	bomb_4_3.speed.x = -5;
+	bomb_4_3.speed.y = 5;
+	bomb_4_3.life = 1000;
+
+	//4_4
+	bomb_4_4.anim.PushBack({ 57,60,16,18 });
+	bomb_4_4.speed.x = -5;
+	bomb_4_4.speed.y = -5;
+	bomb_4_4.life = 1000;
 
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
@@ -482,16 +581,6 @@ bool ModuleParticles::Start()
 	LOG("Loading particles");
 	graphics = App->textures->Load("assets/Sprites/laser_types.png");
 	
-	/*laser_4_1_1.collider->rect = { 0,0,13,6 };
-	laser_4_1_2.collider->rect = { 0,0,13,6 };
-	laser_4_2_0.collider->rect = { 0,0,13,6 };
-	laser_4_4_1.collider->rect = { 0,0,13,6 };
-	laser_4_4_2.collider->rect = { 0,0,13,6 };
-	laser_4_3_1.collider->rect = { 0,0,13,6 };*/
-
-
-
-
 	return true;
 }
 
@@ -543,7 +632,7 @@ update_status ModuleParticles::Update()
 }
 
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, OWNER owner)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay, OWNER owner, ID id)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -554,6 +643,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->position.x = x;
 			p->position.y = y;
 			p->owner_type = owner;
+			p->id = id;
 
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
@@ -599,7 +689,7 @@ Particle::Particle()
 
 Particle::Particle(const Particle& p) : 
 anim(p.anim), position(p.position), speed(p.speed),
-fx(p.fx), born(p.born), life(p.life)
+fx(p.fx), born(p.born), life(p.life), id(p.id)
 {}
 
 Particle::~Particle()
@@ -623,6 +713,13 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
+	if (id == BOMB_DELAY)
+		LOG("HEY ESTOY EN: (%i,%i)", position.x, position.y);
+	if (id == BOMB)
+		LOG("PUES YO EN: (%i,%i)", position.x, position.y);
+
+	
+
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
