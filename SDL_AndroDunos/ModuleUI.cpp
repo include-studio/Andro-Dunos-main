@@ -440,7 +440,7 @@ update_status ModuleUI::Update()
 	//gameover/countdown/gameover/insert or press
 	if (App->player2->IsEnabled() == true && App->player1->IsEnabled() == true) {
 		if (App->player1->hp <= 0) {// && App->player2->hp > 0
-			if (dead_loop == true) {
+			/*if (dead_loop == true) {*/
 				//Time
 				if (game_over_time == true) {
 					init_time1 = SDL_GetTicks();
@@ -489,10 +489,11 @@ update_status ModuleUI::Update()
 					}
 				}
 				if ((App->input->keyboard[SDL_SCANCODE_1] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN) && App->mainmenu->IsEnabled() == true && credit_on == true) {
-					//dead_loop == false;
-					current_time1 = 0;
+					if (App->player1->hp <= 0){
+						init_time1 = 0;
+					}
 				}
-			}//deadloop
+			//}//deadloop
 		}
 
 		if (App->player2->hp <= 0 ) { //&& App->player1->hp > 0
