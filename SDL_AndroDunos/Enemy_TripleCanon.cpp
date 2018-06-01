@@ -64,9 +64,19 @@ void Enemy_TripleCanon::Move()
 	current_time = SDL_GetTicks() - init_time; //Set time
 
 
-	if (current_time >= 300 && shoot == false) {
+	if (current_time >= 1800 && shoot1 == false) {
 		Shoot();
-		shoot = true;
+		shoot1 = true;
+		shoot2= false;
+	}
+	if (current_time >= 2000 && shoot2 == false) {
+		Shoot();
+		shoot2 = true;
+		shoot3 = false;
+	}
+	if (current_time >= 2200 && shoot3 == false) {
+		Shoot();
+		shoot3 = true;
 	}
 	if (current_time <= 1000) {
 		original_x-= 2;

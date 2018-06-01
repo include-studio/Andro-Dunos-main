@@ -28,7 +28,9 @@ public:
 	int shot_actual = 0;*/
 	int current_time;
 	int init_time = 0;
-	bool shoot = false;
+	bool shoot1 = false;
+	bool shoot2 = true;
+	bool shoot3 = true;
 	float rotation;
 
 
