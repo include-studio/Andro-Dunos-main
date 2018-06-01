@@ -63,7 +63,9 @@ public:
 
 	int type_weapon = 0;
 	int hp;
-	int powerup=1;
+	int powerup_s = 1;
+	int powerup_b = 0;
+	int powerup_m = 0;
 
 	bool insert2;
 

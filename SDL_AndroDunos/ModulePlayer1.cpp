@@ -179,7 +179,8 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 		if (powerup_s < MAX_POWERUP)
 			powerup_s++;
-		powerup_b++;
+		if (powerup_b < 5)
+			powerup_b++;
 	}
 
 	// input
