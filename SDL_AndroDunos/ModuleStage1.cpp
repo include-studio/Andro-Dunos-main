@@ -192,6 +192,8 @@ bool ModuleStage1::Start()
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 400, 80); 
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 375, 50);
+
 	
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 370, 60); //WAVINGSHIP

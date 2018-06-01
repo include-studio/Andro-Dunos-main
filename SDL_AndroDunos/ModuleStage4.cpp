@@ -220,6 +220,8 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2904, 34);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 3750, 130); 
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 3750, 100);
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 3950, 165); //Big ship WATER
