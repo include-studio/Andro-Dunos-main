@@ -556,7 +556,7 @@ ModuleParticles::ModuleParticles()
 	
 	enemy_yellow_laser.anim.speed = 0.2f;
 	enemy_yellow_laser.life = 1500;
-	enemy_yellow_laser.speed.x = -2;
+	enemy_yellow_laser.speed.x = -4;
 	enemy_yellow_laser.anim.loop = false;
 	
 	//enemy_blue_laser shoot
@@ -566,7 +566,7 @@ ModuleParticles::ModuleParticles()
 
 	enemy_blue_laser.anim.speed = 0.2f;
 	enemy_blue_laser.life = 1500;
-	enemy_blue_laser.speed.x = -2;
+	enemy_blue_laser.speed.x = -5;
 	enemy_blue_laser.anim.loop = false;
 
 	

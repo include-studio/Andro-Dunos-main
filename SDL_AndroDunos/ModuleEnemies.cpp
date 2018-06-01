@@ -199,6 +199,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::TRIPLECANON:
 			enemies[i] = new Enemy_TripleCanon(info.x, info.y);
 			break;
+		case ENEMY_TYPES::TRIPLECANON2:
+			enemies[i] = new Enemy_TripleCanon2(info.x, info.y);
+			break;
 		
 		}
 		

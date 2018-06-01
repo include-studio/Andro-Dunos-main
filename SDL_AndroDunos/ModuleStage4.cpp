@@ -220,6 +220,8 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2904, 34);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 3750, 130); 
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 3725, 100);
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 3950, 165); //Big ship WATER
@@ -316,7 +318,9 @@ update_status ModuleStage4::Update() {
 	//Audio
 	
 	if (current_time >= 3750 && intro_bgm == true) {
-		Mix_PlayMusic(App->audio->stage4, -1);
+		//Mix_PlayMusic(App->audio->stage4, -1);
+		App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg", 0.F);
+
 		intro_bgm = false;
 	}
 		
