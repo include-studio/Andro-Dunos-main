@@ -5,6 +5,8 @@
 #include "path.h"
 
 
+typedef unsigned char byte;
+
 class Enemy_BigShip : public Enemy
 {
 private:
@@ -36,6 +38,7 @@ public:
 	bool yellow4 = false;
 	bool yellow4_sub = false;
 	int current_time;
+	//float life_nexus;
 	int init_time = 0;
 
 	void Move();
@@ -52,6 +55,7 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation fly;
+	byte lifeUnits;
 public:
 
 
@@ -67,7 +71,8 @@ public:
 	bool open_wing4 = false;
 	bool open_wing5 = false;
 
-
+	byte getLifeUnits() const { return lifeUnits; }
+	void setLifeUnits(byte life) { lifeUnits = life; }
 
 	int current_time;
 	int init_time = 0;
@@ -85,6 +90,8 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation fly;
+	byte lifeUnits;
+
 public:
 
 
@@ -98,6 +105,9 @@ public:
 	int init_time = 0;
 
 	void Move();
+
+	byte getLifeUnits() const { return lifeUnits; }
+	void setLifeUnits(byte life) { lifeUnits = life; }
 };
 
 #endif // __ENEMY_BIGSHIP_H__

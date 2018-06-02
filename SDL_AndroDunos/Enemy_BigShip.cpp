@@ -62,6 +62,7 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 	init_time = SDL_GetTicks(); //Timer
 
 	life = 50;
+	//life_nexus == life;
 }
 
 void Enemy_BigShip::Move()
@@ -238,6 +239,7 @@ Enemy_BigShip2::Enemy_BigShip2(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 	
+	life = 20;
 
 	init_time = SDL_GetTicks(); //Timer
 }
@@ -288,7 +290,6 @@ void Enemy_BigShip2::Move()
 
 //void Enemy_BigShip::OnCollision(Collider* c1) {
 //
-//	
 //}
 
 void Enemy_BigShip2::Draw(SDL_Texture* sprites)
@@ -298,9 +299,16 @@ void Enemy_BigShip2::Draw(SDL_Texture* sprites)
 
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+
 }
 
-
+void destroyWithNexusLife(Enemy_BigShip& bs, Enemy_BigShip2& bs2, Enemy_BigShip3& bs3)
+{
+	if (bs.life <= 0) {
+		bs2.setLifeUnits (0);
+		bs3.setLifeUnits (0);
+	}
+}
 
 
 
@@ -362,6 +370,7 @@ Enemy_BigShip3::Enemy_BigShip3(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 50, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+	life = 20;
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -421,7 +430,6 @@ void Enemy_BigShip3::Draw(SDL_Texture* sprites)
 {
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y + 60);
-
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }
