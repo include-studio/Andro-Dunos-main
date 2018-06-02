@@ -13,5 +13,5 @@ Enemy_Column::Enemy_Column(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
-	life = 30;
+	life = 10;
 }

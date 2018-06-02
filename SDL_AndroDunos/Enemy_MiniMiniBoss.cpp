@@ -31,16 +31,16 @@ Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y, bool _drop) : Enemy(x, y)
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
 
-	life = 10;
+	life = 7;
 }
 
 void Enemy_MiniMiniBoss::Move()
 {
-	position.x ++;
+	position.x -= 1;
 
 	current_time = SDL_GetTicks() - init_time; //Set time
 
-	if (current_time <= 800) {
+	if (current_time <= 1000) {
 		if (App->player1->position.y > (float)position.y)
 			position.y += 1;
 
@@ -56,8 +56,8 @@ void Enemy_MiniMiniBoss::Move()
 		shoot2 = true;
 	}
 	
-	if (current_time > 800)
-		position.x -= 0.25;
+	if (current_time >= 1000 && current_time <= 1700)
+		position.x += 1;
 }
 
 void Enemy_MiniMiniBoss::Shoot()
