@@ -235,7 +235,7 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2790, 70);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2730, 70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2904, 34);
+	App->enemies->AddEnemy(ENEMY_TYPES::COLUMN, 2902, -66); //column
 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 3750, 130); 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 3725, 100);
