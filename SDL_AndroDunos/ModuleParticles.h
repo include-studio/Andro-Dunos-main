@@ -41,6 +41,7 @@ struct Particle
 	Particle(const Particle& p);
 	~Particle();
 	bool Update();
+	//Enemy FindE(iPoint,iPoint);
 	bool blue_followDown = false;
 	bool blue_followUp = false;
 };
