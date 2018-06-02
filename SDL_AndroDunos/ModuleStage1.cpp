@@ -85,63 +85,65 @@ bool ModuleStage1::Start()
 
 	stars_tx = App->textures->Load("assets/Sprites/Stars.png");
 	back_tx = App->textures->Load("assets/Sprites/Background.png");
-
-	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 400, 80); 
-	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 375, 50);
-
 	
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 370, 60); //WAVINGSHIP
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 385, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 383, 60); 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 396, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 408, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 409, 60);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 435, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 445, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 456, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 468, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 470, 140); 
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 483, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 496, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 509, 140);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 570, 60, true);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 583, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 596, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 609, 60);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 550, 60, true);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 565, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 576, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 588, 60);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 705, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 715, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 726, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 738, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 670, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 683, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 696, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 709, 140);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 838, 90); // ENEMY_POWERUP
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1738, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2558, 90);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 935, 40); //HORIZONTALROCKET
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 915, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 936, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1030, 40); //HORIZONTALROCKET
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1015, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1030, 80);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1035, 100); 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1015, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1036, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1100, 100); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1085, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1100, 140);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1135, 40); 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1115, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1136, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1170, 40); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1155, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1170, 80);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1285, 45);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1265, 65);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1245, 85);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1230, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1265, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1285, 125);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1270, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1255, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1225, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1240, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1255, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1270, 120);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1375, 45);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1365, 65);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1345, 85);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1355, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1340, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1370, 40);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1440, 87);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1465, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1485, 125);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1410, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1425, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1440, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1370, 175); //VENDING
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1383, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1382, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1381, 260);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1380, 290);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 1600, 90); //POWERUP 2
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1703, SCREEN_HEIGHT/2); //MINI-MINIBOSS
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1753, (SCREEN_HEIGHT / 2) + 40, true);
@@ -149,8 +151,88 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) + 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) - 40);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2270, 120); //TINY RED SHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2310, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2350, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2390, 120);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 2340, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 2380, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 2420, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 2460, 50);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2558, 90); //POWER UP 3
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 3900, 330); //POWER UP 4 underground
+
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 5500, 185); //VENDING underground
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 5513, 212);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 5512, 242);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 5511, 272);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 5510, 302);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 6080, 160); //TINY RED SHIP underground
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 6120, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 6160, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 6200, 160); 
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 6250, 110); //POWER UP 5
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6900, 300); //HORITZONTAL ROCKET ZIGZAG
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6915, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6930, 300);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7000, 400);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7015, 400);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7030, 400);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7100, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7115, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7130, 300);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 7540, 50);  //TINY RED SHIP SURFACE
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 7580, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 7620, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 7660, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 7970, 120); //TINY RED SHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 8010, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 8050, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 8090, 120);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 8040, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 8080, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 8120, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 8160, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8300, 60); //HORITZONTAL ROCKET ZIGZAG
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8315, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8330, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8400, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8415, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8430, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8500, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8515, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8530, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8600, 60); 
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8615, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8630, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8600, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8615, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8630, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8800, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8815, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8830, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8800, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8815, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8830, 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 9000, 90); //POWER UP 5
 
 	App->audio->PlayMusic("assets/Audio/Stage_1__The_Moon_Loop.ogg");
 	
