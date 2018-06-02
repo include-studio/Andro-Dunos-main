@@ -55,6 +55,15 @@ ModuleStage4::ModuleStage4() {
 	water.loop = true;
 	water.speed = 0.08f;
 
+	//light
+	for (int j = 0; j < 2; j++) {
+		for (int i = 0; i < 3; i++)
+			backlight.PushBack({ 0,i * 292,1024,324 });
+		for (int i = 2; i >= 0; i--)
+			backlight.PushBack({ 0,i * 292,1024,324 });
+	}
+	backlight.speed = 0.1f;
+
 	//ground column
 	groundColumn.x = 1568;
 	groundColumn.y = 979;
@@ -70,10 +79,11 @@ bool ModuleStage4::Start() {
 	
 	bool ret = true;
 	//Timer
-	init_time = SDL_GetTicks(); 
-	current_time = 0;
+	time_preAnim = init_time = SDL_GetTicks(); 
+	time_backAnim = time_music = 0;
 	//load textures
 	back_tx = App->textures->Load("assets/Sprites/background4.png");
+	backlight_tx = App->textures->Load("assets/Sprites/background4anim.png");
 	ground_tx = App->textures->Load("assets/Sprites/ground4.png");
 
 	//colliders
@@ -304,7 +314,7 @@ bool ModuleStage4::CleanUp() {
 	App->textures->Unload(back_tx);
 	App->textures->Unload(ground_tx);
 
-	current_time = 0;
+	time_music = 0;
 	intro_bgm = true;
 	App->render->camera.x = 0;
 	App->render->camera.y = 0;
@@ -316,17 +326,26 @@ bool ModuleStage4::CleanUp() {
 update_status ModuleStage4::Update() {
 
 	//Time
-	current_time = SDL_GetTicks() - init_time;
+	if (intro_bgm)
+		time_music = SDL_GetTicks() - init_time;
+
+	time_backAnim = SDL_GetTicks() - time_preAnim;
 
 	//Audio
 	
-	if (current_time >= 3750 && intro_bgm == true) {
+	if (time_music >= 3750 && intro_bgm == true) {
 		//Mix_PlayMusic(App->audio->stage4, -1);
-		App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg", 0.F);
+		App->audio->PlayMusic("assets/Audio/11_Stage_4 -Caven-Loop.ogg", 0.0f);
 
 		intro_bgm = false;
 	}
-		
+
+	if (time_backAnim >= 3750) {
+		//active blit bakcground animation
+		light = true;
+		time_preAnim = SDL_GetTicks();
+		time_backAnim = 0;
+	}
 	
 
 
@@ -346,6 +365,17 @@ update_status ModuleStage4::Update() {
 
 	for (int i = 0; i < 4; i++)
 		App->render->Blit(back_tx, back.w*i, -50, NULL, BACKGROUND4SPEED);
+
+	if (light) {
+		SDL_Rect lighting = backlight.GetCurrentFrame();
+		for (int i = 0; i < 4; i++)
+			App->render->Blit(backlight_tx, back.w*i, -50, &lighting, BACKGROUND4SPEED);
+		if (backlight.isInFrame(8)) {
+			light = false;
+			backlight.reset();
+		}
+	}
+
 	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
 	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
 	animation_water = &water;
@@ -361,6 +391,7 @@ update_status ModuleStage4::Update() {
 
 	for (int i = 0; i < 5; i++)
 		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 316, &water_rect, GROUND4SPEED);
+
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
 	

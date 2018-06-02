@@ -26,6 +26,7 @@ public:
 	
 	SDL_Texture *back_tx = nullptr;
 	SDL_Texture *ground_tx = nullptr;
+	SDL_Texture *backlight_tx = nullptr;
 
 	SDL_Rect back;
 	SDL_Rect ground[4];
@@ -36,8 +37,13 @@ public:
 
 	Animation water;
 	Animation* animation_water = nullptr;
+	Animation backlight;
+	bool light = false;
+
 	int stage;
-	int current_time = 0;
+	int time_music = 0;
+	int time_backAnim = 0;
+	int time_preAnim = 0;
 	int init_time = 0;
 	bool intro_bgm = true;
 
