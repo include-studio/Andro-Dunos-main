@@ -471,7 +471,7 @@ update_status ModuleStage4::Update() {
 update_status ModuleStage4::PostUpdate() {
 
 	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
-	/*
+	
 	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
 
 	animation_water = &water;
@@ -482,6 +482,6 @@ update_status ModuleStage4::PostUpdate() {
 
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
-	*/
+
 	return UPDATE_CONTINUE;
 }
