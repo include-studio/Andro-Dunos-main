@@ -19,6 +19,7 @@ public:
 
 	bool Start();
 	update_status Update();
+	update_status PostUpdate();
 	bool CleanUp();
 
 public:
@@ -48,5 +49,4 @@ public:
 	bool intro_bgm = true;
 
 	};
-
 #endif // !__MODULESTAGE4!_H__

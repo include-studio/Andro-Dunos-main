@@ -380,11 +380,6 @@ update_status ModuleStage4::Update() {
 		}
 	}
 
-	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
-	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
-	animation_water = &water;
-	water_rect = animation_water->GetCurrentFrame();
-
 	App->render->Blit(ground_tx, positionGroundColumn.x, positionGroundColumn.y, &groundColumn, GROUND4SPEED); //-97
 
 	//columnground moving
@@ -392,12 +387,7 @@ update_status ModuleStage4::Update() {
 		if (positionGroundColumn.y <= -133)
 			positionGroundColumn.y = positionGroundColumn.y + 0.001f;
 	}
-
-	for (int i = 0; i < 5; i++)
-		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 316, &water_rect, GROUND4SPEED);
-
-	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
-	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
+	
 	
 	switch (stage) {
 	case 0:				//scroll diagonal to y=43
@@ -470,5 +460,23 @@ update_status ModuleStage4::Update() {
 		App->fade->FadeToBlack(this, App->stageclear, 1);
 	}
 		
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleStage4::PostUpdate() {
+
+	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
+	/*
+	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
+
+	animation_water = &water;
+	water_rect = animation_water->GetCurrentFrame();
+
+	for (int i = 0; i < 5; i++)
+		App->render->Blit(ground_tx, (1000 + ground[0].w + ground[1].w) + water_rect.w*i - 9, 316, &water_rect, GROUND4SPEED);
+
+	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
+	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
+	*/
 	return UPDATE_CONTINUE;
 }

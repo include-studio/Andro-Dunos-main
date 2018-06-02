@@ -30,31 +30,31 @@
 Application::Application()
 {
 	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = stage1 = new ModuleStage1();
-	modules[5] = stage4 = new ModuleStage4();
-	modules[6] = player1 = new ModulePlayer1();
-	modules[7] = player2 = new ModulePlayer2();
-	modules[8] = audio = new ModuleAudio();
-	modules[9] = neogeo = new ModuleNeoGeo();
-	modules[10] = visco = new ModuleViscoGames();
-	modules[11] = mainmenu = new ModuleMainMenu();
-	modules[12] = fade = new ModuleFadeToBlack();
-	modules[13] = stageclear = new ModuleStageClear();
-	modules[14] = gameover = new ModuleGameOver();
-	modules[15] = particles = new ModuleParticles();
-	modules[16] = collision = new ModuleCollision();
-	modules[17] = insertCoin = new ModuleInsertCoin();
-	modules[18] = enemies = new ModuleEnemies();
-	modules[19] = fonts = new ModuleFonts();
-	modules[20] = powerup = new ModulePowerUp();
-	modules[21] = ui = new ModuleUI();
-	modules[22] = submainmenu = new ModuleSubMainMenu();
-	modules[23] = shield1 = new ModuleShieldPlayer1();
-	modules[24] = shield2 = new ModuleShieldPlayer2();
-	modules[25] = stage1floor = new ModuleStage1Floor();
+	modules[1] = input = new ModuleInput();
+	modules[2] = textures = new ModuleTextures();
+	modules[3] = stage1 = new ModuleStage1();
+	modules[4] = stage4 = new ModuleStage4();
+	modules[5] = player1 = new ModulePlayer1();
+	modules[6] = player2 = new ModulePlayer2();
+	modules[7] = audio = new ModuleAudio();
+	modules[8] = neogeo = new ModuleNeoGeo();
+	modules[9] = visco = new ModuleViscoGames();
+	modules[10] = mainmenu = new ModuleMainMenu();
+	modules[11] = fade = new ModuleFadeToBlack();
+	modules[12] = stageclear = new ModuleStageClear();
+	modules[13] = gameover = new ModuleGameOver();
+	modules[14] = particles = new ModuleParticles();
+	modules[15] = collision = new ModuleCollision();
+	modules[16] = insertCoin = new ModuleInsertCoin();
+	modules[17] = enemies = new ModuleEnemies();
+	modules[18] = fonts = new ModuleFonts();
+	modules[19] = powerup = new ModulePowerUp();
+	modules[20] = ui = new ModuleUI();
+	modules[21] = submainmenu = new ModuleSubMainMenu();
+	modules[22] = shield1 = new ModuleShieldPlayer1();
+	modules[23] = shield2 = new ModuleShieldPlayer2();
+	modules[24] = stage1floor = new ModuleStage1Floor();
+	modules[25] = render = new ModuleRender();
 	
 }	
 
