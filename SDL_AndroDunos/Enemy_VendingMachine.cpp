@@ -17,7 +17,8 @@ Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)          
 	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
 	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
 	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-
+	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
 
 	fly.PushBack({ PIXEL * 1,433,PIXEL,PIXEL });
 	fly.PushBack({ PIXEL * 2,433,PIXEL,PIXEL });
@@ -46,7 +47,7 @@ Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)          
 	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
 
 	animation = &fly;
-	fly.speed = 0.12;
+	fly.speed = 0.16;
 
 	fly.loop = false;
 
@@ -60,15 +61,4 @@ Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)          
 	life = 8;
 }
 
-void Enemy_VendingMachine::Move()
-{
-	current_time = SDL_GetTicks() - init_time; //Set time
-
-	if (current_time >= 500 && current_time <= 750)
-	{
-		
-	}
-	
-
-}
 
