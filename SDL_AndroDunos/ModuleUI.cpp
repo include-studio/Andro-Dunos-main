@@ -215,7 +215,7 @@ bool ModuleUI::CleanUp()
 	credit_on = true;
 	return true;
 }
-update_status ModuleUI::Update()
+update_status ModuleUI::PostUpdate()
 {
 	//highscore logic
 	if (score1 > high_score) {
