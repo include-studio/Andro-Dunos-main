@@ -44,7 +44,7 @@ public:
 	SDL_Rect planet1;
 	SDL_Rect planet2;
 
-
+	bool blitbehind;
 	int part_stage = 0;
 	int ground_cont = 0;
 };

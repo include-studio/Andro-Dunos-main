@@ -111,6 +111,7 @@ bool ModuleStage1::Start()
 	bool ret = true;
 
 	part_stage = 0;
+	blitbehind = false;
 
 	App->render->camera.x = 0;
 	App->render->camera.x = 0;
@@ -318,6 +319,8 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
+		if (App->render->camera.x >= 2800 * SCREEN_SIZE && blitbehind == false)
+			blitbehind = true;
 		if (App->render->camera.x >= 2945 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
@@ -361,6 +364,8 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
+		if (App->render->camera.x >= (2945 + SCREEN_WIDTH) * SCREEN_SIZE && blitbehind == true)
+			blitbehind = false;
 		if (App->render->camera.x >= 4000 * SCREEN_SIZE)
 			part_stage++;
 
@@ -482,6 +487,8 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
+		if (blitbehind == false)
+			blitbehind = true;
 		if (App->render->camera.x >= 7156 * SCREEN_SIZE) {
 			part_stage++;
 			ground_cont++;
@@ -516,6 +523,8 @@ update_status ModuleStage1::Update()
 		App->render->camera.x += 3;
 		App->player1->position.x++;
 		App->player2->position.x++;
+		if (App->render->camera.x >= (7156 + SCREEN_WIDTH) * SCREEN_SIZE && blitbehind == true)
+			blitbehind = false;
 		if (App->render->camera.x >= 26241)
 			part_stage++;
 
@@ -562,7 +571,7 @@ update_status ModuleStage1::Update()
 		break;
 	}
 
-	if (ground_cont <4)
+	if (blitbehind)
 		for (int i = ground_cont; i < ground_cont+2; i++)
 			App->render->Blit(ground_tx, ground[0].w*i, 0, &ground[i]);
 	
@@ -584,7 +593,7 @@ update_status ModuleStage1::Update()
 }
 
 update_status ModuleStage1::PostUpdate() {
-	if (ground_cont>=4)
+	if (!blitbehind)
 		for (int i = ground_cont; i < ground_cont + 2; i++)
 			App->render->Blit(ground_tx, ground[0].w*i, 0, &ground[i]);
 	return UPDATE_CONTINUE;
