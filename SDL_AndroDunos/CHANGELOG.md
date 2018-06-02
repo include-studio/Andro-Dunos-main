@@ -226,7 +226,7 @@ All notable changes to this project will be documented in this file.
 
 ### Summarized
 
-- New enemy, audio fixed and bonuses have a path.
+- Coins and respawn fized
 
 ### Extended
 
