@@ -730,14 +730,15 @@ bool Particle::Update()
 	if (follow == 1) {
 		if (target == nullptr)
 			target = FindE(position);
-		LOG("ENEMY: %i", target);
-		int x = App->player2->position.x - position.x;
-		int y = App->player2->position.y - position.y;
-		int modulev = sqrt(x*x + y*y);
-		x /= modulev;
-		y /= modulev;
-		position.x += x * 3;
-		position.y += y * 3;
+		else {
+			int x = target->position.x - position.x;
+			int y = target->position.y - position.y;
+			int modulev = sqrt(x*x + y*y);
+			x /= modulev;
+			y /= modulev;
+			position.x += x * 3;
+			position.y += y * 3;
+		}
 	}
 
 		
