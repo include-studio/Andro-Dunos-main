@@ -17,7 +17,7 @@ public:
 
 	Enemy_VendingMachine(int x, int y);
 
-	void Move();
+	
 	int current_time;
 	int init_time = 0;
 };

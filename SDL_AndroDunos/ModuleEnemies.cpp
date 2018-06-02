@@ -7,7 +7,6 @@
 #include "Enemy.h"
 #include "Enemy_WavingShip.h"
 #include "ModulePlayer1.h"
-#include "Enemy_VendingMachine.h"
 #include "Enemy_HorizontalRocket.h"
 #include "Enemy_GreenMiniShip.h"
 #include "Enemy_PowerUp.h"
@@ -18,6 +17,7 @@
 #include "Enemy_TinyRedShip.h"
 #include "Enemy_BigShip.h"
 #include "Enemy_TripleCanon.h"
+#include "Enemy_VendingMachine.h"
 #include "ModuleAudio.h"
 
 #define SPAWN_MARGIN 200
@@ -152,9 +152,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-		case ENEMY_TYPES::VENDING:
-			enemies[i] = new Enemy_VendingMachine(info.x, info.y);
-			break;
+		
 		case ENEMY_TYPES::WAVINGSHIP:
 			enemies[i] = new Enemy_WavingShip(info.x, info.y, info.drop);
 			break;
@@ -182,6 +180,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::MINIGREEN2:
 			enemies[i] = new Enemy_GreenMiniShip2(info.x, info.y);
 			break;
+		case ENEMY_TYPES::MINIGREEN3:
+			enemies[i] = new Enemy_GreenMiniShip3(info.x, info.y);
+			break;
 		case ENEMY_TYPES::COLUMN:
 			enemies[i] = new Enemy_Column(info.x, info.y);
 			break;
@@ -206,7 +207,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::TRIPLECANON2:
 			enemies[i] = new Enemy_TripleCanon2(info.x, info.y);
 			break;
-		
+		case ENEMY_TYPES::VENDING:
+			enemies[i] = new Enemy_VendingMachine(info.x, info.y);
+			break;
 		}
 		
 	}	

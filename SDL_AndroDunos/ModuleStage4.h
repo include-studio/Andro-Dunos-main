@@ -47,5 +47,6 @@ public:
 	int init_time = 0;
 	bool intro_bgm = true;
 
-};
+	};
+
 #endif // !__MODULESTAGE4!_H__

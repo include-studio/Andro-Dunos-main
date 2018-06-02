@@ -204,8 +204,12 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1580, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1550, 138);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1563, 170);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1562, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1561, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1560, 260);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1550, 138);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1950, 70); //1rs Miniminiboss
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1990, 70);

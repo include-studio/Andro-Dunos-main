@@ -45,5 +45,23 @@ public:
 	int init_time = 0;
 };
 
+class Enemy_GreenMiniShip3 : public Enemy
+{
+private:
+
+	Path path;
+	iPoint original_pos;
+	int original_y = 0;
+	Animation left, right, right_go;
+
+public:
+
+	Enemy_GreenMiniShip3(int x, int y);
+	
+	
+	void Move();
+	int current_time;
+	int init_time = 0;
+};
 #endif // __ENEMY_GREENMINISHIP_H__
 #pragma once
