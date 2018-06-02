@@ -250,7 +250,7 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP2, 3950, 165); //Big ship WATER Wing1
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP3, 3950, 165); //Big ship WATER Wing2
 
-	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 3950, 205); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4150, 340); //FISH TIMEEEE
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
