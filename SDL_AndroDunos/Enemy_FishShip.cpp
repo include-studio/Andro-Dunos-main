@@ -2,6 +2,9 @@
 #include "Enemy_FishShip.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
+#include <stdlib.h> //srand
+#include <time.h>
 #include "SDL/include/SDL.h"
 
 #include "Globals.h"
@@ -9,8 +12,10 @@
 #define PIXEL 16
 #define PIXEL2 33
 
-Enemy_FishShip::Enemy_FishShip(int x, int y) : Enemy(x, y)				//2nd path DOWN to UP
+Enemy_FishShip::Enemy_FishShip(int x, int y, ENEMY_TYPES _type) : Enemy(x, y)				//2nd path DOWN to UP
 {
+	srand(time(NULL));
+
 	up.PushBack({ 105,483,16,16 });
 	
 	trans.PushBack({ 105 + PIXEL,483,PIXEL,PIXEL });
@@ -26,11 +31,19 @@ Enemy_FishShip::Enemy_FishShip(int x, int y) : Enemy(x, y)				//2nd path DOWN to
 	trans.loop = false;
 	down.loop = false;
 
-	
+	int contfish = 0;
+
+	type = _type;
+
+	/*for (int i = 0; i < MAX_ENEMIES; i++) {
+		if (App->enemies->enemies[i] != nullptr)
+			if (App->enemies->enemies[i]->type == ENEMY_TYPES::FISH)
+				contfish++;
+	}*/
 
 	//Path
 
-	path.PushBack({ 0, 0 }, 120, &up);
+	path.PushBack({ 0, 0 }, (rand()%180)+120, &up);
 	path.PushBack({ 1, -2.0f }, 70, &up);
 
 	path.PushBack({ 1, -1.f }, 20, &trans);
@@ -100,7 +113,7 @@ Enemy_Water::Enemy_Water(int x, int y) : Enemy(x, y)				//2nd path DOWN to UP
 
 
 
-	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 0, 0 }, COLLIDER_TYPE::COLLIDER_NONE, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;

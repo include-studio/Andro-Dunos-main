@@ -13,10 +13,11 @@ private:
 	iPoint original_pos;
 	int original_y = 0;
 	Animation up, trans, down;
+	ENEMY_TYPES type;
 
 public:
 
-	Enemy_FishShip(int x, int y);
+	Enemy_FishShip(int x, int y, ENEMY_TYPES _type);
 
 
 	void Move();
