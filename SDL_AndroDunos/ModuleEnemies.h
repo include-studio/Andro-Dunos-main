@@ -12,6 +12,7 @@
 #include "Enemy_BigShip.h"
 #include "Enemy_TripleCanon.h"
 #include "Enemy_VendingMachine.h"
+#include "Enemy_FishShip.h"
 
 
 
@@ -38,7 +39,8 @@ enum ENEMY_TYPES
 	BIGSHIP3,
 	TRIPLECANON,
 	TRIPLECANON2,
-	VENDING
+	VENDING,
+	FISH
 
 };
 

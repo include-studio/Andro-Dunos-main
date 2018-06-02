@@ -126,6 +126,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BigShip.h" />
     <ClInclude Include="Enemy_Column.h" />
+    <ClInclude Include="Enemy_FishShip.h" />
     <ClInclude Include="Enemy_HorizontalRocket.h" />
     <ClInclude Include="Enemy_MiniMiniBoss.h" />
     <ClInclude Include="Enemy_PowerUp.h" />
@@ -171,6 +172,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BigShip.cpp" />
     <ClCompile Include="Enemy_Column.cpp" />
+    <ClCompile Include="Enemy_FishShip.cpp" />
     <ClCompile Include="Enemy_HorizontalRocket.cpp" />
     <ClCompile Include="Enemy_MiniMiniBoss.cpp" />
     <ClCompile Include="Enemy_PowerUp.cpp" />
@@ -198,7 +200,6 @@
     <ClCompile Include="ModulePlayer1.cpp" />
     <ClCompile Include="ModulePlayer2.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
-    <ClCompile Include="ModuleStage1Floor.cpp" />
     <ClCompile Include="ModuleStage4.cpp" />
     <ClCompile Include="ModuleStageClear.cpp" />
     <ClCompile Include="ModuleSubMainMenu.cpp" />

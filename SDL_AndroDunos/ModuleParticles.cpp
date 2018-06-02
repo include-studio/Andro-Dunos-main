@@ -698,7 +698,9 @@ Particle::Particle()
 Particle::Particle(const Particle& p) : 
 anim(p.anim), position(p.position), speed(p.speed),
 fx(p.fx), born(p.born), life(p.life), id(p.id), follow(p.follow)
-{}
+{
+	
+}
 
 Particle::~Particle()
 {

@@ -53,8 +53,7 @@ Application::Application()
 	modules[21] = submainmenu = new ModuleSubMainMenu();
 	modules[22] = shield1 = new ModuleShieldPlayer1();
 	modules[23] = shield2 = new ModuleShieldPlayer2();
-	modules[24] = stage1floor = new ModuleStage1Floor();
-	modules[25] = render = new ModuleRender();
+	modules[24] = render = new ModuleRender();
 	
 }	
 
@@ -84,9 +83,7 @@ bool Application::Init()
 	collision->Disable();
 	enemies->Disable();
 	fonts->Disable();
-	powerup->Disable();
-	stage1floor->Disable();
-	//ui->Disable();
+	powerup->Disable();	//ui->Disable();
 	submainmenu->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

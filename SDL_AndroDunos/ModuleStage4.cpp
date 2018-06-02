@@ -240,10 +240,17 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 3750, 130); 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 3725, 100);
 
+	//Test
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 500, 30); //Big ship WATER
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP2, 500, 30); //Big ship WATER Wing1
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP3, 500, 30); //Big ship WATER Wing2
+	//---------------------------------------------------------------------------------------------------
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 3950, 165); //Big ship WATER
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP2, 3950, 165); //Big ship WATER Wing1
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP3, 3950, 165); //Big ship WATER Wing2
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4150, 340); //FISH TIMEEEE
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
@@ -466,7 +473,7 @@ update_status ModuleStage4::Update() {
 update_status ModuleStage4::PostUpdate() {
 
 	App->render->Blit(ground_tx, 1000, -97, &ground[0], GROUND4SPEED);
-	/*
+	
 	App->render->Blit(ground_tx, 1000 + ground[0].w, 18, &ground[1], GROUND4SPEED);
 
 	animation_water = &water;
@@ -477,6 +484,6 @@ update_status ModuleStage4::PostUpdate() {
 
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w, 52, &ground[2], GROUND4SPEED);
 	App->render->Blit(ground_tx, 2511 + ground[0].w + ground[1].w + ground[2].w, 13, &ground[3], GROUND4SPEED);
-	*/
+
 	return UPDATE_CONTINUE;
 }
