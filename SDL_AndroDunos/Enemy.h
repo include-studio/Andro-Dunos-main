@@ -6,6 +6,7 @@
 
 struct SDL_Texture;
 struct Collider;
+enum ENEMY_TYPES;
 
 class Enemy
 {
@@ -16,6 +17,7 @@ protected:
 public:
 	iPoint position;
 	float life;
+	ENEMY_TYPES type;
 
 public:
 	Enemy(int x, int y);

@@ -7,6 +7,9 @@
 
 typedef unsigned char byte;
 
+class Enemy_BigShip2;
+class Enemy_BigShip3;
+
 class Enemy_BigShip : public Enemy
 {
 private:
@@ -14,12 +17,17 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation fly, fly2;/*Left, Right, Up_Right, Down, Up_Left;*/
+
+	Enemy* wing1 = nullptr;
+	Enemy* wing2 = nullptr;
 	//left, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Left, Up-Right, Down, Up-Left, Right, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Down, Right, Left, 
+
+	void DespawnAllWings();
 	
 
 public:
 
-	Enemy_BigShip(int x, int y);
+	Enemy_BigShip(int x, int y, ENEMY_TYPES type);
 	void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	void Shoot();
@@ -43,9 +51,6 @@ public:
 	//float life_nexus;
 	int init_time = 0;
 
-	Enemy* wing1;
-	Enemy* wing2;
-	
 	byte getLifeUnits() const { return life; }
 
 
@@ -66,7 +71,7 @@ private:
 	//byte lifeUnits;
 public:
 
-	Enemy_BigShip2(int x, int y);
+	Enemy_BigShip2(int x, int y, ENEMY_TYPES type);
 	//void OnCollision(Collider*);
 	int WingUp() { return original_pos.y -=2;  }
 	int WingDown() { return original_pos.y += 2; }
@@ -104,7 +109,7 @@ private:
 public:
 
 
-	Enemy_BigShip3(int x, int y);
+	Enemy_BigShip3(int x, int y, ENEMY_TYPES type);
 	//void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	int WingUp() { return original_pos.y -= 2; }
@@ -121,9 +126,6 @@ public:
 };
 
 
-//void DespawnAllWings(Enemy_BigShip& b,  Enemy_BigShip2& w1,  Enemy_BigShip3& w2) {
-//	w1.setLifeUnits(0);
-//	w2.setLifeUnits(0);
-//}
+
 #endif // __ENEMY_BIGSHIP_H__
 

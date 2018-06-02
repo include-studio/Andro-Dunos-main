@@ -7,6 +7,7 @@
 Enemy::Enemy(int x, int y) : position(x, y)
 {}
 
+
 Enemy::~Enemy()
 {
 	if (collider != nullptr)
