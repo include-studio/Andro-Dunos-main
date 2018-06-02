@@ -18,6 +18,7 @@
 #include "Enemy_BigShip.h"
 #include "Enemy_TripleCanon.h"
 #include "Enemy_VendingMachine.h"
+#include "Enemy_FishShip.h"
 #include "ModuleAudio.h"
 
 #define SPAWN_MARGIN 200
@@ -209,6 +210,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::VENDING:
 			enemies[i] = new Enemy_VendingMachine(info.x, info.y);
+			break;
+		case ENEMY_TYPES::FISH:
+			enemies[i] = new Enemy_FishShip(info.x, info.y);
 			break;
 		}
 		
