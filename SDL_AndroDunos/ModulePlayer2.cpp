@@ -176,6 +176,8 @@ update_status ModulePlayer2::Update()
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
+		Shoot();
+		BombandMissile();
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp != 7)
