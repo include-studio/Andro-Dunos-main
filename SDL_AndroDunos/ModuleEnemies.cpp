@@ -214,6 +214,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::FISH:
 			enemies[i] = new Enemy_FishShip(info.x, info.y);
 			break;
+		case ENEMY_TYPES::WATER:
+			enemies[i] = new Enemy_Water(info.x, info.y);
+			break;
+
 		}
 		
 	}	

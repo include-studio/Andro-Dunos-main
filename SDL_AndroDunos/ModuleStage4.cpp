@@ -251,6 +251,16 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP3, 3950, 165); //Big ship WATER Wing2
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4150, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4150, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4350, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4050, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4050, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4250, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4250, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4250, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4450, 287); //FISH TIMEEEE
 
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
