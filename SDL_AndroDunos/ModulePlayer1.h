@@ -24,6 +24,7 @@ public:
 	bool CleanUp();
 
 	void Shoot();
+	void BombandMissile();
 	void States();
 
 	void OnCollision(Collider*, Collider*);
@@ -51,6 +52,7 @@ public:
 
 private:
 
+	int time_bomb = 0;
 	int counterMoved = 0;
 	int counterMoved2 = 0;
 	int counterReturn = 0;
