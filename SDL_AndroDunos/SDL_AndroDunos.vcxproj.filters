@@ -118,6 +118,7 @@
     <ClCompile Include="Enemy_VendingMachine.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleStage1Floor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">

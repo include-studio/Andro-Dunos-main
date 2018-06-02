@@ -54,6 +54,7 @@ Application::Application()
 	modules[22] = submainmenu = new ModuleSubMainMenu();
 	modules[23] = shield1 = new ModuleShieldPlayer1();
 	modules[24] = shield2 = new ModuleShieldPlayer2();
+	modules[25] = stage1floor = new ModuleStage1Floor();
 	
 }	
 
@@ -84,6 +85,7 @@ bool Application::Init()
 	enemies->Disable();
 	fonts->Disable();
 	powerup->Disable();
+	stage1floor->Disable();
 	//ui->Disable();
 	submainmenu->Disable();
 

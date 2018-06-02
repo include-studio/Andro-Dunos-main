@@ -198,6 +198,7 @@
     <ClCompile Include="ModulePlayer1.cpp" />
     <ClCompile Include="ModulePlayer2.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
+    <ClCompile Include="ModuleStage1Floor.cpp" />
     <ClCompile Include="ModuleStage4.cpp" />
     <ClCompile Include="ModuleStageClear.cpp" />
     <ClCompile Include="ModuleSubMainMenu.cpp" />
