@@ -220,7 +220,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			if (enemies[i]->life > 0) {
-				enemies[i]->life--;
+				enemies[i]->life -= 0.5f;
+				if (App->player1->type_weapon == 3)
+					enemies[i]->life --;
+				if (App->player2->type_weapon == 3)
+					enemies[i]->life --;
 				App->audio->PlayFx(enemy_hit_fx);
 				break;
 			}

@@ -15,7 +15,7 @@ protected:
 
 public:
 	iPoint position;
-	int life;
+	float life;
 
 public:
 	Enemy(int x, int y);

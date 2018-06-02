@@ -296,9 +296,9 @@ update_status ModulePlayer1::Update()
 
 	// Draw everything --------------------------------------
 	Animation *ship_state = ship;
-	if (charge == true) {
-		App->audio->PlayFx(ultimate_charge_fx);
-	}
+	//if (charge == true) {
+	//	App->audio->PlayFx(ultimate_charge_fx);
+	//}
 	if (charged == true) {
 		ship_state = anim_ultimate;
 		App->audio->PlayFx(ultimate_charged_fx);
