@@ -78,7 +78,7 @@ bool ModulePlayer2::Start()
 	fx_laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
 	fx_laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
 	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
-	type_change = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+	type_change_fx = App->audio->Loadfx("Assets/Audio/Laser_Shot_type_change_fx.wav");
 
 	return ret;
 }
@@ -172,7 +172,7 @@ update_status ModulePlayer2::Update()
 	//controller input
 	//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_X] == KEY_STATE::KEY_DOWN) {
-		App->audio->PlayFx(type_change);
+		App->audio->PlayFx(type_change_fx);
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
@@ -306,7 +306,7 @@ bool ModulePlayer2::CleanUp() {
 	App->collision->Disable();
 	App->particles->Disable();
 	App->shield2->Disable();
-	App->audio->UnLoadFx(type_change);
+	App->audio->UnLoadFx(type_change_fx);
 	App->audio->UnLoadFx(explosion_player);
 	App->audio->UnLoadFx(fx_laser4);
 	App->audio->UnLoadFx(fx_laser3);
