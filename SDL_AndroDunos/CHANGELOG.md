@@ -7,6 +7,40 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
+## [0.8.1] - 2018-06-02
+
+
+### Summarized
+
+- 
+
+### Extended
+
+
+#### Added
+
+
+- Enemies in Stage1.
+
+- Created PowerUp M in ModulePlayer_ .cpp and .h .
+
+- Path2 in green enemy ship.
+
+- Added Enemy_FishShip .cpp and .h .
+
+
+#### Fixed
+
+
+- BigShip wings can be killed.
+
+- Ground blit in post Update.
+
+- Column has a new sprite.
+
+- MiniMiniBoss fixed path.
+
+
 ## [0.8.0] - 2018-06-01
 
 
