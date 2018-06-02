@@ -513,8 +513,9 @@ void ModulePlayer1::BombandMissile() {
 void ModulePlayer1::Shoot() {
 	switch (type_weapon) {
 	case 1:
+		App->audio->PlayFx(fx_laser1);
 		switch (powerup_s) {
-			App->audio->PlayFx(fx_laser1);
+			
 		case 1:
 			App->particles->AddParticle(App->particles->laser_1_1_base, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_1_1_base, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
