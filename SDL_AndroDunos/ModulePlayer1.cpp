@@ -441,6 +441,11 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->bomb_1_2, position.x + 10, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
 			break;
 	}
+		switch (powerup_m) {
+		case 0:
+			App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		}
 		break;
 	case 2:
 		App->audio->PlayFx(fx_laser2);

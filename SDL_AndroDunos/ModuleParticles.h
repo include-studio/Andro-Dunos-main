@@ -11,6 +11,7 @@
 
 struct SDL_Texture;
 struct Collider;
+struct Enemy;
 enum COLLIDER_TYPE;
 enum OWNER {
 	OWNER_PLAYER1,
@@ -36,12 +37,14 @@ struct Particle
 	OWNER owner_type;
 	int hp = 1;
 	ID id;
+	int follow;
+	Enemy* target = nullptr;
 
 	Particle();
 	Particle(const Particle& p);
 	~Particle();
 	bool Update();
-	//Enemy FindE(iPoint,iPoint);
+	Enemy* FindE(iPoint pos);
 	bool blue_followDown = false;
 	bool blue_followUp = false;
 };
@@ -128,6 +131,8 @@ public:
 	Particle bomb_4_2;
 	Particle bomb_4_3;
 	Particle bomb_4_4;
+
+	Particle missile;
 
 	Particle mini_explosion;
 	Particle big_explosion;

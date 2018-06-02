@@ -439,6 +439,11 @@ ModuleParticles::ModuleParticles()
 	bomb_4_4.speed.y = -5;
 	bomb_4_4.life = 1000;
 
+	//missile
+	missile.anim.PushBack({ 362,160,9,5 });
+	missile.life = 10000;
+	missile.follow = 1;
+
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
 	mini_explosion.anim.PushBack({ 160,165,32,32 });
@@ -690,7 +695,7 @@ Particle::Particle()
 
 Particle::Particle(const Particle& p) : 
 anim(p.anim), position(p.position), speed(p.speed),
-fx(p.fx), born(p.born), life(p.life), id(p.id)
+fx(p.fx), born(p.born), life(p.life), id(p.id), follow(p.follow)
 {}
 
 Particle::~Particle()
@@ -712,19 +717,30 @@ bool Particle::Update()
 		if(anim.Finished())
 			ret = false;
 
-	position.x += speed.x;
-	position.y += speed.y;
-	if (id == BOMB_DELAY)
-		LOG("HEY ESTOY EN: (%i,%i)", position.x, position.y);
-	if (id == BOMB)
-		LOG("PUES YO EN: (%i,%i)", position.x, position.y);
-
 	
 
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+	
+	position.x += speed.x;
+	position.y += speed.y;
 
+	
+	if (follow == 1) {
+		if (target == nullptr)
+			target = FindE(position);
+		LOG("ENEMY: %i", target);
+		int x = App->player2->position.x - position.x;
+		int y = App->player2->position.y - position.y;
+		int modulev = sqrt(x*x + y*y);
+		x /= modulev;
+		y /= modulev;
+		position.x += x * 3;
+		position.y += y * 3;
+	}
+
+		
 	/*if (App->player1->position.y > position.y && blue_followUp == false)
 	{
 		position.y += 1;
@@ -746,16 +762,15 @@ bool Particle::Update()
 	return ret;
 }
 
-//Enemy* FindE(iPoint x, iPoint y) {
-//	Enemy* e = nullptr;
-//	for (int i = 0; i < MAX_ENEMIES; i++) {
-//		e = App->enemies->enemies[i];
-//			if (e != nullptr)
-//				if ()
-//					return e;
-//	}
-//}
-
-void GoToE() {
-
+Enemy* Particle::FindE(iPoint pos) {
+	Enemy* e = nullptr;
+	int dis = 200;
+	for (int i = 0; i < MAX_ENEMIES; i++) {
+			if (App->enemies->enemies[i] != nullptr)
+				if (pos.DistanceTo(App->enemies->enemies[i]->position) < dis) {
+					e = App->enemies->enemies[i];
+					dis = pos.DistanceTo(e->position);
+				}
+	}
+	return e;
 }
