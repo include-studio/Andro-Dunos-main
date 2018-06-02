@@ -56,6 +56,8 @@ Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)          
 	original_x = x;
 
 	init_time = SDL_GetTicks(); //Timer
+
+	life = 8;
 }
 
 void Enemy_VendingMachine::Move()

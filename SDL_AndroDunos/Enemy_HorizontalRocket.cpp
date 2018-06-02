@@ -21,6 +21,8 @@ Enemy_HorizontalRocket::Enemy_HorizontalRocket(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 30, 13 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+
+	life = 1;
 }
 
 void Enemy_HorizontalRocket::Move()

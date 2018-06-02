@@ -55,9 +55,8 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation fly;
-	byte lifeUnits;
+	//byte lifeUnits;
 public:
-
 
 	Enemy_BigShip2(int x, int y);
 	//void OnCollision(Collider*);
@@ -71,8 +70,8 @@ public:
 	bool open_wing4 = false;
 	bool open_wing5 = false;
 
-	byte getLifeUnits() const { return lifeUnits; }
-	void setLifeUnits(byte life) { lifeUnits = life; }
+	//byte getLifeUnits() const { return lifeUnits; }
+	//void setLifeUnits(byte life) { lifeUnits = life; }
 
 	int current_time;
 	int init_time = 0;
@@ -90,7 +89,7 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation fly;
-	byte lifeUnits;
+	//byte lifeUnits;
 
 public:
 
@@ -106,8 +105,8 @@ public:
 
 	void Move();
 
-	byte getLifeUnits() const { return lifeUnits; }
-	void setLifeUnits(byte life) { lifeUnits = life; }
+	/*byte getLifeUnits() const { return lifeUnits; }
+	void setLifeUnits(byte life) { lifeUnits = life; }*/
 };
 
 #endif // __ENEMY_BIGSHIP_H__

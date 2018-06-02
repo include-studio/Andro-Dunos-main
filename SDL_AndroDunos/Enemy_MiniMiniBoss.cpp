@@ -31,7 +31,7 @@ Enemy_MiniMiniBoss::Enemy_MiniMiniBoss(int x, int y, bool _drop) : Enemy(x, y)
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
 
-	hp = 6;
+	life = 10;
 }
 
 void Enemy_MiniMiniBoss::Move()

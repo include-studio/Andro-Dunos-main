@@ -302,34 +302,6 @@ void Enemy_BigShip2::Draw(SDL_Texture* sprites)
 
 }
 
-void destroyWithNexusLife(Enemy_BigShip& bs, Enemy_BigShip2& bs2, Enemy_BigShip3& bs3)
-{
-	if (bs.life <= 0) {
-		bs2.setLifeUnits (0);
-		bs3.setLifeUnits (0);
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Wing2
 
 
@@ -432,4 +404,14 @@ void Enemy_BigShip3::Draw(SDL_Texture* sprites)
 		collider->SetPos(position.x, position.y + 60);
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+}
+
+void destroyWithNexusLife(Enemy_BigShip& bs, Enemy_BigShip2& bs2, Enemy_BigShip3& bs3)
+{
+	if (bs.life <= 0) {
+		/*bs2.setLifeUnits (0);
+		bs3.setLifeUnits (0);*/
+		bs2.life = 0;
+		bs3.life = 0;
+	}
 }

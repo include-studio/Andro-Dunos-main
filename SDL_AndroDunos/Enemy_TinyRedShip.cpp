@@ -32,6 +32,8 @@ Enemy_TinyRedShip::Enemy_TinyRedShip(int x, int y) : Enemy(x, y)				//1rst path 
 	original_pos.x = x;
 	original_pos.y = y;
 	init_time = SDL_GetTicks(); //Timer
+
+	life = 1;
 }
 
 void Enemy_TinyRedShip::Move()

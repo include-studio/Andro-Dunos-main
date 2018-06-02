@@ -29,8 +29,6 @@ public:
 	bool shoot2 = false;
 
 	bool drop;
-
-	int hp = 6;
 };
 
 #endif // __ENEMY_MINIMINIBOSS_H__

@@ -41,6 +41,8 @@ Enemy_GreenMiniShip1::Enemy_GreenMiniShip1(int x, int y) : Enemy(x, y)				//1rst
 	original_pos.y = y;
 
 	init_time = SDL_GetTicks(); //Timer
+
+	life = 2;
 }
 
 void Enemy_GreenMiniShip1::Move()

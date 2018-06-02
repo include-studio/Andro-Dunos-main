@@ -35,6 +35,8 @@ Enemy_WavingShip2::Enemy_WavingShip2(int x, int y, bool _drop) : Enemy(x, y)
 	original_y = y;
 	original_x = x;
 	init_time = SDL_GetTicks(); //Timer
+
+	life = 1;
 }
 
 void Enemy_WavingShip2::Move()

@@ -12,4 +12,6 @@ Enemy_Column::Enemy_Column(int x, int y) : Enemy(x, y)
 	collider = App->collision->AddCollider({ 0, 0, 41, 81 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
+
+	life = 30;
 }
