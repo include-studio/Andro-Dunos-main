@@ -212,10 +212,13 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_VendingMachine(info.x, info.y);
 			break;
 		case ENEMY_TYPES::FISH:
-			enemies[i] = new Enemy_FishShip(info.x, info.y, info.type);
+			enemies[i] = new Enemy_FishShip(info.x, info.y);
 			break;
 		case ENEMY_TYPES::WATER:
 			enemies[i] = new Enemy_Water(info.x, info.y);
+			break;
+		case ENEMY_TYPES::WATER2:
+			enemies[i] = new Enemy_Water2(info.x, info.y);
 			break;
 
 		}

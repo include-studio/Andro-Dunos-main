@@ -1,6 +1,6 @@
 # Version of the game
 
-Andro Dunos v.0.8.0
+Andro Dunos v.0.8.1
 
 ## Description
 

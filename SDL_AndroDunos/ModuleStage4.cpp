@@ -252,16 +252,61 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4150, 340); //FISH TIMEEEE
 	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4150, 287); //FISH TIMEEEE
-	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4350, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4150, 287); //FISH TIMEEEE
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4050, 340); //FISH TIMEEEE
 	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4050, 287); //FISH TIMEEEE
-	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4250, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4050, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4075, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4075, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4075, 287); //FISH TIMEEEE
 
 	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4250, 340); //FISH TIMEEEE
 	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4250, 287); //FISH TIMEEEE
-	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4450, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4250, 287); //FISH TIMEEEE
 
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4325, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4325, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4325, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4475, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4475, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4475, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4675, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4675, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4675, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4705, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4705, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4705, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4735, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4735, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4735, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4805, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4805, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4805, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4825, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4825, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4825, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4900, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4900, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4900, 287); //FISH TIMEEEE
+
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 4945, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 4945, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 4945, 287); //FISH TIMEEEE
+
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 5045, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 5045, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 5045, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::FISH, 5105, 340); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER, 5105, 287); //FISH TIMEEEE
+	App->enemies->AddEnemy(ENEMY_TYPES::WATER2, 5105, 287); //FISH TIMEEEE
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 5480, 210);
 

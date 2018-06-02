@@ -54,7 +54,7 @@ Enemy_TripleCanon::Enemy_TripleCanon(int x, int y) : Enemy(x, y)
 	init_time = SDL_GetTicks(); //Timer
 	current_time = 0;
 
-	life = 6;
+	life = 5;
 }
 
 void Enemy_TripleCanon::Move()
