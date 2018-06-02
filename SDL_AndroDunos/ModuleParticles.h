@@ -38,7 +38,8 @@ struct Particle
 	int hp = 1;
 	ID id;
 	int follow;
-	Enemy* target = nullptr;
+	Enemy* targetE = nullptr;
+
 
 	Particle();
 	Particle(const Particle& p);

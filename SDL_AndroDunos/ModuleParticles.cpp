@@ -530,8 +530,9 @@ ModuleParticles::ModuleParticles()
 	enemy_blue.anim.PushBack({ 243,165,8,8 });
 	enemy_blue.anim.PushBack({ 250,148,8,8 });
 	enemy_blue.anim.speed = 0.2f;
-	enemy_blue.life = 1500;
+	enemy_blue.life = 5000;
 	enemy_blue.speed.x = -2;
+	enemy_blue.follow = 2;
 
 	//enemy blue diagonal UP shot
 	enemy_blue_up.anim.PushBack({ 243,148,8,8 });
@@ -698,9 +699,7 @@ Particle::Particle()
 Particle::Particle(const Particle& p) : 
 anim(p.anim), position(p.position), speed(p.speed),
 fx(p.fx), born(p.born), life(p.life), id(p.id), follow(p.follow)
-{
-	
-}
+{}
 
 Particle::~Particle()
 {
@@ -712,28 +711,25 @@ bool Particle::Update()
 {
 	bool ret = true;
 
-	if(life > 0)
+	if (life > 0)
 	{
-		if((SDL_GetTicks() - born) > life)
+		if ((SDL_GetTicks() - born) > life)
 			ret = false;
 	}
 	else
-		if(anim.Finished())
+		if (anim.Finished())
 			ret = false;
-
-	
-
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
 	
 	if (follow == 1) { //follow == 1 follow contantly the target enemy
-		if (target == nullptr)
-			target = FindE(position);
+		if (targetE == nullptr)
+			targetE = FindE(position);
 		else {
-			float x = target->position.x - position.x;
-			float y = target->position.y - position.y;
+			float x = targetE->position.x - position.x;
+			float y = targetE->position.y - position.y;
 			float modulev = sqrt(x*x + y*y);
 			x /= modulev;
 			y /= modulev;
@@ -742,8 +738,22 @@ bool Particle::Update()
 		}
 	}
 
-	if (follow == 2) {	//follow == 2 go to place when shot
+	if (follow == 2) {	//follow == 2 go to player when shot
+		iPoint pos;
+		if (position.DistanceTo(App->player1->position) < position.DistanceTo(App->player2->position))
+			pos = App->player1->position;
+		else pos = App->player2->position;
 
+		pos = App->player1->position;
+
+		float x = pos.x - position.x;
+		float y = pos.y - position.y;
+		int modulev = pos.DistanceTo(position);
+		x /= modulev;
+		y /= modulev;
+		speed.x = x*2;
+		speed.y = y*2;
+		follow = 0;
 	}
 
 
