@@ -5,6 +5,7 @@
 #include "Enemy_BigShip.h"
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
+#include "ModuleEnemies.h"
 #include "SDL/include/SDL.h"
 
 #include "ModuleRender.h"
@@ -56,7 +57,6 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, 100, 55 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 	
-
 	original_pos.x = x;
 	original_pos.y = y;
 	init_time = SDL_GetTicks(); //Timer
@@ -170,10 +170,20 @@ void Enemy_BigShip::Shoot_yellow() {
 	App->particles->AddParticle(App->particles->enemy_yellow_laser, position.x + 70, position.y + 105, COLLIDER_ENEMY_SHOT);
 
 }
-//void Enemy_BigShip::OnCollision(Collider* c1) {
-//
-//	
-//}
+void Enemy_BigShip::OnCollision(Collider* c1) {
+		/*for(int i=0;i<MAX_ENEMIES;i++)
+			if(App->enemies->enemies[i]//Find Wings)
+			App->enemies->enemies[i].collision.todelete();
+			delete App->enemies->enemies[i];
+			App->enemies->enemies[i] = nullptr
+			*/
+	// Or
+	/* 
+	delete wing1;
+	delete wing1;
+	*/
+	
+}
 
 void Enemy_BigShip::Draw(SDL_Texture* sprites)
 {
@@ -183,17 +193,6 @@ void Enemy_BigShip::Draw(SDL_Texture* sprites)
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }
-
-
-
-
-
-
-
-
-
-
-
 
 //Wing1
 
@@ -206,6 +205,8 @@ Enemy_BigShip2::Enemy_BigShip2(int x, int y) : Enemy(x, y)
 	animation = &fly;
 	fly.speed = 0.2f;
 	fly.loop = true;
+
+	//Enemy_BigShip::wing1 = this;
 
 	path.PushBack({ -1.0f, 0.0f }, 85, &fly); //left
 	path.PushBack({ +2.5f, -0.4f }, 45, &fly); //Up-Right
@@ -233,6 +234,8 @@ Enemy_BigShip2::Enemy_BigShip2(int x, int y) : Enemy(x, y)
 	path.PushBack({ -2.0f, 0.0f }, 2000, &fly); //Left
 
 	//path.PushBack({ +1.0f, 0.0f }, 4000, &fly); //IDLE
+
+
 
 	collider = App->collision->AddCollider({ 0, 0, 50, 20 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -404,14 +407,4 @@ void Enemy_BigShip3::Draw(SDL_Texture* sprites)
 		collider->SetPos(position.x, position.y + 60);
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
-}
-
-void destroyWithNexusLife(Enemy_BigShip& bs, Enemy_BigShip2& bs2, Enemy_BigShip3& bs3)
-{
-	if (bs.life <= 0) {
-		/*bs2.setLifeUnits (0);
-		bs3.setLifeUnits (0);*/
-		bs2.life = 0;
-		bs3.life = 0;
-	}
 }

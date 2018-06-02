@@ -17,9 +17,8 @@ private:
 	//left, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Left, Up-Right, Down, Up-Left, Right, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Down, Right, Left, 
 public:
 
-	
 	Enemy_BigShip(int x, int y);
-	//void OnCollision(Collider*);
+	void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	void Shoot();
 	void Shoot_yellow();
@@ -40,6 +39,9 @@ public:
 	int current_time;
 	//float life_nexus;
 	int init_time = 0;
+
+	Enemy* wing1;
+	Enemy* wing2;
 
 	void Move();
 };

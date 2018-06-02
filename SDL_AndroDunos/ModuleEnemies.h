@@ -72,10 +72,11 @@ private:
 
 	void SpawnEnemy(const EnemyInfo& info);
 
-protected:
+public:
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
+private:
 	SDL_Texture* sprites;
 
 	uint big_explosion_fx;
