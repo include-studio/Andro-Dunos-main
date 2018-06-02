@@ -75,7 +75,7 @@ bool ModulePlayer1::Start()
 	fx_laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
 	fx_laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
 	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
-	type_change_fx = App->audio->Loadfx("Assets/Audio/Laser_Shot_type_change_fx.wav");
+	type_change_fx = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
 	ultimate_charged_fx = App->audio->Loadfx("Assets/Audio/Charged_Special_Attack_Loop.wav");
 	ultimate_charge_fx = App->audio->Loadfx("Assets/Audio/Charging_Special_Attack.wav");
 
@@ -513,8 +513,9 @@ void ModulePlayer1::BombandMissile() {
 void ModulePlayer1::Shoot() {
 	switch (type_weapon) {
 	case 1:
+		App->audio->PlayFx(fx_laser1);
 		switch (powerup_s) {
-			App->audio->PlayFx(fx_laser1);
+			
 		case 1:
 			App->particles->AddParticle(App->particles->laser_1_1_base, position.x + 38, position.y + 3, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_1_1_base, position.x + 38, position.y + 11, COLLIDER_PLAYER_SHOT);
