@@ -45,6 +45,7 @@ struct Particle
 	~Particle();
 	bool Update();
 	Enemy* FindE(iPoint pos);
+	iPoint ShootPl(iPoint pos);
 	bool blue_followDown = false;
 	bool blue_followUp = false;
 };

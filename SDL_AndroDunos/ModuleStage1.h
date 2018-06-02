@@ -15,12 +15,16 @@ public:
 
 	bool Start();
 	update_status Update();
+	update_status PostUpdate();
 	bool CleanUp();
 
 public:
-	
-	SDL_Texture * stars_tx =nullptr;
+
+	SDL_Texture * stars_tx = nullptr;
 	SDL_Texture* back_tx = nullptr;
+	SDL_Texture* ground_tx = nullptr;
+
+	SDL_Rect ground[5];
 
 	SDL_Rect background;
 
@@ -40,22 +44,6 @@ public:
 	SDL_Rect planet1;
 	SDL_Rect planet2;
 
-};
-
-class ModuleStage1Floor :public Module {
-public:
-	ModuleStage1Floor();
-	~ModuleStage1Floor();
-
-	bool Start();
-	update_status Update();
-	bool CleanUp();
-
-public:
-
-	SDL_Texture* ground_tx = nullptr;
-
-	SDL_Rect ground[5];
 
 	int part_stage = 0;
 	int ground_cont = 0;
