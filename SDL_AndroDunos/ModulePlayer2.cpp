@@ -78,7 +78,7 @@ bool ModulePlayer2::Start()
 	fx_laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
 	fx_laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
 	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
-	type_change_fx = App->audio->Loadfx("Assets/Audio/Laser_Shot_type_change_fx.wav");
+	type_change_fx = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
 
 	return ret;
 }
