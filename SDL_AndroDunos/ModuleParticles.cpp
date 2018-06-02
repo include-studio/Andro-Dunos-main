@@ -441,6 +441,8 @@ ModuleParticles::ModuleParticles()
 
 	//missile
 	missile.anim.PushBack({ 362,160,9,5 });
+	missile.speed.x = 1;
+	missile.speed.y = 1;
 	missile.life = 10000;
 	missile.follow = 1;
 
@@ -736,8 +738,8 @@ bool Particle::Update()
 			int modulev = sqrt(x*x + y*y);
 			x /= modulev;
 			y /= modulev;
-			position.x += x * 3;
-			position.y += y * 3;
+			position.x += x * 5;
+			position.y += y * 5;
 		}
 	}
 
