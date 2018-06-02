@@ -168,7 +168,10 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWERUP) {
-					App->player1->powerup_s++; 
+					if (App->player1->powerup_s < MAX_POWERUP)
+						App->player1->powerup_s++;
+					if (App->player1->powerup_b < 5)
+						App->player1->powerup_b++;
 					App->audio->PlayFx(powerup_fx);
 					if (App->shield1->IsEnabled() == false)
 						App->shield1->Enable();
@@ -186,7 +189,10 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWERUP) {
-					App->player2->powerup_s++;
+					if (App->player2->powerup_s < MAX_POWERUP)
+						App->player2->powerup_s++;
+					if (App->player2->powerup_b < 5)
+						App->player2->powerup_b++;
 					App->audio->PlayFx(powerup_fx);
 					if (App->shield2->IsEnabled() == false)
 						App->shield2->Enable();

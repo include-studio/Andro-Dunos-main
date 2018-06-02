@@ -24,6 +24,8 @@ public:
 	bool CleanUp();
 
 	void Shoot();
+	void BombandMissile();
+	void Ultimate();
 	void States();
 
 	void OnCollision(Collider*, Collider*);
@@ -51,6 +53,7 @@ public:
 
 private:
 
+	int time_bomb = 0;
 	int counterMoved = 0;
 	int counterMoved2 = 0;
 	int counterReturn = 0;
@@ -65,7 +68,7 @@ private:
 
 	Collider* player_col = nullptr;
 
-	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change, ultimate_charged_fx, ultimate_charge_fx;
+	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change_fx, ultimate_charged_fx, ultimate_charge_fx;
 
 	bool destroyed = false;
 	bool dead = false;

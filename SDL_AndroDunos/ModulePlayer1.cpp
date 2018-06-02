@@ -55,8 +55,8 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 
-	init_time = SDL_GetTicks(); //Timer
-
+	time_bomb = init_time = SDL_GetTicks(); //Timer
+	
 	graphics = App->textures->Load("assets/Sprites/ships.png");
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 3;
@@ -75,7 +75,7 @@ bool ModulePlayer1::Start()
 	fx_laser3 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-3_(Main_Ships).wav");
 	fx_laser4 = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type-4_(Main_Ships).wav");
 	explosion_player = App->audio->Loadfx("Assets/Audio/Player_Death_Explosion.wav");
-	type_change = App->audio->Loadfx("Assets/Audio/Laser_Shot_Type_CHANGE.wav");
+	type_change_fx = App->audio->Loadfx("Assets/Audio/Laser_Shot_type_change_fx.wav");
 	ultimate_charged_fx = App->audio->Loadfx("Assets/Audio/Charged_Special_Attack_Loop.wav");
 	ultimate_charge_fx = App->audio->Loadfx("Assets/Audio/Charging_Special_Attack.wav");
 
@@ -88,7 +88,7 @@ bool ModulePlayer1::CleanUp() {
 	App->particles->Disable();
 	App->shield1->Disable();
 
-	App->audio->UnLoadFx(type_change);
+	App->audio->UnLoadFx(type_change_fx);
 	App->audio->UnLoadFx(explosion_player);
 	App->audio->UnLoadFx(fx_laser4);
 	App->audio->UnLoadFx(fx_laser3);
@@ -173,9 +173,12 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp != 7)
 		hp++;
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_REPEAT)
 		charge = true;
 	else charge = false;
+
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_UP || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged)
+		Ultimate();
 
 	//powerup
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
@@ -189,15 +192,20 @@ update_status ModulePlayer1::Update()
 		//controller input
 			//change weapon
 	if (App->input->keyboard[SDL_SCANCODE_Q] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_X] == KEY_STATE::KEY_DOWN) {
-		App->audio->PlayFx(type_change);
+		App->audio->PlayFx(type_change_fx);
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
 	}
 			//shoot
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN) {
-		if(hp>0) Shoot();
-	}
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN)
+		if (hp > 0) {
+			Shoot();
+			if (time_bomb < SDL_GetTicks() - 1500) {
+				BombandMissile();
+				time_bomb = SDL_GetTicks();
+			}
+		}
 			//axis
 	if (SDL_GameControllerGetAxis(App->input->controller1, SDL_CONTROLLER_AXIS_LEFTX) > 6000)
 		position.x += speedMoveShip;
@@ -336,6 +344,10 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 			
 			if (powerup_s > 1)
 				powerup_s--;
+			if (powerup_b > 0)
+				powerup_b--;
+			if (powerup_m > 0)
+				powerup_m--;
 			god_mode_die = true;
 			state = CLEAR;
 			init_time = SDL_GetTicks();
@@ -373,6 +385,129 @@ void ModulePlayer1::States() {
 	}
 }
 
+void ModulePlayer1::BombandMissile() {
+	switch (type_weapon) {
+	case 1:
+		switch (powerup_b) {
+		case 1:
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			break;
+		case 2:
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 3: //more damage
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 4:
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
+			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
+			App->particles->AddParticle(App->particles->bomb_1_2, position.x + 10, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
+			break;
+		case 5: //more damage
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
+			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
+			App->particles->AddParticle(App->particles->bomb_1_1, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
+			App->particles->AddParticle(App->particles->bomb_1_2, position.x + 10, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
+			break;
+		}
+		switch (powerup_m) {
+		case 0:
+			App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		}
+		break;
+	case 2:
+		switch (powerup_b) {
+		case 1:
+			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			break;
+		case 2:
+			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 3: //more damage
+			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 4:
+			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 5: //more damage
+			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_2_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		}
+		break;
+	case 3:
+		switch (powerup_b) {
+		case 1:
+			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			break;
+		case 2:
+			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 3: //more damage
+			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 4:
+			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 5: //more damage
+			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_3_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		}
+		break;
+	case 4:
+		switch (powerup_b) {
+		case 1:
+			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+
+			break;
+		case 2:	//more damage ?
+			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 3: //more damage?
+			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 4:	//more damage?
+			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		case 5: //more damage?
+			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
+			break;
+		}
+		break;
+	}
+}
 void ModulePlayer1::Shoot() {
 	switch (type_weapon) {
 	case 1:
@@ -414,36 +549,6 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->laser_1_6, position.x + 42, position.y + 2, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_1_6, position.x + 42, position.y + 15, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_1_6, position.x + 33, position.y + 25, COLLIDER_PLAYER_SHOT);
-			break;
-		}
-		switch (powerup_b) {
-		case 1:
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			break;
-		case 2:
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 3: //more damage
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 4:
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT,0,OWNER_PLAYER1,BOMB);
-			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x+10, position.y + 15, COLLIDER_PLAYER_SHOT,0, OWNER_PLAYER1, BOMB_DELAY);
-			App->particles->AddParticle(App->particles->bomb_1_2, position.x+10, position.y, COLLIDER_PLAYER_SHOT,0, OWNER_PLAYER1, BOMB_DELAY);
-			break;
-		case 5: //more damage
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
-			App->particles->AddParticle(App->particles->bomb_1_2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB);
-			App->particles->AddParticle(App->particles->bomb_1_1, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
-			App->particles->AddParticle(App->particles->bomb_1_2, position.x + 10, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
-			break;
-	}
-		switch (powerup_m) {
-		case 0:
-			App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT);
 			break;
 		}
 		break;
@@ -497,31 +602,6 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->laser_2_4, position.x + 10, position.y + 6, COLLIDER_PLAYER_SHOT);
 			break;
 		}
-		switch (powerup_b) {
-		case 1:
-			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			break;
-		case 2:
-			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 3: //more damage
-			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 4:
-			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 5: //more damage
-			App->particles->AddParticle(App->particles->bomb_2_1, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_2, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_2_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		}
 		break;
 	case 3:
 		App->audio->PlayFx(fx_laser3);
@@ -563,31 +643,6 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->laser_3_7_diagonaldownfront, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_3_7_diagonaldownback, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laser_3_7_diagonalupback, position.x-13, position.y - 15, COLLIDER_PLAYER_SHOT);
-			break;
-		}
-		switch (powerup_b) {
-		case 1:
-			App->particles->AddParticle(App->particles->bomb_3_1, position.x+15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			break;
-		case 2:
-			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 3: //more damage
-			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 4:
-			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 5: //more damage
-			App->particles->AddParticle(App->particles->bomb_3_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_3, position.x + 10, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_3_4, position.x + 10, position.y, COLLIDER_PLAYER_SHOT);
 			break;
 		}
 		break;
@@ -636,37 +691,23 @@ void ModulePlayer1::Shoot() {
 			App->particles->AddParticle(App->particles->laser_4_6, position.x + 42, position.y + 11, COLLIDER_PLAYER_SHOT);
 			break;
 		}
-		switch (powerup_b) {
-		case 1:
-			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	}
+}
 
-			break;
-		case 2:	//more damage ?
-			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 3: //more damage?
-			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 4:	//more damage?
-			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		case 5: //more damage?
-			App->particles->AddParticle(App->particles->bomb_4_1, position.x + 15, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_2, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_3, position.x, position.y + 15, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		}
+void ModulePlayer1::Ultimate() {
+	switch (type_weapon) {
+	case 1:
+		
+		break;
+	case 2:
+
+		break;
+	case 3:
+		
+		break;
+	case 4:
+
 		break;
 	}
 }

@@ -441,6 +441,8 @@ ModuleParticles::ModuleParticles()
 
 	//missile
 	missile.anim.PushBack({ 362,160,9,5 });
+	missile.speed.x = 1;
+	missile.speed.y = 1;
 	missile.life = 10000;
 	missile.follow = 1;
 
@@ -731,13 +733,13 @@ bool Particle::Update()
 		if (target == nullptr)
 			target = FindE(position);
 		else {
-			int x = target->position.x - position.x;
-			int y = target->position.y - position.y;
-			int modulev = sqrt(x*x + y*y);
+			float x = target->position.x - position.x;
+			float y = target->position.y - position.y;
+			float modulev = sqrt(x*x + y*y);
 			x /= modulev;
 			y /= modulev;
-			position.x += x * 3;
-			position.y += y * 3;
+			position.x += x * 5;
+			position.y += y * 5;
 		}
 	}
 
