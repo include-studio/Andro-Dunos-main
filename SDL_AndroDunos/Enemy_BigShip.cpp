@@ -13,7 +13,7 @@
 #define PIXEL 116
 
 
-Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
+Enemy_BigShip::Enemy_BigShip(int x, int y, ENEMY_TYPES _type) : Enemy(x, y)
 {
 	
 	fly.PushBack({ 0, 222, PIXEL, PIXEL });
@@ -21,6 +21,8 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 
 	fly.speed = 0.2f;
 	fly.loop = true;
+
+	type = _type;
 	
 	//left, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Right, Left, Up-Right, Down, Up-Left, Right, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Down, Right, Left, 
 
@@ -60,6 +62,7 @@ Enemy_BigShip::Enemy_BigShip(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 	init_time = SDL_GetTicks(); //Timer
+	//wing1 = 
 
 	life = 50;
 	//life_nexus == life;
@@ -173,7 +176,7 @@ void Enemy_BigShip::Shoot_yellow() {
 
 }
 void Enemy_BigShip::OnCollision(Collider* c1) {
-	
+	DespawnAllWings();
 }
 
 void Enemy_BigShip::Draw(SDL_Texture* sprites)
@@ -185,17 +188,29 @@ void Enemy_BigShip::Draw(SDL_Texture* sprites)
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 }
 
+void Enemy_BigShip::DespawnAllWings() {
+	for (int i = 0; i < MAX_ENEMIES; i++)
+		if (App->enemies->enemies[i] != nullptr)
+			if (App->enemies->enemies[i]->type == ENEMY_TYPES::BIGSHIP2 || App->enemies->enemies[i]->type == ENEMY_TYPES::BIGSHIP3) {
+				App->enemies->enemies[i]->~Enemy();
+				delete App->enemies->enemies[i];
+				App->enemies->enemies[i] = nullptr;
+			}
+}
+
 //Wing1
 
 
 
-Enemy_BigShip2::Enemy_BigShip2(int x, int y) : Enemy(x, y)
+Enemy_BigShip2::Enemy_BigShip2(int x, int y, ENEMY_TYPES _type) : Enemy(x, y)
 {
 
 	fly.PushBack({ 0, 222 + PIXEL, PIXEL, PIXEL });
 	animation = &fly;
 	fly.speed = 0.2f;
 	fly.loop = true;
+
+	type = _type;
 
 	//Enemy_BigShip::wing1 = this;
 
@@ -301,13 +316,15 @@ void Enemy_BigShip2::Draw(SDL_Texture* sprites)
 //Wing2
 
 
-Enemy_BigShip3::Enemy_BigShip3(int x, int y) : Enemy(x, y)
+Enemy_BigShip3::Enemy_BigShip3(int x, int y, ENEMY_TYPES _type) : Enemy(x, y)
 {
 
 	fly.PushBack({ PIXEL, 222 + PIXEL, PIXEL, PIXEL });
 	animation = &fly;
 	fly.speed = 0.2f;
 	fly.loop = true;
+
+	type = _type;
 
 	path.PushBack({ -1.0f, 0.0f }, 85, &fly); //left
 	path.PushBack({ +2.5f, -0.4f }, 45, &fly); //Up-Right

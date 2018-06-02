@@ -196,6 +196,8 @@ update_status ModulePlayer1::Update()
 		type_weapon++;
 		if (type_weapon == 5)
 			type_weapon = 1;
+		Shoot();
+		BombandMissile();
 	}
 			//shoot
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_DOWN)
