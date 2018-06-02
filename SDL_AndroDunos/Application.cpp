@@ -49,12 +49,12 @@ Application::Application()
 	modules[17] = enemies = new ModuleEnemies();
 	modules[18] = fonts = new ModuleFonts();
 	modules[19] = powerup = new ModulePowerUp();
-	modules[20] = ui = new ModuleUI();
-	modules[21] = submainmenu = new ModuleSubMainMenu();
-	modules[22] = shield1 = new ModuleShieldPlayer1();
-	modules[23] = shield2 = new ModuleShieldPlayer2();
-	modules[24] = stage1floor = new ModuleStage1Floor();
-	modules[25] = render = new ModuleRender();
+	modules[20] = submainmenu = new ModuleSubMainMenu();
+	modules[21] = shield1 = new ModuleShieldPlayer1();
+	modules[22] = shield2 = new ModuleShieldPlayer2();
+	modules[23] = stage1floor = new ModuleStage1Floor();
+	modules[24] = render = new ModuleRender();
+	modules[25] = ui = new ModuleUI();
 	
 }	
 
