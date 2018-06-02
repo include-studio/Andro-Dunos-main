@@ -8,43 +8,43 @@
 
 Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4 to down
 {
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
 
-	fly.PushBack({ PIXEL * 1,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 2,433,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 1,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 2,473,PIXEL,PIXEL });
 
-	fly.PushBack({ PIXEL * 0,433 + PIXEL ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 1,433 + PIXEL ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 2,433 + PIXEL ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 1,473 + PIXEL ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 2,473 + PIXEL ,PIXEL,PIXEL });
 
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL * 2 ,PIXEL,PIXEL });
 
-	fly.PushBack({ PIXEL * 2,433 + PIXEL ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 1,433 + PIXEL ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433 + PIXEL ,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 2,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 1,433,PIXEL,PIXEL });
-	fly.PushBack({ PIXEL * 0,433,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 2,473 + PIXEL ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 1,473 + PIXEL ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473 + PIXEL ,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 2,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 1,473,PIXEL,PIXEL });
+	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
 
 	animation = &fly;
 	fly.speed = 0.16;

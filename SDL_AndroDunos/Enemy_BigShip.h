@@ -15,6 +15,8 @@ private:
 	iPoint original_pos;
 	Animation fly, fly2;/*Left, Right, Up_Right, Down, Up_Left;*/
 	//left, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Left, Up-Right, Down, Up-Left, Right, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Down, Right, Left, 
+	
+
 public:
 
 	Enemy_BigShip(int x, int y);
@@ -37,11 +39,15 @@ public:
 	bool yellow4 = false;
 	bool yellow4_sub = false;
 	int current_time;
+	bool alive = true;
 	//float life_nexus;
 	int init_time = 0;
 
 	Enemy* wing1;
 	Enemy* wing2;
+	
+	byte getLifeUnits() const { return life; }
+
 
 	void Move();
 };
@@ -79,6 +85,8 @@ public:
 	int init_time = 0;
 
 	void Move();
+	void setLifeUnits(byte lifeUnits) { life = lifeUnits; }
+
 };
 
 
@@ -106,10 +114,16 @@ public:
 	int init_time = 0;
 
 	void Move();
+	void setLifeUnits(byte lifeUnits) { life = lifeUnits; }
 
 	/*byte getLifeUnits() const { return lifeUnits; }
 	void setLifeUnits(byte life) { lifeUnits = life; }*/
 };
 
+
+//void DespawnAllWings(Enemy_BigShip& b,  Enemy_BigShip2& w1,  Enemy_BigShip3& w2) {
+//	w1.setLifeUnits(0);
+//	w2.setLifeUnits(0);
+//}
 #endif // __ENEMY_BIGSHIP_H__
 

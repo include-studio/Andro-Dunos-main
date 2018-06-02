@@ -155,6 +155,8 @@ void Enemy_BigShip::Move()
 	position = original_pos + path.GetCurrentSpeed(&animation);
 	//2, 12, 16, 21 Seconds Blue
 	//3, 8, 12, 17 Seconds Yellow
+
+	//if (life <= 0) DespawnAllWings(wing1*, wing2*);
 }
 void Enemy_BigShip::Shoot() {
 	
@@ -171,17 +173,6 @@ void Enemy_BigShip::Shoot_yellow() {
 
 }
 void Enemy_BigShip::OnCollision(Collider* c1) {
-		/*for(int i=0;i<MAX_ENEMIES;i++)
-			if(App->enemies->enemies[i]//Find Wings)
-			App->enemies->enemies[i].collision.todelete();
-			delete App->enemies->enemies[i];
-			App->enemies->enemies[i] = nullptr
-			*/
-	// Or
-	/* 
-	delete wing1;
-	delete wing1;
-	*/
 	
 }
 
@@ -243,6 +234,7 @@ Enemy_BigShip2::Enemy_BigShip2(int x, int y) : Enemy(x, y)
 	original_pos.y = y;
 	
 	life = 20;
+	
 
 	init_time = SDL_GetTicks(); //Timer
 }
@@ -289,6 +281,7 @@ void Enemy_BigShip2::Move()
 	}
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
+	
 }
 
 //void Enemy_BigShip::OnCollision(Collider* c1) {
