@@ -6,6 +6,63 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+
+## [0.8.0] - 2018-06-01
+
+
+### Summarized
+
+- UI fully implemented, new enemies and new powerups.
+
+### Extended
+
+
+#### Added
+
+
+- Dead logic UI in ModuleUI .cpp and .h .
+
+- Power up S type 1-4 in ModulePlayer_ .cpp and .h .
+
+- Ultimate bar UI with charged fx. in ModuleUI .cpp and .h .
+
+- Type weapon UI. in ModuleUI .cpp and .h .
+
+- Added Enemy_TripleCanon .cpp and .h .
+
+- Enemies life logic in ModuleEnemies .cpp and .h.
+
+- Blink respawn in ModulePlayer_ .cpp and .h .
+
+- Created PowerUp B in ModulePlayer_ .cpp and .h .
+
+- Added Enemy_VendingMachine .cpp and .h .
+
+- All enemies have life.
+
+
+#### Fixed
+
+
+- Shield position.
+
+- BigShip path and shots.
+
+- Player die hp (cannot lose more than 1).
+
+- PowerUp animation completed.
+
+- Hp UI (optimized).
+
+- Stage 4 audio reset fixed.
+
+- Controller rests credits.
+
+- Weapon damage balanced.
+
+- Big ship's wings have life.
+
+
 ## [0.7.1] - 2018-05-22
 
 
@@ -18,20 +75,22 @@ All notable changes to this project will be documented in this file.
 
 #### Added
 
+
 - Animation ultimate
 
--Minimini bos triple shot 
+- Minimini bos triple shot 
 
--Big Ship enemy (only shoot and animation added)
+- Big Ship enemy (only shoot and animation added)
 
 
 #### Fixed
 
+
 - New player structure (optimitzed)
 
--Game Controller player1
+- Game Controller player1
 
--Spam Credit (wont be negative + only subtracts 1)
+- Spam Credit (wont be negative + only subtracts 1)
 
 
 ## [0.7.0] - 2018-05-17

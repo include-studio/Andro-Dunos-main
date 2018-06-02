@@ -1,10 +1,10 @@
 # Version of the game
 
-Andro Dunos v.0.7.1
+Andro Dunos v.0.8.0
 
 ## Description
 
-This is the seventh big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4 and fight enemies there.
+This is the eigth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4 and fight enemies there.
 
 ## Links
 
