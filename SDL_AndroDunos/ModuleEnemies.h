@@ -42,7 +42,7 @@ enum ENEMY_TYPES
 	VENDING,
 	FISH,
 	WATER,
-
+	WATER2
 
 };
 
