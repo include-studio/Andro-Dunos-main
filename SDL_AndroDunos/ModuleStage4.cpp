@@ -361,13 +361,14 @@ update_status ModuleStage4::Update() {
 		intro_bgm = false;
 	}
 
+	/*
 	if (time_backAnim >= 3750) {
 		//active blit bakcground animation
 		light = true;
 		time_preAnim = SDL_GetTicks();
 		time_backAnim = 0;
 	}
-	
+	*/
 
 
 	//input
@@ -386,7 +387,7 @@ update_status ModuleStage4::Update() {
 
 	for (int i = 0; i < 4; i++)
 		App->render->Blit(back_tx, back.w*i, -50, NULL, BACKGROUND4SPEED);
-
+	/*
 	if (light) {
 		SDL_Rect lighting = backlight.GetCurrentFrame();
 		for (int i = 0; i < 4; i++)
@@ -396,6 +397,7 @@ update_status ModuleStage4::Update() {
 			backlight.reset();
 		}
 	}
+	*/
 
 	App->render->Blit(ground_tx, positionGroundColumn.x, positionGroundColumn.y, &groundColumn, GROUND4SPEED); //-97
 

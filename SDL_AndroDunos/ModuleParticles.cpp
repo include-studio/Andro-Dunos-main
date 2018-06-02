@@ -726,12 +726,9 @@ bool Particle::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
-	
-	position.x += speed.x;
-	position.y += speed.y;
 
 	
-	if (follow == 1) {
+	if (follow == 1) { //follow == 1 follow contantly the target enemy
 		if (target == nullptr)
 			target = FindE(position);
 		else {
@@ -744,6 +741,14 @@ bool Particle::Update()
 			position.y += y * 5;
 		}
 	}
+
+	if (follow == 2) {	//follow == 2 go to place when shot
+
+	}
+
+
+	position.x += speed.x;
+	position.y += speed.y;
 
 		
 	/*if (App->player1->position.y > position.y && blue_followUp == false)
