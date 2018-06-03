@@ -296,23 +296,40 @@ bool Item::Update()
 			}
 
 
-	if (screen_col) {
-		if (n_collisions < 6) {
-			if (position.y <= App->render->camera.y / 3 || position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT - this->anim.frames->h) {
-				if (speed.y == -1)speed.y = 1;
-				else speed.y = -1;
-				n_collisions++;
+			if (this->collider->type != COLLIDER_ONE_UP) {
+				if (n_collisions < 6) {
+					if (!colup)
+						if (position.y <= App->render->camera.y / 3) {
+							speed.y = 0.6f;
+							colup = true;
+							coldown = false;
+							n_collisions++;
+						}
+
+					if (!coldown)
+						if (position.y >= App->render->camera.y / 3 + SCREEN_HEIGHT - this->anim.frames->h) {
+							speed.y = -0.6f;
+							colup = false;
+							coldown = true;
+							n_collisions++;
+						}
+					if (!colleft)
+						if (position.x < App->render->camera.x / 3) {
+							speed.x = 1.5f;
+							colright = false;
+							colleft = true;
+							n_collisions++;
+						}
+					if (!colright)
+						if (position.x >= App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w) {
+							speed.x = 0.5f;
+							colright = true;
+							colleft = false;
+							n_collisions++;
+						}
+
+				}
 			}
-			if (position.x >= App->render->camera.x / 3 + SCREEN_WIDTH - this->anim.frames->w) {
-				speed.x = 0.5;
-				n_collisions++;
-			}
-			else if(position.x < App->render->camera.x / 3) {
-				speed.x = 2;
-				n_collisions++;
-			}
-		}
-	}
 
 	position.x += speed.x;
 	position.y += speed.y;

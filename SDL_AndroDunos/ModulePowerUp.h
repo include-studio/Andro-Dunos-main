@@ -24,14 +24,18 @@ struct Item
 {
 	Animation anim;
 	uint fx = 0;
-	iPoint position;
-	iPoint speed;
+	fPoint position;
+	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
 	Collider* collider = nullptr;
 	int n_collisions;
 	bool screen_col;
+	bool colup = false;
+	bool coldown = false;
+	bool colleft = false;
+	bool colright = true;
 	TYPE_POWERUP powert;
 
 	Item();
