@@ -110,7 +110,7 @@ Enemy_Boss_Destroyed::Enemy_Boss_Destroyed(int x, int y) :Enemy(x, y) {
 	anim.PushBack({ 0,960,187,60 });
 	anim.PushBack({ 187,960,187,60 });
 
-	collider = App->collision->AddCollider({ 0, 0, 150, 50 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 75, 100 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
 	path.PushBack({ 0,0 }, 0, &anim);
@@ -143,7 +143,7 @@ void Enemy_Boss_Destroyed::Move() {
 
 void Enemy_Boss_Destroyed::Draw(SDL_Texture* sprites) {
 	if (collider != nullptr)
-		collider->SetPos(position.x + 7, position.y + 33);
+		collider->SetPos(position.x + 100, position.y -50);
 	
 	App->render->Blit(sprites, position.x + 100, position.y - 60, &tower->anim.GetCurrentFrame());
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
