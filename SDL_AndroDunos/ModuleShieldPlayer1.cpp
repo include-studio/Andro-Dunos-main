@@ -89,6 +89,7 @@ update_status ModuleShieldPlayer1::Update() {
 	shield2_col->SetPos(position2.x, position2.y);
 
 	if (hp <= 0) {
+		App->player1->powerup_u = 0;
 		this->Disable();
 		shield1_col->to_delete = true;
 		shield2_col->to_delete = true;

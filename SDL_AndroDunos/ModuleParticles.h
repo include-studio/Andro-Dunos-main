@@ -135,6 +135,7 @@ public:
 	Particle bomb_4_4;
 
 	Particle missile;
+	Particle missile2;
 
 	Particle mini_explosion;
 	Particle big_explosion;

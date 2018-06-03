@@ -61,8 +61,10 @@ bool ModulePlayer1::Start()
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 3;
 
-	if (powerup_s > 1)
-		App->shield1->Enable();
+	if (powerup_u > 0)
+		if (App->shield1->IsEnabled() == false) {
+			App->shield1->Enable();
+		}
 
 	blink = true;
 	destroyed = false;
@@ -186,6 +188,8 @@ update_status ModulePlayer1::Update()
 			powerup_s++;
 		if (powerup_b < 5)
 			powerup_b++;
+		if (powerup_m < 5)
+			powerup_m++;
 	}
 
 	// input
@@ -415,11 +419,7 @@ void ModulePlayer1::BombandMissile() {
 			App->particles->AddParticle(App->particles->bomb_1_2, position.x + 10, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER1, BOMB_DELAY);
 			break;
 		}
-		switch (powerup_m) {
-		case 0:
-			App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT);
-			break;
-		}
+		
 		break;
 	case 2:
 		switch (powerup_b) {
@@ -507,6 +507,29 @@ void ModulePlayer1::BombandMissile() {
 			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT);
 			break;
 		}
+		break;
+	}
+	switch (powerup_m) {
+	case 1:
+		App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	case 2:
+		App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	case 3:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	case 4:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	case 5:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	case 6:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT);
+		break;
+	case 7:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT);
 		break;
 	}
 }

@@ -168,13 +168,24 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWERUP) {
-					if (App->player1->powerup_s < MAX_POWERUP)
-						App->player1->powerup_s++;
-					if (App->player1->powerup_b < 5)
-						App->player1->powerup_b++;
+
+					if (active[i]->anim.isBetween(0, 9))
+						if (App->player1->powerup_s < MAX_POWERUP)
+							App->player1->powerup_s++;
+
+					if (active[i]->anim.isBetween(9, 18))
+						if (App->player1->powerup_b < 5)
+							App->player1->powerup_b++;
+
+					if (active[i]->anim.isBetween(18, 27))
+						if (App->player1->powerup_m < 5)
+							App->player1->powerup_m++;
+
+					if (active[i]->anim.isBetween(27, active[i]->anim.last_frame))
+						if (App->player1->powerup_u < 5)
+							App->player1->powerup_u++;
+
 					App->audio->PlayFx(powerup_fx);
-					if (App->shield1->IsEnabled() == false)
-						App->shield1->Enable();
 				}
 				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);
@@ -189,13 +200,24 @@ void ModulePowerUp::OnCollision(Collider* c1, Collider* c2)
 					App->audio->PlayFx(bonus_fx);
 				}
 				if (c1->type == COLLIDER_POWERUP) {
-					if (App->player2->powerup_s < MAX_POWERUP)
-						App->player2->powerup_s++;
-					if (App->player2->powerup_b < 5)
-						App->player2->powerup_b++;
+
+					if (active[i]->anim.isBetween(0, 9))
+						if (App->player2->powerup_s < MAX_POWERUP)
+							App->player2->powerup_s++;
+
+					if (active[i]->anim.isBetween(9, 18))
+						if (App->player2->powerup_b < 5)
+							App->player2->powerup_b++;
+
+					if (active[i]->anim.isBetween(18, 27))
+						if (App->player2->powerup_m < 5)
+							App->player2->powerup_m++;
+
+					if (active[i]->anim.isBetween(27, active[i]->anim.last_frame))
+						if (App->player2->powerup_u < 5)
+							App->player2->powerup_u++;
+
 					App->audio->PlayFx(powerup_fx);
-					if (App->shield2->IsEnabled() == false)
-						App->shield2->Enable();
 				}
 				if (c1->type == COLLIDER_ONE_UP) {
 					App->audio->PlayFx(one_up_fx);

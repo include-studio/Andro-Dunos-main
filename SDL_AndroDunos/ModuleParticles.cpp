@@ -446,6 +446,13 @@ ModuleParticles::ModuleParticles()
 	missile.life = 10000;
 	missile.follow = 1;
 
+	//missile2
+	missile2.anim.PushBack({ 344,158,11,9 });
+	missile2.speed.x = 1;
+	missile2.speed.y = 1;
+	missile2.life = 10000;
+	missile2.follow = 1;
+
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
 	mini_explosion.anim.PushBack({ 160,165,32,32 });

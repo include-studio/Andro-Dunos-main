@@ -61,8 +61,10 @@ bool ModulePlayer2::Start()
 
 	time_bomb = init_time = SDL_GetTicks(); //Timer
 
-	if (powerup_s > 1)
-		App->shield2->Enable();
+	if (powerup_u > 0)
+		if (App->shield2->IsEnabled() == false) {
+			App->shield2->Enable();
+		}
 	destroyed = false;
 	dead = false;
 	
@@ -166,6 +168,8 @@ update_status ModulePlayer2::Update()
 			powerup_s++;
 		if (powerup_b < 5)
 			powerup_b++;
+		if (powerup_m < 5)
+			powerup_m++;
 	}
 
 	// input
@@ -414,11 +418,6 @@ void ModulePlayer2::BombandMissile() {
 			App->particles->AddParticle(App->particles->bomb_1_2, position.x + 10, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2, BOMB_DELAY);
 			break;
 		}
-		switch (powerup_m) {
-		case 0:
-			App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
-			break;
-		}
 		break;
 	case 2:
 		switch (powerup_b) {
@@ -506,6 +505,29 @@ void ModulePlayer2::BombandMissile() {
 			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 			break;
 		}
+		break;
+	}
+	switch (powerup_m) {
+	case 1:
+		App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		break;
+	case 2:
+		App->particles->AddParticle(App->particles->missile, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		break;
+	case 3:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		break;
+	case 4:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		break;
+	case 5:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		break;
+	case 6:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		break;
+	case 7:
+		App->particles->AddParticle(App->particles->missile2, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 		break;
 	}
 }
