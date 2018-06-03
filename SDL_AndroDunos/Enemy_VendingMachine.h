@@ -19,7 +19,8 @@ public:
 
 	Enemy_VendingMachine(int x, int y, bool _drop);
 	void OnCollision(Collider* collider);
-	
+	void Draw(SDL_Texture* sprites);
+
 	int current_time;
 	int init_time = 0;
 };

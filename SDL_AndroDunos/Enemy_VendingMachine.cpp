@@ -4,6 +4,7 @@
 #include "SDL/include/SDL.h"
 #include "Globals.h"
 #include "ModulePowerUp.h"
+#include "ModuleRender.h"
 
 #define PIXEL 32
 
@@ -71,3 +72,11 @@ void Enemy_VendingMachine::OnCollision(Collider* collider) {
 }
 
 
+void Enemy_VendingMachine::Draw(SDL_Texture* sprites)
+{
+	if (collider != nullptr)
+		collider->SetPos(position.x , position.y + 15);
+
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+}

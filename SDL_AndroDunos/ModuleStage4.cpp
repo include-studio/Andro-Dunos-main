@@ -140,6 +140,8 @@ bool ModuleStage4::Start() {
 	App->collision->AddCollider({ 2255,-110,295,50 }, COLLIDER_WALL4);
 	App->collision->AddCollider({ 2550,-90,195,50 }, COLLIDER_WALL4);
 	App->collision->AddCollider({ 2745,-130,100,50 }, COLLIDER_WALL4);
+	App->collision->AddCollider({ 2845,-130,500,80 }, COLLIDER_WALL4);
+
 
 	App->collision->AddCollider({ 5585,90,50,50 }, COLLIDER_WALL4); //Up 2
 	App->collision->AddCollider({ 5635,80,160,100 }, COLLIDER_WALL4);  
