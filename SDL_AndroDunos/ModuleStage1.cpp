@@ -255,7 +255,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET, 1136, 80);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1370, 175); //VENDING
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1370, 175, true); //VENDING
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1383, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1382, 230);
@@ -314,11 +314,11 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6915, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6930, 300);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7000, 400);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7000, 400, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7015, 400);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 7030, 400);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7100, 300);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7100, 300, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7115, 300);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 7130, 300);
 
@@ -359,7 +359,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8800, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8815, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 8830, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8800, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8800, 100, true);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8815, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 8830, 100);
 
