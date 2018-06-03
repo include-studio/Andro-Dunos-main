@@ -1,20 +1,20 @@
 # Version of the game
 
-Andro Dunos v.0.6.1
+Andro Dunos v.0.1.0
 
 ## Description
 
-This is the sixth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4 and fight enemies there.
+This is the tenth big release for the project of the arcade game named Andro Dunos. In these release you will be able to see the start of the game with fullscreen, then choose between two players and enter the stage 1, where you will be able to move around and shoot enemies while collecting bonuses. Then you can also see the gameover scene if u collide and the stageclear scene if you finish the stage 1. Also you can see Stage4 and fight enemies there, including the final boss.
 
 ## Links
 
 Manager: Lluis Moreu https://github.com/youis11 
-Art: Marc Navas https://github.com/Shocrates 
 Q&A: Christian Martinez https://github.com/christt105 
 Programer: Marc Galvez https://github.com/optus23 
 
 Github repository: https://github.com/include-studio/Andro-Dunos-main 
 Github organization: https://github.com/include-studio 
+Changelist: https://github.com/include-studio/Andro-Dunos-main/blob/master/SDL_AndroDunos/CHANGELOG.md
 
 ## Controls:
 
@@ -27,8 +27,6 @@ Github organization: https://github.com/include-studio
 - 1 (to play with one player).
 
 - 2 (to play with two players).
-
-- F3 (to pause music).
 
 
 ### Player 1: 
@@ -51,7 +49,7 @@ Github organization: https://github.com/include-studio
 
 - M (to change between weapons).
 
--Right Ctrl (to shoot).
+- Right Ctrl (to shoot).
 
 ### Controllers:
 
@@ -76,6 +74,8 @@ Github organization: https://github.com/include-studio
 - F1 (to hide collision squares).
 
 - F2 (to increase power up).
+
+- F4 (to shoot ultimate).
 
 - F5 (to  activate god mode).
 

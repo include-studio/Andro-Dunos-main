@@ -14,6 +14,7 @@ Programer: Marc Galvez https://github.com/optus23
 
 Github repository: https://github.com/include-studio/Andro-Dunos-main 
 Github organization: https://github.com/include-studio 
+Changelist: https://github.com/include-studio/Andro-Dunos-main/blob/master/SDL_AndroDunos/CHANGELOG.md
 
 ## Controls:
 
@@ -26,8 +27,6 @@ Github organization: https://github.com/include-studio
 - 1 (to play with one player).
 
 - 2 (to play with two players).
-
-- F3 (to pause music).
 
 
 ### Player 1: 
