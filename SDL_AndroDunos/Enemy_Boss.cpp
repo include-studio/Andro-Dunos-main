@@ -15,7 +15,7 @@
 
 Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
 	anim.PushBack({ 0,743,187,89 });
-	anim.PushBack({ 187,743,187,89 });
+	//anim.PushBack({ 187,743,187,89 });
 	anim.speed = 0.8f;
 	anim.loop = true;
 
@@ -31,7 +31,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
 	original_pos.y = y;
 	init_time = SDL_GetTicks(); //Timer
 	
-	life = 10;
+	life = 50;
 }
 
 void Enemy_Boss::Move() {
@@ -50,15 +50,15 @@ void Enemy_Boss::Move() {
 
 
 void Enemy_Boss::Dispend() {
-	for (int i = 0; i < 4; i++)
-		App->enemies->AddEnemy(BOSS_DISP, position.x, position.y);
+	/*for (int i = 0; i < 4; i++)
+		App->enemies->AddEnemy(BOSS_DISP, position.x, position.y);*/
 
 }
 
 
 void Enemy_Boss::Draw(SDL_Texture* sprites) {
 	if (collider != nullptr)
-		collider->SetPos(position.x + 7, position.y + 33);
+		collider->SetPos(position.x + 7, position.y+15);
 
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 	App->render->Blit(sprites, position.x, position.y, &(fire->anim.GetCurrentFrame()));
@@ -108,7 +108,7 @@ void Fire_Gun::Shoot() {
 
 Enemy_Boss_Destroyed::Enemy_Boss_Destroyed(int x, int y) :Enemy(x, y) {
 	anim.PushBack({ 0,960,187,60 });
-	anim.PushBack({ 187,960,187,60 });
+	//anim.PushBack({ 187,960,187,60 });
 
 	collider = App->collision->AddCollider({ 0, 0, 75, 100 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 

@@ -162,6 +162,8 @@ update_status ModulePlayer2::Update()
 		charge = true;
 	else charge = false;
 
+	
+
 	if (((App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_UP || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged && powerup_s>1) || App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN)
 		Ultimate();
 
@@ -296,8 +298,10 @@ update_status ModulePlayer2::Update()
 
 	// Draw everything --------------------------------------
 	Animation *ship_state = ship;
-	if (charged)
+	if (charged) {
 		ship_state = anim_ultimate;
+		App->audio->PlayFx(App->player1->ultimate_charged_fx);
+	}
 
 	if (hp > 0) {														//Render Ship
 		if (blink)

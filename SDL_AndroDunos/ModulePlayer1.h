@@ -52,6 +52,9 @@ public:
 	bool charged = false;
 	bool hp_down = false;
 
+public:
+	uint ultimate_charged_fx;
+
 private:
 
 	int time_bomb = 0;
@@ -69,7 +72,7 @@ private:
 
 	Collider* player_col = nullptr;
 
-	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change_fx, ultimate_charged_fx, ultimate_charge_fx;
+	uint fx_laser1, fx_laser2, fx_laser3, fx_laser4, explosion_player, type_change_fx, ultimate_charge_fx;
 
 	bool destroyed = false;
 	bool dead = false;
