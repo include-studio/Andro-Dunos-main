@@ -68,6 +68,7 @@ public:
 	int powerup_s = 1;
 	int powerup_b = 0;
 	int powerup_m = 0;
+	int powerup_u = 0;
 
 	bool insert2;
 

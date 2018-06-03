@@ -43,6 +43,7 @@ public:
 	int powerup_s = 1;
 	int powerup_b = 0;
 	int powerup_m = 0;
+	int powerup_u = 0;
 	int type_weapon = 0;
 	int part_stagePlayer = 0;
 
