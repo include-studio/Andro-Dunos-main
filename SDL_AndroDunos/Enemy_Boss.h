@@ -37,17 +37,21 @@ public:
 
 };
 
-/*class Enemy_Boss_Destroyed:public Enemy {
+class Enemy_Boss_Destroyed:public Enemy {
 	Path path;
 	iPoint original_pos;
+	Animation anim;
+
+	int init_time = 0;
+	int time = 0;
 
 public:
-	Enemy_Boss(int x, int y);
+	Enemy_Boss_Destroyed(int x, int y);
 	void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
-	void Shoot();
+	//void Shoot();
 	void Move();
-};*/
+};
 
 class Enemy_Boss_Dispend :public Enemy {
 
