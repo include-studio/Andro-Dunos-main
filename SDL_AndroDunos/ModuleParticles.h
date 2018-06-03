@@ -145,12 +145,12 @@ public:
 	Particle missile;
 	Particle missile2;
 
-	Particle ultimate1[6];// _up1;
-	//Particle ultimate1_up2;
-	//Particle ultimate1_up3;
-	//Particle ultimate1_down1;
-	//Particle ultimate1_down2;
-	//Particle ultimate1_down3;
+	Particle ultimate1_1;
+	Particle ultimate1_2;
+	Particle ultimate1_3;
+	Particle ultimate1_4;
+	Particle ultimate1_5;
+	Particle ultimate1_6;
 	Particle ultimate2[7];
 	Particle ultimate3;
 	Particle ultimate4[3];

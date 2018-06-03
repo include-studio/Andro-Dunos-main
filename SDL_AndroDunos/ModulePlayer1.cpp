@@ -179,7 +179,7 @@ update_status ModulePlayer1::Update()
 		charge = true;
 	else charge = false;
 
-	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_UP || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged)
+	if (((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_UP || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged) || App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN)
 		Ultimate();
 
 	//powerup
@@ -730,37 +730,64 @@ void ModulePlayer1::Shoot() {
 
 void ModulePlayer1::Ultimate() {
 	int delayult1 = 0;
-	int time = 5;
+	int time = 80;
 	//Particle* aux;
 	switch (type_weapon) {
 	case 1:
 		//aux = &App->particles->ultimate1[0];
-		App->particles->AddParticle(App->particles->ultimate1[0], position.x, position.y, COLLIDER_PLAYER_SHOT,delayult1,OWNER_PLAYER1,ULT1UP1);
-		App->particles->AddParticle(App->particles->ultimate1[3], position.x, position.y, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN1);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x, position.y-30, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x, position.y+30, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[1], position.x, position.y - (delayult1*App->particles->ultimate1[1].speed.y), COLLIDER_PLAYER_SHOT,delayult1, OWNER_PLAYER1, ULT1UP2);
-		App->particles->AddParticle(App->particles->ultimate1[4], position.x, position.y - (delayult1*App->particles->ultimate1[4].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 60, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 60, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[0], position.x, position.y- (delayult1*App->particles->ultimate1[0].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP1);
-		App->particles->AddParticle(App->particles->ultimate1[3], position.x, position.y- (delayult1*App->particles->ultimate1[3].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN1);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 30, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 30, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[2], position.x, position.y- (delayult1*App->particles->ultimate1[2].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP3);
-		App->particles->AddParticle(App->particles->ultimate1[5], position.x, position.y- (delayult1*App->particles->ultimate1[5].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN3);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 90, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 90, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[1], position.x, position.y- (delayult1*App->particles->ultimate1[1].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP2);
-		App->particles->AddParticle(App->particles->ultimate1[4], position.x, position.y- (delayult1*App->particles->ultimate1[4].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 60, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 60, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[0], position.x, position.y- (delayult1*App->particles->ultimate1[0].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP1);
-		App->particles->AddParticle(App->particles->ultimate1[3], position.x, position.y- (delayult1*App->particles->ultimate1[3].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN1);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 30, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 30, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[2], position.x, position.y- (delayult1*App->particles->ultimate1[2].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP3);
-		App->particles->AddParticle(App->particles->ultimate1[5], position.x, position.y- (delayult1*App->particles->ultimate1[5].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN3);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 90, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 90, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[1], position.x, position.y- (delayult1*App->particles->ultimate1[1].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP2);
-		App->particles->AddParticle(App->particles->ultimate1[4], position.x, position.y- (delayult1*App->particles->ultimate1[4].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 60, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 60, COLLIDER_PLAYER_SHOT, 0);
 		delayult1 += time;
-		App->particles->AddParticle(App->particles->ultimate1[2], position.x, position.y- (delayult1*App->particles->ultimate1[2].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP3);
-		App->particles->AddParticle(App->particles->ultimate1[5], position.x, position.y- (delayult1*App->particles->ultimate1[5].speed.y), COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN3);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 90, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 90, COLLIDER_PLAYER_SHOT, 0);
+
+		/*App->particles->AddParticle(App->particles->ultimate1[0], position.x, position.y-30, COLLIDER_PLAYER_SHOT,delayult1,OWNER_PLAYER1,ULT1UP1);
+		App->particles->AddParticle(App->particles->ultimate1[3], position.x, position.y+30, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN1);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[1], position.x, position.y-60, COLLIDER_PLAYER_SHOT,delayult1, OWNER_PLAYER1, ULT1UP2);
+		App->particles->AddParticle(App->particles->ultimate1[4], position.x, position.y+60, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[0], position.x, position.y-30, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP1);
+		App->particles->AddParticle(App->particles->ultimate1[3], position.x, position.y+30, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN1);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[2], position.x, position.y-90, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP3);
+		App->particles->AddParticle(App->particles->ultimate1[5], position.x, position.y+90, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN3);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[1], position.x, position.y-60, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP2);
+		App->particles->AddParticle(App->particles->ultimate1[4], position.x, position.y+60, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[0], position.x, position.y-30, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP1);
+		App->particles->AddParticle(App->particles->ultimate1[3], position.x, position.y+30, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN1);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[2], position.x, position.y-90, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP3);
+		App->particles->AddParticle(App->particles->ultimate1[5], position.x, position.y+90, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN3);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[1], position.x, position.y-60, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP2);
+		App->particles->AddParticle(App->particles->ultimate1[4], position.x, position.y+60, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1[2], position.x, position.y-90, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1UP3);
+		App->particles->AddParticle(App->particles->ultimate1[5], position.x, position.y+90, COLLIDER_PLAYER_SHOT, delayult1, OWNER_PLAYER1, ULT1DOWN3);*/
 		break;
 	case 2:
 		for (int i = 0; i < 7; i++)
