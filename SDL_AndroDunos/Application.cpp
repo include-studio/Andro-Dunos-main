@@ -40,19 +40,19 @@ Application::Application()
 	modules[8] = neogeo = new ModuleNeoGeo();
 	modules[9] = visco = new ModuleViscoGames();
 	modules[10] = mainmenu = new ModuleMainMenu();
-	modules[11] = fade = new ModuleFadeToBlack();
-	modules[12] = stageclear = new ModuleStageClear();
-	modules[13] = gameover = new ModuleGameOver();
-	modules[14] = particles = new ModuleParticles();
-	modules[15] = collision = new ModuleCollision();
-	modules[16] = insertCoin = new ModuleInsertCoin();
-	modules[17] = enemies = new ModuleEnemies();
-	modules[18] = fonts = new ModuleFonts();
-	modules[19] = powerup = new ModulePowerUp();
-	modules[20] = ui = new ModuleUI();
-	modules[21] = submainmenu = new ModuleSubMainMenu();
-	modules[22] = shield1 = new ModuleShieldPlayer1();
-	modules[23] = shield2 = new ModuleShieldPlayer2();
+	modules[11] = stageclear = new ModuleStageClear();
+	modules[12] = gameover = new ModuleGameOver();
+	modules[13] = particles = new ModuleParticles();
+	modules[14] = collision = new ModuleCollision();
+	modules[15] = insertCoin = new ModuleInsertCoin();
+	modules[16] = enemies = new ModuleEnemies();
+	modules[17] = fonts = new ModuleFonts();
+	modules[18] = powerup = new ModulePowerUp();
+	modules[19] = ui = new ModuleUI();
+	modules[20] = submainmenu = new ModuleSubMainMenu();
+	modules[21] = shield1 = new ModuleShieldPlayer1();
+	modules[22] = shield2 = new ModuleShieldPlayer2();
+	modules[23] = fade = new ModuleFadeToBlack();
 	modules[24] = render = new ModuleRender();
 	
 }	
