@@ -14,6 +14,7 @@
 #include "Enemy_VendingMachine.h"
 #include "Enemy_FishShip.h"
 #include "Enemy_LongShip.h"
+#include "Enemy_CoolShip.h"
 
 
 
@@ -45,7 +46,8 @@ enum ENEMY_TYPES
 	FISH,
 	WATER,
 	WATER2,
-	LONG
+	LONG,
+	COOL
 
 };
 
