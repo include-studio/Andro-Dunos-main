@@ -24,13 +24,13 @@ Original gameplay
 
 Tribute gameplay
 -
-<iframe width="560" height="315" src="link" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5DJ6QL3aveo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Controls
 -
 ~~~~~~~~~~~~~~~
 
-## Controls:
+General controls:
 
 - ESC (to close the window).
 
@@ -42,7 +42,7 @@ Controls
 
 - 2 (to play with two players).
 
-### Player 1: 
+Player 1: 
 
 - W (to go up).
 - A (to go backwards).
@@ -53,7 +53,7 @@ Controls
 
 - SPACE (to shoot).
 
-### Player 2:
+Player 2:
 
 - UP ARROW (to go up).
 - LEFT ARROW (to go backwards).
@@ -64,7 +64,7 @@ Controls
 
 - Right Ctrl (to shoot).
 
-### Controllers:
+Controllers:
 
 - Joystick (to move player).
 
@@ -75,6 +75,7 @@ Controls
 - Direction Pad Up (to add coins).
 
 ~~~~~~~~~~~~~~~
+
 Download link
 -
 [https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0](https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0)
