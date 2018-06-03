@@ -20,6 +20,7 @@
 #include "Enemy_VendingMachine.h"
 #include "Enemy_FishShip.h"
 #include "Enemy_LongShip.h"
+#include "Enemy_CoolShip.h"
 
 #include "ModuleAudio.h"
 
@@ -225,7 +226,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::LONG:
 			enemies[i] = new Enemy_LongShip(info.x, info.y);
 			break;
-
+		case ENEMY_TYPES::COOL:
+			enemies[i] = new Enemy_CoolShip(info.x, info.y);
+			break;
 		}
 		
 	}	

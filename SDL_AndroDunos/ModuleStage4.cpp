@@ -363,6 +363,8 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6625, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6640, 160);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6760, 200);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7000, 180); //WAVING SHIP WEIRD
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7040, 180);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7080, 180);

@@ -126,6 +126,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BigShip.h" />
     <ClInclude Include="Enemy_Column.h" />
+    <ClInclude Include="Enemy_CoolShip.h" />
     <ClInclude Include="Enemy_FishShip.h" />
     <ClInclude Include="Enemy_HorizontalRocket.h" />
     <ClInclude Include="Enemy_LongShip.h" />
@@ -173,6 +174,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BigShip.cpp" />
     <ClCompile Include="Enemy_Column.cpp" />
+    <ClCompile Include="Enemy_CoolShip.cpp" />
     <ClCompile Include="Enemy_FishShip.cpp" />
     <ClCompile Include="Enemy_HorizontalRocket.cpp" />
     <ClCompile Include="Enemy_LongShip.cpp" />
