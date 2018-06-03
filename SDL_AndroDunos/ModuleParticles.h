@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "path.h"
 #include "ModuleCollision.h"
 
 #define MAX_ACTIVE_PARTICLES 200
@@ -37,9 +38,6 @@ struct Particle
 	Animation anim;
 	uint fx = 0;
 	fPoint position;
-	int xi = 0;
-	int yi = 0;
-	bool positionstart = 0;
 	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
@@ -159,7 +157,8 @@ public:
 	Particle explosion_player2;
 	
 	Particle boss_fire;
-	Particle boss_bomb;
+	Particle boss_bomb1;
+	Particle boss_bomb2;
 
 	Particle enemy_blue;
 	Particle enemy_blue_up;

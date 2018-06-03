@@ -11,6 +11,7 @@
 #include "ModuleInput.h"
 #include "ModuleUI.h"
 #include "ModuleEnemies.h"
+#include "Path.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -699,6 +700,31 @@ ModuleParticles::ModuleParticles()
 	boss_fire.anim.loop = true;
 	boss_fire.speed.x = -1;
 	boss_fire.speed.y = -1;
+
+	boss_bomb1.anim.PushBack({ 249,393,15,31 });
+	boss_bomb1.anim.PushBack({ 265,393,15,31 });
+	boss_bomb1.anim.PushBack({ 280,393,15,31 });
+	boss_bomb1.id = ID::BOMB_BOSS;
+	boss_bomb1.life = 500;
+	boss_bomb1.anim.loop = true;
+	boss_bomb1.anim.speed = 0.8f;
+	boss_bomb1.speed.y = -2;
+
+	boss_bomb2.anim.PushBack({ 249,393,15,31 });
+	boss_bomb2.anim.PushBack({ 265,393,15,31 });
+	boss_bomb2.anim.PushBack({ 280,393,15,31 });
+	boss_bomb2.id = ID::BOMB_BOSS;
+	boss_bomb2.life = 5500;
+	boss_bomb2.anim.loop = true;
+	boss_bomb2.anim.speed = 0.8f;
+	boss_bomb2.speed.y = 3;
+
+	/*boss_bomb.path.PushBack({ -1.0f,-1 }, 60, &boss_bomb.anim);
+	boss_bomb.path.PushBack({ -1.0f,0 }, 60, &boss_bomb.anim);
+	boss_bomb.path.PushBack({ -1.0f,1 }, 60, &boss_bomb.anim);
+	boss_bomb.path.PushBack({ -1.0f,2 }, 60, &boss_bomb.anim);
+	boss_bomb.path.PushBack({ -1.0f,3 }, 60, &boss_bomb.anim);
+	boss_bomb.path.loop = false;*/
 	
 	//enemy_blue_laser shoot
 
@@ -885,11 +911,39 @@ bool Particle::Update()
 			float modulev = pos.DistanceTo(position);
 			x /= modulev;
 			y /= modulev;
-			speed.x = x * 2;
-			speed.y = y * 2;
+
+			if (id == ID::BOMB_BOSS) {
+				speed.x = x+5 * 4;
+				speed.y = y+5 * 4;
+			}
+			else {
+				speed.x = x * 2;
+				speed.y = y * 2;
+			}
+			
 			follow = 0;
 		}
 		
+		/*if (id == ID::BOMB_BOSS) {
+			if (!initialTime) {
+				init_time = SDL_GetTicks();
+				initialTime = true;
+			}
+			time = SDL_GetTicks() - init_time;
+
+			if (time >= 2000 && time <2250){
+				speed.x = -1;
+				speed.y = 0;
+			}
+			else if (time >= 2250 && time <2500) {
+				speed.x = -0.8f;
+				speed.y = 1;
+			}
+			else if (time >= 2500) {
+				speed.x = -0.5f;
+				speed.y = 2;
+			}
+		}*/
 		
 		/*switch (id) {
 		case ULT1UP1:

@@ -32,7 +32,17 @@ public:
 
 public:
 	Fire_Gun(int,int);
-	void Position();
+	void Shoot();
+
+};
+
+class Tower {
+public:
+	iPoint pos;
+	Animation anim;
+
+public:
+	Tower(int, int);
 	void Shoot();
 
 };
@@ -44,6 +54,9 @@ class Enemy_Boss_Destroyed:public Enemy {
 
 	int init_time = 0;
 	int time = 0;
+
+	Tower* tower = nullptr;
+
 
 public:
 	Enemy_Boss_Destroyed(int x, int y);
