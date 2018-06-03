@@ -50,7 +50,7 @@ Github organization: https://github.com/include-studio
 
 - M (to change between weapons).
 
--Right Ctrl (to shoot).
+- Right Ctrl (to shoot).
 
 ### Controllers:
 
@@ -75,6 +75,8 @@ Github organization: https://github.com/include-studio
 - F1 (to hide collision squares).
 
 - F2 (to increase power up).
+
+- F4 (to shoot ultimate).
 
 - F5 (to  activate god mode).
 

@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 
 ### Summarized
 
-- New enemies, ultimates...
+- New enemies, ultimates and final boss.
 
 ### Extended
 

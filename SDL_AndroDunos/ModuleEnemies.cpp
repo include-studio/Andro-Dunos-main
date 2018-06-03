@@ -21,6 +21,7 @@
 #include "Enemy_FishShip.h"
 #include "Enemy_LongShip.h"
 #include "Enemy_CoolShip.h"
+#include "Enemy_Boss.h"
 
 #include "ModuleAudio.h"
 
@@ -228,6 +229,15 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::COOL:
 			enemies[i] = new Enemy_CoolShip(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOSS:
+			enemies[i] = new Enemy_Boss(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOSSDES:
+			enemies[i] = new Enemy_Boss_Destroyed(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOSS_DISP:
+			//enemies[i] = new Enemy_Boss_Dispend(info.x, info.y);
 			break;
 		}
 		

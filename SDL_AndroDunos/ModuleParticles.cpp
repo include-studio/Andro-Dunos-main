@@ -455,16 +455,59 @@ ModuleParticles::ModuleParticles()
 
 	//ultimates
 	//type1
-	for (int i = 0; i < 6; i++) {
+	ultimate1_1.anim.PushBack({ 0,306,63,18 });
+	ultimate1_1.anim.PushBack({ 63,306,63,18 });
+	ultimate1_1.life = 7000;
+	ultimate1_1.anim.speed = 0.5f;
+	ultimate1_1.speed.x = 5;
+	ultimate1_1.anim.loop = false;
+
+	/*ultimate1_2.anim.PushBack({ 0,306,63,18 });
+	ultimate1_2.anim.PushBack({ 63,306,63,18 });
+	ultimate1_2.life = 1500;
+	ultimate1_2.anim.speed = 0.5f;
+	ultimate1_2.speed.x = 5;
+	ultimate1_2.anim.loop = false;
+
+	ultimate1_3.anim.PushBack({ 0,306,63,18 });
+	ultimate1_3.anim.PushBack({ 63,306,63,18 });
+	ultimate1_3.life = 1500;
+	ultimate1_3.anim.speed = 0.5f;
+	ultimate1_3.speed.x = 5;
+	ultimate1_3.anim.loop = false;
+
+	ultimate1_4.anim.PushBack({ 0,306,63,18 });
+	ultimate1_4.anim.PushBack({ 63,306,63,18 });
+	ultimate1_4.life = 1500;
+	ultimate1_4.anim.speed = 0.5f;
+	ultimate1_4.speed.x = 5;
+	ultimate1_4.anim.loop = false;
+
+	ultimate1_5.anim.PushBack({ 0,306,63,18 });
+	ultimate1_5.anim.PushBack({ 63,306,63,18 });
+	ultimate1_5.life = 1500;
+	ultimate1_5.anim.speed = 0.5f;
+	ultimate1_5.speed.x = 5;
+	ultimate1_5.anim.loop = false;
+
+	ultimate1_6.anim.PushBack({ 0,306,63,18 });
+	ultimate1_6.anim.PushBack({ 63,306,63,18 });
+	ultimate1_6.life = 1500;
+	ultimate1_6.anim.speed = 0.5f;
+	ultimate1_6.speed.x = 5;
+	ultimate1_6.anim.loop = false;*/
+	/*for (int6i = 0; i < 6; i++) {
 		ultimate1[i].anim.PushBack({0,306,63,18});
 		ultimate1[i].anim.PushBack({ 63,306,63,18 });
 		ultimate1[i].life = 1500;
 		ultimate1[i].anim.loop = false;
-		ultimate1[i].speed.x = 1;
-		if (i < 3)
+		ultimate1[i].anim.speed = 0.5f;
+		ultimate1[i].speed.x = 5;
+		ultimate1[i].positionstart = true;*/
+		/*if (i < 3)
 			ultimate1[i].speed.y = -2;
 		else ultimate1[i].speed.y = 2;
-
+		
 		switch (i) {
 		case 0:
 			ultimate1[i].id = ID::ULT1UP1;
@@ -485,7 +528,7 @@ ModuleParticles::ModuleParticles()
 			ultimate1[i].id = ID::ULT1DOWN3;
 			break;
 		}
-	}
+	}*/
 	//type2
 	for (int i = 0; i < 7; i++) {
 		for (int j = 0; j < 4; j++)
@@ -640,6 +683,22 @@ ModuleParticles::ModuleParticles()
 	enemy_yellow_laser.life = 1500;
 	enemy_yellow_laser.speed.x = -4;
 	enemy_yellow_laser.anim.loop = false;
+
+	//fire boss
+	boss_fire.anim.PushBack({250,313,29,32});
+	boss_fire.anim.PushBack({ 281,313,29,32 });
+	boss_fire.anim.PushBack({ 313,313,29,32 });
+	boss_fire.anim.PushBack({ 347,313,29,32 });
+	boss_fire.anim.PushBack({ 251,350,29,32 });
+	boss_fire.anim.PushBack({ 283,350,29,32 });
+	boss_fire.anim.PushBack({ 315,350,29,32 });
+	boss_fire.anim.PushBack({ 347,350,29,32 });
+	boss_fire.life = 5500;
+	boss_fire.id = FIRE_BOSS;
+	boss_fire.anim.speed = 0.8f;
+	boss_fire.anim.loop = true;
+	boss_fire.speed.x = -1;
+	boss_fire.speed.y = -1;
 	
 	//enemy_blue_laser shoot
 
@@ -743,11 +802,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == COLLIDER_ENEMY) {
 				if (active[i]->owner_type == OWNER_PLAYER1) {
 					App->ui->score1 += 100;
-					LOG("COLLISION PARTICLE PLAYER1");
 				}
 				if (active[i]->owner_type == OWNER_PLAYER2) {
 					App->ui->score2 += 200;
-					LOG("COLLISION PARTICLE PLAYER2");
 				}
 			}
 			active[i]->hp-=1;
@@ -784,6 +841,9 @@ bool Particle::Update()
 {
 	bool ret = true;
 
+	
+		//LOG("Time: %i", SDL_GetTicks());
+
 	if (life > 0)
 	{
 		if ((SDL_GetTicks() - born) > life)
@@ -795,11 +855,6 @@ bool Particle::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
-	/*if (positionstart) {
-		xi = position.x;
-		yi = position.y;
-		positionstart = false;
-	}*/
 
 
 		if (follow == 1) { //follow == 1 follow contantly the target enemy
@@ -834,43 +889,54 @@ bool Particle::Update()
 			speed.y = y * 2;
 			follow = 0;
 		}
-		/*
-		switch (id) {
+		
+		
+		/*switch (id) {
 		case ULT1UP1:
-			if (position.x - xi < 300) {
+			if (position.y -yi < 300) {
 				speed.y = 0;
-				speed.x = 8;
+				speed.x = 3;
 			}
+			LOG("ID: %i\nBorn: born: %i\nlife: %i\nTime: %i", id, born, life, SDL_GetTicks());
 			break;
 		case ULT1UP2:
-			if (position.x - xi < 600) {
+			if (position.y - yi < 600) {
 				speed.y = 0;
-				speed.x = 8;
+				speed.x = 3;
 			}
+			LOG("ID: %i\nBorn: born: %i\nlife: %i\nTime: %i", id, born, life, SDL_GetTicks());
+
 			break;
 		case ULT1UP3:
-			if (position.x - xi < 900) {
+			if (position.y - yi < 900) {
 				speed.y = 0;
-				speed.x = 8;
+				speed.x = 3;
 			}
+			LOG("ID: %i\nBorn: born: %i\nlife: %i\nTime: %i", id, born, life, SDL_GetTicks());
+
 			break;
 		case ULT1DOWN1:
-			if (position.x - xi > 300) {
+			if (position.y - yi > 300) {
 				speed.y = 0;
-				speed.x = 8;
+				speed.x = 3;
 			}
+			LOG("ID: %i\nBorn: born: %i\nlife: %i\nTime: %i", id, born, life, SDL_GetTicks());
+
 			break;
 		case ULT1DOWN2:
-			if (position.x - xi > 600) {
+			if (position.y - yi > 600) {
 				speed.y = 0;
-				speed.x = 8;
+				speed.x = 3;
 			}
+			LOG("ID: %i\nBorn: born: %i\nlife: %i\nTime: %i", id, born, life, SDL_GetTicks());
+
 			break;
 		case ULT1DOWN3:
-			if (position.x - xi > 900) {
+			if (position.y - yi > 900) {
 				speed.y = 0;
-				speed.x = 8;
-			}
+				speed.x = 3;
+			}			LOG("ID: %i\nBorn: born: %i\nlife: %i\nTime: %i", id, born, life, SDL_GetTicks());
+
 			break;
 		}*/
 

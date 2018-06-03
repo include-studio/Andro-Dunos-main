@@ -353,6 +353,14 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 5715, 270);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET3, 5730, 270);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 5960, 200); //COOL SHIP xxxxxxxxxxxxxxxxxxxxxxx
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 5980, 220);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6000, 200);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 5840, 220);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 5860, 240);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 5880, 220);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 6070, 210); //POWER UP 5
 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 6250, 210); //TRIPLECANON
@@ -404,7 +412,12 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7620, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7660, 100);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 7850, 110); //TRIPLECANON XXXXXXXXXXXXXXXXXXXXXX
+	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 7825, 80);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 7670, 100); //POWER UP 6
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 8075, 143);
 
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
@@ -585,7 +598,7 @@ update_status ModuleStage4::Update() {
 			stage++;
 		break;
 	case 8:
-		App->fade->FadeToBlack(this, App->stageclear, 0.5f);
+		/*App->fade->FadeToBlack(this, App->stageclear, 0.5f);*/
 		break;
 	}	
 
