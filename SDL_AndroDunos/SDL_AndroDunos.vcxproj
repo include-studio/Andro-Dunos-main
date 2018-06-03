@@ -123,9 +123,9 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="Enemy_Boss4.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BigShip.h" />
+    <ClInclude Include="Enemy_Boss.h" />
     <ClInclude Include="Enemy_Column.h" />
     <ClInclude Include="Enemy_CoolShip.h" />
     <ClInclude Include="Enemy_FishShip.h" />
@@ -172,9 +172,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Enemy_Boss4.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BigShip.cpp" />
+    <ClCompile Include="Enemy_Boss.cpp" />
     <ClCompile Include="Enemy_Column.cpp" />
     <ClCompile Include="Enemy_CoolShip.cpp" />
     <ClCompile Include="Enemy_FishShip.cpp" />

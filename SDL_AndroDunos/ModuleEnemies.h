@@ -15,7 +15,7 @@
 #include "Enemy_FishShip.h"
 #include "Enemy_LongShip.h"
 #include "Enemy_CoolShip.h"
-#include "Enemy_Boss4.h"
+
 
 
 
@@ -47,12 +47,10 @@ enum ENEMY_TYPES
 	WATER,
 	WATER2,
 	LONG,
-	COOL
-	//BOSS4,
-	//BOSS4_HEAD,
-	//BOSS4_LIFT,
-	//BOSS4_ARM,
-	//BOSS4_ENEMY
+	COOL,
+	BOSS,
+	BOSSDES,
+	BOSS_DISP
 
 };
 

@@ -21,7 +21,7 @@
 #include "Enemy_FishShip.h"
 #include "Enemy_LongShip.h"
 #include "Enemy_CoolShip.h"
-#include "Enemy_Boss4.h"
+#include "Enemy_Boss.h"
 
 #include "ModuleAudio.h"
 
@@ -230,21 +230,15 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::COOL:
 			enemies[i] = new Enemy_CoolShip(info.x, info.y);
 			break;
-		//case ENEMY_TYPES::BOSS4:
-		//	enemies[i] = new Enemy_Boss4(info.x, info.y, info.type);
-		//	break;
-		//case ENEMY_TYPES::BOSS4_HEAD:
-		//	enemies[i] = new Enemy_Boss4Head(info.x, info.y, info.type);
-		//	break;
-		//case ENEMY_TYPES::BOSS4_LIFT:
-		//	enemies[i] = new Enemy_Boss4Lift(info.x, info.y, info.type);
-		//	break;
-		//case ENEMY_TYPES::BOSS4_ENEMY:
-		//	enemies[i] = new Enemy_Boss4Enemy(info.x, info.y,info.type);
-		//	break;
-		//case ENEMY_TYPES::BOSS4_ARM:
-		//	enemies[i] = new Enemy_Boss4Arm(info.x, info.y,info.type);
-		//	break;
+		case ENEMY_TYPES::BOSS:
+			enemies[i] = new Enemy_Boss(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOSSDES:
+			//enemies[i] = new Enemy_Boss_Destroyed(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOSS_DISP:
+			//enemies[i] = new Enemy_Boss_Dispend(info.x, info.y);
+			break;
 		}
 		
 	}	
