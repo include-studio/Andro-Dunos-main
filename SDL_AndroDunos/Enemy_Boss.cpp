@@ -171,7 +171,7 @@ void Tower::Shoot() {
 	App->particles->AddParticle(App->particles->boss_bomb1, pos.x + 100, pos.y - 75, COLLIDER_ENEMY_SHOT);
 	App->particles->AddParticle(App->particles->boss_bomb1, pos.x + 75, pos.y - 75, COLLIDER_ENEMY_SHOT);
 
-	App->particles->AddParticle(App->particles->boss_bomb2, pos.x, App->render->camera.y / SCREEN_SIZE - 50, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->boss_bomb2, pos.x-30, App->render->camera.y / SCREEN_SIZE - 75, COLLIDER_ENEMY_SHOT);
-	App->particles->AddParticle(App->particles->boss_bomb2, pos.x+20, App->render->camera.y / SCREEN_SIZE - 50, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->boss_bomb2, pos.x+(rand()%178-105), App->render->camera.y / SCREEN_SIZE - 50, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->boss_bomb2, pos.x+(rand() % 178 - 105), App->render->camera.y / SCREEN_SIZE - 75, COLLIDER_ENEMY_SHOT);
+	App->particles->AddParticle(App->particles->boss_bomb2, pos.x+ (rand() % 178 - 105), App->render->camera.y / SCREEN_SIZE - 50, COLLIDER_ENEMY_SHOT);
 }
