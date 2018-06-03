@@ -796,7 +796,12 @@ void ModulePlayer1::Ultimate() {
 			App->particles->AddParticle(App->particles->ultimate2[i], position.x+50, position.y + 20, COLLIDER_PLAYER_SHOT,100);
 		break;
 	case 3:
-		
+		App->particles->AddParticle(App->particles->laser_3_7_diagonalupfront, position.x - 13, position.y - 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser_3_7_diagonaldownfront, position.x - 13, position.y - 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser_3_7_diagonaldownback, position.x - 13, position.y - 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser_3_7_diagonalupback, position.x - 13, position.y - 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser_3_front, position.x - 13, position.y - 15, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->laser_3_back, position.x - 13, position.y - 15, COLLIDER_PLAYER_SHOT);
 		break;
 	case 4:
 		int delay=0;

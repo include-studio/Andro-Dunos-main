@@ -127,6 +127,9 @@ public:
 	Particle laser_4_7_1;
 	Particle laser_4_7_2;
 
+	Particle laser_3_front;
+	Particle laser_3_back;
+
 	Particle bomb_1_1;
 	Particle bomb_1_2;
 	Particle bomb_2_1;
