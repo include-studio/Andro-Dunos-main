@@ -454,6 +454,38 @@ ModuleParticles::ModuleParticles()
 	missile2.follow = 1;
 
 	//ultimates
+	//type1
+	for (int i = 0; i < 6; i++) {
+		ultimate1[i].anim.PushBack({0,306,63,18});
+		ultimate1[i].anim.PushBack({ 63,306,63,18 });
+		ultimate1[i].life = 1500;
+		ultimate1[i].anim.loop = false;
+		ultimate1[i].speed.x = 1;
+		if (i < 3)
+			ultimate1[i].speed.y = -2;
+		else ultimate1[i].speed.y = 2;
+
+		switch (i) {
+		case 0:
+			ultimate1[i].id = ID::ULT1UP1;
+			break;
+		case 1:
+			ultimate1[i].id = ID::ULT1UP2;
+			break;
+		case 2:
+			ultimate1[i].id = ID::ULT1UP3;
+			break;
+		case 3:
+			ultimate1[i].id = ID::ULT1DOWN1;
+			break;
+		case 4:
+			ultimate1[i].id = ID::ULT1DOWN2;
+			break;
+		case 5:
+			ultimate1[i].id = ID::ULT1DOWN3;
+			break;
+		}
+	}
 	//type2
 	for (int i = 0; i < 7; i++) {
 		for (int j = 0; j < 4; j++)
@@ -763,8 +795,13 @@ bool Particle::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+	/*if (positionstart) {
+		xi = position.x;
+		yi = position.y;
+		positionstart = false;
+	}*/
 
-	if (ret) {
+
 		if (follow == 1) { //follow == 1 follow contantly the target enemy
 			if (targetE == nullptr)
 				targetE = FindE(position);
@@ -797,10 +834,48 @@ bool Particle::Update()
 			speed.y = y * 2;
 			follow = 0;
 		}
+		/*
+		switch (id) {
+		case ULT1UP1:
+			if (position.x - xi < 300) {
+				speed.y = 0;
+				speed.x = 8;
+			}
+			break;
+		case ULT1UP2:
+			if (position.x - xi < 600) {
+				speed.y = 0;
+				speed.x = 8;
+			}
+			break;
+		case ULT1UP3:
+			if (position.x - xi < 900) {
+				speed.y = 0;
+				speed.x = 8;
+			}
+			break;
+		case ULT1DOWN1:
+			if (position.x - xi > 300) {
+				speed.y = 0;
+				speed.x = 8;
+			}
+			break;
+		case ULT1DOWN2:
+			if (position.x - xi > 600) {
+				speed.y = 0;
+				speed.x = 8;
+			}
+			break;
+		case ULT1DOWN3:
+			if (position.x - xi > 900) {
+				speed.y = 0;
+				speed.x = 8;
+			}
+			break;
+		}*/
 
 		position.x += speed.x;
 		position.y += speed.y;
-	}
 
 
 	return ret;
