@@ -162,6 +162,9 @@ update_status ModulePlayer2::Update()
 		charge = true;
 	else charge = false;
 
+	if ((App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_UP || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged)
+		Ultimate();
+
 	//powerup+
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 		if (powerup_s < MAX_POWERUP)
@@ -171,6 +174,11 @@ update_status ModulePlayer2::Update()
 		if (powerup_m < 5)
 			powerup_m++;
 	}
+	if (powerup_u > 0)
+		if (App->shield2->IsEnabled() == false) {
+			App->shield2->Enable();
+			powerup_u--;
+		}
 
 	// input
 	//controller input
@@ -820,6 +828,26 @@ void ModulePlayer2::Shoot() {
 			App->particles->AddParticle(App->particles->bomb_4_4, position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 			break;
 		}
+		break;
+	}
+}
+
+void ModulePlayer2::Ultimate() {
+	switch (type_weapon) {
+	case 1:
+
+		break;
+	case 2:
+		for (int i = 0; i < 7; i++)
+			App->particles->AddParticle(App->particles->ultimate2[i], position.x, position.y, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		for (int i = 0; i < 7; i++)
+			App->particles->AddParticle(App->particles->ultimate2[i], position.x, position.y, COLLIDER_PLAYER, 1000, OWNER_PLAYER2);
+		break;
+	case 3:
+
+		break;
+	case 4:
+
 		break;
 	}
 }

@@ -453,6 +453,27 @@ ModuleParticles::ModuleParticles()
 	missile2.life = 10000;
 	missile2.follow = 1;
 
+	//ultimates
+	//type2
+	for (int i = 0; i < 7; i++) {
+		for (int j = 0; j < 4; j++)
+			ultimate2[i].anim.PushBack({ j * 28,437,28,28 });
+		ultimate2[i].anim.loop = true;
+		ultimate2[i].life = 1500;
+		ultimate2[i].anim.speed = 0.7f;
+		if (i < 2)
+			ultimate2[i].speed.x = 3;
+		else
+			ultimate2[i].speed.x = -2;
+	}
+	ultimate2[0].speed.y = -2;
+	ultimate2[1].speed.y = 2;
+	ultimate2[2].speed.y = -5;
+	ultimate2[3].speed.y = -3;
+	ultimate2[4].speed.y = -1;
+	ultimate2[5].speed.y = 1;
+	ultimate2[6].speed.y = 3;
+
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
 	mini_explosion.anim.PushBack({ 160,165,32,32 });

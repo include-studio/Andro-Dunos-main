@@ -62,7 +62,7 @@ bool ModulePlayer1::Start()
 	position.y = SCREEN_HEIGHT / 3;
 
 	if (powerup_u > 0)
-		if (App->shield1->IsEnabled() == false) {
+		if (App->shield1->IsEnabled()) {
 			App->shield1->Enable();
 		}
 
@@ -190,7 +190,15 @@ update_status ModulePlayer1::Update()
 			powerup_b++;
 		if (powerup_m < 5)
 			powerup_m++;
+		if (powerup_u < 1)
+			powerup_u++;
 	}
+
+	if (powerup_u > 0)
+		if (!App->shield1->IsEnabled()) {
+			App->shield1->Enable();
+			powerup_u--;
+		}
 
 	// input
 		//controller input
@@ -727,7 +735,10 @@ void ModulePlayer1::Ultimate() {
 		
 		break;
 	case 2:
-
+		for (int i = 0; i < 7; i++)
+			App->particles->AddParticle(App->particles->ultimate2[i], position.x, position.y, COLLIDER_PLAYER_SHOT);
+		for (int i = 0; i < 7; i++)
+			App->particles->AddParticle(App->particles->ultimate2[i], position.x, position.y, COLLIDER_PLAYER,1000);
 		break;
 	case 3:
 		

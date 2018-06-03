@@ -24,6 +24,7 @@ public:
 
 	void Shoot();
 	void BombandMissile();
+	void Ultimate();
 	void States();
 
 	void OnCollision(Collider*, Collider*);

@@ -137,6 +137,11 @@ public:
 	Particle missile;
 	Particle missile2;
 
+	Particle ultimate1;
+	Particle ultimate2[7];
+	Particle ultimate3;
+	Particle ultimate4;
+
 	Particle mini_explosion;
 	Particle big_explosion;
 	Particle ring_explosion;
