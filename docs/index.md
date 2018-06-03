@@ -30,7 +30,7 @@ Controls
 -
 ~~~~~~~~~~~~~~~
 
-## Controls:
+General controls:
 
 - ESC (to close the window).
 
@@ -42,7 +42,7 @@ Controls
 
 - 2 (to play with two players).
 
-### Player 1: 
+Player 1: 
 
 - W (to go up).
 - A (to go backwards).
@@ -53,7 +53,7 @@ Controls
 
 - SPACE (to shoot).
 
-### Player 2:
+Player 2:
 
 - UP ARROW (to go up).
 - LEFT ARROW (to go backwards).
@@ -64,7 +64,7 @@ Controls
 
 - Right Ctrl (to shoot).
 
-### Controllers:
+Controllers:
 
 - Joystick (to move player).
 
@@ -75,6 +75,7 @@ Controls
 - Direction Pad Up (to add coins).
 
 ~~~~~~~~~~~~~~~
+
 Download link
 -
 [https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0](https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0)
