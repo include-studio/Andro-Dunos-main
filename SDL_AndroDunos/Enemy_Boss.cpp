@@ -5,6 +5,9 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleRender.h"
+#include "ModuleStage4.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleStageClear.h"
 #include "SDL/include/SDL.h"
 #include <stdlib.h>
 #include <time.h>
@@ -43,6 +46,20 @@ void Enemy_Boss::Move() {
 	position = original_pos + path.GetCurrentSpeed(&animation);
 
 }
+
+void Enemy_Boss_Destroyed::Move() {
+
+	time = SDL_GetTicks() - init_time;
+	//cont time to shoot
+	if (time >= 3000) {
+		//Shoot();
+		init_time = SDL_GetTicks();
+	}
+
+	position = original_pos + path.GetCurrentSpeed(&animation);
+
+}
+
 void Enemy_Boss::Dispend() {
 	for (int i = 0; i < 4; i++)
 		App->enemies->AddEnemy(BOSS_DISP, position.x, position.y);
@@ -57,9 +74,17 @@ void Enemy_Boss::Draw(SDL_Texture* sprites) {
 	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
 	App->render->Blit(sprites, position.x, position.y, &(fire->anim.GetCurrentFrame()));
 }
+
+void Enemy_Boss_Destroyed::Draw(SDL_Texture* sprites) {
+	if (collider != nullptr)
+		collider->SetPos(position.x + 7, position.y + 33);
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+}
+
 void Enemy_Boss::OnCollision(Collider *c1 ) {
 	//create destroyed
-	//App->enemies->AddEnemy(ENEMY_TYPES::BOSSDES, position.x, position.y);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSSDES, position.x, position.y+35);
 
 	//delete firegun
 	delete fire;
@@ -97,4 +122,26 @@ void Fire_Gun::Shoot() {
 		int random = (rand()%20)+25;
 		App->particles->AddParticle(App->particles->boss_fire, pos.x+random, pos.y + random, COLLIDER_ENEMY_SHOT);
 	}
+}
+
+Enemy_Boss_Destroyed::Enemy_Boss_Destroyed(int x, int y) :Enemy(x, y) {
+	anim.PushBack({ 0,960,187,60 });
+	anim.PushBack({ 187,960,187,60 });
+
+	collider = App->collision->AddCollider({ 0, 0, 150, 50 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+
+
+	path.PushBack({ 0,0 }, 0, &anim);
+	/*path.PushBack({ -1.0f,NULL }, 150, &anim);
+	path.PushBack({ 0.8f,NULL }, 150, &anim);
+	*/
+	original_pos.x = x;
+	original_pos.y = y;
+	init_time = SDL_GetTicks(); //Timer
+
+	life = 80;
+}
+
+void Enemy_Boss_Destroyed::OnCollision(Collider *c1) {
+	App->fade->FadeToBlack(App->stage4, App->stageclear, 0.5f);
 }
