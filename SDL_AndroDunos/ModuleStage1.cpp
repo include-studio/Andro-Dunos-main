@@ -292,7 +292,38 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 2420, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP, 2460, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2558, 90); //POWER UP 3
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2500, 90); //POWER UP 3
+
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2600, 80); //LONGSHIP SUICIDAL
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2620, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2640, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2660, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2660, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2680, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2680, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2700, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2700, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2720, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2720, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2740, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2760, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2760, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2760, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2780, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2780, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2800, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2820, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2820, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2840, 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 3520, 300); //COOL
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 3540, 320);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 3560, 300);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 3720, 340); 
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 3740, 360);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 3760, 340);
+
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 3900, 330); //POWER UP 4 underground
 
