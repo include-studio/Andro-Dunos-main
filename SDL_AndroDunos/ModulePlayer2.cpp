@@ -177,7 +177,6 @@ update_status ModulePlayer2::Update()
 	if (powerup_u > 0)
 		if (App->shield2->IsEnabled() == false) {
 			App->shield2->Enable();
-			powerup_u--;
 		}
 
 	// input

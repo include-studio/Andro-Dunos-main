@@ -37,7 +37,7 @@ struct Particle
 	OWNER owner_type;
 	int hp = 1;
 	ID id;
-	int follow;
+	int follow=0;
 	Enemy* targetE = nullptr;
 
 
@@ -140,7 +140,7 @@ public:
 	Particle ultimate1;
 	Particle ultimate2[7];
 	Particle ultimate3;
-	Particle ultimate4;
+	Particle ultimate4[3];
 
 	Particle mini_explosion;
 	Particle big_explosion;

@@ -197,7 +197,6 @@ update_status ModulePlayer1::Update()
 	if (powerup_u > 0)
 		if (!App->shield1->IsEnabled()) {
 			App->shield1->Enable();
-			powerup_u--;
 		}
 
 	// input
@@ -738,13 +737,18 @@ void ModulePlayer1::Ultimate() {
 		for (int i = 0; i < 7; i++)
 			App->particles->AddParticle(App->particles->ultimate2[i], position.x, position.y, COLLIDER_PLAYER_SHOT);
 		for (int i = 0; i < 7; i++)
-			App->particles->AddParticle(App->particles->ultimate2[i], position.x, position.y, COLLIDER_PLAYER,1000);
+			App->particles->AddParticle(App->particles->ultimate2[i], position.x+50, position.y + 20, COLLIDER_PLAYER_SHOT,100);
 		break;
 	case 3:
 		
 		break;
 	case 4:
-
+		int delay=0;
+		for (int n = 0; n < 5; n++) {
+			for (int i = 0; i < 3; i++)
+				App->particles->AddParticle(App->particles->ultimate4[i], position.x-delay/2, position.y-(delay*App->particles->ultimate4[i].speed.y)/10, COLLIDER_PLAYER_SHOT, delay);
+			delay += 75;
+		}
 		break;
 	}
 }

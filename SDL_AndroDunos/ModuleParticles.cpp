@@ -474,6 +474,19 @@ ModuleParticles::ModuleParticles()
 	ultimate2[5].speed.y = 1;
 	ultimate2[6].speed.y = 3;
 
+	//type4
+	for (int i = 0; i < 3; i++) {
+		for (int l = 0; l < 2; l++)
+			for (int j = 0; j < 4; j++)
+				ultimate4[i].anim.PushBack({ j * 30,324 + l * 30,30,30 });
+		ultimate4[i].speed.x = 7;
+		ultimate4[i].anim.loop = false;
+		ultimate4[i].anim.speed = 0.1f;
+	}
+	ultimate4[0].speed.y = -2;
+	ultimate4[1].speed.y = 0;
+	ultimate4[2].speed.y = 2;
+
 	//mini explosion particle
 	mini_explosion.anim.PushBack({ 160,133,32,32 });
 	mini_explosion.anim.PushBack({ 160,165,32,32 });
@@ -751,62 +764,44 @@ bool Particle::Update()
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 
-	
-	if (follow == 1) { //follow == 1 follow contantly the target enemy
-		if (targetE == nullptr)
-			targetE = FindE(position);
-		else {
-			float x = targetE->position.x - position.x;
-			float y = targetE->position.y - position.y;
-			float modulev = sqrt(x*x + y*y);
+	if (ret) {
+		if (follow == 1) { //follow == 1 follow contantly the target enemy
+			if (targetE == nullptr)
+				targetE = FindE(position);
+			else {
+				float x = targetE->position.x - position.x;
+				float y = targetE->position.y - position.y;
+				float modulev = sqrt(x*x + y*y);
+				x /= modulev;
+				y /= modulev;
+				position.x += x * 5;
+				position.y += y * 5;
+			}
+		}
+
+		if (follow == 2) {	//follow == 2 go to player when shot
+			fPoint pos;
+			/*if (position.DistanceTo(App->player1->position) < position.DistanceTo(App->player2->position))
+				pos = App->player1->position;
+			else pos = App->player2->position;*/
+
+			pos.x = App->player1->position.x;
+			pos.y = App->player1->position.y;
+
+			float x = pos.x - position.x;
+			float y = pos.y - position.y;
+			float modulev = pos.DistanceTo(position);
 			x /= modulev;
 			y /= modulev;
-			position.x += x * 5;
-			position.y += y * 5;
+			speed.x = x * 2;
+			speed.y = y * 2;
+			follow = 0;
 		}
+
+		position.x += speed.x;
+		position.y += speed.y;
 	}
 
-	if (follow == 2) {	//follow == 2 go to player when shot
-		fPoint pos;
-		/*if (position.DistanceTo(App->player1->position) < position.DistanceTo(App->player2->position))
-			pos = App->player1->position;
-		else pos = App->player2->position;*/
-
-		pos.x = App->player1->position.x;
-		pos.y = App->player1->position.y;
-
-		float x = pos.x - position.x;
-		float y = pos.y - position.y;
-		float modulev = pos.DistanceTo(position);
-		x /= modulev;
-		y /= modulev;
-		speed.x = x*2;
-		speed.y = y*2;
-		follow = 0;
-	}
-
-
-	position.x += speed.x;
-	position.y += speed.y;
-
-		
-	/*if (App->player1->position.y > position.y && blue_followUp == false)
-	{
-		position.y += 1;
-		blue_followUp = true;
-	}
-
-	if (App->player1->position.y < position.y && blue_followDown == false)
-	{
-		position.y -= 1;
-		blue_followDown = true;
-	}
-
-	if (blue_followUp == true) position.y += 1;
-	if (blue_followDown == true ) position.y -= 1;*/
-		
-
-	
 
 	return ret;
 }
