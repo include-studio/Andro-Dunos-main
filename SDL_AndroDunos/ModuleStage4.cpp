@@ -500,7 +500,7 @@ update_status ModuleStage4::Update() {
 
 
 	//input
-	if (App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN && App->ui->credit >= 1) {
+	if ((App->input->keyboard[SDL_SCANCODE_2] == KEY_STATE::KEY_DOWN || App->input->buttons2[SDL_CONTROLLER_BUTTON_A]) && App->ui->credit >= 1) {
 		if (!App->player2->IsEnabled()) {
 			App->player2->Enable();
 			App->player2->position.x = App->player1->position.x;
