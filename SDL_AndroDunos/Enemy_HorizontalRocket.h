@@ -27,11 +27,12 @@ private:
 
 	int original_y = 0;
 	Animation fly;
+	bool drop;
 
 public:
 
-	Enemy_HorizontalRocket2(int x, int y);
-
+	Enemy_HorizontalRocket2(int x, int y, bool drop);
+	void OnCollision(Collider* collider);
 	void Move();
 	int current_time;
 	int init_time = 0;
@@ -44,14 +45,13 @@ class Enemy_HorizontalRocket3 : public Enemy
 {
 private:
 
-	
 	int original_y = 0;
 	Animation fly;
-
+	bool drop;
 public:
 
-	Enemy_HorizontalRocket3(int x, int y);
-
+	Enemy_HorizontalRocket3(int x, int y, bool drop);
+	void OnCollision(Collider* collider);
 	void Move();
 	int current_time;
 	int init_time = 0;

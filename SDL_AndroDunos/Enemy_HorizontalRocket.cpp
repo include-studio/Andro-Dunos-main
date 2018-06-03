@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "SDL/include/SDL.h"
 #include "Globals.h"
+#include "ModulePowerUp.h"
 
 
 Enemy_HorizontalRocket::Enemy_HorizontalRocket(int x, int y) : Enemy(x, y)
@@ -22,7 +23,8 @@ Enemy_HorizontalRocket::Enemy_HorizontalRocket(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
-	life = 1;
+	life = 0.5;
+
 }
 
 void Enemy_HorizontalRocket::Move()
@@ -51,7 +53,7 @@ void Enemy_HorizontalRocket::Move()
 
 
 
-Enemy_HorizontalRocket2::Enemy_HorizontalRocket2(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4 to down
+Enemy_HorizontalRocket2::Enemy_HorizontalRocket2(int x, int y, bool _drop) : Enemy(x, y)                       //Zig Zag stage 4 to down
 {
 	fly.PushBack({ 30,50,30,30 });
 
@@ -61,6 +63,8 @@ Enemy_HorizontalRocket2::Enemy_HorizontalRocket2(int x, int y) : Enemy(x, y)    
 
 	original_y = y;
 	init_time = SDL_GetTicks(); //Timer
+
+	drop = _drop;
 }
 
 void Enemy_HorizontalRocket2::Move()
@@ -76,13 +80,16 @@ void Enemy_HorizontalRocket2::Move()
 	else position.x -= 3;
 
 }
+void Enemy_HorizontalRocket2::OnCollision(Collider* collider) {
+	if (drop == true)
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
+
+}
 
 
 
 
-
-
-Enemy_HorizontalRocket3::Enemy_HorizontalRocket3(int x, int y) : Enemy(x, y)             //Zig Zag stage 4 to up
+Enemy_HorizontalRocket3::Enemy_HorizontalRocket3(int x, int y, bool _drop) : Enemy(x, y)             //Zig Zag stage 4 to up
 {
 	fly.PushBack({ 30,50,30,30 });
 
@@ -92,6 +99,8 @@ Enemy_HorizontalRocket3::Enemy_HorizontalRocket3(int x, int y) : Enemy(x, y)    
 
 	original_y = y;
 	init_time = SDL_GetTicks(); //Timer
+
+	drop = _drop;
 }
 
 void Enemy_HorizontalRocket3::Move()
@@ -106,4 +115,10 @@ void Enemy_HorizontalRocket3::Move()
 	}
 	else position.x -= 3;
 	
+}
+
+void Enemy_HorizontalRocket3::OnCollision(Collider* collider) {
+	if (drop == true)
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
+
 }

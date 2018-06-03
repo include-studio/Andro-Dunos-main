@@ -13,10 +13,12 @@ private:
 
 	Animation fly;
 
+	bool drop;
+
 public:
 
-	Enemy_VendingMachine(int x, int y);
-
+	Enemy_VendingMachine(int x, int y, bool _drop);
+	void OnCollision(Collider* collider);
 	
 	int current_time;
 	int init_time = 0;
