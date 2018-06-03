@@ -7,12 +7,50 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 
-## [0.8.1] - 2018-06-02
+## [0.1.0] - 2018-06-03
 
 
 ### Summarized
 
-- 
+- New enemies, ultimates...
+
+### Extended
+
+
+#### Added
+
+
+- Enemies Stage4.
+
+- PowerUp M and U.
+
+- Created Enemy_LongShip .cpp and .h .
+
+- Created Enemy_CoolGreenShip .cpp and .h .
+
+- Ultimates.
+
+- Bonus in both stages.
+
+- UI powerUp numbers.
+
+
+#### Fixed
+
+
+- FadeToBlack
+
+- Enemies life reduced.
+
+- PowerUp movement
+
+
+## [0.9.0] - 2018-06-02
+
+
+### Summarized
+
+- PowerUp M and new enemies
 
 ### Extended
 
