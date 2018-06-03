@@ -21,7 +21,13 @@ enum OWNER {
 enum ID {
 	NONIMPORTANT,
 	BOMB,
-	BOMB_DELAY
+	BOMB_DELAY,
+	ULT1UP1,
+	ULT1UP2,
+	ULT1UP3,
+	ULT1DOWN1,
+	ULT1DOWN2,
+	ULT1DOWN3
 };
 
 struct Particle
@@ -29,6 +35,9 @@ struct Particle
 	Animation anim;
 	uint fx = 0;
 	fPoint position;
+	int xi = 0;
+	int yi = 0;
+	bool positionstart = 0;
 	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
@@ -46,7 +55,6 @@ struct Particle
 	~Particle();
 	bool Update();
 	Enemy* FindE(fPoint pos);
-	iPoint ShootPl(iPoint pos);
 	bool blue_followDown = false;
 	bool blue_followUp = false;
 };
@@ -137,7 +145,12 @@ public:
 	Particle missile;
 	Particle missile2;
 
-	Particle ultimate1;
+	Particle ultimate1[6];// _up1;
+	//Particle ultimate1_up2;
+	//Particle ultimate1_up3;
+	//Particle ultimate1_down1;
+	//Particle ultimate1_down2;
+	//Particle ultimate1_down3;
 	Particle ultimate2[7];
 	Particle ultimate3;
 	Particle ultimate4[3];
