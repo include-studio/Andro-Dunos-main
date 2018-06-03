@@ -336,13 +336,11 @@ ModuleParticles::ModuleParticles()
 	laser_3_front.anim.loop = false;
 	laser_3_front.life = 670;
 	laser_3_front.speed.x = 7;
-	laser_3_front.hp = 3;
 
 	laser_3_back.anim.PushBack({ 282,453,82,62 });
 	laser_3_back.anim.loop = false;
 	laser_3_back.life = 670;
 	laser_3_back.speed.x = -7;
-	laser_3_back.hp = 3;
 
 
 
