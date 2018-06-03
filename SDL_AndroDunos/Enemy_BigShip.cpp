@@ -7,13 +7,13 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "SDL/include/SDL.h"
-
+#include "ModulePowerUp.h"
 #include "ModuleRender.h"
 
 #define PIXEL 116
 
 
-Enemy_BigShip::Enemy_BigShip(int x, int y, ENEMY_TYPES _type) : Enemy(x, y)
+Enemy_BigShip::Enemy_BigShip(int x, int y, ENEMY_TYPES _type, bool _drop) : Enemy(x, y)
 {
 	
 	fly.PushBack({ 0, 222, PIXEL, PIXEL });
@@ -66,6 +66,8 @@ Enemy_BigShip::Enemy_BigShip(int x, int y, ENEMY_TYPES _type) : Enemy(x, y)
 
 	life = 50;
 	//life_nexus == life;
+
+	drop = _drop;
 }
 
 void Enemy_BigShip::Move()
@@ -176,6 +178,8 @@ void Enemy_BigShip::Shoot_yellow() {
 
 }
 void Enemy_BigShip::OnCollision(Collider* c1) {
+	if (drop == true)
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
 	DespawnAllWings();
 }
 

@@ -197,7 +197,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_TinyRedShip2(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BIGSHIP:
-			enemies[i] = new Enemy_BigShip(info.x, info.y, info.type);
+			enemies[i] = new Enemy_BigShip(info.x, info.y, info.type, info.drop);
 			break;
 		case ENEMY_TYPES::BIGSHIP2:
 			enemies[i] = new Enemy_BigShip2(info.x, info.y, info.type);

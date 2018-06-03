@@ -189,17 +189,9 @@ bool ModuleUI::Start()
 	ultimateCharged.speed = 0.9f;*/
 	
 	font_score1 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
-	font_score2 = App->fonts->Load("Assets/Fonts/font_score.png", "1234567890P", 1);
 	font_highscore = App->fonts->Load("Assets/Fonts/red_font_high_score.png", "HI-1234567890", 1);
 	font_credits = App->fonts->Load("Assets/Fonts/credits.png", "0123456789", 1);
 	font1_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font2_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font3_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font4_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font5_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font6_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font7_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
-	font8_powerup = App->fonts->Load("Assets/Fonts/numbers_powerup.png", "012345678", 1);
 
 	credit_fx = App->audio->Loadfx("Assets/Audio/COIN_inserted.wav");
 
@@ -217,9 +209,10 @@ bool ModuleUI::CleanUp()
 	App->textures->Unload(user_interface);
 	App->audio->UnLoadFx(credit_fx);
 	App->fonts->UnLoad(font_score1);
-	App->fonts->UnLoad(font_score2);
 	App->fonts->UnLoad(font_highscore);
 	App->fonts->UnLoad(font_credits);
+	App->fonts->UnLoad(font1_powerup);
+
 	credit_on = true;
 	return true;
 }
@@ -243,8 +236,8 @@ update_status ModuleUI::PostUpdate()
 
 		//score2
 		sprintf_s(score2_text, 10, "%7d", score2);
-		App->fonts->BlitText(SCREEN_MIDDLE + 73, SCORES_HEIGHT, font_score2, score2_text);
-		App->fonts->BlitText(SCREEN_MIDDLE + 48, SCORES_HEIGHT, font_score2, "P2");
+		App->fonts->BlitText(SCREEN_MIDDLE + 73, SCORES_HEIGHT, font_score1, score2_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 48, SCORES_HEIGHT, font_score1, "P2");
 
 		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
@@ -260,8 +253,8 @@ update_status ModuleUI::PostUpdate()
 
 		//score2
 		sprintf_s(score2_text, 10, "%7d", score2);
-		App->fonts->BlitText(SCREEN_MIDDLE + 73, SCORES_HEIGHT, font_score2, score2_text);
-		App->fonts->BlitText(SCREEN_MIDDLE + 48, SCORES_HEIGHT, font_score2, "P2");
+		App->fonts->BlitText(SCREEN_MIDDLE + 73, SCORES_HEIGHT, font_score1, score2_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 48, SCORES_HEIGHT, font_score1, "P2");
 
 		//highscore print
 		sprintf_s(HighScore_text, 13, "%7d", high_score);
@@ -355,12 +348,6 @@ update_status ModuleUI::PostUpdate()
 		for (int i = 0; i<App->player2->hp-1; i++)
 			App->render->Blit(user_interface, SCREEN_MIDDLE + 16 + i * 8, HP_HEIGHT, &life2_rect, false);
 
-	//powerup numbers
-	if (App->player1->IsEnabled() == true && App->player1->hp > 0) {
-
-
-	}
-
 	//weapon type UI
 	if (App->player1->IsEnabled() == true && App->player1->hp > 0) {
 		switch (App->player1->type_weapon)
@@ -395,13 +382,13 @@ update_status ModuleUI::PostUpdate()
 		App->fonts->BlitText(8 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup1_text);
 
 		sprintf_s(powerup2_text, 9, "%1d", App->player1->powerup_b);
-		App->fonts->BlitText(40 + 26, WEAPONS_HEIGHT + 1, font2_powerup, powerup2_text);
+		App->fonts->BlitText(40 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup2_text);
 
 		sprintf_s(powerup3_text, 9, "%1d", App->player1->powerup_m);
-		App->fonts->BlitText(72 + 26, WEAPONS_HEIGHT + 1, font3_powerup, powerup3_text);
+		App->fonts->BlitText(72 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup3_text);
 
 		sprintf_s(powerup4_text, 9, "%1d", App->player1->powerup_u);
-		App->fonts->BlitText(104 + 26, WEAPONS_HEIGHT + 1, font4_powerup, powerup4_text);
+		App->fonts->BlitText(104 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup4_text);
 	}
 
 	if (App->player2->IsEnabled() == true && App->player2->hp > 0) {
@@ -433,16 +420,16 @@ update_status ModuleUI::PostUpdate()
 			break;
 		}
 		sprintf_s(powerup5_text, 9, "%1d", App->player2->powerup_s);
-		App->fonts->BlitText(SCREEN_MIDDLE + 8 + 26, WEAPONS_HEIGHT + 1, font5_powerup, powerup5_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 8 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup5_text);
 
 		sprintf_s(powerup6_text, 9, "%1d", App->player2->powerup_b);
-		App->fonts->BlitText(SCREEN_MIDDLE + 40 + 26, WEAPONS_HEIGHT + 1, font6_powerup, powerup6_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 40 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup6_text);
 
 		sprintf_s(powerup7_text, 9, "%1d", App->player2->powerup_m);
-		App->fonts->BlitText(SCREEN_MIDDLE + 72 + 26, WEAPONS_HEIGHT + 1, font7_powerup, powerup7_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 72 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup7_text);
 
 		sprintf_s(powerup8_text, 9, "%1d", App->player2->powerup_u);
-		App->fonts->BlitText(SCREEN_MIDDLE + 104 + 26, WEAPONS_HEIGHT + 1, font8_powerup, powerup8_text);
+		App->fonts->BlitText(SCREEN_MIDDLE + 104 + 26, WEAPONS_HEIGHT + 1, font1_powerup, powerup8_text);
 	}
 
 	//ultimate bar

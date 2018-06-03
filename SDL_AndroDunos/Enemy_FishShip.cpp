@@ -31,7 +31,7 @@ Enemy_FishShip::Enemy_FishShip(int x, int y) : Enemy(x, y)				//2nd path DOWN to
 	trans.loop = false;
 	down.loop = false;
 
-	
+	life = 0.5;
 
 	//Path
 

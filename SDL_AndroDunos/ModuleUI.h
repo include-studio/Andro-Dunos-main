@@ -60,8 +60,6 @@ public:
 
 	int font_score1 = 1;
 	char score1_text[10];
-
-	int font_score2 = -1;
 	char score2_text[10];
 
 	int font_highscore = -1;
@@ -72,26 +70,12 @@ public:
 
 	int font1_powerup = -1;
 	char powerup1_text[9];
-
-	int font2_powerup = -1;
 	char powerup2_text[9];
-
-	int font3_powerup = -1;
 	char powerup3_text[9];
-
-	int font4_powerup = -1;
 	char powerup4_text[9];
-
-	int font5_powerup = -1;
 	char powerup5_text[9];
-
-	int font6_powerup = -1;
 	char powerup6_text[9];
-
-	int font7_powerup = -1;
 	char powerup7_text[9];
-
-	int font8_powerup = -1;
 	char powerup8_text[9];
 
 	bool activate_credit = true;
