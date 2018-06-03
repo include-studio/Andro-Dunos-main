@@ -21,3 +21,11 @@ Original gameplay
 -
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/iQOrXlf34es" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+Tribute gameplay
+-
+<iframe width="560" height="315" src="link" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+Download link
+-
+[https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0](https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0)
