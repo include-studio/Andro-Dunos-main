@@ -162,7 +162,7 @@ update_status ModulePlayer2::Update()
 		charge = true;
 	else charge = false;
 
-	if ((App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_UP || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged)
+	if (((App->input->keyboard[SDL_SCANCODE_RCTRL] == KEY_STATE::KEY_UP || App->input->buttons2[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged) || App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN)
 		Ultimate();
 
 	//powerup+
@@ -832,9 +832,36 @@ void ModulePlayer2::Shoot() {
 }
 
 void ModulePlayer2::Ultimate() {
+	int delayult1 = 0;
+	int time = 80;
 	switch (type_weapon) {
 	case 1:
-
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x, position.y - 30, COLLIDER_PLAYER_SHOT, 0);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x, position.y + 30, COLLIDER_PLAYER_SHOT, 0);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 60, COLLIDER_PLAYER_SHOT, 0,OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 60, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 30, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 30, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 90, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 90, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 60, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 60, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 30, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 30, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 90, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 90, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 60, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 60, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		delayult1 += time;
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y - 90, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
+		App->particles->AddParticle(App->particles->ultimate1_1, position.x - delayult1, position.y + 90, COLLIDER_PLAYER_SHOT, 0, OWNER_PLAYER2);
 		break;
 	case 2:
 		for (int i = 0; i < 7; i++)
@@ -846,7 +873,12 @@ void ModulePlayer2::Ultimate() {
 
 		break;
 	case 4:
-
+		int delay = 0;
+		for (int n = 0; n < 5; n++) {
+			for (int i = 0; i < 3; i++)
+				App->particles->AddParticle(App->particles->ultimate4[i], position.x - delay / 2, position.y - (delay*App->particles->ultimate4[i].speed.y) / 10, COLLIDER_PLAYER_SHOT, delay,OWNER_PLAYER2);
+			delay += 75;
+		}
 		break;
 	}
 }
