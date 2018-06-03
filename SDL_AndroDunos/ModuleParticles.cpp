@@ -457,7 +457,7 @@ ModuleParticles::ModuleParticles()
 	//type1
 	ultimate1_1.anim.PushBack({ 0,306,63,18 });
 	ultimate1_1.anim.PushBack({ 63,306,63,18 });
-	ultimate1_1.life = 5500;
+	ultimate1_1.life = 7000;
 	ultimate1_1.anim.speed = 0.5f;
 	ultimate1_1.speed.x = 5;
 	ultimate1_1.anim.loop = false;
