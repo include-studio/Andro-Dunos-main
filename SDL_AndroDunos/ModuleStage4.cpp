@@ -239,10 +239,15 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2550, 10); //POWER UP 3
 
-	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2700, 25); //LONGSHIP
-	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2780, 40); //LONGSHIP
-	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2800, 30); //LONGSHIP
-
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2700, 20); //LONGSHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2720, 40); 
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2740, 30); 
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2750, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2760, 45);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2770, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2780, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2790, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2800, 60);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2880, -40); //2nd Miniminiboss
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2840, -40);
@@ -255,6 +260,11 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3180, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3220, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3260, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3300, 0); //WAVING SHIP WEIRD
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3340, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3380, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3420, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 3460, 0);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON, 3750, 130); //TRIPLECANON
 	App->enemies->AddEnemy(ENEMY_TYPES::TRIPLECANON2, 3725, 100);
@@ -363,7 +373,13 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6625, 160);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORIZONTALROCKET2, 6640, 160);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6760, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6760, 200); //COOL SHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6780, 220);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6800, 200);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6840, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6860, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::COOL, 6880, 180);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7000, 180); //WAVING SHIP WEIRD
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7040, 180);
@@ -380,6 +396,7 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 7420, 250);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 7460, 250);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 7500, 250);
+
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7500, 100); //WAVING SHIP WEIRD need ground move
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 7540, 100);
