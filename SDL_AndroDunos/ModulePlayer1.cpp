@@ -175,11 +175,11 @@ update_status ModulePlayer1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN && hp != 7)
 		hp++;
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_REPEAT)&& powerup_s>1)
 		charge = true;
 	else charge = false;
 
-	if (((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_UP || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged) || App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN)
+	if (((App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_UP || App->input->buttons1[SDL_CONTROLLER_BUTTON_A] == KEY_STATE::KEY_UP) && charged && powerup_s>1) || App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN)
 		Ultimate();
 
 	//powerup
@@ -731,9 +731,11 @@ void ModulePlayer1::Shoot() {
 void ModulePlayer1::Ultimate() {
 	int delayult1 = 0;
 	int time = 80;
+	powerup_s--;
 	//Particle* aux;
 	switch (type_weapon) {
 	case 1:
+	
 		//aux = &App->particles->ultimate1[0];
 		App->particles->AddParticle(App->particles->ultimate1_1, position.x, position.y-30, COLLIDER_PLAYER_SHOT, 0);
 		App->particles->AddParticle(App->particles->ultimate1_1, position.x, position.y+30, COLLIDER_PLAYER_SHOT, 0);
