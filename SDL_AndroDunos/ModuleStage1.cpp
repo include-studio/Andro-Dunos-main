@@ -200,9 +200,9 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 383, 60); 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 396, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 409, 60);
-	//Test
-	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 409, 100);
-	//--------------------------------------------------
+	////Test
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 409, 100);
+	////--------------------------------------------------
 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 470, 140); 
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP, 483, 140);
