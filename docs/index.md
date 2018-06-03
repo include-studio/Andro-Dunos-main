@@ -26,6 +26,55 @@ Tribute gameplay
 -
 <iframe width="560" height="315" src="link" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
+Controls
+-
+~~~~~~~~~~~~~~~
+
+## Controls:
+
+- ESC (to close the window).
+
+- SPACE (to change between scenes).
+
+- Left Ctrl (to add coins(with 2 coins needed to play with 2 players))
+
+- 1 (to play with one player).
+
+- 2 (to play with two players).
+
+### Player 1: 
+
+- W (to go up).
+- A (to go backwards).
+- S (to go down).
+- D (to go forwards).
+
+- Q (to change weapons).
+
+- SPACE (to shoot).
+
+### Player 2:
+
+- UP ARROW (to go up).
+- LEFT ARROW (to go backwards).
+- DOWN ARROW (to go down).
+- RIGHT ARROW (to go forwards).
+
+- M (to change between weapons).
+
+- Right Ctrl (to shoot).
+
+### Controllers:
+
+- Joystick (to move player).
+
+- A/X (to shoot).
+
+- X/Square (to change weapon). 
+
+- Direction Pad Up (to add coins).
+
+~~~~~~~~~~~~~~~
 Download link
 -
 [https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0](https://github.com/include-studio/Andro-Dunos-main/releases/tag/1.0)
