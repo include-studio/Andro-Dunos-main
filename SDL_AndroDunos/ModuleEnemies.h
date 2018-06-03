@@ -13,6 +13,8 @@
 #include "Enemy_TripleCanon.h"
 #include "Enemy_VendingMachine.h"
 #include "Enemy_FishShip.h"
+#include "Enemy_LongShip.h"
+
 
 
 
@@ -42,7 +44,8 @@ enum ENEMY_TYPES
 	VENDING,
 	FISH,
 	WATER,
-	WATER2
+	WATER2,
+	LONG
 
 };
 

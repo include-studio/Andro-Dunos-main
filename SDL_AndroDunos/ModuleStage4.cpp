@@ -239,6 +239,11 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 2550, 10); //POWER UP 3
 
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2700, 25); //LONGSHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2780, 40); //LONGSHIP
+	App->enemies->AddEnemy(ENEMY_TYPES::LONG, 2800, 30); //LONGSHIP
+
+
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2880, -40); //2nd Miniminiboss
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2840, -40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 2800, -40);

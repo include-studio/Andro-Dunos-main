@@ -118,8 +118,10 @@
     <ClCompile Include="Enemy_VendingMachine.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleStage1Floor.cpp" />
     <ClCompile Include="Enemy_FishShip.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_LongShip.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -257,6 +259,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_FishShip.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_LongShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
