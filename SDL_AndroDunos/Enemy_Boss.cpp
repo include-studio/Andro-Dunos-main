@@ -6,6 +6,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleRender.h"
 #include "SDL/include/SDL.h"
+#include <stdlib.h>
+#include <time.h>
 
 
 Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
@@ -90,10 +92,9 @@ void Fire_Gun::Position() {
 	
 }
 void Fire_Gun::Shoot() {
-	int delay = 0;
 	//Position();
 	for (int n = 0; n < 20; n++) {
-		App->particles->AddParticle(App->particles->boss_fire, pos.x+delay/20, pos.y+delay/20, COLLIDER_ENEMY_SHOT, delay);
-		delay += 100;
+		int random = (rand()%20)+25;
+		App->particles->AddParticle(App->particles->boss_fire, pos.x+random, pos.y + random, COLLIDER_ENEMY_SHOT);
 	}
 }
