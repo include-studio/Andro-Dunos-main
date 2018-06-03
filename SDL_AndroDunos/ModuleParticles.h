@@ -27,7 +27,9 @@ enum ID {
 	ULT1UP3,
 	ULT1DOWN1,
 	ULT1DOWN2,
-	ULT1DOWN3
+	ULT1DOWN3,
+	FIRE_BOSS,
+	BOMB_BOSS
 };
 
 struct Particle
@@ -146,11 +148,6 @@ public:
 	Particle missile2;
 
 	Particle ultimate1_1;
-	Particle ultimate1_2;
-	Particle ultimate1_3;
-	Particle ultimate1_4;
-	Particle ultimate1_5;
-	Particle ultimate1_6;
 	Particle ultimate2[7];
 	Particle ultimate3;
 	Particle ultimate4[3];
@@ -160,6 +157,9 @@ public:
 	Particle ring_explosion;
 	Particle explosion_player1;
 	Particle explosion_player2;
+	
+	Particle boss_fire;
+	Particle boss_bomb;
 
 	Particle enemy_blue;
 	Particle enemy_blue_up;

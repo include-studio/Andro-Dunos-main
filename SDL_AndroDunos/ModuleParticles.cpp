@@ -683,6 +683,22 @@ ModuleParticles::ModuleParticles()
 	enemy_yellow_laser.life = 1500;
 	enemy_yellow_laser.speed.x = -4;
 	enemy_yellow_laser.anim.loop = false;
+
+	//fire boss
+	boss_fire.anim.PushBack({250,313,29,32});
+	boss_fire.anim.PushBack({ 281,313,29,32 });
+	boss_fire.anim.PushBack({ 313,313,29,32 });
+	boss_fire.anim.PushBack({ 347,313,29,32 });
+	boss_fire.anim.PushBack({ 251,350,29,32 });
+	boss_fire.anim.PushBack({ 283,350,29,32 });
+	boss_fire.anim.PushBack({ 315,350,29,32 });
+	boss_fire.anim.PushBack({ 347,350,29,32 });
+	boss_fire.life = 5500;
+	boss_fire.id = FIRE_BOSS;
+	boss_fire.anim.speed = 0.8f;
+	boss_fire.anim.loop = true;
+	boss_fire.speed.x = -1;
+	boss_fire.speed.y = -1;
 	
 	//enemy_blue_laser shoot
 
