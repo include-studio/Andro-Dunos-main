@@ -167,10 +167,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_HorizontalRocket(info.x, info.y);
 			break;
 		case ENEMY_TYPES::HORIZONTALROCKET2:
-			enemies[i] = new Enemy_HorizontalRocket2(info.x, info.y);
+			enemies[i] = new Enemy_HorizontalRocket2(info.x, info.y, info.drop);
 			break;
 		case ENEMY_TYPES::HORIZONTALROCKET3:
-			enemies[i] = new Enemy_HorizontalRocket3(info.x, info.y);
+			enemies[i] = new Enemy_HorizontalRocket3(info.x, info.y, info.drop);
 			break;
 		case ENEMY_TYPES::POWERUP:
 			enemies[i] = new Enemy_PowerUp(info.x, info.y);
@@ -197,7 +197,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_TinyRedShip2(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BIGSHIP:
-			enemies[i] = new Enemy_BigShip(info.x, info.y, info.type);
+			enemies[i] = new Enemy_BigShip(info.x, info.y, info.type, info.drop);
 			break;
 		case ENEMY_TYPES::BIGSHIP2:
 			enemies[i] = new Enemy_BigShip2(info.x, info.y, info.type);
@@ -212,7 +212,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_TripleCanon2(info.x, info.y);
 			break;
 		case ENEMY_TYPES::VENDING:
-			enemies[i] = new Enemy_VendingMachine(info.x, info.y);
+			enemies[i] = new Enemy_VendingMachine(info.x, info.y, info.drop);
 			break;
 		case ENEMY_TYPES::FISH:
 			enemies[i] = new Enemy_FishShip(info.x, info.y);

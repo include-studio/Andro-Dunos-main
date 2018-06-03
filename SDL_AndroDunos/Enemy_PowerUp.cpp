@@ -121,7 +121,7 @@ Enemy_PowerUp::Enemy_PowerUp(int x, int y) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 
-	life = 1;
+	life = 0.5;
 }
 
 void Enemy_PowerUp::Move()

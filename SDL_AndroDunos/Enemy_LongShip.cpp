@@ -22,7 +22,7 @@ Enemy_LongShip::Enemy_LongShip(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
-	life = 1;
+	life = 0.5;
 	init_time = SDL_GetTicks(); //Timer
 }
 

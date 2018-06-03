@@ -207,14 +207,14 @@ bool ModuleStage4::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1620, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1660, 50);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1550, 138); //VENDING
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1550, 138, true); //VENDING
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1563, 170);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1562, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1561, 230);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1560, 260);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1675, 158);
+	App->enemies->AddEnemy(ENEMY_TYPES::VENDING, 1675, 158, true);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1688, 190);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIGREEN3, 1687, 220);
@@ -265,7 +265,7 @@ bool ModuleStage4::Start() {
 	//App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP3, 500, 30); //Big ship WATER Wing2
 	//---------------------------------------------------------------------------------------------------
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 3950, 165); //Big ship WATER
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP, 3950, 165, true); //Big ship WATER
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP2, 3950, 165); //Big ship WATER Wing1
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGSHIP3, 3950, 165); //Big ship WATER Wing2
 

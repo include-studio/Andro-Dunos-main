@@ -3,10 +3,11 @@
 #include "ModuleCollision.h"
 #include "SDL/include/SDL.h"
 #include "Globals.h"
+#include "ModulePowerUp.h"
 
 #define PIXEL 32
 
-Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)                       //Zig Zag stage 4 to down
+Enemy_VendingMachine::Enemy_VendingMachine(int x, int y, bool _drop) : Enemy(x, y)                       //Zig Zag stage 4 to down
 {
 	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
 	fly.PushBack({ PIXEL * 0,473,PIXEL,PIXEL });
@@ -58,7 +59,15 @@ Enemy_VendingMachine::Enemy_VendingMachine(int x, int y) : Enemy(x, y)          
 
 	init_time = SDL_GetTicks(); //Timer
 
-	life = 8;
+	life = 4;
+
+	drop = _drop;
+}
+
+void Enemy_VendingMachine::OnCollision(Collider* collider) {
+	if (drop == true)
+		App->powerup->AddPowerUp(App->powerup->bonus, position.x, position.y, COLLIDER_BONUS);
+
 }
 
 

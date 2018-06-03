@@ -23,11 +23,11 @@ private:
 	//left, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Left, Up-Right, Down, Up-Left, Right, Up-Right, Down, Up-Left, Up-Right, Down, Up-Left, Up-Right, Down, Right, Left, 
 
 	void DespawnAllWings();
-	
+	bool drop;
 
 public:
 
-	Enemy_BigShip(int x, int y, ENEMY_TYPES type);
+	Enemy_BigShip(int x, int y, ENEMY_TYPES type, bool drop);
 	void OnCollision(Collider*);
 	void Draw(SDL_Texture* sprites);
 	void Shoot();
