@@ -270,6 +270,18 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) + 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::MINIMINIBOSS, 1803, (SCREEN_HEIGHT / 2) - 40);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1700, 50); //WAVING SHIP WEIRD
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1740, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1780, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1820, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1860, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1900, 130); 
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1940, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 1980, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 2020, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::WAVINGSHIP2, 2060, 130);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2270, 120); //TINY RED SHIP
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2310, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::TINYREDSHIP2, 2350, 120);
