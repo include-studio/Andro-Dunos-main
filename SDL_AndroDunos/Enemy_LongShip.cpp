@@ -3,6 +3,8 @@
 #include "ModuleCollision.h"
 #include "SDL/include/SDL.h"
 #include "Globals.h"
+#include "ModuleRender.h"
+
 
 #define PIXEL 24
 
@@ -18,7 +20,7 @@ Enemy_LongShip::Enemy_LongShip(int x, int y) : Enemy(x, y)
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 22, 5 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 20, 22, 5 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 
@@ -41,3 +43,11 @@ void Enemy_LongShip::Move()
 }
 
 
+void Enemy_LongShip::Draw(SDL_Texture* sprites)
+{
+	if (collider != nullptr)
+		collider->SetPos(position.x + 4, position.y + 15);
+
+
+	App->render->Blit(sprites, position.x, position.y, &(animation->GetCurrentFrame()));
+}

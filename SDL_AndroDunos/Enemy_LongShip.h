@@ -16,6 +16,7 @@ public:
 	int current_time;
 	int init_time = 0;
 	Enemy_LongShip(int x, int y);
+	void Draw(SDL_Texture* sprites);
 
 	void Move();
 };
