@@ -746,16 +746,17 @@ bool Particle::Update()
 	}
 
 	if (follow == 2) {	//follow == 2 go to player when shot
-		iPoint pos;
-		if (position.DistanceTo(App->player1->position) < position.DistanceTo(App->player2->position))
+		fPoint pos;
+		/*if (position.DistanceTo(App->player1->position) < position.DistanceTo(App->player2->position))
 			pos = App->player1->position;
-		else pos = App->player2->position;
+		else pos = App->player2->position;*/
 
-		pos = App->player1->position;
+		pos.x = App->player1->position.x;
+		pos.y = App->player1->position.y;
 
 		float x = pos.x - position.x;
 		float y = pos.y - position.y;
-		int modulev = pos.DistanceTo(position);
+		float modulev = pos.DistanceTo(position);
 		x /= modulev;
 		y /= modulev;
 		speed.x = x*2;
@@ -789,15 +790,20 @@ bool Particle::Update()
 	return ret;
 }
 
-Enemy* Particle::FindE(iPoint pos) {
+Enemy* Particle::FindE(fPoint pos) {
 	Enemy* e = nullptr;
 	int dis = 200;
+	int x = 0;
+	int y = 0;
 	for (int i = 0; i < MAX_ENEMIES; i++) {
-			if (App->enemies->enemies[i] != nullptr)
-				if (pos.DistanceTo(App->enemies->enemies[i]->position) < dis) {
-					e = App->enemies->enemies[i];
-					dis = pos.DistanceTo(e->position);
-				}
+		if (App->enemies->enemies[i] != nullptr) {
+			int x = App->enemies->enemies[i]->position.x;
+			int y = App->enemies->enemies[i]->position.y;
+			if (sqrt((x - pos.x)*(x - pos.x) + (y - pos.y)*(y - pos.y)) < dis) {
+				e = App->enemies->enemies[i];
+				dis = sqrt((x - pos.x)*(x - pos.x) + (y - pos.y)*(y - pos.y));
+			}
+		}
 	}
 	return e;
 }

@@ -28,8 +28,8 @@ struct Particle
 {
 	Animation anim;
 	uint fx = 0;
-	iPoint position;
-	iPoint speed;
+	fPoint position;
+	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
@@ -45,7 +45,7 @@ struct Particle
 	Particle(const Particle& p);
 	~Particle();
 	bool Update();
-	Enemy* FindE(iPoint pos);
+	Enemy* FindE(fPoint pos);
 	iPoint ShootPl(iPoint pos);
 	bool blue_followDown = false;
 	bool blue_followUp = false;
