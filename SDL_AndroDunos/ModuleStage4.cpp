@@ -417,6 +417,8 @@ bool ModuleStage4::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, 7670, 100); //POWER UP 6
 
+	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 8075, 143);
+
 	//reset variables (camera position, players position...)
 	App->render->camera.x = 0;
 	App->render->camera.y = -100;
@@ -596,7 +598,7 @@ update_status ModuleStage4::Update() {
 			stage++;
 		break;
 	case 8:
-		App->fade->FadeToBlack(this, App->stageclear, 0.5f);
+		/*App->fade->FadeToBlack(this, App->stageclear, 0.5f);*/
 		break;
 	}	
 
